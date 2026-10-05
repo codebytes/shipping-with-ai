@@ -1,7 +1,9 @@
 ---
 marp: true
+title: Shipping with AI Without Shipping Regret
 theme: custom-default
 paginate: true
+math: mathjax
 footer: 'https://example.com'
 ---
 
@@ -9,7 +11,7 @@ footer: 'https://example.com'
 <!-- _footer: "" -->
 <!-- _class: lead -->
 
-# Sample Presentation
+# Shipping with AI Without Shipping Regret
 
 A template demonstrating Marp best practices
 

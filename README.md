@@ -1,4 +1,6 @@
-# Marp Slides Template
+# Shipping with AI Without Shipping Regret
+
+Talk content will be added later. The Marp template scaffold is preserved below.
 
 [Use this template!](https://github.com/codebytes/marp-slides-template/generate)
 
