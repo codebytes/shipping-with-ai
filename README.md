@@ -1,6 +1,11 @@
 # Shipping with AI Without Shipping Regret
 
-Talk content will be added later. The Marp template scaffold is preserved below.
+The initial [slide deck](slides/Slides.md) contains the title, speaker introduction,
+questions, and references/contact slides. Main talk content will be added later.
+
+This repository is private. GitHub Pages publishing remains disabled.
+
+The Marp template documentation is preserved below.
 
 [Use this template!](https://github.com/codebytes/marp-slides-template/generate)
 

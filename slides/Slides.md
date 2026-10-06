@@ -4,225 +4,74 @@ title: Shipping with AI Without Shipping Regret
 theme: custom-default
 paginate: true
 math: mathjax
-footer: 'https://example.com'
----
-
-<!-- _paginate: skip -->
-<!-- _footer: "" -->
-<!-- _class: lead -->
-
-# Shipping with AI Without Shipping Regret
-
-A template demonstrating Marp best practices
-
-![bg right](https://picsum.photos/800/600)
-
----
-
-## Speaker Notes and Lists
-
-<!-- Speaker notes go in HTML comments like this -->
-
-- Use HTML comments for speaker notes
-- Notes are visible in presenter view
-- Keep bullet points concise
-
-<!-- You can have multiple comment blocks on a slide -->
-
----
-
-## Speaker Notes with Images
-
-<!-- Multiline speaker notes work too.
-This will all appear in presenter view. -->
-
-![Image](https://picsum.photos/800/600)
-
----
-
-## Centered Images
-
-Use `![center]` alt text to center images
-
-![center](https://picsum.photos/400/300)
-
----
-
-## Blockquotes
-
-> "Keep slides concise with key points only."
->
-> — Marp Best Practices
-
----
-
-## Tables
-
-| Feature | Description |
-|---------|-------------|
-| Themes  | Built-in and custom CSS |
-| Images  | Background and inline |
-| Export  | HTML, PDF, PPTX |
-
----
-
-# Two-Column Layout
-
-<div class="columns">
-
-<div>
-
-## Left Column
-
-- Point 1
-- Point 2
-- Point 3
-
-</div>
-<div>
-
-## Right Column
-
-- Point A
-- Point B
-- Point C
-
-</div>
-</div>
-
----
-
-<!-- _class: columns -->
-
-# Two-Column Layout (Class)
-
-## Left Column
-
-- Point 1
-- Point 2
-- Point 3
-
-## Right Column
-
-- Point A
-- Point B
-- Point C
-
----
-
-![bg opacity:0.3](https://picsum.photos/800/600?image=53)
-
-## Background with Opacity
-
-Use `![bg opacity:0.3]` for subtle backgrounds
-
----
-
-<!-- _class: invert -->
-
-## Dark Slide (Invert)
-
-Use `<!-- _class: invert -->` for dark themed slides
-
-- Great for emphasis
-- Improved contrast for certain content
-- Works with code blocks too
-
----
-
-## Math Equations
-
-Inline: $E = mc^2$
-
-Block equation:
-
-$$
-\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
-$$
-
----
-
-## Social Icons
-
-<i class="fa-brands fa-github"></i> GitHub
-<i class="fa-brands fa-linkedin"></i> LinkedIn
-<i class="fa-brands fa-mastodon"></i> Mastodon
-<i class="fa-brands fa-bluesky"></i> Bluesky
-<i class="fa-brands fa-youtube"></i> YouTube
-<i class="fa fa-window-maximize"></i> Blog
-
----
-
-# <!--fit--> Auto-fit Text
-
-Use `<!--fit-->` to scale text to slide width
-
----
-
-## Mermaid Diagrams
-
-<pre class="mermaid">
-flowchart LR
-    A[Start] --> B{Decision}
-    B -->|Yes| C[Action 1]
-    B -->|No| D[Action 2]
-    C --> E[End]
-    D --> E
-</pre>
-
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true });
-</script>
-
----
-
-## draw.io Diagrams
-
-Editable `.drawio.svg` files render as images and reopen in draw.io
-
-![center](img/pipeline.drawio.svg)
-
-<!-- Built with the drawio-diagrams skill from img/pipeline.spec.json.
-Use Mermaid for quick inline diagrams; use draw.io when the figure must
-stay editable in a visual editor. -->
-
----
-
-## Code Blocks
-
-```javascript
-// Syntax highlighting works out of the box
-const greeting = (name) => {
-  return `Hello, ${name}!`;
-};
-```
-
----
-
-<!-- _class: small -->
-
-## Dense Content (Small Text)
-
-Use `<!-- _class: small -->` for slides with more content
-
-| Method | Description | Returns |
-|--------|-------------|---------|
-| `GET` | Retrieve resource | 200 OK |
-| `POST` | Create resource | 201 Created |
-| `PUT` | Update resource | 200 OK |
-| `DELETE` | Remove resource | 204 No Content |
-
-- Additional bullet points fit better
-- More information per slide when needed
-- Use sparingly for readability
-
+footer: 'Chris Ayers - https://chris-ayers.com'
 ---
 
 <!-- _paginate: skip -->
 <!-- _footer: "" -->
 <!-- _class: lead invert -->
 
-# <!--fit--> Thank You!
+# Shipping with AI<br>Without Shipping Regret
 
-Questions?
+**Chris Ayers**\
+Principal Software Engineer · Microsoft
+
+---
+
+![bg left:40%](./img/portrait.png)
+
+## Chris Ayers
+
+_Principal Software Engineer_\
+_Azure EngOps AzRel_\
+_Microsoft_
+
+Building AI tools to analyze outages and improve Azure reliability.
+
+<i class="fa fa-window-maximize" aria-hidden="true"></i> Blog: [chris-ayers.com](https://chris-ayers.com/)\
+<i class="fa-brands fa-github" aria-hidden="true"></i> GitHub: [codebytes](https://github.com/codebytes)\
+<i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn: [chris-l-ayers](https://linkedin.com/in/chris-l-ayers/)
+
+<!-- Main talk content will be added here, before the closing slides. -->
+
+---
+
+<!-- _paginate: skip -->
+<!-- _footer: "" -->
+
+# Questions?
+
+![bg right:45%](./img/questions.jpg)
+
+---
+
+<!-- _paginate: skip -->
+<!-- _footer: "" -->
+
+# Thank You!
+
+<div class="columns">
+<div>
+
+## References
+
+- [Rubber Duck Debugging in the Age of AI](https://chris-ayers.com/posts/copilot-or-rubber-ducky/)
+- [Augmented Coding: Beyond the Vibes](https://tidyfirst.substack.com/p/augmented-coding-beyond-the-vibes)
+- [Context Engineering for Coding Agents](https://martinfowler.com/articles/exploring-gen-ai/context-engineering-coding-agents.html)
+
+</div>
+<div>
+
+## Chris Ayers
+
+_Principal Software Engineer_\
+_Azure EngOps AzRel · Microsoft_
+
+<i class="fa-brands fa-bluesky" aria-hidden="true"></i> Bluesky: [@chris-ayers.com](https://bsky.app/profile/chris-ayers.com)\
+<i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn: [chris-l-ayers](https://linkedin.com/in/chris-l-ayers/)\
+<i class="fa fa-window-maximize" aria-hidden="true"></i> Blog: [chris-ayers.com](https://chris-ayers.com/)\
+<i class="fa-brands fa-github" aria-hidden="true"></i> GitHub: [codebytes](https://github.com/codebytes)\
+<i class="fa-brands fa-mastodon" aria-hidden="true"></i> Mastodon: [@Chrisayers@hachyderm.io](https://hachyderm.io/@Chrisayers)
+
+</div>
+</div>
