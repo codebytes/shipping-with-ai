@@ -348,3 +348,9 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Impeccable machine-local state (design briefs and DESIGN.md sidecar are committed)
+.impeccable/hook.cache.json
+.impeccable/hook.pending.json
+.impeccable/config.local.json
+.impeccable/questions/

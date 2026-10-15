@@ -31,19 +31,20 @@ jobs:
         run: |
           mkdir -p build
           cp -R slides/img build/img 2>/dev/null || true
+          cp -R slides/assets build/assets
           cp -R slides/themes build/themes
 
       - name: Marp Build (HTML)
         uses: docker://marpteam/marp-cli:latest
         with:
-          args: --theme-set slides/themes -o build/index.html --html -- slides/Slides.md
+          args: --theme-set slides/themes -o build/index.html --html --bespoke.osc=false -- slides/Slides.md
         env:
           MARP_USER: root:root
 
       - name: Marp Build (PDF)
         uses: docker://marpteam/marp-cli:latest
         with:
-          args: --theme-set slides/themes -o build/Slides.pdf --html --allow-local-files -- slides/Slides.md
+          args: --theme-set slides/themes -o build/Slides.pdf --html --pdf-outlines --allow-local-files -- slides/Slides.md
         env:
           MARP_USER: root:root
 

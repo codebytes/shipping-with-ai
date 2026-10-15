@@ -1,0 +1,717 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-15T17:42:30-04:00",
+  "title": "Design System: Flight Strip Board",
+  "extensions": {
+    "colorMeta": {
+      "sign-yellow": {
+        "role": "primary",
+        "displayName": "Sign Yellow",
+        "canonical": "#f6c21c",
+        "tonalRamp": [
+          "#110a00",
+          "#2f2200",
+          "#503d00",
+          "#745a00",
+          "#9b7800",
+          "#c79b00",
+          "#f4c016",
+          "#ffedc1"
+        ]
+      },
+      "sign-black": {
+        "role": "primary",
+        "displayName": "Sign Black",
+        "canonical": "#121416",
+        "tonalRamp": [
+          "#090b0d",
+          "#222426",
+          "#3e4042",
+          "#5b5e60",
+          "#7b7d80",
+          "#9fa2a5",
+          "#c5c8ca",
+          "#eceff2"
+        ]
+      },
+      "sign-red": {
+        "role": "primary",
+        "displayName": "Mandatory Red",
+        "canonical": "#c8102e",
+        "tonalRamp": [
+          "#1f0002",
+          "#4b0009",
+          "#7c0016",
+          "#b10025",
+          "#de3040",
+          "#ff6a6b",
+          "#ffafab",
+          "#ffe8e7"
+        ]
+      },
+      "sign-white": {
+        "role": "primary",
+        "displayName": "Legend White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#a1a1a1",
+          "#c7c7c7",
+          "#eeeeee"
+        ]
+      },
+      "grease": {
+        "role": "secondary",
+        "displayName": "Grease Pencil",
+        "canonical": "#b8281a",
+        "tonalRamp": [
+          "#1f0000",
+          "#4b0100",
+          "#7c0500",
+          "#ad1a0d",
+          "#d44534",
+          "#ff6d59",
+          "#ffb0a3",
+          "#ffe9e5"
+        ]
+      },
+      "grease-lamp": {
+        "role": "secondary",
+        "displayName": "Grease Under Lamp",
+        "canonical": "#ff8a6b",
+        "tonalRamp": [
+          "#1d0200",
+          "#460c00",
+          "#741b00",
+          "#a03415",
+          "#c55639",
+          "#ef7c5d",
+          "#ffb19c",
+          "#ffe9e3"
+        ]
+      },
+      "amber": {
+        "role": "tertiary",
+        "displayName": "Amber Holder",
+        "canonical": "#e2a33a",
+        "tonalRamp": [
+          "#130900",
+          "#332000",
+          "#573900",
+          "#7e5400",
+          "#a77100",
+          "#d29425",
+          "#faba54",
+          "#ffebd0"
+        ]
+      },
+      "green": {
+        "role": "tertiary",
+        "displayName": "Green Holder",
+        "canonical": "#3f9a6b",
+        "tonalRamp": [
+          "#001006",
+          "#002d18",
+          "#004d2d",
+          "#007044",
+          "#359163",
+          "#5db786",
+          "#84deab",
+          "#c3ffdb"
+        ]
+      },
+      "red": {
+        "role": "tertiary",
+        "displayName": "Red Holder",
+        "canonical": "#c9402b",
+        "tonalRamp": [
+          "#1f0000",
+          "#490400",
+          "#7a0d00",
+          "#ab200a",
+          "#d14833",
+          "#fc6f58",
+          "#ffb1a1",
+          "#ffe9e4"
+        ]
+      },
+      "pass-ink": {
+        "role": "tertiary",
+        "displayName": "Pass Ink",
+        "canonical": "#23663f",
+        "tonalRamp": [
+          "#001005",
+          "#002d15",
+          "#004d28",
+          "#2b6d45",
+          "#4c8e64",
+          "#71b387",
+          "#96daac",
+          "#c5ffd7"
+        ]
+      },
+      "edge-light": {
+        "role": "tertiary",
+        "displayName": "Edge Light",
+        "canonical": "#8fc4ff",
+        "tonalRamp": [
+          "#000b1e",
+          "#002448",
+          "#0b4173",
+          "#2e6094",
+          "#4e80b7",
+          "#72a6df",
+          "#9eccff",
+          "#e3f0ff"
+        ]
+      },
+      "blue": {
+        "role": "tertiary",
+        "displayName": "Holder Blue",
+        "canonical": "#4a7cc0",
+        "tonalRamp": [
+          "#000a21",
+          "#00224f",
+          "#0a3e7c",
+          "#2c5d9f",
+          "#4c7ec2",
+          "#70a3ea",
+          "#a3caff",
+          "#e4f0ff"
+        ]
+      },
+      "console": {
+        "role": "neutral",
+        "displayName": "Graphite Console",
+        "canonical": "#1b2023",
+        "tonalRamp": [
+          "#080c0f",
+          "#202528",
+          "#3b4144",
+          "#595f62",
+          "#787e82",
+          "#9ca3a6",
+          "#c2c8cc",
+          "#e9f0f4"
+        ]
+      },
+      "console-night": {
+        "role": "neutral",
+        "displayName": "Night Console",
+        "canonical": "#111416",
+        "tonalRamp": [
+          "#090c0d",
+          "#212527",
+          "#3d4043",
+          "#5a5e61",
+          "#7a7e80",
+          "#9ea2a5",
+          "#c4c8cb",
+          "#ebeff2"
+        ]
+      },
+      "console-deep": {
+        "role": "neutral",
+        "displayName": "Deep Well",
+        "canonical": "#121618",
+        "tonalRamp": [
+          "#080c0e",
+          "#202527",
+          "#3c4143",
+          "#5a5e61",
+          "#797e81",
+          "#9da2a5",
+          "#c3c8cb",
+          "#eaeff2"
+        ]
+      },
+      "console-raised": {
+        "role": "neutral",
+        "displayName": "Raised Graphite",
+        "canonical": "#242b2f",
+        "tonalRamp": [
+          "#060c10",
+          "#1e2529",
+          "#3a4145",
+          "#575f63",
+          "#767f83",
+          "#9aa3a8",
+          "#c0c9ce",
+          "#e7f0f5"
+        ]
+      },
+      "rail": {
+        "role": "neutral",
+        "displayName": "Rack Rail",
+        "canonical": "#3a444a",
+        "tonalRamp": [
+          "#050c11",
+          "#1c252b",
+          "#374147",
+          "#555f66",
+          "#747f86",
+          "#98a3aa",
+          "#bdc9d1",
+          "#e4f1f8"
+        ]
+      },
+      "rail-light": {
+        "role": "neutral",
+        "displayName": "Lit Rail",
+        "canonical": "#56636a",
+        "tonalRamp": [
+          "#040d12",
+          "#1a262c",
+          "#364248",
+          "#536067",
+          "#728087",
+          "#96a4ac",
+          "#bbcad2",
+          "#e2f1f9"
+        ]
+      },
+      "lamp": {
+        "role": "neutral",
+        "displayName": "Lamp Light",
+        "canonical": "#ebe5d5",
+        "tonalRamp": [
+          "#0f0b02",
+          "#282418",
+          "#443f32",
+          "#625d50",
+          "#827d6f",
+          "#a7a192",
+          "#cdc7b7",
+          "#f4eede"
+        ]
+      },
+      "dim": {
+        "role": "neutral",
+        "displayName": "Dimmed Lamp",
+        "canonical": "#a9b1ad",
+        "tonalRamp": [
+          "#070d0a",
+          "#1f2623",
+          "#3b423e",
+          "#58605c",
+          "#787f7c",
+          "#9ca4a0",
+          "#c1cac5",
+          "#e8f1ed"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Buff Card Stock",
+        "canonical": "#efe6cc",
+        "tonalRamp": [
+          "#100a00",
+          "#2a230f",
+          "#473f2a",
+          "#655d47",
+          "#857d65",
+          "#aaa189",
+          "#d0c7ae",
+          "#f7eed4"
+        ]
+      },
+      "paper-shade": {
+        "role": "neutral",
+        "displayName": "Shaded Card Stock",
+        "canonical": "#e3d7b5",
+        "tonalRamp": [
+          "#100a00",
+          "#2d2305",
+          "#493f21",
+          "#685d3f",
+          "#887d5d",
+          "#aca180",
+          "#d3c7a5",
+          "#faeecb"
+        ]
+      },
+      "paper-line": {
+        "role": "neutral",
+        "displayName": "Printed Rule",
+        "canonical": "#c4b48b",
+        "tonalRamp": [
+          "#100a00",
+          "#2e2200",
+          "#4c3e18",
+          "#6b5c36",
+          "#8b7c55",
+          "#b0a078",
+          "#d6c69d",
+          "#feedc3"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Strip Ink",
+        "canonical": "#1a2540",
+        "tonalRamp": [
+          "#030921",
+          "#18233e",
+          "#333f5c",
+          "#505d7c",
+          "#6f7d9d",
+          "#92a1c3",
+          "#b7c7eb",
+          "#e7efff"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Faded Ink",
+        "canonical": "#485166",
+        "tonalRamp": [
+          "#050a1b",
+          "#1c2336",
+          "#373f54",
+          "#545d73",
+          "#737d94",
+          "#97a1b9",
+          "#bcc7e0",
+          "#e7eeff"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Deck and bookend titles (h1); 88px on lead slides; printed on the cover strip in Strip Ink."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Every content slide's title (h2), written as the claim in one sentence."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Sub-heads (h3)."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "The slide's base size on the console."
+      },
+      "body-dense": {
+        "displayName": "Body Dense",
+        "purpose": "Bullet columns beside a strip or sheet."
+      },
+      "takeaway": {
+        "displayName": "Takeaway",
+        "purpose": "The single sentence on a direction sign at the bottom of a content slide."
+      },
+      "sign": {
+        "displayName": "Sign",
+        "purpose": "Uppercase airfield-sign legends: bay labels, page numbers, station placards."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase column heads, sheet title bars, and station roles."
+      },
+      "data-id": {
+        "displayName": "Data ID",
+        "purpose": "Strip callsigns in B612 Mono; never wraps."
+      },
+      "data-label": {
+        "displayName": "Data Label",
+        "purpose": "B612 Mono caps for row keys and field captions; never for paths or anything with a period."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "File names, paths, and commands in Overpass Mono."
+      },
+      "hand": {
+        "displayName": "Hand",
+        "purpose": "Grease-pencil handwriting only: initials and short notes, slightly rotated."
+      }
+    },
+    "shadows": [
+      {
+        "name": "sign-cast",
+        "value": "0 0 0 2px #121416, 0 6px 14px rgba(0, 0, 0, 0.35)",
+        "purpose": "Mandatory and direction signs with their black rim; location signs and page numbers use the cast alone."
+      },
+      {
+        "name": "strip-in-holder",
+        "value": "inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 2px 0 rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.32)",
+        "purpose": "Plastic lip highlight, contact line, and cast under every flight strip."
+      },
+      {
+        "name": "paper-on-board",
+        "value": "0 3px 0 rgba(0, 0, 0, 0.28), 0 16px 30px rgba(0, 0, 0, 0.32)",
+        "purpose": "Paper sheets lying on the console."
+      },
+      {
+        "name": "chip",
+        "value": "0 2px 0 rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.25)",
+        "purpose": "Small paper tags: file names and evidence tags."
+      },
+      {
+        "name": "takeaway",
+        "value": "0 0 0 3px #121416, 0 12px 26px rgba(0, 0, 0, 0.4)",
+        "purpose": "The heaviest sign on the slide."
+      },
+      {
+        "name": "console-key",
+        "value": "inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 3px 0 #0b0d0e, 0 8px 14px rgba(0, 0, 0, 0.35)",
+        "purpose": "Raised key cap; pressed, it travels 2px and the contact line shrinks to 1px."
+      },
+      {
+        "name": "recessed-well",
+        "value": "inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 10px 24px rgba(0, 0, 0, 0.28)",
+        "purpose": "Code blocks; the release-board panel deepens the cast to 18px 34px."
+      },
+      {
+        "name": "in-flight",
+        "value": "0 34px 50px rgba(0, 0, 0, 0.55)",
+        "purpose": "A strip lifted off the board during a go-around."
+      }
+    ],
+    "motion": [
+      {
+        "name": "fs-ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "House ease: fast out, long settle. Used for slot, print, cock, cross, and the strip transition."
+      },
+      {
+        "name": "slot",
+        "value": "fs-slot 560–900ms fs-ease backwards; from translate 56px 0, opacity 0.35; 70–160ms stagger",
+        "purpose": "Strips and list items arrive sideways into their bay."
+      },
+      {
+        "name": "print",
+        "value": "fs-print 800–900ms fs-ease backwards; clip-path inset(0 0 100% 0) and translateY(-28px) to rest",
+        "purpose": "A strip or sheet prints top-down."
+      },
+      {
+        "name": "drop",
+        "value": "fs-drop 520ms fs-ease backwards; from translate 0 -46px, opacity 0.3; 140ms stagger",
+        "purpose": "A pile of freshly printed strips lands."
+      },
+      {
+        "name": "ink",
+        "value": "fs-ink 380–700ms ease-out backwards; clip-path reveal left to right",
+        "purpose": "A grease mark is written after its object lands."
+      },
+      {
+        "name": "cock",
+        "value": "fs-cock 520ms fs-ease backwards; to translateX(26px) rotate(-1.4deg)",
+        "purpose": "A strip is pushed out of line to flag it."
+      },
+      {
+        "name": "clear",
+        "value": "fs-clear-green / fs-clear-red; --holder amber to green or red in the last 18–30%; 400ms ease on --holder changes",
+        "purpose": "The holder changes color only when state changes."
+      },
+      {
+        "name": "cross",
+        "value": "fs-cross 900ms fs-ease backwards; from translate -110px 0",
+        "purpose": "The cleared cover strip crosses the hold line."
+      },
+      {
+        "name": "go-around",
+        "value": "fs-goaround + fs-lift 1500ms cubic-bezier(0.5, 0, 0.2, 1)",
+        "purpose": "A strip lifts off the board and drops back into hold."
+      },
+      {
+        "name": "handoff-token",
+        "value": "fs-handoff + fs-token-holder 4200ms cubic-bezier(0.45, 0, 0.2, 1)",
+        "purpose": "The review token travels worker, reviewer, worker, reviewer, you; its holder changes with each pass."
+      },
+      {
+        "name": "active",
+        "value": "fs-active 1100ms ease-in-out infinite",
+        "purpose": "Amber pulse on the box being worked, only while a presenter-started board runs."
+      },
+      {
+        "name": "incident",
+        "value": "fs-incident 900ms ease-in-out, once or twice",
+        "purpose": "A 4px red ring flashes on a strip that trips a health gate."
+      },
+      {
+        "name": "transition-strip",
+        "value": "650ms; incoming pushes in from 100%; outgoing slides -32%, fades, brightness 0.55",
+        "purpose": "Default Marp slide transition: the board pushes to the next bay."
+      },
+      {
+        "name": "transition-handoff",
+        "value": "900ms; outgoing gone by 40%, incoming from 55%",
+        "purpose": "Clear-then-arrive so only the morphing hero strip is visible mid-flight."
+      },
+      {
+        "name": "morphs",
+        "value": "view-transition-name: fs-hero (one per slide), fs-route (route band)",
+        "purpose": "Carry one strip bay to bay across consecutive slides; disabled under reduced motion and print."
+      },
+      {
+        "name": "settle-ceiling",
+        "value": "4.7s",
+        "purpose": "Every slide's motion settles within 4.7 seconds (WCAG 2.2.2); gated by fs-live (audience view, visible tab, not printing, no reduced-motion preference)."
+      }
+    ],
+    "breakpoints": []
+  },
+  "components": [
+    {
+      "name": "Flight Strip",
+      "kind": "custom",
+      "refersTo": "strip",
+      "description": "The signature evidence object: card stock in a plastic holder. Shown at the hero-strip sizes of the route slides, cleared: two grease ticks and handwritten initials.",
+      "html": "<div class=\"ds-cab\"><div class=\"ds-strip\" data-holder=\"green\"><b>AI-0142<small>Agent</small></b><span><strong>Keyboard nav for search</strong><small>Arrow keys move the selection</small></span><i class=\"ds-ok\">Spec</i><i class=\"ds-ok\">Test</i><i>Rev<em>CA</em></i></div></div>",
+      "css": ".ds-cab { padding: 28px 32px; background: radial-gradient(700px 360px at 12% -16%, rgba(240, 226, 190, 0.13), transparent 62%), #1b2023; color: #ebe5d5; font-family: 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-strip { --holder: #e2a33a; position: relative; display: grid; grid-auto-flow: column; grid-template-columns: 172px minmax(0, 1fr); grid-auto-columns: minmax(96px, auto); min-height: 92px; padding: 4px 5px 4px 18px; border-radius: 6px; color: #1a2540; font-family: 'FS B612 Mono', 'B612 Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; background-image: linear-gradient(180deg, #f5edd6 0%, #efe6cc 45%, #e3d7b5 100%), repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0 2px, transparent 2px 7px), linear-gradient(180deg, color-mix(in srgb, var(--holder) 70%, white), var(--holder) 40%, color-mix(in srgb, var(--holder) 78%, black)); background-clip: content-box, border-box, border-box; background-origin: content-box, border-box, border-box; background-size: 100% 100%, 18px 100%, 100% 100%; background-repeat: no-repeat; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 2px 0 rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.32); } .ds-strip[data-holder=\"green\"] { --holder: #3f9a6b; } .ds-strip[data-holder=\"red\"] { --holder: #c9402b; } .ds-strip > b { display: flex; flex-direction: column; justify-content: center; padding: 10px 16px; border-right: 2px solid #c4b48b; font: 700 26px/1 'FS B612 Mono', 'B612 Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; letter-spacing: 0.01em; white-space: nowrap; } .ds-strip > b > small { display: block; margin-top: 7px; color: #485166; font: 400 18px/1.2 'FS B612 Mono', 'B612 Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; } .ds-strip > span { display: flex; flex-direction: column; justify-content: center; min-width: 0; padding: 9px 18px; } .ds-strip > span > strong { font: 800 25px/1.12 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; letter-spacing: -0.01em; } .ds-strip > span > small { margin-top: 4px; color: #485166; font: 400 22px/1.3 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-strip > i { position: relative; display: block; min-width: 96px; padding: 8px 10px; border-left: 2px solid #c4b48b; color: #485166; font: 700 18px/1 'FS B612 Mono', 'B612 Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-style: normal; text-transform: uppercase; white-space: nowrap; } .ds-strip > i::after { content: \"\"; position: absolute; inset: 34px 18px 8px; background: center / contain no-repeat; } .ds-strip > i.ds-ok::after { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 32'%3E%3Cpath d='M4 18c4 2 8 6 10 11C19 18 28 8 40 3' fill='none' stroke='%23b8281a' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\"); } .ds-strip > i.ds-no::after { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 32'%3E%3Cpath d='M7 5l30 23M36 4 9 27' fill='none' stroke='%23b8281a' stroke-width='5.5' stroke-linecap='round'/%3E%3C/svg%3E\"); } .ds-strip > i.ds-hold { display: grid; place-items: center; padding: 0; color: #b8281a; letter-spacing: 0.12em; } .ds-strip > i.ds-hold::after { inset: 14px 10px; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60' preserveAspectRatio='none'%3E%3Cpath d='M58 7C34 3 8 11 6 29s24 27 48 25 41-10 40-27S72 3 44 7' fill='none' stroke='%23b8281a' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E\"); background-size: 100% 100%; } .ds-strip > i > em { position: absolute; left: 12px; bottom: 6px; color: #b8281a; font: 400 26px/1.1 'FS Marker', 'Permanent Marker', 'Marker Felt', 'Comic Sans MS', cursive; font-style: normal; rotate: -4deg; }"
+    },
+    {
+      "name": "Holder States",
+      "kind": "custom",
+      "refersTo": "strip-holder",
+      "description": "Holder color is state: amber in progress (default), green cleared, red held. The held strip is cocked, shifted 26px and tilted -1.4deg, to flag it. Mini sizes as in the release-board comparison row.",
+      "html": "<div class=\"ds-cab ds-stack\"><div class=\"ds-mini\"><b>AI-0158</b><span>In progress</span></div><div class=\"ds-mini\" data-holder=\"green\"><b>AI-0142</b><span>Cleared</span></div><div class=\"ds-mini ds-cocked\" data-holder=\"red\"><b>AI-0157</b><span>Held for attention</span></div></div>",
+      "css": ".ds-cab { padding: 28px 32px; background: radial-gradient(700px 360px at 12% -16%, rgba(240, 226, 190, 0.13), transparent 62%), #1b2023; color: #ebe5d5; font-family: 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-stack { display: grid; gap: 12px; max-width: 520px; } .ds-mini { --holder: #e2a33a; display: grid; grid-template-columns: 112px minmax(0, 1fr); min-height: 54px; padding: 3px 4px 3px 14px; border-radius: 6px; color: #1a2540; background-image: linear-gradient(180deg, #f5edd6 0%, #efe6cc 45%, #e3d7b5 100%), repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0 2px, transparent 2px 7px), linear-gradient(180deg, color-mix(in srgb, var(--holder) 70%, white), var(--holder) 40%, color-mix(in srgb, var(--holder) 78%, black)); background-clip: content-box, border-box, border-box; background-origin: content-box, border-box, border-box; background-size: 100% 100%, 14px 100%, 100% 100%; background-repeat: no-repeat; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 2px 0 rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.32); } .ds-mini[data-holder=\"green\"] { --holder: #3f9a6b; } .ds-mini[data-holder=\"red\"] { --holder: #c9402b; } .ds-mini.ds-cocked { transform: translateX(26px) rotate(-1.4deg); } .ds-mini > b { display: flex; align-items: center; padding: 6px 10px; border-right: 2px solid #c4b48b; font: 700 19px/1 'FS B612 Mono', 'B612 Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; white-space: nowrap; } .ds-mini > span { display: flex; align-items: center; padding: 6px 12px; font: 800 20px/1.12 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; letter-spacing: -0.01em; }"
+    },
+    {
+      "name": "Airfield Signs",
+      "kind": "custom",
+      "refersTo": "sign-location",
+      "description": "Mandatory (stop until cleared), location (you are here: bay labels, page numbers, station placards), and direction (the way to go). Signs never move.",
+      "html": "<div class=\"ds-cab ds-signs\"><span class=\"ds-sign ds-sign-hold\">Prod</span><span class=\"ds-sign ds-sign-here\">Review</span><span class=\"ds-sign ds-sign-go\">Ring 1</span></div>",
+      "css": ".ds-cab { padding: 28px 32px; background: radial-gradient(700px 360px at 12% -16%, rgba(240, 226, 190, 0.13), transparent 62%), #1b2023; color: #ebe5d5; font-family: 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-signs { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; } .ds-sign { display: inline-flex; align-items: center; gap: 0.4em; padding: 9px 13px 6px; border-radius: 3px; font: 800 19px/1.1 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; } .ds-sign-hold { background: #c8102e; color: #fff; box-shadow: 0 0 0 2px #121416, 0 6px 14px rgba(0, 0, 0, 0.35); } .ds-sign-here { background: #121416; color: #f6c21c; outline: 2px solid #f6c21c; outline-offset: -5px; box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35); } .ds-sign-go { background: #f6c21c; color: #121416; box-shadow: 0 0 0 2px #121416, 0 6px 14px rgba(0, 0, 0, 0.35); } .ds-sign-go::after { content: \"\"; width: 1em; height: 0.75em; background: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 26'%3E%3Cpath fill='%23121416' d='M0 9h19V1l15 12-15 12v-8H0z'/%3E%3C/svg%3E\") center / contain no-repeat; }"
+    },
+    {
+      "name": "Takeaway",
+      "kind": "custom",
+      "refersTo": "takeaway",
+      "description": "The last element of a content slide: one sentence on a direction sign, arrow first, pinned bottom left. At most one per slide.",
+      "html": "<div class=\"ds-cab\"><p class=\"ds-takeaway\">Throughput is set by clearances, not by printing.</p></div>",
+      "css": ".ds-cab { padding: 28px 32px; background: radial-gradient(700px 360px at 12% -16%, rgba(240, 226, 190, 0.13), transparent 62%), #1b2023; color: #ebe5d5; font-family: 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-takeaway { display: inline-flex; align-items: center; gap: 18px; max-width: 100%; margin: 0; padding: 13px 24px 10px 18px; background: #f6c21c; color: #121416; border-radius: 4px; box-shadow: 0 0 0 3px #121416, 0 12px 26px rgba(0, 0, 0, 0.4); font: 800 27px/1.18 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; letter-spacing: -0.005em; } .ds-takeaway::before { content: \"\"; flex: none; width: 36px; height: 28px; margin-top: -3px; background: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 26'%3E%3Cpath fill='%23121416' d='M0 9h19V1l15 12-15 12v-8H0z'/%3E%3C/svg%3E\") center / contain no-repeat; }"
+    },
+    {
+      "name": "Bays and Slots",
+      "kind": "custom",
+      "refersTo": "slot",
+      "description": "A board of open racks: Rack Rail uprights under a location-sign label plate; a hold bay takes the mandatory sign. An empty position is a dashed slot the height of a strip.",
+      "html": "<div class=\"ds-cab\"><div class=\"ds-board\"><div class=\"ds-bay\" data-label=\"Build\"><div class=\"ds-slot\"></div></div><div class=\"ds-bay ds-bay-mandatory\" data-label=\"Hold\"><div class=\"ds-slot\"></div></div></div></div>",
+      "css": ".ds-cab { padding: 28px 32px; background: radial-gradient(700px 360px at 12% -16%, rgba(240, 226, 190, 0.13), transparent 62%), #1b2023; color: #ebe5d5; font-family: 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-board { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 26px; } .ds-bay { position: relative; min-width: 0; padding: 56px 14px 14px; background: linear-gradient(90deg, #3a444a 0 3px, transparent 3px calc(100% - 3px), #3a444a calc(100% - 3px)) 0 40px / 100% calc(100% - 40px) no-repeat, linear-gradient(180deg, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.08)) 0 40px / 100% calc(100% - 40px) no-repeat; } .ds-bay::before { content: attr(data-label); position: absolute; top: 0; left: 0; padding: 9px 13px 6px; background: #121416; border-radius: 3px; outline: 2px solid #f6c21c; outline-offset: -5px; box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35); color: #f6c21c; font: 800 19px/1.1 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; } .ds-bay-mandatory::before { background: #c8102e; color: #fff; outline: 0; box-shadow: 0 0 0 2px #121416, 0 6px 14px rgba(0, 0, 0, 0.35); } .ds-slot { min-height: 86px; border: 2px dashed #56636a; border-radius: 6px; }"
+    },
+    {
+      "name": "Paper Sheet",
+      "kind": "card",
+      "refersTo": "sheet",
+      "description": "Flight plans, test contracts, and standing information: top-lit card stock with a Sign Black title bar and ruled definition rows (B612 keys, Overpass values).",
+      "html": "<div class=\"ds-cab\"><div class=\"ds-sheet\"><p class=\"ds-sheet-title\">Flight plan: add-keyboard-nav</p><dl><dt>Given</dt><dd>Search results are showing</dd><dt>When</dt><dd>I press the down arrow</dd><dt>Then</dt><dd>The next result is selected</dd></dl></div></div>",
+      "css": ".ds-cab { padding: 28px 32px; background: radial-gradient(700px 360px at 12% -16%, rgba(240, 226, 190, 0.13), transparent 62%), #1b2023; color: #ebe5d5; font-family: 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-sheet { position: relative; max-width: 600px; padding: 18px 24px 20px; background: linear-gradient(180deg, #f6eed8, #efe6cc 30%, #e3d7b5); border-radius: 4px; box-shadow: 0 3px 0 rgba(0, 0, 0, 0.28), 0 16px 30px rgba(0, 0, 0, 0.32); color: #1a2540; } .ds-sheet-title { margin: -18px -24px 14px; padding: 9px 24px 6px; background: #121416; border-radius: 4px 4px 0 0; color: #fff; font: 800 18px/1.2 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; } .ds-sheet dl { display: grid; grid-template-columns: 150px 1fr; margin: 0; } .ds-sheet dt, .ds-sheet dd { margin: 0; padding: 8px 0 7px; border-top: 1px solid #c4b48b; } .ds-sheet dt { color: #485166; font: 700 18px/1.6 'FS B612 Mono', 'B612 Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; letter-spacing: 0.06em; text-transform: uppercase; } .ds-sheet dd { color: #1a2540; font: 600 21px/1.3 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; }"
+    },
+    {
+      "name": "Challenge-and-Response Checklist",
+      "kind": "input",
+      "refersTo": "sheet",
+      "description": "Each line is a toggle button (aria-pressed) built by the runtime from a plain list; a checked line gets a grease tick over its box. Focus is a 3px Holder Blue ring.",
+      "html": "<div class=\"ds-cab\"><div class=\"ds-card\"><p class=\"ds-card-title\">Before departure</p><ol class=\"ds-checklist\"><li data-checked=\"true\"><button type=\"button\" class=\"ds-check\" aria-pressed=\"true\"><span>Tests</span><b>Prove behavior</b></button></li><li><button type=\"button\" class=\"ds-check\" aria-pressed=\"false\"><span>Review</span><b>Human cleared</b></button></li><li><button type=\"button\" class=\"ds-check\" aria-pressed=\"false\"><span>Rollback</span><b>Rehearsed</b></button></li></ol></div></div>",
+      "css": ".ds-cab { padding: 28px 32px; background: radial-gradient(700px 360px at 12% -16%, rgba(240, 226, 190, 0.13), transparent 62%), #1b2023; color: #ebe5d5; font-family: 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-card { position: relative; max-width: 600px; padding: 18px 24px 12px; background: linear-gradient(180deg, #f6eed8, #efe6cc 30%, #e3d7b5); border-radius: 4px; box-shadow: 0 3px 0 rgba(0, 0, 0, 0.28), 0 16px 30px rgba(0, 0, 0, 0.32); color: #1a2540; } .ds-card-title { margin: -18px -24px 14px; padding: 9px 24px 6px; background: #121416; border-radius: 4px 4px 0 0; color: #fff; font: 800 18px/1.2 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; } .ds-checklist { list-style: none; margin: 0; padding: 0; } .ds-checklist > li { position: relative; display: flex; align-items: baseline; margin: 0; padding: 10px 0 8px 48px; border-top: 1px solid #c4b48b; font: 600 25px/1.25 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-checklist > li::before { content: \"\"; position: absolute; left: 2px; top: 12px; width: 28px; height: 28px; border: 2.5px solid #1a2540; border-radius: 3px; background: rgba(255, 255, 255, 0.35); } .ds-checklist > li::after { content: \"\"; position: absolute; left: -2px; top: 2px; width: 44px; height: 36px; background: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 32'%3E%3Cpath d='M4 18c4 2 8 6 10 11C19 18 28 8 40 3' fill='none' stroke='%23b8281a' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\") center / contain no-repeat; opacity: 0; } .ds-checklist > li[data-checked=\"true\"]::after { opacity: 1; } .ds-check { all: unset; display: flex; flex: 1; align-items: baseline; cursor: pointer; border-radius: 3px; } .ds-check:focus-visible { outline: 3px solid #4a7cc0; outline-offset: 6px; } .ds-check > span { display: flex; flex: 1; align-items: baseline; min-width: 0; } .ds-check > span::after { content: \"\"; flex: 1; min-width: 24px; margin: 0 12px; border-bottom: 3px dotted #485166; translate: 0 -0.22em; } .ds-check > b { color: #1a2540; font: 700 22px/1.25 'FS B612 Mono', 'B612 Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; letter-spacing: 0.04em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Console Keys",
+      "kind": "button",
+      "refersTo": "console-key",
+      "description": "Release-board keys: default, primary (Run board), clear (Write clearance, the human gate), and disabled. Raised caps that travel 2px when pressed. Legends are 15px as shipped, under the label floor (see The Back Row Rule).",
+      "html": "<div class=\"ds-cab ds-keys\"><button type=\"button\" class=\"ds-key ds-key-primary\">Run board</button><button type=\"button\" class=\"ds-key\">Step</button><button type=\"button\" class=\"ds-key ds-key-clear\">Write clearance</button><button type=\"button\" class=\"ds-key\" disabled>Replay</button></div>",
+      "css": ".ds-cab { padding: 28px 32px; background: radial-gradient(700px 360px at 12% -16%, rgba(240, 226, 190, 0.13), transparent 62%), #1b2023; color: #ebe5d5; font-family: 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-keys { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; } .ds-key { min-height: 42px; padding: 9px 15px 6px; background: linear-gradient(180deg, #343d42, #232a2e); border: 1px solid #0b0d0e; border-radius: 6px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 3px 0 #0b0d0e, 0 8px 14px rgba(0, 0, 0, 0.35); color: #ebe5d5; cursor: pointer; font: 800 15px/1.1 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; letter-spacing: 0.06em; text-transform: uppercase; } .ds-key-primary { min-width: 140px; background: linear-gradient(180deg, #f6f1e4, #dcd3bf); color: #121416; } .ds-key-clear:not(:disabled) { background: linear-gradient(180deg, #ffd640, #f6c21c); color: #121416; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 3px 0 #7a5d00, 0 0 0 3px #121416, 0 0 0 5px #f6c21c; } .ds-key:not(:disabled):hover { filter: brightness(1.12); } .ds-key:active:not(:disabled) { translate: 0 2px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 #0b0d0e, 0 4px 8px rgba(0, 0, 0, 0.3); } .ds-key:focus-visible { outline: 3px solid #8fc4ff; outline-offset: 3px; } .ds-key:disabled { color: #8b9590; cursor: not-allowed; opacity: 0.6; }"
+    },
+    {
+      "name": "Paper Chips",
+      "kind": "chip",
+      "refersTo": "chip-paper",
+      "description": "Paper tags on the console: file names in Overpass Mono 700, evidence tags in Overpass 600.",
+      "html": "<div class=\"ds-cab\"><p class=\"ds-chips\"><code class=\"ds-chip ds-chip-file\">AGENTS.md</code><code class=\"ds-chip ds-chip-file\">CLAUDE.md</code><span class=\"ds-chip\">Intent matches the diff</span><span class=\"ds-chip\">Rollback ready</span></p></div>",
+      "css": ".ds-cab { padding: 28px 32px; background: radial-gradient(700px 360px at 12% -16%, rgba(240, 226, 190, 0.13), transparent 62%), #1b2023; color: #ebe5d5; font-family: 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0; } .ds-chip { padding: 9px 12px 7px; background: #efe6cc; border-radius: 4px; box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.25); color: #1a2540; font: 600 18px/1 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-chip-file { font: 700 17px/1 'FS Overpass Mono', 'Overpass Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night Tower Cab",
+    "overview": "The deck is a night tower cab seen from the controller's seat: a graphite strip console under one warm lamp, buff card-stock flight strips in amber, green, and red plastic holders, red grease-pencil marks, and airfield signs. Every AI-written change is a strip, and a strip moves to the next bay only when a person writes its clearance. Every visual device is an object that cab would contain, and the slides argue for release discipline by handling those objects, not by decorating a page.\n\nDensity is that of a working board on a fixed 1280×720 frame: one claim per slide, stated as the headline; one composed board, sheet, or strip stack under it; and at most one direction-sign takeaway pinned to the bottom. Material carries the hierarchy. The lit console is the room's voice, card stock holds evidence and documents, signs give instructions, and grease records human decisions. Type is sized for the back of a conference room.\n\nThe direction rejects two things by name: the neon AI-talk deck and the white corporate template. Motion is the mechanism, never ornament. Strips print, slot into bays, get cocked or ringed, collect grease ticks, change holder, and cross the hold line. Each slide's motion is finite, plays only on the live audience slide, and animates into a finished state that the markup already holds.",
+    "keyCharacteristics": [
+      "Two lit materials: graphite console with lamp-colored text, and buff card stock with navy ink.",
+      "Saturated color only where it means something: airfield signs, holder states, grease marks, real lights.",
+      "Overpass for words and signs, B612 Mono for strip data, Overpass Mono for code and paths, Permanent Marker for grease only.",
+      "Physical depth from one overhead lamp: a hard contact line plus a soft cast, always straight down.",
+      "Finite motion that settles within 4.7 seconds into an authored static state, so print, PDF, and reduced motion lose nothing."
+    ],
+    "rules": [
+      {
+        "name": "The Real Objects Rule",
+        "body": "Saturated color always means something in the world: a sign's instruction, a holder's state, a person's mark, or a real light. It is never decoration. Edge Light marks links and focus, and the brand icons in the contact blocks keep their tuned colors. Light comes only from the overhead lamp, the faint edge light in the far corner, and real lights such as the stop bar on the cover.",
+        "section": "colors"
+      },
+      {
+        "name": "The Three Reds Rule",
+        "body": "Mandatory Red is a sign, Red Holder is a strip state, and Grease Pencil is a person's mark. Each red keeps its job, so never swap them.",
+        "section": "colors"
+      },
+      {
+        "name": "The Holder Is State Rule",
+        "body": "A holder's color changes only when the strip's state changes: amber means in progress, green means cleared, and red means held. A holder color is never picked for variety.",
+        "section": "colors"
+      },
+      {
+        "name": "The Back Row Rule",
+        "body": "At 1280×720, labels are about 18px or more and sentences about 22px or more. A few built sizes run under this floor (13–17px): printed captions in the base strip, empty-slot legends, the footer, and the release board's keys, column heads, and readouts. They are not steps on the scale, so never reuse them for new text.",
+        "section": "typography"
+      },
+      {
+        "name": "The Right Mono Rule",
+        "body": "B612 Mono prints strip data only: callsigns, field captions, and readouts. Its period renders left-shifted, so file names, paths, and anything else with a period go in Overpass Mono. Overpass's middle dot is also left-shifted, so `·` never appears in Overpass text. Separate items with the small Sign Yellow square used in the cover byline.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hand Is Grease Rule",
+        "body": "Permanent Marker appears only as a person's handwriting: short, slightly tilted, and in Grease Pencil or Grease Under Lamp. The one exception is the release board's rubber-stamp LGTM, written in Faded Ink. The face is never used for headings or body text.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lamp Overhead Rule",
+        "body": "All shadows fall straight down from the one lamp, with zero x-offset and black only. Objects lying on the board add a hard contact line under the soft cast. Lift is a longer cast, never a glow. Rings (a black sign rim, a yellow lit-position ring, a red incident ring) are outlines, not light.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Real Holder Rule",
+        "body": "A holder is a carrier the card sits in, built from layered backgrounds. Never fake one with a colored left border or a tinted card. The 2px tan rules between printed fields are print on the card and stay.",
+        "section": "components"
+      },
+      {
+        "name": "The Fixed Infrastructure Rule",
+        "body": "Signs never move. They are the infrastructure the strips move past, so they get no entrance animation, no hover, and no lift.",
+        "section": "components"
+      },
+      {
+        "name": "The Complete Without Motion Rule",
+        "body": "The authored markup is the finished state. Motion only animates into it, with backwards fills, so nothing lingers. Every effect is gated by the live audience slide (`fs-live`: visible tab, not printing, no reduced-motion preference) and settles within 4.7 seconds. Print restores the authored snapshot, and runtime-only content has a static twin.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do put every slide on Graphite Console (#1b2023) with Lamp Light text, and put evidence (strips, sheets, chips, quotes) on Buff Card Stock (#efe6cc) in Strip Ink (#1a2540).",
+      "Do end a content slide with at most one takeaway: a direction sign pinned bottom left, with clear air between it and the composition above.",
+      "Do show a change's state with its holder (amber in progress, green cleared, red held) and a person's decision with grease (tick, ring, strike, initials).",
+      "Do set callsigns, field captions, and readouts in B612 Mono, and file names, paths, and commands in Overpass Mono.",
+      "Do keep labels at about 18px or more and sentences at about 22px or more at 1280×720.",
+      "Do keep every motion finite. Play it only on the live audience slide, use backwards fills, and let it settle within 4.7 seconds.",
+      "Do author the finished state in markup, so reduced-motion, print and PDF, presenter, and no-JavaScript views show a complete slide, and give runtime-only content a static twin.",
+      "Do carry one strip across consecutive slides with the shared hero morph name, one hero per slide.",
+      "Do label illustrative boards, changes, and percentages as fictional or illustrative on the slide itself."
+    ],
+    "donts": [
+      "Don't use the neon AI-talk look or a white corporate template. The lightest surface is buff card stock, and light comes only from the lamp, the faint edge light, and real signal lights.",
+      "Don't fake a holder with a colored left border or a tinted card. Build it from layered backgrounds, and keep the 2px printed field rules inside the card.",
+      "Don't swap the reds. Mandatory Red goes only on signs, Red Holder only on strips, and Grease only on a person's marks and the holds they cause.",
+      "Don't pick holder colors for variety or give the deck's strips a fourth state color.",
+      "Don't set file paths or anything with a period in B612 Mono, and don't put `·` in Overpass text.",
+      "Don't animate signs or loop motion. The only repeating motion is the active-box pulse while a presenter-started board runs.",
+      "Don't suggest lift with x-offset shadows, colored shadows, or glows. Lengthen the cast instead.",
+      "Don't reuse the sub-floor sizes (13–17px) of strip captions, slot legends, and release-board controls as a scale step for new text."
+    ]
+  }
+}
