@@ -2,7 +2,7 @@
 version: 1
 slug: "slides-slides-md"
 primary_target: "slides/Slides.md"
-related_targets: ["slides/themes/custom-default.css","slides/assets/flight-strip.js"]
+related_targets: ["slides/themes/custom-default.css","slides/assets/change-order.js"]
 ---
 
 ## Scope and mode
@@ -12,18 +12,20 @@ to name the evidence a change needs before it ships, in whatever coding agent th
 
 ## Audience, job, proof, constraints
 
-- Presented live from GitHub Pages HTML in a dark conference hall; read later as HTML or PDF.
-- Proof is demonstrated, not claimed: the release board simulation shows rings, a human
-  clearance gate, and a rollback. All boards, changes, and percentages are illustrative.
+- Presented live from GitHub Pages HTML; read later as HTML or PDF.
+- Proof is demonstrated, not claimed: the issue schedule simulation shows rings, a human
+  approval gate, and a withdrawal. All boards, changes, and percentages are illustrative.
 - Tool-neutral: practices map across GitHub Copilot, Claude Code, and open conventions
   (AGENTS.md, Agent Skills, MCP, OpenSpec, Spec Kit). Claude-only framing is out.
 - Bookend contact blocks stay exactly as authored.
 
 ## Direction and memorable moment
 
-Flight Strip Board (seed e24629bc). The cover prints the title on a flight strip held at a red
-PROD hold line; it crosses only after four evidence boxes are ticked. Slides 6 to 8 move one strip
-(AI-0142) bay to bay with native morphs.
+Change Order (seed e24629bc, re-roll 1), chosen by the user from five rendered comps to replace
+the Flight Strip Board, whose aviation metaphor read too strong. The cover letters the title on
+guide lines, clouds "with AI" as revision A, strikes PRELIMINARY, and stamps ISSUED FOR
+PRODUCTION once the title block is initialed. Slides 6 to 8 move one change tag (AI-0142) sheet
+to sheet with native morphs.
 
 ## Unresolved
 

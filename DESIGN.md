@@ -1,439 +1,440 @@
 ---
-name: Flight Strip Board
-description: "A night tower cab for the talk Shipping with AI Without Shipping Regret: every change is a flight strip that moves only when a person writes its clearance."
+name: Change Order
+description: "Shipping with AI Without Shipping Regret, drawn as a revision-controlled drawing set on drafting film."
 colors:
-  sign-yellow: "#f6c21c"
-  sign-black: "#121416"
-  sign-red: "#c8102e"
-  sign-white: "#ffffff"
-  grease: "#b8281a"
-  grease-lamp: "#ff8a6b"
-  amber: "#e2a33a"
-  green: "#3f9a6b"
-  red: "#c9402b"
-  pass-ink: "#23663f"
-  edge-light: "#8fc4ff"
-  blue: "#4a7cc0"
-  console: "#1b2023"
-  console-night: "#111416"
-  console-deep: "#121618"
-  console-raised: "#242b2f"
-  rail: "#3a444a"
-  rail-light: "#56636a"
-  lamp: "#ebe5d5"
-  dim: "#a9b1ad"
-  paper: "#efe6cc"
-  paper-shade: "#e3d7b5"
-  paper-line: "#c4b48b"
-  ink: "#1a2540"
-  ink-soft: "#485166"
+  red: "#d23b2f"
+  red-ink: "#b42d22"
+  amber-ink: "#8a5d00"
+  amber-wash: "rgb(226 166 43 / 0.24)"
+  green-ink: "#276b48"
+  guide: "#8fc0d9"
+  film: "#eef0ec"
+  ink: "#23272b"
+  ink-soft: "#4a5157"
+  rule: "rgb(35 39 43 / 0.25)"
 typography:
   display:
-    fontFamily: "FS Overpass, Overpass, Segoe UI, system-ui, sans-serif"
-    fontSize: "80px"
-    fontWeight: 800
-    lineHeight: 0.98
-    letterSpacing: "-0.015em"
-  headline:
-    fontFamily: "FS Overpass, Overpass, Segoe UI, system-ui, sans-serif"
-    fontSize: "50px"
-    fontWeight: 800
-    lineHeight: 1.06
-    letterSpacing: "-0.015em"
-  title:
-    fontFamily: "FS Overpass, Overpass, Segoe UI, system-ui, sans-serif"
-    fontSize: "32px"
-    fontWeight: 600
-    lineHeight: 1.15
-    letterSpacing: "-0.01em"
-  body:
-    fontFamily: "FS Overpass, Overpass, Segoe UI, system-ui, sans-serif"
-    fontSize: "28px"
-    fontWeight: 400
-    lineHeight: 1.38
-    letterSpacing: "0"
-  body-dense:
-    fontFamily: "FS Overpass, Overpass, Segoe UI, system-ui, sans-serif"
-    fontSize: "25px"
-    fontWeight: 400
-    lineHeight: 1.38
-    letterSpacing: "0"
-  takeaway:
-    fontFamily: "FS Overpass, Overpass, Segoe UI, system-ui, sans-serif"
-    fontSize: "27px"
-    fontWeight: 800
-    lineHeight: 1.18
+    fontFamily: "CO Saira, Saira Semi Condensed, Arial Narrow, sans-serif"
+    fontSize: "88px"
+    fontWeight: 700
+    lineHeight: "93px"
     letterSpacing: "-0.005em"
-  sign:
-    fontFamily: "FS Overpass, Overpass, Segoe UI, system-ui, sans-serif"
-    fontSize: "19px"
-    fontWeight: 800
+  headline:
+    fontFamily: "CO Saira, Saira Semi Condensed, Arial Narrow, sans-serif"
+    fontSize: "48px"
+    fontWeight: 700
+    lineHeight: "54px"
+    letterSpacing: "-0.005em"
+  title:
+    fontFamily: "CO Saira, Saira Semi Condensed, Arial Narrow, sans-serif"
+    fontSize: "28px"
+    fontWeight: 700
     lineHeight: 1.1
-    letterSpacing: "0.06em"
-  label:
-    fontFamily: "FS Overpass, Overpass, Segoe UI, system-ui, sans-serif"
-    fontSize: "18px"
-    fontWeight: 800
-    lineHeight: 1.2
-    letterSpacing: "0.06em"
-  data-id:
-    fontFamily: "FS B612 Mono, B612 Mono, ui-monospace, SF Mono, Menlo, Consolas, monospace"
+  note:
+    fontFamily: "CO Saira, Saira Semi Condensed, Arial Narrow, sans-serif"
+    fontSize: "28px"
+    fontWeight: 600
+    lineHeight: 1.25
+  body:
+    fontFamily: "CO Saira, Saira Semi Condensed, Arial Narrow, sans-serif"
     fontSize: "26px"
-    fontWeight: 700
-    lineHeight: 1
-    letterSpacing: "0.01em"
-  data-label:
-    fontFamily: "FS B612 Mono, B612 Mono, ui-monospace, SF Mono, Menlo, Consolas, monospace"
-    fontSize: "18px"
-    fontWeight: 700
-    letterSpacing: "0.06em"
-  code:
-    fontFamily: "FS Overpass Mono, Overpass Mono, ui-monospace, SF Mono, Menlo, Consolas, monospace"
+    fontWeight: 500
+    lineHeight: 1.35
+    letterSpacing: "0"
+  body-sm:
+    fontFamily: "CO Saira, Saira Semi Condensed, Arial Narrow, sans-serif"
+    fontSize: "22px"
+    fontWeight: 500
+    lineHeight: 1.3
+  caption:
+    fontFamily: "CO Saira, Saira Semi Condensed, Arial Narrow, sans-serif"
+    fontSize: "20px"
+    fontWeight: 500
+    lineHeight: 1.25
+  part-title:
+    fontFamily: "CO Saira, Saira Semi Condensed, Arial Narrow, sans-serif"
     fontSize: "20px"
     fontWeight: 700
-    lineHeight: 1.3
+    lineHeight: 1.2
+    letterSpacing: "0.06em"
+  label:
+    fontFamily: "CO Saira, Saira Semi Condensed, Arial Narrow, sans-serif"
+    fontSize: "18px"
+    fontWeight: 600
+    lineHeight: 1.1
+    letterSpacing: "0.07em"
+  block-entry:
+    fontFamily: "CO Saira, Saira Semi Condensed, Arial Narrow, sans-serif"
+    fontSize: "26px"
+    fontWeight: 600
+    lineHeight: 1
+  stamp:
+    fontFamily: "CO Saira, Saira Semi Condensed, Arial Narrow, sans-serif"
+    fontSize: "26px"
+    fontWeight: 800
+    lineHeight: 1
+    letterSpacing: "0.14em"
+  stamp-sm:
+    fontFamily: "CO Saira, Saira Semi Condensed, Arial Narrow, sans-serif"
+    fontSize: "19px"
+    fontWeight: 800
+    lineHeight: 1
+    letterSpacing: "0.1em"
   hand:
-    fontFamily: "FS Marker, Permanent Marker, Marker Felt, Comic Sans MS, cursive"
+    fontFamily: "CO Hand, Architects Daughter, cursive"
     fontSize: "26px"
     fontWeight: 400
-    lineHeight: 1.1
-    letterSpacing: "0.01em"
+    lineHeight: 1.25
+  code:
+    fontFamily: "CO Mono, Overpass Mono, ui-monospace, monospace"
+    fontSize: "0.84em"
+    fontWeight: 400
 rounded:
-  sign: "3px"
-  card: "4px"
-  holder: "6px"
-  panel: "8px"
+  none: "0px"
+  control: "2px"
+  ring: "50%"
 spacing:
-  slide-top: "60px"
-  slide-x: "72px"
-  slide-bottom: "70px"
-  block: "18px"
-  stack: "12px"
-  bay-gap: "26px"
-  gutter: "40px"
+  frame: "28px"
+  frame-inner: "30.5px"
+  block-height: "78px"
+  margin: "76px"
+  note-gap: "16px"
+  item: "10px"
+  gap: "14px"
+  cell-x: "16px"
+  heading-gap: "26px"
+  column-gap: "48px"
 components:
-  strip:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.ink}"
-    typography: "{typography.data-id}"
-    rounded: "{rounded.holder}"
-    padding: "4px 5px 4px 18px"
-  strip-holder:
-    backgroundColor: "{colors.amber}"
-    rounded: "{rounded.holder}"
-  strip-holder-cleared:
-    backgroundColor: "{colors.green}"
-    rounded: "{rounded.holder}"
-  strip-holder-held:
-    backgroundColor: "{colors.red}"
-    rounded: "{rounded.holder}"
-  sign-mandatory:
-    backgroundColor: "{colors.sign-red}"
-    textColor: "{colors.sign-white}"
-    typography: "{typography.sign}"
-    rounded: "{rounded.sign}"
-    padding: "0.3em 0.55em 0.18em"
-  sign-location:
-    backgroundColor: "{colors.sign-black}"
-    textColor: "{colors.sign-yellow}"
-    typography: "{typography.sign}"
-    rounded: "{rounded.sign}"
-    padding: "9px 13px 6px"
-  sign-direction:
-    backgroundColor: "{colors.sign-yellow}"
-    textColor: "{colors.sign-black}"
-    typography: "{typography.sign}"
-    rounded: "{rounded.sign}"
-    padding: "0.3em 0.55em 0.18em"
-  takeaway:
-    backgroundColor: "{colors.sign-yellow}"
-    textColor: "{colors.sign-black}"
-    typography: "{typography.takeaway}"
-    rounded: "{rounded.card}"
-    padding: "13px 24px 10px 18px"
-  pagination:
-    backgroundColor: "{colors.sign-black}"
-    textColor: "{colors.sign-yellow}"
-    typography: "{typography.sign}"
-    rounded: "{rounded.sign}"
-    padding: "3px 12px 0"
-    height: "34px"
-  sheet:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.card}"
-    padding: "18px 24px 20px"
-  sheet-title:
-    backgroundColor: "{colors.sign-black}"
-    textColor: "{colors.sign-white}"
+  title-block:
+    backgroundColor: "{colors.film}"
+    textColor: "{colors.ink-soft}"
     typography: "{typography.label}"
-    padding: "9px 24px 6px"
-  chip-paper:
-    backgroundColor: "{colors.paper}"
+    rounded: "{rounded.none}"
+    height: "{spacing.block-height}"
+    width: "494px"
+  sheet-note:
     textColor: "{colors.ink}"
-    rounded: "{rounded.card}"
-    padding: "9px 12px 7px"
-  slot:
-    textColor: "{colors.dim}"
-    rounded: "{rounded.holder}"
-  console-key:
-    textColor: "{colors.lamp}"
-    rounded: "{rounded.holder}"
-    padding: "9px 15px 6px"
+    typography: "{typography.note}"
+  delta-tag:
+    backgroundColor: "{colors.film}"
+    textColor: "{colors.red-ink}"
+    width: "44px"
+    height: "40px"
+  initials:
+    textColor: "{colors.red-ink}"
+    typography: "{typography.hand}"
+    rounded: "{rounded.ring}"
+    padding: "6px 9px 3px"
+  stamp-preliminary:
+    textColor: "{colors.amber-ink}"
+    typography: "{typography.stamp}"
+    rounded: "{rounded.none}"
+    padding: "7px 16px 5px"
+  stamp-hold:
+    backgroundColor: "{colors.amber-wash}"
+    textColor: "{colors.amber-ink}"
+    typography: "{typography.stamp}"
+    rounded: "{rounded.none}"
+    padding: "7px 16px 5px"
+  stamp-issued:
+    textColor: "{colors.green-ink}"
+    typography: "{typography.stamp}"
+    rounded: "{rounded.none}"
+    padding: "7px 16px 5px"
+  stamp-withdrawn:
+    textColor: "{colors.red-ink}"
+    typography: "{typography.stamp}"
+    rounded: "{rounded.none}"
+    padding: "7px 16px 5px"
+  stamp-sm:
+    typography: "{typography.stamp-sm}"
+    rounded: "{rounded.none}"
+    padding: "5px 10px 3px"
+  drawing-schedule:
+    backgroundColor: "{colors.film}"
+    textColor: "{colors.ink}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.none}"
+    padding: "10px 16px 8px"
+  change-tag:
+    backgroundColor: "{colors.film}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.none}"
+    height: "58px"
+  button-default:
+    backgroundColor: "{colors.film}"
+    textColor: "{colors.ink}"
+    typography: "{typography.label}"
+    rounded: "{rounded.control}"
+    padding: "8px 14px 6px"
+  button-primary:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.film}"
+    typography: "{typography.label}"
+    rounded: "{rounded.control}"
+    padding: "8px 14px 6px"
+  button-approve:
+    backgroundColor: "{colors.film}"
+    textColor: "{colors.red-ink}"
+    typography: "{typography.label}"
+    rounded: "{rounded.control}"
+    padding: "8px 14px 6px"
+  chip-file:
+    textColor: "{colors.ink}"
+    typography: "{typography.code}"
+    rounded: "{rounded.none}"
+    padding: "4px 10px 2px"
+  chip-check:
+    textColor: "{colors.ink}"
+    rounded: "{rounded.none}"
+    padding: "7px 14px 5px 8px"
+  checklist-row:
+    textColor: "{colors.ink}"
     height: "42px"
-  console-key-clear:
-    backgroundColor: "{colors.sign-yellow}"
-    textColor: "{colors.sign-black}"
-    rounded: "{rounded.holder}"
-    padding: "9px 15px 6px"
-    height: "42px"
+    padding: "0 18px"
 ---
 
-# Design System: Flight Strip Board
+# Design System: Change Order
 
 ## Overview
 
-**Creative North Star: "The Night Tower Cab"**
+**Creative North Star: "The Change Order"**
 
-The deck is a night tower cab seen from the controller's seat: a graphite strip console under one warm lamp, buff card-stock flight strips in amber, green, and red plastic holders, red grease-pencil marks, and airfield signs. Every AI-written change is a strip, and a strip moves to the next bay only when a person writes its clearance. Every visual device is an object that cab would contain, and the slides argue for release discipline by handling those objects, not by decorating a page.
+Every AI-written change is a drawing revision: clouded where it changed, and not issued until someone checks and approves it. The deck is a drawing set on drafting film. Each slide is a sheet with a drawn frame and zone references, a title block that numbers it, and graphite lettering set on non-photo-blue guide lines. Change is marked the way a checker marks a drawing, with red revision clouds, delta tags, strike-throughs and initials, and status is applied with rubber stamps.
 
-Density is that of a working board on a fixed 1280×720 frame: one claim per slide, stated as the headline; one composed board, sheet, or strip stack under it; and at most one direction-sign takeaway pinned to the bottom. Material carries the hierarchy. The lit console is the room's voice, card stock holds evidence and documents, signs give instructions, and grease records human decisions. Type is sized for the back of a conference room.
+Density is a working drawing, not a poster. A sheet carries one lettered statement, one drawn part (a register, a schedule, a spec sheet, a checklist) and one note. Caps labels letter the parts at 18px; anything read as a sentence stays large enough for the back of a conference room. Graphite carries the content, and color always means something: red for change and decision, stamp inks for status. The world refuses the neon AI-talk deck, the white corporate template, and borrowed aviation.
 
-The direction rejects two things by name: the neon AI-talk deck and the white corporate template. Motion is the mechanism, never ornament. Strips print, slot into bays, get cocked or ringed, collect grease ticks, change holder, and cross the hold line. Each slide's motion is finite, plays only on the live audience slide, and animates into a finished state that the markup already holds.
+Motion draws the sheet while the audience watches, then holds still: lettering inks in from the left, clouds trace around their box, stamps land with a press, and the checker's initials go on last. The authored markup is always the finished drawing.
 
 **Key Characteristics:**
-- Two lit materials: graphite console with lamp-colored text, and buff card stock with navy ink.
-- Saturated color only where it means something: airfield signs, holder states, grease marks, real lights.
-- Overpass for words and signs, B612 Mono for strip data, Overpass Mono for code and paths, Permanent Marker for grease only.
-- Physical depth from one overhead lamp: a hard contact line plus a soft cast, always straight down.
-- Finite motion that settles within 4.7 seconds into an authored static state, so print, PDF, and reduced motion lose nothing.
+- Flat graphite ink on pale drafting film; no cast shadows and no glow.
+- A drawn sheet frame with zone references, and a title block (Checked, Approved, Rev, Sheet) on every interior sheet.
+- One condensed engineering face for all lettering, a felt-pen hand only for the checker, and a mono only for files and commands.
+- Red is the checker's pen: clouds, deltas, strikes, initials, withdrawals.
+- Rubber stamps in amber (not yet), green (issued) and red (withdrawn).
+- Finite motion on the live audience sheet only; every static view is complete.
+
+### Named Rules
+**The Static Sheet Rule.** The authored markup is the finished drawing; motion only reveals it. Effects play once on the live audience sheet (`section.co-live`), fill backwards, and settle within 4.95s. Print, reduced-motion, presenter and no-script views show the same complete sheet. The one infinite motion is the active-cell pulse while a presenter-started schedule runs.
+
+**The Honest Sheet Rule.** Simulated data is labeled on the sheet itself, in label lettering ("Illustrative: ...", "Fictional changes, illustrative only"), never only in speaker notes.
 
 ## Colors
 
-Two lit materials carry the deck, and saturated color appears only where it means something in the cab: a sign, a holder, a grease mark, or a real light.
+Monochrome graphite on drafting film, with one red pen for change and decision, three stamp inks for status, and non-photo blue kept for 1px lettering guides.
 
 ### Primary
-- **Sign Yellow** (#f6c21c): the airfield-sign accent and the most-used accent in the deck. It is the legend and inset border of location signs (bay labels, page numbers, station placards, table headers), the face of direction signs (every takeaway), list bullets and ordered-list numerals, and the release board's active column and state readout. It reads at 9.9:1 on the console.
-- **Sign Black** (#121416): the face of location signs, the 2px rim around mandatory and direction signs, and the title bar of paper sheets.
-- **Mandatory Red** (#c8102e): mandatory-instruction signs only, meaning stop here until cleared. It appears on the PROD hold sign, a hold bay's label, and the release board's awaiting-clearance readout.
-- **Legend White** (#ffffff): legends on Mandatory Red and on a sheet's black title bar (5.9:1 on red). It is never a surface.
+- **Redline** (#d23b2f): the checker's pen as line work. Revision clouds, delta triangles, strike-throughs, leader lines and arrowheads, link underlines (2px), the running column's underbar and dot, the schedule's 4px progress rule, focus outlines (3px), and the Approve control's border.
+- **Redline Ink** (#b42d22): red as letters. The hand face, initials, delta letters, the Withdrawn, Incident and Void stamps, the active column label, and the tick a checker puts in a box.
 
 ### Secondary
-- **Grease Pencil** (#b8281a): a person's marks on card stock, meaning ticks, rings, strikes, initials, and short handwritten notes, plus the held and rolled-back readouts those marks cause (5.0:1 on paper).
-- **Grease Under Lamp** (#ff8a6b): the same mark written on the console, lifted for contrast (7.1:1 on graphite). It is also used for the Questions underline, the Thank You tick, and the review loop's return lane.
+- **Stamp Amber Ink** (#8a5d00): "not yet." Preliminary, Draft, Not for issue, Hold and On hold.
+- **Stamp Amber Wash** (rgb(226 166 43 / 0.24)): the only tint fill in the system, behind Hold and On hold stamps.
+- **Stamp Green Ink** (#276b48): Issued, and Approved for issue.
 
 ### Tertiary
-- **Amber Holder** (#e2a33a): the default, in-progress holder, and the tint of the box being worked on the release board.
-- **Green Holder** (#3f9a6b): a cleared strip.
-- **Red Holder** (#c9402b): a held or rolled-back strip, and the incident ring.
-- **Pass Ink** (#23663f): printed PASS and LANDED readouts on card stock, where the green holder itself would be too light to read (5.5:1 on paper).
-- **Edge Light** (#8fc4ff): links, code titles, and keyboard focus rings on the console. It is the console's one cool light, and at 5% it tints the faint glow in the far corner.
-- **Holder Blue** (#4a7cc0): the focus ring on card stock (3.4:1 against paper). The theme also keeps blue and grey holder hooks, but strips in this deck use only the three state holders.
+- **Non-Photo Blue** (#8fc0d9): construction lines under lettering, always 1px. At about 1.7:1 on film it is meant to be barely there; it never carries text, fills or borders.
 
 ### Neutral
-- **Graphite Console** (#1b2023): the canvas of every slide, with a warm lamp pool falling from the top left. Marp's own background variables map to it, so slide transitions never flash black.
-- **Night Console** (#111416): the darker cab of `invert` slides, used on the cover.
-- **Deep Well** (#121618): recessed wells such as code blocks and review-loop stations.
-- **Raised Graphite** (#242b2f): inline code chips and alternate table rows.
-- **Rack Rail** (#3a444a): bay uprights, panel borders, and rules between rows on the console.
-- **Lit Rail** (#56636a): the dashes of an empty slot and the review loop's lanes.
-- **Lamp Light** (#ebe5d5): primary text on the console (13:1).
-- **Dimmed Lamp** (#a9b1ad): secondary text, column heads, captions, and the footer (7.5:1).
-- **Buff Card Stock** (#efe6cc): strips, sheets, quotes, and chips. It is the lightest surface in the system.
-- **Shaded Card Stock** (#e3d7b5): the lower edge of every card gradient, and raised rows on paper.
-- **Printed Rule** (#c4b48b): the 2px rules printed between strip fields and the 1px rules between sheet rows.
-- **Strip Ink** (#1a2540): navy ink for all text on card stock (12.2:1).
-- **Faded Ink** (#485166): printed captions, row keys, and secondary text on card stock (6.4:1).
+- **Drafting Film** (#eef0ec): the ground of every sheet and the fill of every drawn part, so parts sit cleanly over the frame.
+- **Graphite Ink** (#23272b): all lettering, the frame, outlines, ticks and list dashes.
+- **Graphite Soft** (#4a5157): label lettering, captions, signature lines, struck text, and the empty rows of a register.
+- **Hairline Rule** (rgb(35 39 43 / 0.25)): row rules inside tables and schedules; graphite at 25%.
 
 ### Named Rules
-**The Real Objects Rule.** Saturated color always means something in the world: a sign's instruction, a holder's state, a person's mark, or a real light. It is never decoration. Edge Light marks links and focus, and the brand icons in the contact blocks keep their tuned colors. Light comes only from the overhead lamp, the faint edge light in the far corner, and real lights such as the stop bar on the cover.
+**The Redline Rule.** Red marks only what changed, what was decided, and where attention goes next (the running stage, the focus ring, a link's underline). It never fills a surface and never sets headings or prose.
 
-**The Three Reds Rule.** Mandatory Red is a sign, Red Holder is a strip state, and Grease Pencil is a person's mark. Each red keeps its job, so never swap them.
+**The Two Reds Rule.** Red strokes use Redline; red letters use Redline Ink, which holds about 5.5:1 on film where Redline holds about 4.2:1.
 
-**The Holder Is State Rule.** A holder's color changes only when the strip's state changes: amber means in progress, green means cleared, and red means held. A holder color is never picked for variety.
+**The Stamp Ink Rule.** Each stamp ink has one meaning: amber is not yet, green is issued, red is withdrawn, void or incident. Stamp inks color stamps and the schedule's outcome marks, and nothing else.
 
 ## Typography
 
-**Display Font:** FS Overpass, the bundled Overpass in weights 400, 600, and 800 plus 400 italic (falls back to Overpass, Segoe UI, system-ui)
-**Body Font:** FS Overpass
-**Label/Mono Font:** FS B612 Mono, bundled at 400 and 700, for strip data. FS Overpass Mono, bundled at 400 and 700, for code and paths. FS Marker (Permanent Marker) for grease handwriting only.
+**Display Font:** CO Saira, the bundled Saira Semi Condensed (400 to 800), with Arial Narrow and sans-serif
+**Body Font:** CO Saira (the same family)
+**Label/Mono Font:** CO Mono, the bundled Overpass Mono (400, 700), for file names, paths and commands; CO Hand, the bundled Architects Daughter, for the checker's markup
 
-**Character:** Overpass descends from Highway Gothic road signage, so headings, body, and signs share one public-infrastructure voice. B612 Mono, drawn for cockpit displays, prints the strip data. Permanent Marker is the controller's hand. All four faces ship beside the deck and load before the first transition, so nothing renders in a fallback mid-slide. Theme text uses only these four families. The Helvetica in Marp's presenter chrome belongs to Marp, not to the theme.
+**Character:** One condensed engineering grotesque letters every sheet, from the 88px title down to 18px caps, the way one drafter letters a whole set. A felt-pen hand appears only when the checker writes; a mono appears only when the sheet quotes a file or a command.
+
+All three faces ship beside the deck (`slides/assets/fonts/`) with `font-display: block`, and the runtime preloads them so a transition never captures text that has not loaded.
 
 ### Hierarchy
-- **Display** (800, 80px, 0.98, −0.015em): deck and bookend titles (h1). Title slides with the `lead` class set it at 88px. On the cover it is printed on the title strip in Strip Ink.
-- **Headline** (800, 50px, 1.06, −0.015em): every content slide's title (h2), written as the claim in one sentence. The two densest compositions step it down to 44–48px.
-- **Title** (600, 32px, 1.15, −0.01em): sub-heads (h3). An h4 is an uppercase Dimmed Lamp eyebrow (800, 20px, +0.08em).
-- **Body** (400, 28px, 1.38): the slide's base size. Bullet columns beside a strip or sheet use Body Dense (400, 25px, 1.38). The `small` class drops the base to 23px.
-- **Takeaway** (800, 27px, 1.18, −0.005em): the single sentence on a direction sign.
-- **Sign** (800, 19px, 1.1, +0.06em, uppercase): bay labels, page numbers, and station placards.
-- **Label** (800, 18px, 1.2, +0.06em, uppercase): column heads, sheet title bars, and station roles.
-- **Data ID** (B612 Mono 700, 26px, 1): strip callsigns such as AI-0142. Data Label (B612 Mono 700, 18px, +0.06em, uppercase) sets row keys and field captions.
-- **Code** (Overpass Mono 700, 20px, 1.3): file names, paths, and commands inside strips and tables. Code blocks run at 22px/1.5.
-- **Hand** (Permanent Marker 400, 26px in a strip box, 1.1): initials, short notes, and the opening mark of a quote, tilted −4° to −10°.
+- **Display** (700, 88px, 93px line, -0.005em): the cover title, lettered on a cap guide and a baseline guide. The closing sheets letter their single heading on the same construction, from 64px to 104px.
+- **Headline** (700, 48px, 54px line, -0.005em): one per sheet, balanced, up to 1080px wide, on its baseline guide. Sub-heads on the closing sheet drop to 34px on a 40px line, guide in the same place.
+- **Title** (700, 28px, 1.1): names inside drawn parts, such as reviewer desks and schedule row heads (27px); the regret cards' heads go to 34px.
+- **Note** (600, 28px, 1.25): the one note at the foot of a sheet.
+- **Body** (500, 26px, 1.35): sentences on the sheet and list items.
+- **Body Small** (500, 22px, 1.3): table cells, schedule entries and definitions (22 to 24px).
+- **Caption** (500, 20px, 1.25, Graphite Soft): one-line supporting text under a bold name: a role, an exposure, a tool note (20 to 21px). Never a paragraph.
+- **Part Title** (700, 20px, 1.2, 0.06em, uppercase): the title strip of a drawn part and checklist responses (20 to 22px).
+- **Label** (600, 18px, 1.1, 0.07em, uppercase, Graphite Soft): field labels, column heads, title-block cells, the NOTE marker, the author line (at 0.02em), and illustrative-data labels.
+- **Block Entry** (600, 26px, 1): the Rev letter in the title block; the sheet number sets at 700.
+- **Stamp** (800, 26px, 0.14em, uppercase) and **Stamp Small** (800, 19px, 0.1em): rubber stamps. Stamps inside schedule cells set at 18px, 0.08em.
+- **Hand** (CO Hand 400, 26px, 1.25, Redline Ink): the checker's notes and initials, 22 to 34px by context.
+- **Code** (CO Mono 400, 0.84em): file names and commands inline; 20 to 22px in chips, titles and tables.
 
 ### Named Rules
-**The Back Row Rule.** At 1280×720, labels are about 18px or more and sentences about 22px or more. A few built sizes run under this floor (13–17px): printed captions in the base strip, empty-slot legends, the footer, and the release board's keys, column heads, and readouts. They are not steps on the scale, so never reuse them for new text.
+**The Three Pens Rule.** Saira letters everything typeset. The hand face is only the checker's red pen: markup, initials, the asterisk on a weakened test. The mono face is only file names, paths and commands. If a line is neither the checker's markup nor a literal path or command, it is Saira.
 
-**The Right Mono Rule.** B612 Mono prints strip data only: callsigns, field captions, and readouts. Its period renders left-shifted, so file names, paths, and anything else with a period go in Overpass Mono. Overpass's middle dot is also left-shifted, so `·` never appears in Overpass text. Separate items with the small Sign Yellow square used in the cover byline.
+**The Lettering Guide Rule.** Headings sit on non-photo-blue guides, the way a drafter letters a sheet. A headline gets one 1px guide at its baseline (41px down a 54px line); a display heading gets a cap guide and a baseline guide. Guides start 10px before the first letter and run 26px past the last.
 
-**The Hand Is Grease Rule.** Permanent Marker appears only as a person's handwriting: short, slightly tilted, and in Grease Pencil or Grease Under Lamp. The one exception is the release board's rubber-stamp LGTM, written in Faded Ink. The face is never used for headings or body text.
+**The Floor Rule.** At 1280x720, label lettering is never below 18px and anything read as a sentence is never below 22px; one-line captions may sit at 20 to 21px. The change tag's cell captions (16px), its small delta, and the schedule's outcome stamps (17px) sit below the floor inside compact drawn parts. They are known exceptions, not precedents.
 
 ## Layout
 
-The frame is a fixed 1280×720 Marp slide, exported as bespoke HTML and as PDF. It is not responsive. There are no breakpoints and no fluid type, and both exports show the same frame.
+The sheet is fixed at 1280x720 with no breakpoints; the HTML deck and the PDF show the same sheet.
 
-- **Slide box:** padding is 60px top, 72px sides, and 70px bottom, in a flex column. Content slides, meaning those with an h2, read from the top. Title, question, and split-photo slides center.
-- **The spine of a content slide:** the headline comes first, then the composition 26–30px below it, then the takeaway. An auto top margin pins the takeaway to the bottom left. The composition must end with clear air above that sign.
-- **Rhythm:** 18px separates paragraphs, lists, tables, and the element after a heading. Strips in a bay stack 12px apart, and list items 0.3em apart.
-- **Compositions:** two-column grids are weighted toward the evidence object, at 1.1–1.35fr to 1fr, with 40–48px gutters. A board is a row of equal bays 26px apart. The route band is three bays (Spec, Build, Review) 20px apart, and it repeats across consecutive slides so the hero strip appears to travel.
-- **Chrome:** the footer sits bottom left (72px in, 28px up) in Dimmed Lamp. The page number is a location sign at the bottom right (72px in, 22px up). Bookend slides hide both.
-- **Photos:** photos enter as split backgrounds 40–45% wide. They are dimmed and warmed (brightness 0.86, sepia 0.12) to sit in the lamp light.
-- **Slide classes:** `lead` centers a title slide. `invert` darkens the cab. `paper` turns the whole slide into card stock with Strip Ink text. `small` tightens type for dense slides. `columns` and `columns3` lay out section grids, and the `columns`, `columns3`, and `split` divs lay out two- and three-up groups.
+- **Frame.** One drawn image (`assets/sheet.svg`) puts a 2.5px graphite frame line 28px in from every edge, 1.5px zone ticks in the margin, and zone references 8 to 1 across and D to A down. It is a background image, so every sheet, photo sheets included, carries the same border. Photographs are clipped to the frame.
+- **Content column.** 76px side margins give a 1128px column; the heading starts 62px from the top edge.
+- **Title block.** Bottom right, hung on the frame's inner edge (30.5px): 78px tall, with cells of 150, 150, 90 and 104px for Checked, Approved, Rev and Sheet, a 2.5px top and left edge, and 1.5px dividers. The sheet number (n / total) is the pagination. The author line, "Chris Ayers - https://chris-ayers.com", sits outside the block at the bottom left.
+- **Sheet note.** Spans the column, 16px above the title block (124px from the bottom edge).
+- **Composition.** A heading, one drawn part, a note. Two-part sheets put the drawing on the left (580 to 610px wide) and short notes on the right (about 470px). Drawn parts are placed on the 1128px measure inside the frame.
+- **Rhythm.** 10px between list items; 14px between a mark and its text; cells padded 10px top, 8px bottom and 14 to 16px at the sides; 26px from a heading down to its drawing; 48px between columns.
+
+### Named Rules
+**The Frame Rule.** Nothing crosses the frame line. The 28px margin holds only zone ticks and references; photos, tables and stamps stay inside the frame and clear of the title block.
+
+**The Title Block Rule.** Every interior sheet carries the title block. Its signatures start as blank dotted lines, and only the sheet's state fills them: checked, approved, and revision A, B or C (`checked`, `approved`, `rev-a/b/c`). A sheet that has not earned a signature shows the empty line.
+
+**The One Note Rule.** A content sheet ends with one note at most: a NOTE label and one line in Note lettering, 16px above the title block. Reference sheets may put a plain 22px source line in the same place instead.
 
 ## Elevation & Depth
 
-One warm lamp hangs over the console, so depth is physical rather than tonal. Strips, sheets, chips, and keys lie on the board, so each has a hard 2–3px contact line with no blur under a soft black cast. Signs cast without a contact line. Wells such as code blocks, the release-board panel, and console stations are recessed, with a faint inset top highlight. Bays are open racks with a darkened floor, not raised cards. Lift is a longer, darker cast.
+Flat. Drawings are ink on film, so depth comes from drawing order and line weight: a drawn part is filled with film and outlined in heavy line, and that is all that separates it from the sheet. There are no blurred or cast shadows anywhere. Where the build uses `box-shadow`, it draws zero-blur line work. Photographs are printed onto the film with a multiply blend inside an ink border rather than laid over it.
 
 ### Shadow Vocabulary
-- **Sign cast** (`box-shadow: 0 0 0 2px #121416, 0 6px 14px rgba(0, 0, 0, 0.35)`): mandatory and direction signs, with their black rim. Location signs and page numbers use the same cast without the rim, and draw their yellow border as an inset outline.
-- **Strip in holder** (`box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 2px 0 rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.32)`): the plastic lip highlight, the contact line, and the cast.
-- **Paper on the board** (`box-shadow: 0 3px 0 rgba(0, 0, 0, 0.28), 0 16px 30px rgba(0, 0, 0, 0.32)`): sheets. Quotes use a slightly lighter version.
-- **Chip** (`box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.25)`): small paper tags.
-- **Takeaway** (`box-shadow: 0 0 0 3px #121416, 0 12px 26px rgba(0, 0, 0, 0.4)`): the heaviest sign on the slide.
-- **Console key** (`box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 3px 0 #0b0d0e, 0 8px 14px rgba(0, 0, 0, 0.35)`): a raised cap. When pressed, it travels 2px and its contact line shrinks to 1px.
-- **Recessed well** (`box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 10px 24px rgba(0, 0, 0, 0.28)`): code blocks. The release-board panel deepens the cast to 18px 34px.
-- **In flight** (`box-shadow: 0 34px 50px rgba(0, 0, 0, 0.55)`): a strip lifted off the board during a go-around. The cover's title strip rests on a similar deep cast.
+- **Stamp double ring** (`box-shadow: inset 0 0 0 2.5px var(--film), inset 0 0 0 4px currentColor`): the inner ring of a rubber stamp, inside its 3.5px border (2px and 3px on small stamps).
+- **Running column underbar** (`box-shadow: inset 0 -4px 0 var(--red)`): marks the schedule column now in progress.
+- **Control shade line** (`box-shadow: 0 2px 0 var(--ink)`, Redline on Approve): a heavier drafting line along a control's bottom edge.
 
 ### Named Rules
-**The Lamp Overhead Rule.** All shadows fall straight down from the one lamp, with zero x-offset and black only. Objects lying on the board add a hard contact line under the soft cast. Lift is a longer cast, never a glow. Rings (a black sign rim, a yellow lit-position ring, a red incident ring) are outlines, not light.
+**The Flat Ink Rule.** No blur and no glow. A box-shadow with a blur radius is not part of this world; zero-blur rings, underbars and shade lines are line work and belong.
 
 ## Shapes
 
-The form language is the hardware of a strip board: square-ish, printed, and handled.
+Square-cornered drafting geometry, drawn in a strict set of line weights.
 
-- **Corners by object:** signs are 3px, card stock and takeaways 4px, holders, slots, keys, and code blocks 6px, and large panels 8px (the cover strip and the release board). Console stations are nearly square, at 2px with corner rivets. Nothing is pill-shaped.
-- **The strip silhouette:** a long horizontal bar. On the left is a ribbed 18px grip where the holder shows; then the ID cell, the title cell, and a row of square printed field boxes. Each part is divided by a 2px rule printed on the card in Printed Rule tan.
-- **Sign silhouettes:** location signs are black rectangles with a 2px yellow border inset 5–6px from the edge. Mandatory and direction signs carry a 2px black rim. The direction sign leads or ends with a solid arrow glyph.
-- **Grease marks:** hand-drawn strokes with round caps: a tick, an oval ring, a crossed strike, and an underline. Each is written left to right.
-- **Rotation means attention:** a cocked strip shifts 26px and tilts −1.4°. Grease writing tilts −4° to −10°, and a pile of fresh strips scatters within ±2.2°. Everything else sits square to the board.
-- **Markers:** list bullets are small Sign Yellow squares with a 2px black rim, like miniature signs. Ordered lists use bold yellow numerals, and sheet lists use ink squares.
-- **Empty positions:** a 2px dashed Lit Rail outline with 6px corners, the same height as the strip it would hold.
-- **Bays:** open racks with 3px rails on the left and right under a sign plate. A bay is never a closed box.
+- **Line weights:** heavy 2.5px graphite for the frame, the title block's outer edges and the outline of every drawn part; medium 1.5px for cell dividers, title-strip rules and chips; 1px Hairline Rule between rows; 2px for compact parts (the change tag, controls, checkboxes) and for dotted signature lines and leaders; Redline markup at 2.2 to 2.6px; guides at 1px.
+- **Corners:** square. Controls soften to 2px. The only round forms are made by hand: the ring around the checker's initials (an ellipse) and the dot on a running stage.
+- **Revision clouds:** drawn SVG assets (`assets/clouds/`) of scalloped arcs with a 2.2 to 2.6px Redline stroke that does not scale with the box. One cloud per change, hung 16 to 26px outside a fixed-size box.
+- **Delta tag:** a Redline triangle (2.6px stroke) filled with film, 44x40px, carrying the revision letter in Redline Ink at 700 20px.
+- **Ticks:** one drawn check glyph. In graphite it records evidence (tests passed, a ring held, a contract locked); in a 2px box and in Redline Ink it is the checker's own tick.
+- **Lean:** hand-applied marks are rotated. Stamps lean -4 to -8 degrees (the schedule's stamp mark leans +6), initials -4, strike-throughs -1.5 to -4, outcome stamps -2.5.
+
+### Named Rules
+**The Drawn Cloud Rule.** A revision cloud is always a drawn asset, never a CSS border, radius or dash pattern. Masks never load from asset files, because Chrome drops them from PDF export; inline data-URI and gradient masks are fine.
+
+**The Hand-Placed Lean Rule.** Only what a person applies by hand is rotated: stamps, initials, strike-throughs. Typeset lettering, frames and drawn parts stay square.
+
+**The Two Ticks Rule.** A graphite tick is recorded evidence; a red tick in a box is the checker's. Never swap them.
 
 ## Components
 
-Every component is a physical thing on the board. It is printed, held, signed, or written on, and it behaves the way that thing would.
+### Sheet Chrome (signature)
+The drawing's own furniture, on every sheet.
+- **Frame and zones:** see Layout.
+- **Title block:** Label lettering in each cell; the Rev letter in Block Entry; the sheet number at 700 26px, centered in the Sheet cell. Signatures are 2px dotted Graphite Soft lines until filled with the initials "CA" in the hand face at 30px.
+- **States:** on the live issue schedule, Approved stays blank until someone passes the review gate; completing the checklist initials the block. Live, a signature inks in after the sheet's content (450ms).
+- **Cover variant:** the cover drops the header block for a full title block (Drawn across the top with the author at 30px and role in Caption; then Checked, Approved and Rev in 160px cells) and hangs a revision table (Rev, Description, By, Appd; 21px cells, Label heads, initials in the hand face) from the top-right corner of the frame.
 
-### Flight Strip (signature)
-The evidence object: printed card stock in a plastic holder.
-- **Construction:** three stacked backgrounds on one element. The card-stock gradient is clipped to the content box, a ribbed 18px grip shows at the left, and the holder gradient fills the border box, mixed 70% with white at the top and 78% with black at the bottom. The strip has 6px corners and the strip-in-holder cast.
-- **Cells:** the ID cell holds a B612 callsign (which never wraps) and an uppercase sub-ID. The title cell holds an Overpass 800 title and a detail line. The printed field boxes are at least 96px wide with a caption at the top left.
-- **Holder states:** set with `data-holder`. Amber is the default, green means cleared, and red means held. A registered color property animates the holder over 400ms when state changes.
-- **Marks in a box:** a grease tick means done, a grease ring means held for attention, a grease strike means not this way, and handwritten initials (CA) mean cleared by a person.
-- **Variants:** a cocked strip is offset and tilted to flag it. The mini strip (54px tall, 112px ID cell) is for piles and comparisons. The cover strip stacks its rows, uses 8px corners, and prints the deck title in Display type.
+### Revision Cloud and Delta (signature)
+The mark of a change.
+- **Use:** a cloud goes around exactly what changed: a phrase in the title, a 300x196px regret card, a schedule cell, a withdrawn table row, a change-tag cell. A delta tag beside it carries the revision letter (A, B, C) that matches the revision table.
+- **Annotation:** a hand note may hang off a cloud on a 2px Redline leader ending in an arrowhead.
+- **Motion:** the cloud traces around its box (a conic mask sweep, 700 to 1100ms, linear); the delta pops in (300ms, slight overshoot). The full cloud is the resting state.
 
-**The Real Holder Rule.** A holder is a carrier the card sits in, built from layered backgrounds. Never fake one with a colored left border or a tinted card. The 2px tan rules between printed fields are print on the card and stay.
+### Checker's Markup
+- **Notes:** the hand face in Redline Ink, 22 to 34px, short and direct ("Agent edits a test? Hold.").
+- **Initials:** "CA" in a 2px Redline ellipse, padding 6px 9px 3px, leaning -4 degrees.
+- **Strike-throughs:** a Redline bar (2.5px through text, 3.5px through a stamp) that leaves the struck word readable; struck text turns Graphite Soft. The struck line in the contact blocks is authored and stays.
+- **Motion:** markup inks in after the content it marks; strikes draw from the left (300ms).
 
-### Airfield Signs
-Fixed instructions in the world's public voice. They are uppercase Overpass 800, tracked +0.04–0.06em, and never wrap.
-- **Mandatory** (Mandatory Red, Legend White, black rim): stop here until cleared. It marks the PROD hold line, hold bays, the board's awaiting-clearance state, and the unsafe comparison row.
-- **Location** (Sign Black, Sign Yellow legend, inset yellow border): you are here. It labels bays, page numbers, and review-loop stations. Table header rows use the same sign, with a 3px yellow underline.
-- **Direction** (Sign Yellow, black legend and arrow, black rim): the way to go. Every takeaway is a direction sign.
+### Rubber Stamps (signature)
+Status, applied by hand.
+- **Shape:** 3.5px border in the stamp's ink with an inner ring (see Elevation), square, padding 7px 16px 5px, Stamp lettering, leaning -6 degrees by default.
+- **Small:** 2.5px border, Stamp Small lettering, padding 5px 10px 3px, for register status and scenario names; 18px inside schedule cells.
+- **Inks:** Preliminary, Draft and Not for issue in Amber; Hold and On hold in Amber on the Amber Wash; Issued and Approved for issue in Green; Withdrawn, Incident and Vibe shipping in Red.
+- **Motion:** stamps land with a press: from 150% scale and transparent, overshooting to 95%, then rest (300 to 320ms).
 
-**The Fixed Infrastructure Rule.** Signs never move. They are the infrastructure the strips move past, so they get no entrance animation, no hover, and no lift.
+### Drawing Schedules (cards and containers)
+Registers, general notes, spec sheets, withdrawal records, tool maps, the issue schedule and the check card share one construction.
+- **Corner Style:** square.
+- **Background:** Drafting Film, so the part covers the sheet frame and guides.
+- **Shadow Strategy:** none (see Elevation).
+- **Border:** 2.5px graphite outline; 1.5px column dividers and title-strip rule; 1px Hairline Rule rows, 42 to 66px tall.
+- **Internal Padding:** cells 10px 16px 8px; title strip in Part Title lettering with a mono file name or a label at the right.
+- **Definitions:** a fixed first column (96 to 128px) of Label lettering beside 23px entries.
+- **Empty rows** stay drawn in Graphite Soft, so a register shows its unused capacity.
+- **Motion:** rows fade or ink in one at a time, top to bottom.
 
-### Takeaway
-- At most one per slide, as the last element. It is one sentence on a direction sign, with the arrow first, pinned bottom left by an auto top margin.
-- On the release board, the outcome sentence becomes the takeaway only after the board completes.
+### Change Tag (signature)
+One change, AI-0142, carried from sheet to sheet.
+- **Shape:** a 58px tag with a 2px graphite outline on film: a small delta (34x31px), the ID at 700 22px over a Caption subtitle, then three 58px cells (Spec, Test, Rev) with label captions above a graphite tick or the checker's initials.
+- **Revision:** the cell that changed on this sheet is clouded, and the delta letter follows the revision table (A, then B).
+- **Morph:** with the handoff transition the tag keeps its identity across sheets (`view-transition-name`), so the change visibly moves from spec to build to review. Morphs are off in print and reduced motion.
 
-### Bays, Boards, and Slots
-- **Board:** a row of equal bays.
-- **Bay:** an open rack with Rack Rail uprights and a faint dark floor, under a location-sign label plate. A hold bay takes the mandatory sign instead.
-- **Slot:** an empty position. It may carry a short uppercase legend ("Next").
-- **Route band:** the Spec, Build, and Review bays repeat on consecutive slides with a shared morph name, so one hero strip (AI-0142) travels bay to bay.
+### Issue Schedule (interactive)
+A drawing schedule the presenter runs live.
+- **Grid:** a 280px change column, six 100px stage columns (Tests, Review, Ring 0 team, Ring 1 1%, Ring 2 10%, Broad 100%), and an outcome column; rows 66px.
+- **Cell marks:** graphite tick (pass, landed); clouded tick with a hand asterisk (passed on an edited test); faded tick with a Redline slash and a hand "Back" (rolled back); initials (cleared by review); stamps (Hold, Incident); a struck label (skipped); a 22px dash (not run); a 14px Redline dot (running, pulsing only while the schedule runs).
+- **Outcome:** a small stamp (Issued, On hold, Withdrawn, Incident) above a 20px bold result.
+- **Console:** a NOTE label and a live status line, a 4px Redline progress rule along the bottom edge, and a hand-lettered next step when the run completes.
+- **Honesty:** the key line reads "Fictional changes, illustrative only".
+- **Static state:** controls show only in the live audience window. The static and PDF sheet shows the finished Evidence-first outcome with a one-line Vibe-shipping comparison beneath it.
 
-### Paper Sheets
-Flight plans, test contracts, and the standing-information broadcast.
-- **Body:** a top-lit card-stock gradient with 4px corners, the paper cast, and Strip Ink text.
-- **Title bar:** a Sign Black bar flush with the top edge, with Legend White label caps tracked +0.1em. A second span on the right can carry a file name in Overpass Mono and Sign Yellow.
-- **Rows:** definition rows divided by 1px Printed Rule. Keys are in B612 Mono caps in Faded Ink, and values are in Overpass 600 in Strip Ink.
-- **Lists:** bullets on a sheet are ink squares. A lock list pairs a padlock glyph with a PASS readout in Pass Ink.
-
-### Challenge-and-Response Checklist
-- **Line:** each line has a 28px ink-bordered box (3px corners), the challenge in Overpass 600 at 25px, a 3px dotted Faded Ink leader, and the response in B612 Mono caps.
-- **Behavior:** the runtime wraps each line in a toggle button with `aria-pressed`. A checked line gets a grease tick written over its box, and a B612 counter beneath reads "0 of 7 confirmed".
-- **Focus:** a 3px Holder Blue outline, offset 6px.
-- **Print:** a blank card that people can keep.
-
-### Release Board (interactive)
-- **Panel:** a recessed 8px panel with a Rack Rail border. Its header carries a B612 state readout in Sign Yellow, which becomes a mandatory sign while the board waits for a human clearance.
-- **Rows and columns:** the column heads are uppercase Overpass 800, and the active column turns Sign Yellow (Grease Under Lamp while waiting). Strips are the rows, with 80px stage boxes.
-- **Marks:** a grease tick means pass or clear, a ring means hold or rollback, a tilted Faded Ink stamp means a rubber-stamp review, a faint slash means skipped, and a red tint means an incident.
-- **Outcome column:** Pass Ink when landed, and Grease Pencil when held, rolled back, or an incident.
-- **Console line:** a live region announces each step under the strips.
-- **Static state:** print and no-JavaScript views show the authored Evidence-first snapshot, with a one-line Vibe-shipping comparison of mini strips.
-
-### Buttons (console keys)
-- **Shape:** raised graphite caps with 6px corners, 42px tall, padding 9px 15px 6px, and legends in uppercase Overpass 800 tracked +0.06em.
-- **Default:** a graphite gradient with a Lamp Light legend.
-- **Primary:** a pale card-stock cap with a Sign Black legend.
-- **Clear:** a Sign Yellow cap ringed in black and then yellow, like a direction sign made into a key. It is the human gate, and it is disabled until the board reaches review.
-- **Hover / Focus / Active:** hover brightens by 12%. Pressing makes the key travel 2px and shrinks its contact line. Focus is a 3px Edge Light outline offset 3px. A disabled key is 60% opacity with a not-allowed cursor.
-- **Selects:** selects use the same caps with a Lamp Light chevron.
+### Buttons
+Schedule controls, drawn like the parts around them.
+- **Shape:** square with 2px corners, a 2px graphite border and a 2px graphite shade line along the bottom edge.
+- **Default (Step, Replay):** film fill, graphite Label lettering, padding 8px 14px 6px.
+- **Primary (Run board):** graphite fill, film lettering.
+- **Approve:** Redline border and shade line, Redline Ink lettering. While a decision is awaited it nudges twice (lifts 3px, shade line to 5px, 900ms).
+- **Selects** match the default button, with a drawn chevron and sentence-case lettering.
+- **Hover / Focus:** no hover treatment; focus is a 3px Redline outline at 2px offset. Disabled controls drop to 42% opacity. Arrow and page keys pressed on a focused control return to the deck.
 
 ### Chips
-- **Style:** paper tags on the console, in card stock with Strip Ink, 4px corners, and the chip cast. File-name chips use Overpass Mono 700. Evidence tags such as "Intent matches the diff" use Overpass 600.
+- **File chips:** mono at 21px in a 1.5px graphite box, padding 4px 10px 2px, 8 to 10px apart.
+- **Check chips:** a 1.5px box holding a 22px checkbox with a Redline Ink tick and a 21px label, padding 7px 14px 5px 8px. Live, the ticks pop in one after another.
 
-### Code, Tables, and Quotes
-- **Inline code:** Overpass Mono at 0.8em on Raised Graphite, with 4px corners.
-- **Code blocks:** a Deep Well with a 1px Rack Rail border and 6px corners. Keywords are Sign Yellow, titles are Edge Light, and comments are Dimmed Lamp italic.
-- **Tables:** the header row is a location sign. Body rows are ruled in Rack Rail with Raised Graphite zebra rows.
-- **Quotes:** a card-stock note opened by a grease-pencil quotation mark in Permanent Marker.
+### Checklist
+Challenge and response, ticked by a checker.
+- **Rows:** 42px tall, padding 0 18px: a 26px checkbox with a 2px graphite border, the challenge at 24px, a 2px dotted Graphite Soft leader, then the response in Part Title lettering.
+- **State:** each row is a toggle button; a checked row takes the red tick (pops in, 220ms). When every row is checked, the card's Approved for issue stamp lands and the title block is initialed. The PDF prints a blank card.
 
-### Grease Pencil (inline)
-- **Style:** initials or a short note in Permanent Marker, tilted −4°. Use Grease Pencil on paper and Grease Under Lamp on the console.
-- **Bookend marks:** the bookends carry their own marks: a grease underline under "Questions?" and a clearance tick after "Thank You!".
+### Lists and Links
+- **Bullets** are 10x2.5px graphite dashes with a 30px indent; numbered items use a bold numeral and period with a 38px indent; 10px between items.
+- **Links** keep the text color with a 2px Redline underline, offset 4px.
 
-### Navigation
-- **Deck navigation:** Marp's arrow keys and clicker drive the deck, and the page-number location sign is the only navigation chrome.
-- **Interactive controls:** controls keep their own keys. A navigation key pressed on a focused button releases focus and goes back to the deck, so a presenter's clicker never gets stuck.
+### Detail Views (photographs)
+- A photo is a detail on the sheet: inside the frame, in a 2.5px graphite border on film, printed with a multiply blend, and labeled in Label lettering ("Detail A"). The bio portrait is a background photo clipped to the frame; live, it develops from grayscale (1600ms).
 
-### Motion Verbs
-Motion belongs to the objects above. The house ease is a fast-out, long-settle curve, `cubic-bezier(0.16, 1, 0.3, 1)`.
-- **Slot:** a strip or list item slides in from 56px to the right, at 560–900ms with a 70–160ms stagger.
-- **Print:** a strip or sheet is revealed top-down while dropping 28px, at 800–900ms.
-- **Drop:** a pile lands from 46px above.
-- **Ink:** a grease mark reveals left to right, at 380–700ms, after its object lands.
-- **Cock:** the strip shifts out of line.
-- **Clear:** the holder turns green or red at the end of the sequence.
-- **Cross:** a cleared strip crosses the hold line.
-- **Go-around:** a strip lifts with a deep cast and falls back into hold.
-- **Handoff:** the review token travels worker, reviewer, worker, reviewer, you, and its holder changes with each pass.
-- **Transitions:** `strip` is a 650ms push, and the outgoing slide dims to 55%. `handoff` is a 900ms clear-then-arrive, so only the morphing strip is visible mid-flight.
-- **Morphs:** one `fs-hero` per slide, plus the `fs-route` band.
+### Sheet Note
+- A NOTE marker in Label lettering, then one line in Note lettering, on a two-column grid with a 14px gap. Live, it fades in at 400ms.
 
-**The Complete Without Motion Rule.** The authored markup is the finished state. Motion only animates into it, with backwards fills, so nothing lingers. Every effect is gated by the live audience slide (`fs-live`: visible tab, not printing, no reduced-motion preference) and settles within 4.7 seconds. Print restores the authored snapshot, and runtime-only content has a static twin.
+### Transitions
+- **Sheet** (the default): the next sheet is laid on the set in 650ms; the incoming sheet slides 56px and fades in while the outgoing one slides 28px away.
+- **Handoff:** a 900ms cross-fade with a gap in the middle (the outgoing sheet is gone by 40%, the incoming one appears from 55%), so the change tag can morph between sheets.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** put every slide on Graphite Console (#1b2023) with Lamp Light text, and put evidence (strips, sheets, chips, quotes) on Buff Card Stock (#efe6cc) in Strip Ink (#1a2540).
-- **Do** end a content slide with at most one takeaway: a direction sign pinned bottom left, with clear air between it and the composition above.
-- **Do** show a change's state with its holder (amber in progress, green cleared, red held) and a person's decision with grease (tick, ring, strike, initials).
-- **Do** set callsigns, field captions, and readouts in B612 Mono, and file names, paths, and commands in Overpass Mono.
-- **Do** keep labels at about 18px or more and sentences at about 22px or more at 1280×720.
-- **Do** keep every motion finite. Play it only on the live audience slide, use backwards fills, and let it settle within 4.7 seconds.
-- **Do** author the finished state in markup, so reduced-motion, print and PDF, presenter, and no-JavaScript views show a complete slide, and give runtime-only content a static twin.
-- **Do** carry one strip across consecutive slides with the shared hero morph name, one hero per slide.
-- **Do** label illustrative boards, changes, and percentages as fictional or illustrative on the slide itself.
+- **Do** letter each sheet's headline at 48px on a 54px line with its 1px non-photo-blue baseline guide.
+- **Do** cloud exactly what changed with a drawn cloud asset, and tag it with the delta letter that matches the revision table.
+- **Do** fill title-block signatures only from the sheet's state (`checked`, `approved`, `rev-a/b/c`), and leave the dotted line empty until the sheet earns it.
+- **Do** end a content sheet with one note, 16px above the title block.
+- **Do** label simulated data on the sheet itself, in Label lettering.
+- **Do** build new drawn parts from film fill, a 2.5px graphite outline, 1.5px dividers and 1px Hairline Rule rows.
+- **Do** author the static sheet first: anything the runtime changes gets a static twin that prints (`co-static`) and a live twin shown only in the audience window (`co-dynamic`).
+- **Do** gate motion to the live audience sheet (`section.co-live`) inside a no-preference reduced-motion query, with backwards fills, finished by 4.95s.
 
 ### Don't:
-- **Don't** use the neon AI-talk look or a white corporate template. The lightest surface is buff card stock, and light comes only from the lamp, the faint edge light, and real signal lights.
-- **Don't** fake a holder with a colored left border or a tinted card. Build it from layered backgrounds, and keep the 2px printed field rules inside the card.
-- **Don't** swap the reds. Mandatory Red goes only on signs, Red Holder only on strips, and Grease only on a person's marks and the holds they cause.
-- **Don't** pick holder colors for variety or give the deck's strips a fourth state color.
-- **Don't** set file paths or anything with a period in B612 Mono, and don't put `·` in Overpass text.
-- **Don't** animate signs or loop motion. The only repeating motion is the active-box pulse while a presenter-started board runs.
-- **Don't** suggest lift with x-offset shadows, colored shadows, or glows. Lengthen the cast instead.
-- **Don't** reuse the sub-floor sizes (13–17px) of strip captions, slot legends, and release-board controls as a scale step for new text.
+- **Don't** use red for anything that did not change, was not decided, and is not the next point of attention: no red headings, red emphasis or decorative red rules.
+- **Don't** set any text in non-photo blue, or draw it heavier than 1px.
+- **Don't** set prose in the hand face, or anything but file names, paths and commands in the mono.
+- **Don't** add blurred shadows or glows.
+- **Don't** fake a revision cloud with a CSS border, radius or dash pattern, or load a mask from an asset file.
+- **Don't** rotate typeset lettering, frames or drawn parts; only stamps, initials and strikes lean.
+- **Don't** add looping motion; the only loop is the running-cell pulse while a presenter-started schedule runs.
+- **Don't** put content in the 28px zone margin or over the title block.
+- **Don't** drift toward the neon AI-talk deck, a white corporate template, or borrowed aviation.
+- **Don't** letter below the floor (18px labels, 22px sentences) to fit content onto a sheet.
+- **Don't** reach for the template's layout classes (`lead`, `invert`, `columns3`) when a drawn part fits; they stay only for template compatibility.
