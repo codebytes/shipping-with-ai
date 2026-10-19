@@ -2,1402 +2,1204 @@
 /* @theme custom-default */
 
 /*
- * DIRECTION CONTRACT: Flight Strip Board
- * THESIS: Every AI-written change is a flight strip that moves to the next bay
- *   only when someone writes its clearance. Refuses the neon AI-talk deck and
- *   the white corporate template.
- * OWN-WORLD: A night tower cab. Graphite strip console under a warm lamp; buff
- *   card-stock strips in amber, green, and red plastic holders; strip data in
- *   B612 Mono; red grease-pencil marks; airfield signs in Overpass: red
- *   mandatory, yellow-on-black location, black-on-yellow direction.
- * STORY: Code got cheap, regret has three shapes, one strip earns its way
- *   through brief, tests, and review, then rings, a go-around, and a checklist.
- * FIRST VIEWPORT: The title printed on a giant strip held at a red PROD sign;
- *   grease ticks clear four boxes and the strip crosses the hold line.
- * FORM: Flight strip board, grounded candidate 3 of 7; staging: one strip's
- *   journey across bays through native morphs; seed e24629bc.
+ * DIRECTION CONTRACT: The category standard, light
+ * THESIS: The release tooling the audience already trusts is the illustration: checks, pull
+ *   requests, boards, and deployment rings, shown crisp and large. No governing metaphor;
+ *   refuses costume worlds and the dark neon AI deck.
+ * OWN-WORLD: A cool off-white canvas, white panels with hairline borders and soft offset
+ *   shadows; Mona Sans throughout, Monaspace Neon only for IDs, code, and file names; status
+ *   colors with fixed meanings: green pass, amber in progress or held, red errors and rollback,
+ *   violet agent; one blue accent for takeaways and links.
+ * STORY: Code got cheap; regret has three shapes; instructions, a spec, tests, and review move
+ *   one change (AI-0142) across a board; a release board ships to rings; a rollback; a checklist.
+ * FIRST VIEWPORT: The title at 74px on the left; on the right, AI-0142's check run turning
+ *   green step by step: spec, tests, a human approval, rings filling to 100%, then Landed.
+ * FORM: The category standard, chosen by the speaker over the dealt directions and set light;
+ *   craft bar: the speaker's marp-demo decks and GitHub Universe keynotes; seed e24629bc, re-roll 1.
  */
 
-@import 'default';
-@import 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css';
+@import url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css');
 
 /* Bundled fonts (see slides/assets/fonts/LICENSE.md). Paths resolve beside the exported HTML. */
-@font-face { font-family: "FS Overpass"; src: url("assets/fonts/overpass-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
-@font-face { font-family: "FS Overpass"; src: url("assets/fonts/overpass-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: block; }
-@font-face { font-family: "FS Overpass"; src: url("assets/fonts/overpass-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: block; }
-@font-face { font-family: "FS Overpass"; src: url("assets/fonts/overpass-latin-800-normal.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: block; }
-@font-face { font-family: "FS Overpass Mono"; src: url("assets/fonts/overpass-mono-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: block; }
-@font-face { font-family: "FS Overpass Mono"; src: url("assets/fonts/overpass-mono-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: block; }
-@font-face { font-family: "FS B612 Mono"; src: url("assets/fonts/b612-mono-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: block; }
-@font-face { font-family: "FS B612 Mono"; src: url("assets/fonts/b612-mono-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: block; }
-@font-face { font-family: "FS Marker"; src: url("assets/fonts/permanent-marker-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: block; }
+@font-face { font-family: "SW Sans"; src: url("assets/fonts/mona-sans-latin-standard-normal.woff2") format("woff2"); font-weight: 200 900; font-stretch: 75% 125%; font-style: normal; font-display: block; }
+@font-face { font-family: "SW Sans"; src: url("assets/fonts/mona-sans-latin-standard-italic.woff2") format("woff2"); font-weight: 200 900; font-stretch: 75% 125%; font-style: italic; font-display: block; }
+@font-face { font-family: "SW Mono"; src: url("assets/fonts/monaspace-neon-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: block; }
+@font-face { font-family: "SW Mono"; src: url("assets/fonts/monaspace-neon-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: block; }
+
+@property --n { syntax: "<integer>"; inherits: false; initial-value: 0; }
 
 /* ---------- Tokens ---------- */
 
 :root {
-  --color-background: #1b2023;
-  --color-foreground: #ebe5d5;
-  --color-highlight: #8fc4ff;
-  --color-dimmed: #a9b1ad;
+  --color-background: #f4f6f9;
+  --color-foreground: #1f2328;
+  --color-highlight: #0a5bc4;
+  --color-dimmed: #57606a;
 }
 
 section {
-  /* The console */
-  --console: #1b2023;
-  --console-deep: #121618;
-  --console-raised: #242b2f;
-  --rail: #3a444a;
-  --rail-light: #56636a;
-  --lamp: #ebe5d5;
-  --dim: #a9b1ad;
-  --edge-light: #8fc4ff;
-  /* Card-stock strips */
-  --paper: #efe6cc;
-  --paper-shade: #e3d7b5;
-  --paper-line: #c4b48b;
-  --ink: #1a2540;
-  --ink-soft: #485166;
-  --grease: #b8281a;
-  --grease-lamp: #ff8a6b;
-  /* Airfield signs */
-  --sign-red: #c8102e;
-  --sign-yellow: #f6c21c;
-  --sign-black: #121416;
-  /* Strip holders */
-  --amber: #e2a33a;
-  --green: #3f9a6b;
-  --red: #c9402b;
-  --blue: #4a7cc0;
+  /* Surfaces */
+  --canvas: #f4f6f9;
+  --surface: #ffffff;
+  --subtle: #f6f8fa;
+  --well: #e9edf2;
+  --line: #d0d7de;
+  --line-soft: #e3e8ee;
+  --line-strong: #8c959f;
+  /* Text */
+  --ink: #1f2328;
+  --ink-2: #57606a;
+  /* One accent: takeaways, links, focus */
+  --accent: #0a5bc4;
+  --accent-solid: #0969da;
+  --accent-tint: #ddf4ff;
+  --avatar-tint: #dbe8f8;
+  /* Status: each color means one thing everywhere */
+  --pass: #116329;
+  --pass-solid: #1a7f37;
+  --pass-tint: #dafbe1;
+  --pass-line: #aceebb;
+  --hold: #7d4e00;
+  --hold-solid: #9a6700;
+  --spin: #bf8700;
+  --hold-tint: #fff8c5;
+  --hold-line: #eed888;
+  --back: #a40e26;
+  --back-solid: #cf222e;
+  --back-tint: #ffebe9;
+  --back-line: #ffcecb;
+  --agent: #6639ba;
+  --agent-tint: #fbefff;
+  --agent-line: #e4d0ff;
   /* Type */
-  --fs-sans: "FS Overpass", "Overpass", "Segoe UI", system-ui, sans-serif;
-  --fs-data: "FS B612 Mono", "B612 Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --fs-code: "FS Overpass Mono", "Overpass Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --fs-hand: "FS Marker", "Permanent Marker", "Marker Felt", "Comic Sans MS", cursive;
-  --fs-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --sans: "SW Sans", "Mona Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "SW Mono", "Monaspace Neon", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  /* Shape and depth */
+  --radius: 14px;
+  --shadow: 0 1px 2px rgb(31 35 40 / 0.06), 0 12px 28px -14px rgb(31 35 40 / 0.2);
+  --shadow-lift: 0 2px 4px rgb(31 35 40 / 0.05), 0 22px 44px -18px rgb(31 35 40 / 0.28);
+  /* Motion */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* Icons, drawn once and tinted with currentColor through masks */
+  --i-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.4 8.5l3 3 6.2-7' fill='none' stroke='%23000' stroke-width='2.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --i-x: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.6 4.6l6.8 6.8M11.4 4.6l-6.8 6.8' fill='none' stroke='%23000' stroke-width='2.3' stroke-linecap='round'/%3E%3C/svg%3E");
+  --i-pause: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='3.6' y='3' width='3' height='10' rx='1'/%3E%3Crect x='9.4' y='3' width='3' height='10' rx='1'/%3E%3C/svg%3E");
+  --i-undo: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 3.4 2.9 6.5 6 9.6'/%3E%3Cpath d='M3.3 6.5h6.2a3.5 3.5 0 0 1 0 7H7'/%3E%3C/svg%3E");
+  --i-play: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.6 2.8v10.4L13 8z'/%3E%3C/svg%3E");
+  --i-step: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2.8 2.8v10.4L10.2 8z'/%3E%3Crect x='11' y='2.8' width='2.4' height='10.4' rx='1'/%3E%3C/svg%3E");
+  --i-replay: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12.9 8.4A5 5 0 1 1 11.3 4.2'/%3E%3Cpath d='M12.3 1.9v3.4H8.9'/%3E%3C/svg%3E");
+  --i-bot: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.2a1.4 1.4 0 0 1 .7 2.6v1.6h4.1A3.2 3.2 0 0 1 20 9.6v7.6a3.2 3.2 0 0 1-3.2 3.2H7.2A3.2 3.2 0 0 1 4 17.2V9.6a3.2 3.2 0 0 1 3.2-3.2h4.1V4.8A1.4 1.4 0 0 1 12 2.2zM9 11.6a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2zm6 0a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2zM1.6 11h1.2v5H1.6a.8.8 0 0 1-.8-.8v-3.4a.8.8 0 0 1 .8-.8zm20.8 0h-1.2v5h1.2a.8.8 0 0 0 .8-.8v-3.4a.8.8 0 0 0-.8-.8z'/%3E%3C/svg%3E");
+  --i-person: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='5' r='2.9'/%3E%3Cpath d='M2.4 14.2c.5-3.1 2.8-4.9 5.6-4.9s5.1 1.8 5.6 4.9z'/%3E%3C/svg%3E");
+  --i-file: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'%3E%3Cpath d='M3.5 1.8h6l3 3v9.4h-9z'/%3E%3Cpath d='M9.3 1.8v3.2h3.2'/%3E%3Cpath d='M5.6 8.6h4.8M5.6 11.2h4.8' stroke-linecap='round'/%3E%3C/svg%3E");
+  --i-folder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M1.8 3.7c0-.7.5-1.2 1.2-1.2h3.2l1.6 1.6h5.2c.7 0 1.2.5 1.2 1.2v7c0 .7-.5 1.2-1.2 1.2H3c-.7 0-1.2-.5-1.2-1.2z'/%3E%3C/svg%3E");
+  --i-branch: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.6'%3E%3Ccircle cx='4.5' cy='3.5' r='1.8'/%3E%3Ccircle cx='4.5' cy='12.5' r='1.8'/%3E%3Ccircle cx='11.5' cy='4.5' r='1.8'/%3E%3Cpath d='M4.5 5.3v5.4M11.5 6.3c0 3.2-7 2.2-7 4.4'/%3E%3C/svg%3E");
+  --i-white-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.4 8.5l3 3 6.2-7' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 
-  --color-background: var(--console);
-  --color-foreground: var(--lamp);
-  --color-highlight: var(--edge-light);
-  --color-dimmed: var(--dim);
-
-  background:
-    radial-gradient(1100px 600px at 12% -16%, rgba(240, 226, 190, 0.13), transparent 62%),
-    radial-gradient(900px 420px at 108% 118%, rgba(143, 196, 255, 0.05), transparent 60%),
-    var(--console);
-  color: var(--lamp);
-  font-family: var(--fs-sans);
-  font-size: 28px;
-  font-weight: 400;
-  line-height: 1.38;
-  letter-spacing: 0;
-  padding: 60px 72px 70px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  width: 1280px;
+  height: 720px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  padding: 50px 72px 0;
+  background: radial-gradient(ellipse 62% 70% at 100% 0%, #e6eefa 0, rgb(230 238 250 / 0) 72%), var(--canvas);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 26px;
+  font-weight: 430;
+  font-stretch: 100%;
+  line-height: 1.45;
+  letter-spacing: -0.004em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 section *, section *::before, section *::after { box-sizing: border-box; }
-/* Content slides read from the top; title, question, and split-photo slides stay centered. */
-section:has(> h2):not([data-marpit-advanced-background-split]) { justify-content: flex-start; }
 
 /* ---------- Type ---------- */
 
-section h1, section h2, section h3, section h4 {
-  color: var(--lamp);
-  font-family: var(--fs-sans);
-  font-weight: 800;
-  letter-spacing: -0.015em;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  text-wrap: balance;
-}
-section h1 { font-size: 80px; line-height: 0.98; }
-section h2 { font-size: 50px; line-height: 1.06; }
-section h3 { font-size: 32px; line-height: 1.15; font-weight: 600; letter-spacing: -0.01em; }
-section h4 { font-size: 20px; line-height: 1.2; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dim); }
-section h1 + *, section h2 + * { margin-top: 18px; }
-section p, section ul, section ol, section blockquote, section table, section pre, section dl { margin: 18px 0 0; }
-section strong, section b { font-weight: 800; }
-section em { font-style: italic; }
-section a { color: var(--edge-light); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
-section .lede { color: var(--dim); font-size: 26px; max-width: 30em; }
-section .note { color: var(--dim); font-size: 17px; }
+section h1, section h2, section h3 { margin: 0; color: var(--ink); font-weight: 690; font-stretch: 104%; text-wrap: balance; }
+section h1 { font-size: 76px; line-height: 1.02; letter-spacing: -0.035em; }
+section h2 { max-width: 1080px; margin-bottom: 28px; font-size: 48px; line-height: 1.1; letter-spacing: -0.027em; }
+section h3 { font-size: 30px; line-height: 1.2; letter-spacing: -0.015em; }
+section p { margin: 0; }
+section p, section li, section dd { text-wrap: pretty; }
+section b, section strong { font-weight: 640; }
+section a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 4px; text-decoration-color: rgb(10 91 196 / 0.4); }
+section code { padding: 0.1em 0.38em; border: 1px solid var(--line-soft); border-radius: 6px; background: #eef1f4; color: var(--ink); font-family: var(--mono); font-size: 0.76em; font-weight: 400; letter-spacing: 0; white-space: nowrap; }
+section pre { margin: 0; padding: 16px 20px; border: 1px solid var(--line); border-radius: 10px; background: var(--subtle); font-size: 22px; line-height: 1.45; }
+section pre code { padding: 0; border: 0; background: none; font-size: inherit; white-space: pre; }
+section ul, section ol { margin: 0; padding: 0; list-style: none; }
+section ul:not([class]) > li { position: relative; padding-left: 30px; }
+section ul:not([class]) > li + li { margin-top: 12px; }
+section ul:not([class]) > li::before { content: ""; position: absolute; left: 5px; top: 0.6em; width: 9px; height: 9px; border-radius: 50%; background: var(--line-strong); }
+section ol:not([class]) { counter-reset: item; }
+section ol:not([class]) > li { counter-increment: item; position: relative; padding-left: 36px; }
+section ol:not([class]) > li + li { margin-top: 12px; }
+section ol:not([class]) > li::before { content: counter(item) "."; position: absolute; left: 0; color: var(--ink-2); font-weight: 640; }
+section img { max-width: 100%; }
+section table:not([class]) { border-collapse: collapse; font-size: 22px; }
+section table:not([class]) th, section table:not([class]) td { padding: 10px 16px; border-bottom: 1px solid var(--line); text-align: left; }
+section table:not([class]) th { font-size: 18px; font-weight: 640; color: var(--ink-2); }
+section blockquote { margin: 0; padding: 4px 0 4px 24px; border-left: 1px solid var(--line-strong); color: var(--ink-2); }
+section .fa, section .fa-brands { width: 1.3em; color: var(--ink-2); text-align: center; }
+/* Brand marks keep their own colors: they are logos, not the accent. */
+section .fa-twitter, section .fa-x-twitter { color: #1da1f2; }
+section .fa-mastodon { color: #6364ff; }
+section .fa-linkedin { color: #0a66c2; }
+section .fa-window-maximize { color: #0366d6; }
+section .fa-github { color: #333333; }
+section .fa-bluesky { color: #1185fe; }
+section .fa-youtube { color: #ff0000; }
+section.invert .fa-github { color: var(--ink); }
 
-section ul { list-style: none; padding-left: 0; }
-section ul > li { position: relative; padding-left: 1.05em; }
-section ul > li::before {
-  content: "";
-  position: absolute;
-  left: 0.1em;
-  top: 0.48em;
-  width: 0.42em;
-  height: 0.42em;
-  background: var(--sign-yellow);
-  box-shadow: 0 0 0 2px var(--sign-black);
-}
-section ol { padding-left: 1.3em; }
-section ol > li::marker { color: var(--sign-yellow); font-weight: 800; }
-section li + li { margin-top: 0.3em; }
-section li > p { margin: 0; }
+/* ---------- Chrome: footer and page number ---------- */
 
-section code { font-family: var(--fs-code); font-size: 0.8em; }
-section :not(pre) > code { background: var(--console-raised); color: var(--lamp); padding: 0.1em 0.38em; border-radius: 4px; }
-section pre {
-  background: var(--console-deep);
-  border: 1px solid var(--rail);
-  border-radius: 6px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 10px 24px rgba(0, 0, 0, 0.28);
-  color: var(--lamp);
-  padding: 18px 22px;
-}
-section pre code { background: transparent; color: var(--lamp); font-size: 22px; line-height: 1.5; padding: 0; }
-section pre .hljs-keyword, section pre .hljs-built_in, section pre .hljs-selector-tag { color: var(--sign-yellow); }
-section pre .hljs-string, section pre .hljs-attr { color: #a8dbb2; }
-section pre .hljs-number, section pre .hljs-literal { color: #ffb48f; }
-section pre .hljs-title, section pre .hljs-function, section pre .hljs-name { color: var(--edge-light); }
-section pre .hljs-comment, section pre .hljs-quote { color: var(--dim); font-style: italic; }
-
-section table { border-collapse: collapse; width: 100%; font-size: 0.82em; display: table; }
-section table tr { background: transparent; border: 0; border-top: 1px solid var(--rail); }
-section table tr:nth-child(2n) { background: var(--console-raised); }
-section table th, section table td { border: 0; padding: 0.45em 0.7em; text-align: left; }
-section table th {
-  background: var(--sign-black);
-  border-bottom: 3px solid var(--sign-yellow);
-  color: var(--sign-yellow);
-  font-size: 0.75em;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-section blockquote {
-  background: var(--paper);
-  border: 0;
-  border-radius: 4px;
-  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.25), 0 14px 28px rgba(0, 0, 0, 0.3);
-  color: var(--ink);
-  font-size: 0.95em;
-  padding: 20px 28px 18px 64px;
-  position: relative;
-}
-section blockquote::before {
-  content: "\201C";
-  position: absolute;
-  left: 18px;
-  top: 4px;
-  color: var(--grease);
-  font: 64px/1 var(--fs-hand);
-}
-section blockquote p { margin: 0; color: var(--ink); }
-section blockquote p + p { margin-top: 10px; }
-
-section img { background: transparent; }
-img[alt~="center"] { display: block; margin: 0 auto; }
-
-svg[id^="mermaid-"] { max-width: 100%; max-height: 500px; }
-
-/* ---------- Chrome: footer and pagination as a location sign ---------- */
-
-section > header, section > footer {
-  color: var(--dim);
-  font: 600 16px/1.2 var(--fs-sans);
-  letter-spacing: 0.02em;
-  left: 72px;
-  right: 200px;
-}
-section > header { top: 22px; }
-section > footer { bottom: 28px; }
-
-section::after { display: none; }
+section > footer { position: absolute; left: 72px; bottom: 28px; margin: 0; font-size: 17px; font-weight: 500; line-height: 1; letter-spacing: 0; color: var(--ink-2); }
+section > footer a { color: inherit; text-decoration: none; }
 section[data-marpit-pagination]::after {
-  content: attr(data-marpit-pagination);
+  content: attr(data-marpit-pagination) " / " attr(data-marpit-pagination-total);
   position: absolute;
   right: 72px;
-  bottom: 22px;
+  bottom: 28px;
+  padding: 0;
+  font: 400 17px/1 var(--mono);
+  color: var(--ink-2);
+}
+
+/* ---------- Template classes ---------- */
+
+section.lead { display: flex; flex-direction: column; justify-content: center; text-align: center; }
+section.lead h1, section.lead h2 { margin-inline: auto; }
+section.invert {
+  --canvas: #0d1117; --surface: #161b22; --subtle: #1c2128; --well: #21262d; --line: #3d444d; --line-soft: #2a3038; --line-strong: #6e7681;
+  --ink: #e6edf3; --ink-2: #9ea7b3; --accent: #58a6ff; --accent-solid: #4493f8; --accent-tint: #15284a; --avatar-tint: #1d3354;
+  --pass: #56d364; --pass-solid: #2ea043; --pass-tint: #12261e; --pass-line: #1f6f3a;
+  --hold: #e3b341; --hold-solid: #bb8009; --hold-tint: #2b2111; --hold-line: #6e5413;
+  --back: #ff7b72; --back-solid: #da3633; --back-tint: #2d1517; --back-line: #7d2c2c;
+  --agent: #d2a8ff; --agent-tint: #271b3d; --agent-line: #553a85;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 12px 28px -14px rgb(0 0 0 / 0.6);
+  background: radial-gradient(ellipse 62% 70% at 100% 0%, #162236 0, rgb(22 34 54 / 0) 72%), var(--canvas);
+}
+section.invert code { background: var(--well); }
+section.small { font-size: 22px; }
+section.small h2 { font-size: 40px; }
+section .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+section .columns3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+section.columns > :not(h1, h2, header, footer) { display: inline-block; vertical-align: top; width: calc(50% - 26px); }
+
+/* ---------- Components ---------- */
+
+/* Panels: one white surface, a hairline border, a soft offset shadow. Never nested. */
+section .panel, section .queue, section .regrets, section .file, section .board, section .deploy, section .tool-map, section .check-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+section .panel-head, section .queue-head, section .file-head, section .deploy-head, section .cl-head {
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-width: 48px;
-  height: 34px;
-  padding: 3px 12px 0;
-  background: var(--sign-black);
-  color: var(--sign-yellow);
-  font: 800 19px/1 var(--fs-sans);
-  letter-spacing: 0.04em;
-  text-align: center;
-  border-radius: 3px;
-  outline: 2px solid var(--sign-yellow);
-  outline-offset: -6px;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+  gap: 12px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--line-soft);
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--subtle);
+  font-size: 21px;
+  line-height: 1.25;
 }
+section .panel-head b, section .queue-head b, section .deploy-head b, section .cl-head b { font-weight: 650; }
+section .panel-head code, section .file-head code { padding: 0; border: 0; background: none; color: var(--ink-2); font-size: 18px; }
 
-/* ---------- Slide classes ---------- */
+/* IDs, code, and file names are the only monospace. */
+section .id { font-family: var(--mono); font-size: 18px; font-weight: 400; letter-spacing: 0; color: var(--ink-2); white-space: nowrap; }
 
-section.lead { justify-content: center; align-items: center; text-align: center; }
-section.lead h1 { font-size: 88px; }
-
-/* The night console: a darker cab for emphasis slides. */
-section.invert {
-  --console: #111416;
-  --console-raised: #1c2124;
-  background:
-    radial-gradient(900px 520px at 50% -30%, rgba(240, 226, 190, 0.1), transparent 64%),
-    var(--console);
-}
-
-/* The paper variant: the whole slide becomes card stock. */
-section.paper {
-  --lamp: var(--ink);
-  --dim: var(--ink-soft);
-  --edge-light: #1f4f9a;
-  --console-raised: var(--paper-shade);
-  --rail: var(--paper-line);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.35), transparent 40%),
-    var(--paper);
-  color: var(--ink);
-}
-section.paper .grease { color: var(--grease); }
-
-section.small { font-size: 23px; }
-section.small h1 { font-size: 60px; }
-section.small h2 { font-size: 34px; }
-
-section.columns, section.columns3 {
-  display: grid;
-  grid-template-rows: auto auto auto;
-  grid-auto-flow: column;
-  gap: 0 2rem;
-  align-content: center;
-}
-section.columns { grid-template-columns: repeat(2, 1fr); }
-section.columns3 { grid-template-columns: repeat(3, 1fr); }
-section.columns > h1, section.columns3 > h1 { grid-column: 1 / -1; grid-row: 1; }
-section.columns > footer, section.columns3 > footer { grid-column: 1 / -1; position: absolute; bottom: 28px; width: auto; }
-section.columns::after, section.columns3::after { position: absolute; }
-
-div.columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 2rem; align-items: start; }
-div.columns3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem 2rem; align-items: start; }
-.split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; align-items: start; }
-.split > * { margin-top: 0; min-width: 0; }
-
-
-/* Font Awesome icon colors, tuned for the dark console */
-.fa-twitter, .fa-x-twitter { color: #5bb8f5; }
-.fa-mastodon { color: #9a9bff; }
-.fa-linkedin { color: #4f9ce8; }
-.fa-window-maximize { color: var(--edge-light); }
-.fa-github { color: var(--lamp); }
-.fa-bluesky { color: #4aa3ff; }
-.fa-youtube { color: #ff5a5a; }
-section.paper .fa-github { color: var(--ink); }
-section emoji { font-size: 1.2em; }
-
-/* Split-background photos sit in the console's light rather than glaring at the room. */
-section[data-marpit-advanced-background="background"] { filter: brightness(0.86) saturate(1) sepia(0.12); }
-
-/* ---------- Airfield signs ---------- */
-
-section .sign {
+/* Chips carry status. The icon says the same thing as the color. */
+section .chip {
+  --icon: none;
   display: inline-flex;
   align-items: center;
-  gap: 0.4em;
-  border-radius: 3px;
-  font: 800 0.82em/1 var(--fs-sans);
-  letter-spacing: 0.04em;
-  padding: 0.3em 0.55em 0.18em;
-  text-transform: uppercase;
-  vertical-align: 0.08em;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--subtle);
+  color: var(--ink-2);
+  font: 600 18px/1 var(--sans);
+  letter-spacing: 0;
   white-space: nowrap;
+  vertical-align: middle;
 }
-/* Mandatory instruction: you may not proceed without a clearance. */
-section .sign.hold { background: var(--sign-red); color: #fff; box-shadow: 0 0 0 2px var(--sign-black), 0 6px 14px rgba(0, 0, 0, 0.35); }
-/* Location: you are here. */
-section .sign.here { background: var(--sign-black); color: var(--sign-yellow); outline: 2px solid var(--sign-yellow); outline-offset: -5px; box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35); }
-/* Direction: the way to go. */
-section .sign.go { background: var(--sign-yellow); color: var(--sign-black); box-shadow: 0 0 0 2px var(--sign-black), 0 6px 14px rgba(0, 0, 0, 0.35); }
-section .sign.go::after {
-  content: "";
-  width: 1em;
-  height: 0.75em;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 26'%3E%3Cpath fill='%23121416' d='M0 9h19V1l15 12-15 12v-8H0z'/%3E%3C/svg%3E") center / contain no-repeat;
-}
-
-/* A takeaway is a direction sign: the way to go next. */
-section .takeaway {
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  gap: 18px;
-  margin-top: auto;
-  max-width: 100%;
-  padding: 13px 24px 10px 18px;
-  background: var(--sign-yellow);
-  color: var(--sign-black);
-  border-radius: 4px;
-  box-shadow: 0 0 0 3px var(--sign-black), 0 12px 26px rgba(0, 0, 0, 0.4);
-  font: 800 27px/1.18 var(--fs-sans);
-  letter-spacing: -0.005em;
-}
-section .takeaway::before {
+section .chip.pass, section .chip.hold, section .chip.back, section .chip.agent, section .chip.human { padding-left: 10px; }
+section .chip.pass::before, section .chip.hold::before, section .chip.back::before, section .chip.agent::before, section .chip.human::before {
   content: "";
   flex: none;
-  width: 36px;
-  height: 28px;
-  margin-top: -3px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 26'%3E%3Cpath fill='%23121416' d='M0 9h19V1l15 12-15 12v-8H0z'/%3E%3C/svg%3E") center / contain no-repeat;
+  width: 15px;
+  height: 15px;
+  background: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
 }
-section .takeaway + .note { margin-top: 10px; }
+section .chip.pass { --icon: var(--i-check); border-color: var(--pass-line); background: var(--pass-tint); color: var(--pass); }
+section .chip.hold { --icon: var(--i-pause); border-color: var(--hold-line); background: var(--hold-tint); color: var(--hold); }
+section .chip.back { --icon: var(--i-undo); border-color: var(--back-line); background: var(--back-tint); color: var(--back); }
+section .chip.agent { --icon: var(--i-bot); border-color: var(--agent-line); background: var(--agent-tint); color: var(--agent); }
+section .chip.human { --icon: var(--i-person); }
 
-/* ---------- Grease pencil ---------- */
-
-section .grease {
-  color: var(--grease-lamp);
-  display: inline-block;
-  font: 400 1em/1.1 var(--fs-hand);
-  font-style: normal;
-  letter-spacing: 0.01em;
-  rotate: -4deg;
-}
-
-/* ---------- Flight strips ---------- */
-
-/* The strip is a plastic holder; the card-stock strip sits inside it. */
-section .strip {
-  --holder: var(--amber);
-  --holder-hi: color-mix(in srgb, var(--holder) 70%, white);
-  --holder-lo: color-mix(in srgb, var(--holder) 78%, black);
+/* Status icons: queued is a hollow ring, in progress spins amber, done fills with a glyph. */
+section .st {
+  --c: var(--pass-solid);
+  --icon: var(--i-check);
   position: relative;
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: 172px minmax(0, 1fr);
-  grid-auto-columns: minmax(96px, auto);
-  min-height: 86px;
-  padding: 4px 5px 4px 18px;
-  border-radius: 6px;
-  color: var(--ink);
-  font-family: var(--fs-data);
-  background-image:
-    linear-gradient(180deg, #f5edd6 0%, var(--paper) 45%, var(--paper-shade) 100%),
-    repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0 2px, transparent 2px 7px),
-    linear-gradient(180deg, var(--holder-hi), var(--holder) 40%, var(--holder-lo));
-  background-clip: content-box, border-box, border-box;
-  background-origin: content-box, border-box, border-box;
-  background-size: 100% 100%, 18px 100%, 100% 100%;
-  background-repeat: no-repeat;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.35),
-    0 2px 0 rgba(0, 0, 0, 0.3),
-    0 12px 24px rgba(0, 0, 0, 0.32);
-  transition: --holder 400ms ease, transform 500ms var(--fs-ease), box-shadow 500ms var(--fs-ease);
-}
-section .strip[data-holder="green"] { --holder: var(--green); }
-section .strip[data-holder="red"] { --holder: var(--red); }
-section .strip[data-holder="blue"] { --holder: var(--blue); }
-section .strip[data-holder="grey"] { --holder: #7d878c; }
-
-section .strip > b {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 10px 16px;
-  border-right: 2px solid var(--paper-line);
-  color: var(--ink);
-  font: 700 26px/1 var(--fs-data);
-  letter-spacing: 0.01em;
-  white-space: nowrap;
-}
-section .strip > b > small {
-  white-space: normal;
-  display: block;
-  margin-top: 7px;
-  color: var(--ink-soft);
-  font: 400 14px/1.2 var(--fs-data);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-section .strip > span {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-width: 0;
-  padding: 9px 18px;
-}
-section .strip > span > strong {
-  color: var(--ink);
-  font: 800 25px/1.12 var(--fs-sans);
-  letter-spacing: -0.01em;
-}
-section .strip > span > small {
-  color: var(--ink-soft);
-  font: 400 17px/1.3 var(--fs-sans);
-  margin-top: 4px;
-}
-/* Printed field boxes. The label sits top-left; a grease mark lands in the box. */
-section .strip > i {
-  position: relative;
-  display: block;
-  min-width: 96px;
-  padding: 9px 10px;
-  border-left: 2px solid var(--paper-line);
-  color: var(--ink-soft);
-  font: 700 14px/1 var(--fs-data);
-  font-style: normal;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-section .strip > i::after {
-  content: "";
-  position: absolute;
-  inset: 26px 18px 9px;
-  background: center / contain no-repeat;
-}
-/* Grease tick */
-section .strip > i.ok::after {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 32'%3E%3Cpath d='M4 18c4 2 8 6 10 11C19 18 28 8 40 3' fill='none' stroke='%23b8281a' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-}
-/* Grease ring: held for attention */
-section .strip > i.hold { display: grid; place-items: center; padding: 0; color: var(--grease); font-size: 17px; letter-spacing: 0.12em; }
-section .strip > i.hold::after {
-  inset: 14px 10px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60' preserveAspectRatio='none'%3E%3Cpath d='M58 7C34 3 8 11 6 29s24 27 48 25 41-10 40-27S72 3 44 7' fill='none' stroke='%23b8281a' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-size: 100% 100%;
-}
-/* Grease strike: not this way */
-section .strip > i.no::after {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 32'%3E%3Cpath d='M7 5l30 23M36 4 9 27' fill='none' stroke='%23b8281a' stroke-width='5.5' stroke-linecap='round'/%3E%3C/svg%3E");
-}
-section .strip > i > .grease { position: absolute; left: 12px; bottom: 6px; color: var(--grease); font-size: 26px; }
-
-/* A cocked strip is offset in its bay: a controller's reminder that it needs attention. */
-section .strip.cocked { transform: translateX(26px) rotate(-1.4deg); }
-
-section .strip.mini { min-height: 54px; grid-template-columns: 112px minmax(0, 1fr); grid-auto-columns: minmax(64px, auto); padding: 3px 4px 3px 14px; background-size: 100% 100%, 14px 100%, 100% 100%; }
-section .strip.mini > b { font-size: 17px; padding: 6px 10px; }
-section .strip.mini > span { padding: 6px 12px; }
-section .strip.mini > span > strong { font-size: 19px; font-weight: 600; }
-section .strip.mini > i { min-width: 64px; padding: 6px 8px; font-size: 13px; }
-section .strip.mini > i::after { inset: 18px 12px 5px; }
-
-/* ---------- Bays and boards ---------- */
-
-/* A bay is an open rack: rails and an engraved label plate, not a box. */
-section .board { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 26px; }
-section .bay {
-  position: relative;
-  min-width: 0;
-  padding: 56px 14px 14px;
-  background:
-    linear-gradient(90deg, var(--rail) 0 3px, transparent 3px calc(100% - 3px), var(--rail) calc(100% - 3px)) 0 40px / 100% calc(100% - 40px) no-repeat,
-    linear-gradient(180deg, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.08)) 0 40px / 100% calc(100% - 40px) no-repeat;
-}
-/* Bay labels are airfield location signs (yellow on black); a hold bay carries the red mandatory sign. */
-section .bay::before {
-  content: attr(data-label);
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 9px 13px 6px;
-  background: var(--sign-black);
-  border-radius: 3px;
-  outline: 2px solid var(--sign-yellow);
-  outline-offset: -5px;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
-  color: var(--sign-yellow);
-  font: 800 19px/1.1 var(--fs-sans);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-section .bay.mandatory::before { background: var(--sign-red); color: #fff; outline: 0; box-shadow: 0 0 0 2px var(--sign-black), 0 6px 14px rgba(0, 0, 0, 0.35); }
-section .bay > * + * { margin-top: 12px; }
-section .slot {
-  display: grid;
+  display: inline-grid;
   place-items: center;
-  min-height: 86px;
-  border: 2px dashed var(--rail-light);
-  border-radius: 6px;
-  color: var(--dim);
-  font: 800 16px/1.2 var(--fs-sans);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--c);
+  vertical-align: middle;
 }
-
-/* The route band repeats on consecutive slides, so the hero strip appears to move bay to bay. */
-section .route { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 22px; view-transition-name: fs-route; }
-section .route .bay { padding-left: 8px; padding-right: 8px; }
-section .route .strip { grid-template-columns: minmax(0, 1fr); grid-auto-columns: 62px; min-height: 92px; }
-section .route .strip > b { font-size: 24px; padding: 8px 12px; border-right-width: 2px; }
-section .route .strip > b > small { font-size: 18px; margin-top: 7px; text-transform: none; letter-spacing: 0; white-space: nowrap; }
-section .route .strip > i { min-width: 62px; padding: 8px 6px; font-size: 18px; letter-spacing: 0; }
-section .route .strip > i::after { inset: 34px 12px 8px; }
-section .route .strip > i > .grease { left: 9px; bottom: 6px; font-size: 26px; }
-section .route .slot { min-height: 92px; }
-
-/* ---------- Paper sheets (flight plans, contracts, clearances) ---------- */
-
-section .sheet {
-  position: relative;
-  background: linear-gradient(180deg, #f6eed8, var(--paper) 30%, var(--paper-shade));
-  border-radius: 4px;
-  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.28), 0 16px 30px rgba(0, 0, 0, 0.32);
-  color: var(--ink);
-  padding: 18px 24px 20px;
+section .st::after {
+  content: "";
+  width: 62%;
+  height: 62%;
+  background: #fff;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
 }
-section .sheet .sheet-title {
-  margin: -18px -24px 14px;
-  padding: 9px 24px 6px;
-  background: var(--sign-black);
-  border-radius: 4px 4px 0 0;
-  color: #fff;
-  font: 800 18px/1.2 var(--fs-sans);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-section .sheet .grease { color: var(--grease); }
-section .sheet dl { display: grid; grid-template-columns: 150px 1fr; gap: 0; margin: 0; }
-section .sheet dt, section .sheet dd { margin: 0; padding: 8px 0 7px; border-top: 1px solid var(--paper-line); }
-section .sheet dt { color: var(--ink-soft); font: 700 15px/1.6 var(--fs-data); letter-spacing: 0.06em; text-transform: uppercase; }
-section .sheet dd { color: var(--ink); font: 600 21px/1.3 var(--fs-sans); }
-section .sheet dd code { background: transparent; color: var(--ink); font-size: 18px; padding: 0; }
-section .sheet ul, section .sheet ol { margin: 0; color: var(--ink); font-size: 22px; }
-section .sheet ul > li::before { background: var(--ink); box-shadow: none; }
-section .sheet ol > li::marker { color: var(--ink-soft); }
-
-/* ---------- Challenge and response checklist ---------- */
-
-section .checklist-card { position: relative; }
-section .checklist {
-  counter-reset: none;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-section .checklist > li {
-  position: relative;
-  display: flex;
-  align-items: baseline;
-  margin: 0;
-  padding: 10px 0 8px 48px;
-  border-top: 1px solid var(--paper-line);
-  font: 600 25px/1.25 var(--fs-sans);
-}
-section .checklist > li::before {
+section .st::before {
   content: "";
   position: absolute;
-  left: 2px;
-  top: 12px;
-  width: 28px;
-  height: 28px;
-  border: 2.5px solid var(--ink);
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.35);
-}
-section .checklist > li::after {
-  content: "";
-  position: absolute;
-  left: -2px;
-  top: 2px;
-  width: 44px;
-  height: 36px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 32'%3E%3Cpath d='M4 18c4 2 8 6 10 11C19 18 28 8 40 3' fill='none' stroke='%23b8281a' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  inset: 0;
+  border: 3px solid transparent;
+  border-top-color: var(--spin);
+  border-right-color: var(--spin);
+  border-radius: 50%;
   opacity: 0;
 }
-section .checklist > li[data-checked="true"]::after { opacity: 1; }
-section .checklist > li > span,
-section .checklist .fs-check > span { display: flex; flex: 1; align-items: baseline; min-width: 0; }
-section .checklist > li > span::after,
-section .checklist .fs-check > span::after {
-  content: "";
-  flex: 1;
-  min-width: 24px;
-  margin: 0 12px;
-  border-bottom: 3px dotted var(--ink-soft);
-  translate: 0 -0.22em;
-}
-section .checklist b { color: var(--ink); font: 700 22px/1.25 var(--fs-data); letter-spacing: 0.04em; text-transform: uppercase; }
-section .checklist .fs-check {
-  all: unset;
-  display: flex;
-  flex: 1;
-  align-items: baseline;
-  cursor: pointer;
-  border-radius: 3px;
-}
-section .checklist .fs-check:focus-visible { outline: 3px solid var(--blue); outline-offset: 6px; }
-section .checklist .fs-check:disabled { cursor: default; }
-section .checklist-meta { margin-top: 12px; color: var(--ink-soft); font: 700 15px/1.2 var(--fs-data); letter-spacing: 0.06em; text-transform: uppercase; }
+section .st.hold { --c: var(--hold-solid); --icon: var(--i-pause); }
+section .st.back { --c: var(--back-solid); --icon: var(--i-undo); }
+section .st.fail { --c: var(--back-solid); --icon: var(--i-x); }
+section .st.queued, section .st.draft { background: transparent; box-shadow: inset 0 0 0 2px var(--line-strong); }
+section .st.draft { box-shadow: none; border: 2px dashed var(--line-strong); }
+section .st.queued::after, section .st.draft::after { content: none; }
+/* A person's approval is their avatar with a check badge. */
+section .st.who { width: 32px; height: 32px; margin: -3px; background: var(--avatar-tint); }
+section .st.who::after { content: none; }
+section .st.who .badge { position: absolute; right: -4px; bottom: -4px; display: grid; place-items: center; width: 17px; height: 17px; border-radius: 50%; background: var(--pass-solid); box-shadow: 0 0 0 2px var(--surface); }
+section .st.who .badge::after { content: ""; width: 11px; height: 11px; background: #fff; -webkit-mask: var(--i-check) center / contain no-repeat; mask: var(--i-check) center / contain no-repeat; }
+section .avatar { position: relative; display: inline-block; flex: none; width: 64px; height: 64px; border-radius: 50%; background: var(--avatar-tint); }
+section .avatar img, section .st.who img { display: block; width: 100%; height: 100%; max-width: none; border-radius: 50%; object-fit: cover; object-view-box: inset(9% 16% 25% 16%); }
+section .bot { display: grid; place-items: center; flex: none; width: 48px; height: 48px; border-radius: 50%; background: var(--agent-tint); box-shadow: inset 0 0 0 1px var(--agent-line); }
+section .bot::after { content: ""; width: 26px; height: 26px; background: var(--agent); -webkit-mask: var(--i-bot) center / contain no-repeat; mask: var(--i-bot) center / contain no-repeat; }
 
-/* ---------- Runtime-only and static-only content ---------- */
-
-section .fs-dynamic { display: none !important; }
-section[data-enhanced="true"] .fs-dynamic { display: revert !important; }
-section[data-enhanced="true"] .fs-static { display: none !important; }
-
-/* ---------- Cover ---------- */
-
-section.cover { justify-content: center; padding-top: 104px; }
-section.cover .cover-runway { position: relative; margin-top: 0; padding-left: 48px; padding-right: 28px; }
-section.cover .strip-cover {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: auto auto auto;
-  grid-auto-flow: row;
-  min-height: 0;
-  padding: 6px 6px 6px 26px;
-  border-radius: 8px;
-  background-size: 100% 100%, 26px 100%, 100% 100%;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 3px 0 rgba(0, 0, 0, 0.35), 0 26px 50px rgba(0, 0, 0, 0.45);
-  z-index: 1;
+/* The one thing to remember, in the accent. */
+section .takeaway { position: absolute; left: 72px; right: 72px; bottom: 82px; font-size: 30px; font-weight: 650; line-height: 1.25; letter-spacing: -0.012em; color: var(--accent); text-wrap: balance; }
+section .t-pass { color: var(--pass); }
+section .t-hold { color: var(--hold); }
+section .t-back { color: var(--back); }
+section .takeaway.outcome { color: var(--ink); }
+/* Simulated material always says so. */
+section .illus { font-size: 18px; font-weight: 500; color: var(--ink-2); }
+section .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+section .live-only { opacity: 0; visibility: hidden; }
+/* Static and live twins: the static twin prints; the live twin needs the audience window. */
+@media screen {
+  section:not([data-enhanced="true"]) .sw-dynamic { display: none !important; }
+  section[data-enhanced="true"] .sw-static { display: none !important; }
 }
-/* Printed data row: callsign, type, route */
-section.cover .strip-cover > b {
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: flex-start;
-  padding: 0;
-  border-right: 0;
-  border-bottom: 2px solid var(--paper-line);
-  font-size: 30px;
-}
-section.cover .strip-cover > b > span { padding: 14px 24px 10px; }
-section.cover .strip-cover > b > small {
-  display: flex;
+
+/* ---------- Cover: AI-0142's checks turn green ---------- */
+
+section.cover { display: grid; grid-template-columns: minmax(0, 1fr) 468px; column-gap: 48px; align-items: center; padding: 0 72px; }
+section.cover h1 { font-size: 74px; line-height: 1.03; text-wrap: wrap; }
+section.cover .byline { display: flex; align-items: center; gap: 18px; margin-top: 44px; font-size: 22px; line-height: 1.3; color: var(--ink-2); }
+section.cover .byline b { display: block; margin-bottom: 2px; color: var(--ink); font-size: 26px; font-weight: 640; }
+section .run { position: relative; margin: 0; padding: 24px 28px 26px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow-lift); }
+section .run-title { font-size: 26px; font-weight: 650; line-height: 1.2; letter-spacing: -0.012em; }
+section .run-status { display: grid; justify-items: end; margin-left: auto; }
+section .run-status > * { grid-area: 1 / 1; }
+section .run-meta { display: flex; align-items: center; gap: 10px; margin-top: 10px; padding-bottom: 18px; border-bottom: 1px solid var(--line-soft); }
+section .run-steps { display: grid; gap: 18px; margin-top: 20px; }
+section .run-steps > li { position: relative; display: grid; grid-template-columns: 26px 1fr auto; align-items: center; column-gap: 16px; }
+section .run-steps > li > b { font-size: 23px; font-weight: 620; line-height: 1.35; }
+section .run-steps .state { font-size: 20px; font-weight: 620; color: var(--pass); }
+section .run-steps small { grid-column: 2 / -1; margin-top: -2px; font-size: 18px; color: var(--ink-2); }
+section .run-steps > li:not(:last-child)::before,
+section .run-steps > li:not(:last-child)::after { content: ""; position: absolute; left: 12px; top: 31px; bottom: -19px; width: 2px; border-radius: 1px; background: var(--line); }
+section .run-steps > li:not(:last-child)::after { background: var(--pass-solid); transform-origin: top; }
+section .rings { grid-column: 2 / -1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 12px; }
+section .rings i { position: relative; display: block; padding-top: 16px; font-size: 18px; font-style: normal; font-weight: 620; line-height: 1.25; color: var(--ink); }
+section .rings i::before, section .rings i::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 6px; border-radius: 3px; background: var(--line-soft); }
+section .rings i::after { background: var(--pass-solid); transform-origin: left; }
+section .rings small { display: block; margin: 0; font-size: 18px; font-weight: 450; color: var(--ink-2); }
+section .run figcaption { position: absolute; right: 2px; top: calc(100% + 14px); font-size: 18px; color: var(--ink-2); }
+
+/* ---------- Bio ---------- */
+
+section.bio { display: flex; flex-direction: column; justify-content: center; padding-top: 0; padding-bottom: 40px; }
+section.bio[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container] > figure:not(#sw) { background-color: var(--avatar-tint); }
+section.bio h2 { margin-bottom: 14px; font-size: 56px; }
+section.bio p { font-size: 25px; line-height: 1.5; }
+section.bio p em { color: var(--ink-2); }
+section.bio p + p { margin-top: 22px; }
+section.bio :is(s, del), section.thanks :is(s, del) { color: var(--ink-2); }
+
+/* ---------- Two queues: drafts pour in, shipped changes arrive one at a time ---------- */
+
+section.cheap .queues { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+section .queue-head { justify-content: space-between; }
+section .count { min-width: 36px; height: 30px; padding: 0 11px; border-radius: 999px; background: var(--well); color: var(--ink); font: 650 19px/30px var(--sans); text-align: center; counter-reset: n var(--n); }
+section .shipped .count { background: var(--pass-tint); color: var(--pass); }
+section .prs { padding: 4px 0 6px; }
+section .prs > li { display: grid; grid-template-columns: 24px minmax(0, 1fr) auto auto; align-items: center; column-gap: 14px; height: 47px; padding: 0 20px; font-size: 22px; }
+section .prs > li + li { border-top: 1px solid var(--line-soft); }
+section .prs .st { width: 24px; height: 24px; }
+section .prs .pr-title { overflow: hidden; font-weight: 560; white-space: nowrap; text-overflow: ellipsis; }
+section .prs .chip { height: 30px; }
+section .prs > li.awaiting { display: flex; color: var(--ink-2); font-size: 20px; font-style: italic; }
+section .prs > li.awaiting + li.awaiting { border-top-style: dashed; }
+section.cheap .illus { margin-top: 14px; }
+
+/* ---------- Regret: three failing checks ---------- */
+
+section .regret { display: grid; grid-template-columns: 26px 232px 234px minmax(0, 1fr); align-items: center; column-gap: 24px; padding: 31px 28px; }
+section .regret + .regret { border-top: 1px solid var(--line-soft); }
+section .regret .cue { display: inline-flex; width: fit-content; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; font-size: 19px; font-weight: 620; line-height: 1; }
+section .regret .cue b { padding: 8px 12px 8px 14px; background: var(--subtle); color: var(--ink); font-weight: 650; }
+section .regret .cue span { padding: 8px 14px 8px 12px; border-left: 1px solid var(--back-line); background: var(--back-tint); color: var(--back); }
+section .regret strong { font-size: 27px; font-weight: 650; letter-spacing: -0.01em; }
+section .regret .line { font-size: 23px; line-height: 1.35; color: var(--ink-2); }
+
+/* ---------- Instructions: the file every session reads ---------- */
+
+section.notes .file { position: absolute; left: 72px; top: 132px; width: 664px; overflow: hidden; }
+section .file-icon { width: 20px; height: 20px; background: var(--ink-2); -webkit-mask: var(--i-file) center / contain no-repeat; mask: var(--i-file) center / contain no-repeat; }
+section .file-head code { color: var(--ink); font-weight: 600; font-size: 19px; }
+section .file-head .chip { margin-left: auto; }
+section .file dl { display: grid; grid-template-columns: 116px minmax(0, 1fr); column-gap: 16px; margin: 0; padding: 10px 24px 14px 72px; counter-reset: line; }
+section .file dt, section .file dd { margin: 0; padding: 8px 0; font-size: 22px; line-height: 1.3; }
+section .file dt { position: relative; counter-increment: line; color: var(--ink); font-weight: 650; }
+section .file dd code { padding: 0.04em 0.3em; font-size: 0.86em; }
+section .file dt::before { content: counter(line); position: absolute; left: -52px; width: 30px; text-align: right; font: 400 18px/1.6 var(--mono); color: var(--line-strong); }
+section .notes-side { position: absolute; left: 776px; right: 72px; top: 150px; }
+section .files-label { font-size: 21px; font-weight: 620; color: var(--ink-2); }
+section .files { display: grid; justify-items: start; gap: 12px; margin-top: 16px; }
+section .files code { padding: 6px 12px; border-color: var(--line); background: var(--surface); font-size: 20px; }
+
+/* ---------- One change crosses the board: spec, build, review ---------- */
+
+section.route h2 { margin-bottom: 24px; }
+section .lanes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+section .lane { min-height: 176px; padding: 10px 12px 12px; border: 1px solid #dde3ea; border-radius: 16px; background: var(--well); }
+section .lane-name { display: flex; align-items: center; gap: 10px; padding: 2px 6px 9px; font-size: 19px; font-weight: 650; color: var(--ink-2); }
+section .lane-name::before { content: ""; width: 12px; height: 12px; border-radius: 50%; box-shadow: inset 0 0 0 2px var(--line-strong); }
+section.at-spec .lane:nth-child(1) .lane-name::before, section.at-build .lane:nth-child(-n + 2) .lane-name::before, section.at-review .lane .lane-name::before { background: var(--pass-solid); box-shadow: none; }
+section .slot { display: grid; place-items: center; height: 120px; border: 1.5px dashed #bfc8d2; border-radius: 12px; color: var(--ink-2); font-size: 19px; font-weight: 560; }
+section .change { padding: 12px 16px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: var(--shadow); }
+section .change[data-morph="hero"] { view-transition-name: sw-hero; }
+section .change-head { display: flex; align-items: center; gap: 10px; }
+section .change-head .chip { height: 28px; }
+section .change-title { margin-top: 6px; font-size: 22px; font-weight: 650; line-height: 1.25; }
+section .checks { display: flex; gap: 18px; margin-top: 12px; }
+section .checks > li { display: inline-flex; align-items: center; gap: 8px; font-size: 19px; font-weight: 600; color: var(--ink-2); }
+section .checks .st { width: 22px; height: 22px; }
+section .checks .st.who { width: 28px; height: 28px; }
+section .checks > li:has(.st.who) { gap: 12px; }
+/* The detail panel sits under the lanes the change is moving through. */
+section .route-detail { margin-top: 22px; }
+section.at-spec .route-detail .panel { width: 751px; }
+section.at-build .route-detail .panel { width: 751px; margin-left: auto; }
+section .panel dl { display: grid; grid-template-columns: 92px minmax(0, 1fr); margin: 0; padding: 4px 20px 8px; }
+section .panel dt, section .panel dd { margin: 0; padding: 6px 0; font-size: 22px; line-height: 1.3; }
+section .panel dt { color: var(--ink); font-weight: 650; }
+section .panel dt ~ dt, section .panel dt ~ dt + dd { border-top: 1px solid var(--line-soft); }
+section .runs > li { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; align-items: center; column-gap: 12px; padding: 6px 20px; font-size: 22px; }
+section .runs > li + li { border-top: 1px solid var(--line-soft); }
+section .runs .st { width: 22px; height: 22px; }
+section .runs b { color: var(--pass); font-size: 19px; font-weight: 640; }
+section .panel .warn { display: flex; align-items: center; gap: 12px; padding: 8px 20px; border-top: 1px solid var(--hold-line); border-radius: 0 0 var(--radius) var(--radius); background: var(--hold-tint); color: var(--hold); font-size: 21px; font-weight: 620; }
+section .panel .warn .st { width: 22px; height: 22px; }
+
+/* Review: worker, fresh reviewer, then a person. */
+section .review-loop { position: relative; display: grid; grid-template-columns: 230px minmax(0, 1fr) 230px minmax(0, 1fr) 300px; align-items: center; margin-top: 24px; }
+section .actor { position: relative; z-index: 0; display: grid; grid-template-columns: 48px minmax(0, 1fr); grid-template-rows: 48px auto; column-gap: 12px; row-gap: 8px; align-items: center; height: 132px; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); }
+section .actor .avatar { width: 48px; height: 48px; }
+section .actor strong { font-size: 23px; font-weight: 650; line-height: 1.2; }
+section .actor small { grid-column: 1 / -1; align-self: start; font-size: 18px; line-height: 1.3; color: var(--ink-2); }
+section .actor.merge { grid-template-columns: 36px minmax(0, 1fr); grid-template-rows: 36px auto auto; row-gap: 6px; height: auto; padding: 12px 16px; }
+section .actor.merge .avatar { width: 36px; height: 36px; }
+section .merge-checks { grid-column: 1 / -1; display: grid; gap: 4px; }
+section .merge-checks > li { display: grid; grid-template-columns: 22px minmax(0, 1fr); column-gap: 10px; align-items: center; font-size: 19px; font-weight: 560; line-height: 1.3; }
+section .merge-checks .st { width: 22px; height: 22px; }
+section .merge-checks .gate > .st { grid-area: 1 / 1; }
+section .merge-checks .gate > span:not(.st) { grid-area: 1 / 2; }
+section .merge-checks .gate .m-done { color: var(--pass); font-weight: 640; }
+section .merge-checks .gate > span.live-only:not(.st) { color: var(--hold); }
+section .merge-btn { grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; height: 34px; margin-top: 2px; border: 1px solid rgb(31 35 40 / 0.15); border-radius: 8px; background: #1f883d; color: #fff; font: 600 18px/1 var(--sans); }
+section .review-loop svg { width: 100%; height: auto; overflow: visible; }
+section .review-loop svg path { fill: none; stroke: var(--line-strong); stroke-width: 2.4; stroke-linecap: round; }
+section .review-loop svg path.head { fill: var(--line-strong); stroke: none; }
+section .review-loop svg .back { stroke: var(--hold-solid); }
+section .review-loop svg path.head.back { fill: var(--hold-solid); stroke: none; }
+section .review-loop svg text { fill: var(--ink-2); font: 600 21.5px var(--sans); }
+section .review-loop svg text.back { fill: var(--hold); }
+section .review-loop svg text.file { font-family: var(--mono); font-weight: 400; }
+section .review-loop svg path:not(.head) { stroke-dasharray: 1; stroke-dashoffset: 0; }
+section .loop-token { position: absolute; z-index: 1; left: 0; top: 0; display: inline-flex; align-items: center; height: 30px; padding: 0 10px; border: 1px solid var(--agent-line); border-radius: 8px; background: var(--surface); box-shadow: var(--shadow); color: var(--agent); font: 600 17px/1 var(--mono); white-space: nowrap; opacity: 0; pointer-events: none; }
+section .approve-checks { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 24px; font-size: 19px; }
+section .approve-checks b { margin-right: 4px; font-weight: 650; }
+section .approve-checks span { display: inline-flex; align-items: center; gap: 7px; height: 34px; padding: 0 13px 0 10px; border: 1px solid var(--pass-line); border-radius: 999px; background: var(--pass-tint); color: var(--pass); font-weight: 600; white-space: nowrap; }
+section .approve-checks span::before { content: ""; width: 15px; height: 15px; background: currentColor; -webkit-mask: var(--i-check) center / contain no-repeat; mask: var(--i-check) center / contain no-repeat; }
+
+/* ---------- Release board: the interactive simulation ---------- */
+
+section.lab h2 { margin-bottom: 20px; }
+section .board { position: relative; overflow: hidden; }
+section .board-bar { display: flex; align-items: center; gap: 8px; min-height: 58px; padding: 9px 14px 9px 18px; border-bottom: 1px solid var(--line-soft); background: var(--subtle); }
+section .board-title { display: flex; align-items: center; gap: 12px; margin-right: auto; font-size: 20px; white-space: nowrap; }
+section .board-title b { font-weight: 650; }
+section .board-title span { display: inline-flex; align-items: center; height: 28px; padding: 0 10px; border-radius: 999px; background: var(--well); color: var(--ink-2); font-size: 18px; font-weight: 600; }
+section .board[data-state="running"] [data-board-state] { background: var(--hold-tint); color: var(--hold); }
+section .board[data-state="awaiting"] [data-board-state] { background: var(--hold-tint); color: var(--hold); }
+section .board[data-state="complete"] [data-board-state] { background: var(--pass-tint); color: var(--pass); }
+section .board-controls { display: flex; align-items: center; gap: 8px; }
+section .board-controls[hidden] { display: none; }
+section .seg { display: inline-flex; gap: 2px; margin-right: 6px; padding: 3px; border: 1px solid var(--line); border-radius: 10px; background: var(--well); }
+section .seg button { height: 32px; padding: 0 12px; border: 0; border-radius: 7px; background: transparent; color: var(--ink-2); font: 600 18px/1 var(--sans); cursor: pointer; }
+section .seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgb(31 35 40 / 0.14), 0 0 0 1px var(--line); }
+section .btn { --icon: none; display: inline-flex; align-items: center; gap: 7px; height: 38px; padding: 0 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font: 600 18px/1 var(--sans); white-space: nowrap; cursor: pointer; box-shadow: 0 1px 0 rgb(31 35 40 / 0.04); }
+section .btn::before { content: ""; width: 14px; height: 14px; background: currentColor; -webkit-mask: var(--icon) center / contain no-repeat; mask: var(--icon) center / contain no-repeat; }
+section .btn.speed::before { content: none; }
+section .btn.run { --icon: var(--i-play); }
+section .board[data-state="running"] .btn.run { --icon: var(--i-pause); }
+section .board[data-state="complete"] .btn.run { --icon: var(--i-replay); }
+section .btn.step { --icon: var(--i-step); }
+section .btn.approve { --icon: var(--i-check); }
+section .btn.primary { border-color: rgb(31 35 40 / 0.15); background: #1f883d; color: #fff; }
+section .btn.speed[aria-pressed="true"] { border-color: var(--ink-2); background: var(--well); color: var(--ink); }
+section .btn:hover:not(:disabled), section .seg button:hover:not([aria-pressed="true"]) { background: #f3f4f6; }
+section .btn.primary:hover:not(:disabled) { background: #1a7f37; }
+section .btn:disabled { border-color: var(--line-soft); background: var(--subtle); color: #8c959f; box-shadow: none; cursor: default; }
+section .btn:focus-visible, section .seg button:focus-visible { outline: 2px solid var(--accent-solid); outline-offset: 2px; }
+section .board-cols, section .board-row { display: grid; grid-template-columns: minmax(0, 1fr) 106px 106px 112px 152px 110px 114px 158px; align-items: center; column-gap: 0; padding: 0 16px 0 18px; }
+section .board-cols { height: 56px; border-bottom: 1px solid var(--line-soft); color: var(--ink-2); font-size: 18px; font-weight: 640; line-height: 1.12; }
+section .board-cols > span { display: flex; flex-direction: column; align-items: center; text-align: center; }
+section .board-cols > span:first-child, section .board-cols > span:last-child { align-items: flex-start; text-align: left; }
+section .board-cols small { font-size: 18px; font-weight: 450; }
+section .board-cols [data-state="active"] { color: var(--hold); }
+section .board-cols [data-state="done"] { color: var(--ink); }
+section .board-row { height: 72px; border-bottom: 1px solid var(--line-soft); }
+section .board-row .chg { display: grid; gap: 3px; font-weight: 400; }
+section .board-row .chg > span:first-child { font-size: 20px; font-weight: 640; line-height: 1.2; white-space: nowrap; }
+section .board-row .chg > span:last-child { display: flex; align-items: center; gap: 8px; }
+section .board-row .chg .id { font-size: 17px; }
+section .board-row .chg .chip { height: 26px; padding: 0 9px 0 8px; font-size: 16px; }
+section .board-row .chg .chip::before { width: 13px; height: 13px; }
+section .board-row i { position: relative; display: flex; justify-content: center; font-style: normal; }
+section .board-row i em {
+  --icon: none;
+  display: inline-flex;
   align-items: center;
-  margin: 0;
-  padding: 4px 22px 0;
-  border-left: 2px solid var(--paper-line);
-  font-size: 16px;
-}
-section.cover .strip-title { padding: 24px 30px 20px; }
-section.cover .strip-title h1 { color: var(--ink); font-size: 80px; line-height: 0.98; letter-spacing: -0.02em; text-wrap: balance; }
-section.cover .strip-fields {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr)) 1.25fr;
-  border-top: 2px solid var(--paper-line);
-}
-section.cover .strip-fields > i {
-  position: relative;
-  min-height: 74px;
-  padding: 10px 14px;
-  border-right: 2px solid var(--paper-line);
-  color: var(--ink-soft);
-  font: 700 14px/1 var(--fs-data);
+  gap: 5px;
+  height: 32px;
+  padding: 0 10px 0 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--subtle);
+  color: var(--ink-2);
+  font: 600 18px/1 var(--sans);
   font-style: normal;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-section.cover .strip-fields > i::after {
-  content: "";
-  position: absolute;
-  inset: 26px 36% 8px 14px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 32'%3E%3Cpath d='M4 18c4 2 8 6 10 11C19 18 28 8 40 3' fill='none' stroke='%23b8281a' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") left center / contain no-repeat;
-}
-section.cover .strip-fields > .grease {
-  align-self: center;
-  justify-self: center;
-  color: var(--grease);
-  font-size: 34px;
-  rotate: -6deg;
-}
-/* Runway holding position: two solid and two dashed yellow lines, with the mandatory PROD sign. */
-section.cover .hold-line {
-  position: absolute;
-  top: -48px;
-  bottom: -48px;
-  right: 68px;
-  width: 44px;
-  z-index: 0;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f6c21c'%3E%3Crect width='5' height='100%25'/%3E%3Crect x='11' width='5' height='100%25'/%3E%3C/g%3E%3Cg stroke='%23f6c21c' stroke-width='5' stroke-dasharray='18 12'%3E%3Cline x1='30.5' x2='30.5' y2='100%25'/%3E%3Cline x1='41.5' x2='41.5' y2='100%25'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
-  opacity: 0.92;
-}
-section.cover .hold-line .sign { position: absolute; bottom: calc(100% + 10px); left: 50%; translate: -50% 0; font-size: 46px; }
-/* The stop bar: red lights across the holding position, dark once the clearance lands. */
-section.cover .hold-line::before,
-section.cover .hold-line::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: -20px;
-  width: 12px;
-  background: radial-gradient(circle, #4d1c17 0 4px, transparent 5px) 0 4px / 12px 22px repeat-y;
-}
-section.cover .hold-line::after {
-  background-image: radial-gradient(circle, #ff5a45 0 4px, rgba(255, 70, 50, 0.4) 5px, transparent 8px);
-  filter: drop-shadow(0 0 5px #ff3b2f);
-  opacity: 0;
-}
-section.cover .cover-byline { display: flex; align-items: baseline; gap: 0; margin-top: 64px; color: var(--dim); font-size: 26px; }
-section.cover .cover-byline strong { color: var(--lamp); font-size: 30px; margin-right: 22px; }
-section.cover .cover-byline span + span::before {
-  content: "";
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin: 0 14px 0 16px;
-  background: var(--sign-yellow);
-  vertical-align: 0.2em;
-}
-
-/* ---------- Slide compositions ---------- */
-
-/* 01: the pile versus the cleared bay */
-section .shift-board { grid-template-columns: 1.35fr 1fr; grid-auto-flow: row; margin-top: 30px; }
-section .pile { position: relative; height: 318px; }
-section .pile > .strip { position: absolute; left: 0; right: 0; }
-section .pile > .strip:nth-child(1) { top: 0; rotate: -1.2deg; left: 6px; }
-section .pile > .strip:nth-child(2) { top: 41px; rotate: 1.4deg; left: 26px; right: -10px; }
-section .pile > .strip:nth-child(3) { top: 83px; rotate: -2.2deg; left: -4px; }
-section .pile > .strip:nth-child(4) { top: 124px; rotate: 0.8deg; left: 34px; right: -16px; }
-section .pile > .strip:nth-child(5) { top: 166px; rotate: -0.6deg; left: 12px; }
-section .pile > .strip:nth-child(6) { top: 208px; rotate: 2deg; left: 40px; right: -20px; }
-section .pile > .strip:nth-child(7) { top: 252px; rotate: -1.6deg; left: 4px; }
-section .shift-board .note { margin-top: 0; }
-
-/* 02: three shapes of regret */
-section .regret { display: grid; gap: 16px; margin-top: 30px; padding-right: 40px; }
-section .regret .strip { min-height: 92px; grid-template-columns: 196px minmax(0, 1fr); grid-auto-columns: 132px; }
-section .regret .strip > i { font-size: 17px; }
-section .regret .strip > span > small { font-size: 22px; }
-section .regret .strip > b > small { font-size: 17px; }
-
-/* 06: the release board lab */
-section.lab-slide { padding-top: 40px; padding-bottom: 80px; }
-section.lab-slide h2 { font-size: 44px; }
-section .fs-lab {
-  margin-top: 20px;
-  padding: 0 20px 4px;
-  background: linear-gradient(180deg, #161a1d, #1d2326);
-  border: 1px solid var(--rail);
-  border-radius: 8px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 18px 34px rgba(0, 0, 0, 0.35);
-}
-section .fs-lab [hidden] { display: none !important; }
-section .fs-lab-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 13px 0 11px;
-  border-bottom: 1px solid var(--rail);
-  color: var(--dim);
-  font: 600 16px/1.2 var(--fs-sans);
-  letter-spacing: 0.04em;
-}
-section .fs-lab-head > b { color: var(--lamp); font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
-section .fs-lab-head [data-board-state] { color: var(--sign-yellow); font: 700 15px/1.2 var(--fs-data); letter-spacing: 0.06em; text-transform: uppercase; }
-section .fs-lab-cols,
-section .fs-lab .strip {
-  grid-template-columns: 140px minmax(0, 1fr) repeat(6, 80px) 172px;
-}
-section .fs-lab-cols {
-  display: grid;
-  align-items: end;
-  padding: 12px 5px 8px 18px;
-  color: var(--dim);
-  font: 800 15px/1.15 var(--fs-sans);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-section .fs-lab-cols > span { padding: 0 6px; white-space: nowrap; transition: color 300ms ease; }
-section .fs-lab-cols > span > small { display: block; margin-top: 4px; color: var(--dim); font: 700 17px/1 var(--fs-data); letter-spacing: 0; text-transform: none; }
-section .fs-lab-cols > span[data-state="active"] { color: var(--sign-yellow); }
-section .fs-lab[data-state="awaiting"] .fs-lab-cols > span[data-state="active"] { color: var(--grease-lamp); }
-section .fs-lab[data-state="awaiting"] [data-board-state] { padding: 7px 10px 4px; background: var(--sign-red); border-radius: 3px; box-shadow: 0 0 0 2px var(--sign-black); color: #fff; }
-section .fs-lab .strip { grid-auto-flow: column; min-height: 66px; margin-top: 10px; }
-section .fs-lab .strip > b { font-size: 20px; padding: 8px 12px; }
-section .fs-lab .strip > b > small { font-size: 17px; margin-top: 5px; }
-section .fs-lab .strip > span { padding: 8px 14px; }
-section .fs-lab .strip > span > strong { font-size: 20px; }
-section .fs-lab .strip > i { min-width: 0; padding: 0; display: grid; place-items: center; }
-section .fs-lab .strip > i::after { display: none; }
-section .fs-lab .strip > i > em {
-  color: var(--grease);
-  font: 400 21px/1 var(--fs-hand);
-  font-style: normal;
-  rotate: -5deg;
   white-space: nowrap;
 }
-section .fs-lab .strip > i[data-mark="pass"] > em,
-section .fs-lab .strip > i[data-mark="landed"] > em { color: var(--ink); }
-section .fs-lab .strip > i[data-mark="pass"]::after,
-section .fs-lab .strip > i[data-mark="clear"]::after,
-section .fs-lab .strip > i[data-mark="landed"]::after,
-section .fs-lab .strip > i[data-mark="warn"]::after {
-  display: block;
-  inset: 8px 22px 22px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 32'%3E%3Cpath d='M4 18c4 2 8 6 10 11C19 18 28 8 40 3' fill='none' stroke='%23b8281a' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-}
-section .fs-lab .strip > i[data-mark="pass"] > em,
-section .fs-lab .strip > i[data-mark="clear"] > em,
-section .fs-lab .strip > i[data-mark="landed"] > em,
-section .fs-lab .strip > i[data-mark="warn"] > em { align-self: end; margin-bottom: 7px; font-size: 16px; }
-section .fs-lab .strip > i[data-mark="hold"]::after,
-section .fs-lab .strip > i[data-mark="rollback"]::after {
-  display: block;
-  inset: 8px 4px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60' preserveAspectRatio='none'%3E%3Cpath d='M58 7C34 3 8 11 6 29s24 27 48 25 41-10 40-27S72 3 44 7' fill='none' stroke='%23b8281a' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-size: 100% 100%;
-}
-section .fs-lab .strip > i[data-mark="rollback"] > em,
-section .fs-lab .strip > i[data-mark="hold"] > em { font-size: 17px; }
-section .fs-lab .strip > i[data-mark="stamp"] > em { font-size: 22px; rotate: -10deg; color: var(--ink-soft); }
-section .fs-lab .strip > i[data-mark="skip"]::after {
-  display: block;
-  inset: 50% 10px auto;
-  height: 4px;
-  background: var(--ink-soft);
-  border-radius: 2px;
-  rotate: -8deg;
-  opacity: 0.55;
-}
-section .fs-lab .strip > i[data-mark="incident"] { background: rgba(201, 64, 43, 0.16); }
-section .fs-lab .strip > i[data-mark="incident"] > em { color: var(--grease); font-size: 19px; }
-/* Ticks, queued, in-progress, and skipped boxes speak through their text but show only the mark. */
-section .fs-lab .strip > i:is([data-mark="pass"], [data-mark="landed"], [data-mark="active"], [data-mark="skip"], [data-mark=""]) > em {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-section .fs-lab .strip > i[data-mark="active"] {
-  background: rgba(226, 163, 58, 0.24);
-  box-shadow: inset 0 0 0 2px var(--amber);
-}
-section .fs-lab .strip > output {
-  display: grid;
-  align-content: center;
-  padding: 0 10px;
-  border-left: 2px solid var(--paper-line);
-  color: var(--ink);
-  font: 700 14px/1.2 var(--fs-data);
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-section .fs-lab .strip > output > small { margin-top: 4px; color: var(--ink-soft); font: 400 18px/1.2 var(--fs-data); text-transform: none; }
-section .fs-lab .strip[data-outcome="landed"] > output { color: #23663f; }
-section .fs-lab .strip[data-outcome="held"] > output,
-section .fs-lab .strip[data-outcome="rollback"] > output,
-section .fs-lab .strip[data-outcome="incident"] > output { color: var(--grease); }
-section .fs-lab .strip[data-outcome="held"] { transform: translateX(14px) rotate(-0.8deg); }
-section .fs-lab .sr { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-section .fs-console {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  min-height: 46px;
-  margin-top: 14px;
-  padding: 0 4px;
-  border-top: 1px solid var(--rail);
-  color: var(--lamp);
-  font: 400 20px/1.35 var(--fs-sans);
-}
-section .fs-console > b { color: var(--sign-yellow); font: 700 18px/1 var(--fs-data); }
-section .fs-console > span { flex: 1; }
-section .fs-console > .console-next { display: none; color: var(--sign-yellow); font-weight: 600; }
-/* At the payoff the sign carries the outcome; the console keeps announcing it but shows the next step. */
-section .fs-lab[data-state="complete"] [data-board-summary] { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; flex: none; }
-section .fs-lab[data-state="complete"] .console-next { display: block; }
-section .fs-console progress { width: 110px; height: 8px; accent-color: var(--sign-yellow); }
-section .fs-controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 0 14px;
-  border-top: 1px solid var(--rail);
-}
-/* Console keys: raised caps that travel when pressed. */
-section .fs-controls button,
-section .fs-controls select {
-  min-height: 42px;
-  padding: 9px 15px 6px;
-  background: linear-gradient(180deg, #343d42, #232a2e);
-  border: 1px solid #0b0d0e;
-  border-radius: 6px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 3px 0 #0b0d0e, 0 8px 14px rgba(0, 0, 0, 0.35);
-  color: var(--lamp);
-  cursor: pointer;
-  font: 800 15px/1.1 var(--fs-sans);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-section .fs-controls button:active:not(:disabled) { translate: 0 2px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 #0b0d0e, 0 4px 8px rgba(0, 0, 0, 0.3); }
-section .fs-controls select {
-  appearance: none;
-  padding-right: 34px;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23ebe5d5' stroke-width='2'/%3E%3C/svg%3E"),
-    linear-gradient(180deg, #343d42, #232a2e);
-  background-position: right 12px center, 0 0;
-  background-repeat: no-repeat;
-  background-size: 12px 8px, 100% 100%;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-section .fs-controls .fs-primary { min-width: 140px; background: linear-gradient(180deg, #f6f1e4, #dcd3bf); color: var(--sign-black); }
-section .fs-controls .fs-clear:not(:disabled) { background: linear-gradient(180deg, #ffd640, var(--sign-yellow)); color: var(--sign-black); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 3px 0 #7a5d00, 0 0 0 3px var(--sign-black), 0 0 0 5px var(--sign-yellow); }
-section .fs-controls button:disabled { color: #8b9590; cursor: not-allowed; opacity: 0.6; }
-section .fs-controls button:not(:disabled):hover { filter: brightness(1.12); }
-section .fs-controls :is(button, select):focus-visible { outline: 3px solid var(--edge-light); outline-offset: 3px; }
-section .fs-controls label { display: flex; align-items: center; gap: 8px; color: var(--dim); font: 600 15px/1 var(--fs-sans); }
-section .fs-controls label:first-of-type { margin-left: auto; }
-section .fs-lab-note { margin: 0; padding: 14px 4px 12px; border-top: 1px solid var(--rail); color: var(--dim); font-size: 16px; }
-section .lab-hint { margin-top: 14px; color: var(--dim); font-size: 20px; }
-section .lab-hint b { color: var(--lamp); }
-section .lab-compare { display: grid; grid-template-columns: auto repeat(3, minmax(0, 1fr)); gap: 14px; align-items: center; margin-top: 18px; }
-section .lab-compare > .sign { font-size: 20px; }
-section .lab-compare > .strip.mini > b { font-size: 19px; }
-section .lab-compare > .strip.mini > span > strong { font-size: 20px; }
-/* When the board finishes, its result becomes the slide's direction sign. */
-section .fs-lab:not([data-state="complete"]) ~ .lab-outcome { display: none !important; }
-section .fs-lab[data-state="complete"] ~ .lab-hint { display: none !important; }
+section .board-row i em::before { content: ""; flex: none; width: 14px; height: 14px; background: currentColor; -webkit-mask: var(--icon) center / contain no-repeat; mask: var(--icon) center / contain no-repeat; }
+section .board-row [data-mark="pass"] em, section .board-row [data-mark="clear"] em, section .board-row [data-mark="landed"] em { --icon: var(--i-check); border-color: var(--pass-line); background: var(--pass-tint); color: var(--pass); }
+section .board-row [data-mark="warn"] em { --icon: var(--i-check); border-color: var(--hold-line); background: var(--hold-tint); color: var(--hold); }
+section .board-row [data-mark="hold"] em { --icon: var(--i-pause); border-color: var(--hold-line); background: var(--hold-tint); color: var(--hold); }
+section .board-row [data-mark="rollback"] em, section .board-row [data-mark="incident"] em { --icon: var(--i-x); border-color: var(--back-line); background: var(--back-tint); color: var(--back); }
+section .board-row [data-mark="rollback"] em { --icon: var(--i-undo); }
+section .board-row [data-mark="stamp"] em { --icon: var(--i-check); border-style: dashed; border-color: var(--line-strong); background: var(--surface); color: var(--ink-2); }
+/* Stages that never ran collapse into one cell (deck.js spans it): a dashed pill, labeled once. */
+section .board-row i[hidden] { display: none; }
+section .board-row :is([data-mark="notrun"], [data-mark="skip"]) em { justify-content: center; width: calc(100% - 20px); padding: 0 12px; border: 1.5px dashed #b8c1cb; border-radius: 999px; background: none; color: var(--ink-2); font-size: 18px; font-weight: 520; }
+section .board-row :is([data-mark="notrun"], [data-mark="skip"]) em::before { content: none; }
+section .board-row [data-mark=""] em { width: 14px; height: 14px; padding: 0; border: 2px solid #c3cbd4; background: none; font-size: 0; }
+section .board-row [data-mark=""] em::before { content: none; }
+section .board-row [data-mark="active"] em { position: relative; width: 44px; justify-content: center; padding: 0; border-color: var(--hold-line); background: var(--hold-tint); font-size: 0; }
+section .board-row [data-mark="active"] em::before { width: 16px; height: 16px; border: 2.5px solid var(--spin); border-right-color: transparent; border-radius: 50%; background: none; -webkit-mask: none; mask: none; }
+/* A stage waiting on a person shows who it waits for; a paused stage shows pause, not a frozen spinner. */
+section .board[data-state="awaiting"] .board-row [data-mark="active"] em { border-color: var(--hold-line); background: var(--hold-tint); }
+section .board[data-state="awaiting"] .board-row [data-mark="active"] em::before { width: 15px; height: 15px; border: 0; border-radius: 0; background: var(--hold); -webkit-mask: var(--i-person) center / contain no-repeat; mask: var(--i-person) center / contain no-repeat; }
+section .board[data-state="paused"] .board-row [data-mark="active"] em::before { width: 14px; height: 14px; border: 0; border-radius: 0; background: var(--hold); -webkit-mask: var(--i-pause) center / contain no-repeat; mask: var(--i-pause) center / contain no-repeat; }
+section .board-row output { display: grid; grid-template-columns: 18px 1fr; column-gap: 7px; align-items: center; padding-left: 8px; color: var(--ink-2); font: 650 20px/1.2 var(--sans); }
+section .board-row output::before { content: ""; width: 18px; height: 18px; border-radius: 50%; box-shadow: inset 0 0 0 2px #c3cbd4; }
+section .board-row output small { grid-column: 2; font-size: 18px; font-weight: 450; color: var(--ink-2); }
+section .board-row[data-outcome] output::before { box-shadow: none; background: currentColor; -webkit-mask: var(--icon) center / contain no-repeat; mask: var(--icon) center / contain no-repeat; }
+section .board-row[data-outcome="landed"] output { --icon: var(--i-check); color: var(--pass); }
+section .board-row[data-outcome="held"] output { --icon: var(--i-pause); color: var(--hold); }
+section .board-row[data-outcome="rollback"] output { --icon: var(--i-undo); color: var(--back); }
+section .board-row[data-outcome="incident"] output { --icon: var(--i-x); color: var(--back); }
+section .board-row[data-outcome=""] output::before { background: none; box-shadow: inset 0 0 0 2px #c3cbd4; -webkit-mask: none; mask: none; }
+section .board-foot { display: flex; justify-content: space-between; gap: 24px; padding: 9px 18px; border-bottom: 1px solid var(--line-soft); color: var(--ink-2); font-size: 18px; font-weight: 500; }
+section .board-console { position: relative; display: grid; gap: 2px; padding: 11px 18px 15px; font-size: 20px; font-weight: 520; line-height: 1.35; }
+section .board-console progress { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 4px; border: 0; appearance: none; -webkit-appearance: none; background: transparent; }
+section .board-console progress::-webkit-progress-bar { background: transparent; }
+section .board-console progress::-webkit-progress-value { background: var(--pass-solid); }
+section .board-console progress::-moz-progress-bar { background: var(--pass-solid); }
+section .board:is([data-state="running"], [data-state="paused"], [data-state="awaiting"]) progress::-webkit-progress-value { background: var(--spin); }
+section .board:is([data-state="running"], [data-state="paused"], [data-state="awaiting"]) progress::-moz-progress-bar { background: var(--spin); }
+section .board:not([data-state="complete"]) ~ [data-board-outcome] { visibility: hidden; }
+section .board-compare { position: absolute; left: 72px; right: 72px; bottom: 80px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 19px; }
+section .board-compare b { margin-right: 4px; font-weight: 650; }
+section .board-compare > span { display: inline-flex; align-items: center; gap: 8px; height: 34px; padding: 0 12px; border: 1px solid var(--pass-line); border-radius: 999px; background: var(--pass-tint); color: var(--pass); font-weight: 600; }
+section .board-compare > span.bad { border-color: var(--back-line); background: var(--back-tint); color: var(--back); }
+section .board-compare .id { color: inherit; font-size: 17px; }
 
-/* 07: the go-around. The strip leaves the rollout bay and drops back into hold. */
-section .goaround { display: grid; grid-template-columns: 1.22fr 1fr; gap: 44px; align-items: start; margin-top: 30px; }
-section .goaround .board { grid-auto-flow: row; grid-auto-columns: auto; gap: 16px; }
-section .goaround .bay { padding-top: 54px; }
-section .goaround .strip { grid-template-columns: 128px minmax(0, 1fr); grid-auto-columns: 74px; min-height: 80px; }
-section .goaround .strip > b { font-size: 20px; padding: 8px 12px; }
-section .goaround .strip > b > small { font-size: 16px; margin-top: 5px; }
-section .goaround .strip > span { padding: 8px 12px; }
-section .goaround .strip > span > strong { font-size: 20px; }
-section .goaround .strip > span > small { font-size: 18px; }
-section .goaround .strip > i { min-width: 74px; padding: 7px 7px; font-size: 14px; letter-spacing: 0; }
-section .goaround .strip > i::after { inset: 26px 12px 6px; }
-section .goaround .slot { min-height: 80px; }
-section .goaround .ga-note { margin: 16px 0 0; color: var(--dim); font-size: 22px; }
-section .goaround .ga-note .grease { font-size: 27px; margin-right: 6px; }
-section .goaround ul { margin: 0; font-size: 25px; }
-section .goaround ul > li + li { margin-top: 0.5em; }
+/* ---------- Rollback: a health gate, not a meeting ---------- */
 
-/* 08: the checklist */
-section .preflight { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: start; margin-top: 26px; }
-section .preflight .sheet { padding-bottom: 12px; }
-section .preflight .checklist > li { padding-top: 7px; padding-bottom: 5px; font-size: 23px; }
-section .preflight .checklist > li::before { top: 8px; width: 26px; height: 26px; }
-section .preflight .checklist > li::after { top: -1px; }
-section .preflight .checklist b { font-size: 20px; }
+section.rollback .deploy { position: absolute; left: 72px; top: 134px; width: 646px; }
+section .deploy-head .chip { margin-left: auto; height: 28px; }
+section .deploy-body { display: grid; grid-template-columns: minmax(0, 1fr) 232px; gap: 20px; padding: 16px 20px 10px; }
+section .timeline > li { position: relative; display: grid; grid-template-columns: 26px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 14px; padding-bottom: 14px; }
+section .timeline > li > .st { grid-column: 1; grid-row: 1 / span 2; align-self: start; margin-top: 2px; }
+section .timeline > li > b { grid-column: 2; grid-row: 1; font-size: 22px; font-weight: 640; line-height: 1.3; }
+section .timeline > li > span { grid-column: 2; grid-row: 2; font-size: 18px; color: var(--ink-2); }
+section .timeline > li > em { position: absolute; right: 0; top: 3px; font-size: 18px; font-style: normal; font-weight: 640; color: var(--pass); }
+section .timeline > li.bad > em { color: var(--back); }
+section .timeline > li.undo > em { color: var(--ink-2); }
+section .timeline > li.skipped > b { color: var(--ink-2); font-weight: 560; }
+section .timeline > li:not(:last-child)::before { content: ""; position: absolute; left: 12px; top: 32px; bottom: 2px; width: 2px; border-radius: 1px; background: var(--line); }
+section .errors { display: block; width: 232px; height: auto; overflow: visible; }
+section .errors .axis { fill: var(--ink-2); font: 600 19px var(--sans); }
+section .errors .gate { stroke: var(--back-solid); stroke-width: 2; stroke-dasharray: 6 5; }
+section .errors .gate-label { fill: var(--back); font: 650 19px var(--sans); }
+section .errors .base { stroke: var(--line); stroke-width: 1.5; }
+section .errors .rate { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+section .errors .trip { fill: var(--back-solid); stroke: var(--surface); stroke-width: 3; }
+section .deploy-foot { display: grid; gap: 4px; padding: 12px 20px 14px; border-top: 1px solid var(--line-soft); font-size: 21px; font-weight: 600; }
+section .rb-side { position: absolute; left: 760px; right: 72px; top: 148px; font-size: 24px; line-height: 1.4; }
+section .rb-side ul:not([class]) > li + li { margin-top: 16px; }
 
-/* Information Alpha: the standing orders every session checks in with */
-section .atis { display: grid; grid-template-columns: 1.15fr 1fr; gap: 44px; align-items: start; margin-top: 28px; }
-section .atis .sheet-title { display: flex; justify-content: space-between; gap: 16px; }
-section .atis .sheet-title > span + span { color: var(--sign-yellow); font-family: var(--fs-code); font-weight: 700; letter-spacing: 0.02em; text-transform: none; }
-section .atis .sheet dl { grid-template-columns: 150px 1fr; }
-section .atis .sheet dd { font-size: 20px; }
-section .atis .sheet dt { font-size: 18px; }
-section .atis-notes ul { margin: 0; font-size: 25px; }
-section .atis-notes ul > li + li { margin-top: 0.45em; }
-section .files { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 0; }
-section .files code {
-  background: var(--paper);
-  border-radius: 4px;
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.25);
-  color: var(--ink);
-  font: 700 17px/1 var(--fs-code);
-  padding: 9px 12px 7px;
-}
-section .files-label { margin: 22px 0 0; color: var(--dim); font-size: 18px; }
+/* ---------- Tool map: one practice per row ---------- */
 
-/* 05: the review loop. The worker and a fresh reviewer go round until the build is clean; then you clear it. */
-section .review-loop {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 160px minmax(0, 1fr) 176px minmax(0, 1fr);
-  align-items: center;
-  margin-top: 74px;
-}
-/* The rail above the positions: the controller slides AI-0142 from station to station. */
-section .review-loop::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -30px;
-  height: 4px;
-  border-radius: 2px;
-  background: linear-gradient(180deg, #4a555b, #2a3135);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
-}
-section .review-loop .loop-token {
-  --holder: var(--green);
-  position: absolute;
-  top: -50px;
-  left: 0;
-  display: block;
-  width: 120px;
-  height: 40px;
-  padding: 3px 4px 3px 14px;
-  border-radius: 5px;
-  background-image:
-    linear-gradient(180deg, #f5edd6, var(--paper) 45%, var(--paper-shade)),
-    repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0 2px, transparent 2px 6px),
-    linear-gradient(180deg, color-mix(in srgb, var(--holder) 70%, white), var(--holder) 40%, color-mix(in srgb, var(--holder) 78%, black));
-  background-clip: content-box, border-box, border-box;
-  background-origin: content-box, border-box, border-box;
-  background-size: 100% 100%, 14px 100%, 100% 100%;
-  background-repeat: no-repeat;
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3), 0 10px 18px rgba(0, 0, 0, 0.35);
-  color: var(--ink);
-  font: 700 19px/34px var(--fs-data);
-  text-align: center;
-  translate: 943px 0;
-}
-/* Each station is a recessed console position with a location-sign placard. */
-section .review-loop .station {
-  position: relative;
-  min-height: 132px;
-  padding: 16px 20px 14px;
-  background:
-    radial-gradient(circle at 9px 9px, #5a666c 0 2.5px, transparent 3.5px),
-    radial-gradient(circle at calc(100% - 9px) 9px, #5a666c 0 2.5px, transparent 3.5px),
-    radial-gradient(circle at 9px calc(100% - 9px), #5a666c 0 2.5px, transparent 3.5px),
-    radial-gradient(circle at calc(100% - 9px) calc(100% - 9px), #5a666c 0 2.5px, transparent 3.5px),
-    linear-gradient(180deg, #121618, #1b2124);
-  border: 0;
-  border-radius: 2px;
-  box-shadow: inset 0 0 0 1px #313a3f, inset 0 0 0 6px #191e21, inset 0 0 0 7px #0d1011, inset 0 6px 14px rgba(0, 0, 0, 0.55), 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-section .review-loop .station > b {
-  display: inline-block;
-  padding: 7px 11px 4px;
-  background: var(--sign-black);
-  border-radius: 3px;
-  outline: 2px solid var(--sign-yellow);
-  outline-offset: -5px;
-  color: var(--sign-yellow);
-  font: 800 20px/1.1 var(--fs-sans);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-section .review-loop .station > small { display: block; margin-top: 8px; color: var(--lamp); font: 400 20px/1.3 var(--fs-sans); }
-section .review-loop .station > small > i { display: block; font-style: normal; color: var(--dim); font: 800 18px/1.2 var(--fs-sans); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
-/* Your position is lit: the clearance lamp glows amber once the strip arrives. */
-section .review-loop .station-you { box-shadow: inset 0 0 0 1px #6b5a1e, inset 0 0 0 6px #191e21, inset 0 0 0 7px #0d1011, inset 0 6px 14px rgba(0, 0, 0, 0.55), 0 0 0 2px var(--sign-yellow), 0 10px 20px rgba(0, 0, 0, 0.3); }
-section .review-loop .station-you > .grease { position: absolute; right: 18px; top: 12px; color: var(--grease-lamp); font-size: 36px; }
-section .clear-checks { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 26px 0 0; color: var(--dim); font-size: 19px; }
-section .clear-checks > b { margin-right: 6px; color: var(--lamp); font-weight: 600; }
-section .clear-checks > span {
-  background: var(--paper);
-  border-radius: 4px;
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.25);
-  color: var(--ink);
-  font: 600 18px/1 var(--fs-sans);
-  padding: 9px 12px 7px;
-}
-section .review-loop svg { display: block; width: 100%; height: 132px; overflow: visible; }
-section .review-loop .lane { fill: none; stroke: var(--rail-light); stroke-width: 2.5px; }
-section .review-loop .lane-back { stroke: var(--grease-lamp); stroke-dasharray: 6 6; }
-section .review-loop .lane-clean { stroke: #6fcf9a; }
-section .review-loop .head { fill: var(--rail-light); }
-section .review-loop .head-back { fill: var(--grease-lamp); }
-section .review-loop .head-clean { fill: #6fcf9a; }
-section .review-loop text { fill: var(--dim); font: 700 18px var(--fs-code); }
-section .review-loop text.back { fill: var(--grease-lamp); }
-section .review-loop text.clean { fill: #8fdcb0; }
+section .tool-map { display: grid; grid-template-columns: 172px 224px minmax(0, 1.18fr) minmax(0, 1fr); overflow: hidden; }
+section .tool-map [role="row"] { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; border-bottom: 1px solid var(--line-soft); }
+section .tool-map [role="row"]:first-child { border-bottom-color: var(--line); background: var(--subtle); }
+section .tool-map [role="row"]:last-child { border-bottom: 0; }
+section .tool-map [role="columnheader"] { padding: 13px 18px; color: var(--ink-2); font-size: 18px; font-weight: 650; }
+section .tool-map [role="rowheader"], section .tool-map [role="cell"] { display: flex; flex-wrap: wrap; align-content: flex-start; align-items: center; gap: 6px 8px; padding: 15px 18px; font-size: 21px; line-height: 1.3; }
+section .tool-map [role="rowheader"] { font-size: 22px; font-weight: 650; }
+section .tool-map code { font-size: 18px; padding: 3px 8px; }
+section .tool-map small { flex-basis: 100%; font-size: 18px; line-height: 1.3; color: var(--ink-2); }
+section .tool-map small code { padding: 0; border: 0; background: none; color: inherit; font-size: 1em; white-space: normal; }
+section .tool-map em { color: var(--ink-2); }
+section .map-note { margin-top: 18px; font-size: 19px; color: var(--ink-2); }
 
-/* 09: the same practices, mapped onto each tool */
-section.map-slide { padding-top: 56px; }
-section.map-slide h2 { font-size: 48px; }
-section .tool-map { margin-top: 28px; }
-section .tool-map-cols,
-section .tool-map .strip { grid-template-columns: 222px minmax(0, 0.78fr) minmax(0, 1.22fr) minmax(0, 1fr); }
-section .tool-map-cols {
-  display: grid;
-  padding: 0 5px 6px 18px;
-  color: var(--dim);
-  font: 800 18px/1.2 var(--fs-sans);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+/* ---------- Checklist: challenge and response ---------- */
+
+section.check .check-card { position: absolute; left: 72px; top: 132px; width: 600px; overflow: hidden; }
+section .cl-head { justify-content: space-between; }
+section .cl-count { display: inline-flex; align-items: center; gap: 7px; color: var(--ink-2); font-size: 18px; font-weight: 620; }
+section .checklist { margin: 0; padding: 0; }
+section .checklist > li + li { border-top: 1px solid var(--line-soft); }
+section .checklist button, section .checklist > li:not(:has(button)) { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; align-items: center; column-gap: 16px; width: 100%; height: 49px; margin: 0; padding: 0 20px; border: 0; background: transparent; color: var(--ink); font: 560 23px/1 var(--sans); text-align: left; }
+section .checklist button { cursor: pointer; }
+section .checklist button:disabled { cursor: default; }
+section .checklist button::before, section .checklist > li:not(:has(button))::before { content: ""; width: 24px; height: 24px; border: 2px solid var(--line-strong); border-radius: 7px; background: var(--surface) center / 16px no-repeat; }
+section .checklist b { color: var(--ink-2); font-size: 20px; font-weight: 560; }
+section .checklist button[aria-pressed="true"]::before { border-color: var(--pass-solid); background-color: var(--pass-solid); background-image: var(--i-white-check); }
+section .checklist button[aria-pressed="true"] b { color: var(--pass); }
+section .checklist button:hover:not(:disabled) { background: var(--subtle); }
+section .checklist button:focus-visible { outline: 2px solid var(--accent-solid); outline-offset: -3px; }
+section .cl-meter { display: block; height: 5px; background: transparent; }
+section .cl-meter i { display: block; width: calc(var(--done, 0) * 100%); height: 100%; background: var(--pass-solid); transition: width 360ms var(--ease); }
+section .check-card:has(.checklist[data-complete="true"]) { border-color: var(--pass-line); }
+section .check-card:has(.checklist[data-complete="true"]) .cl-head { background: var(--pass-tint); }
+section .check-card:has(.checklist[data-complete="true"]) .cl-count { color: var(--pass); }
+section .check-card:has(.checklist[data-complete="true"]) .cl-count::before { content: ""; width: 16px; height: 16px; background: currentColor; -webkit-mask: var(--i-check) center / contain no-repeat; mask: var(--i-check) center / contain no-repeat; }
+section .check-notes { position: absolute; left: 722px; right: 72px; top: 150px; font-size: 25px; line-height: 1.4; }
+section .check-notes p + p { margin-top: 24px; color: var(--ink-2); }
+
+/* ---------- Questions and thanks ---------- */
+
+section.questions { display: grid; grid-template-columns: minmax(0, 1fr) 608px; column-gap: 48px; align-items: center; padding: 0 72px; }
+section.questions h1 { font-size: 96px; letter-spacing: -0.04em; }
+section.questions .photo { height: 500px; overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); box-shadow: var(--shadow-lift); }
+section.questions .photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 54% 52%; }
+section.thanks { padding-top: 54px; }
+section.thanks h1 { margin-bottom: 26px; font-size: 64px; }
+section.thanks .columns { gap: 56px; }
+section.thanks h2 { margin-bottom: 14px; font-size: 32px; }
+section.thanks ul:not([class]) > li + li { margin-top: 10px; }
+section.thanks p { line-height: 1.5; }
+section.thanks p + p { margin-top: 16px; }
+section.thanks p em { color: var(--ink-2); }
+
+/* ---------- Expansion: shared parts ---------- */
+
+section .meter-card, section .relay > li, section .tree, section .run-log, section .git-graph, section .agents-par, section .review-queue, section .perms, section .untrusted, section .lever-map, section .dora-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
-section .tool-map-cols > span { padding: 0 14px; }
-section .tool-map-cols > span:first-child { padding-left: 12px; }
-section .tool-map .strip { grid-auto-flow: column; min-height: 84px; margin-top: 12px; padding-top: 4px; padding-bottom: 4px; }
-section .tool-map .strip > b { font-size: 23px; padding: 8px 14px; }
-section .tool-map .strip > b > small { margin-top: 4px; font-size: 13px; text-transform: none; letter-spacing: 0; font-family: var(--fs-sans); }
-section .tool-map .strip > span { padding: 8px 16px; border-left: 2px solid var(--paper-line); }
-section .tool-map .strip > span > code { display: block; overflow-wrap: anywhere; background: transparent; color: var(--ink); font: 700 20px/1.3 var(--fs-code); padding: 0; }
-section .tool-map .strip > span > code + code { margin-top: 2px; }
-section .tool-map .strip > span > small { margin-top: 4px; font-size: 19px; line-height: 1.25; }
-section .tool-map .strip > span:first-of-type { background: rgba(255, 255, 255, 0.22); }
-section .tool-map .strip > span > em { color: var(--ink); font: 400 22px/1.3 var(--fs-sans); font-style: normal; }
-section .tool-map-note { margin: 18px 0 0; color: var(--dim); font-size: 22px; }
-section .preflight-notes p { margin: 0; color: var(--dim); font-size: 25px; }
-section .preflight-notes p + p { margin-top: 18px; }
+section .panel-head .illus { margin-left: auto; font-size: 18px; }
+section .chip.deny, section .chip.ask { padding-left: 10px; }
+section .chip.deny::before, section .chip.ask::before { content: ""; flex: none; width: 15px; height: 15px; background: currentColor; -webkit-mask: var(--icon) center / contain no-repeat; mask: var(--icon) center / contain no-repeat; }
+section .chip.deny { --icon: var(--i-x); border-color: var(--back-line); background: var(--back-tint); color: var(--back); }
+section .chip.ask { --icon: var(--i-person); border-color: var(--hold-line); background: var(--hold-tint); color: var(--hold); }
+section .folder-icon { width: 20px; height: 20px; background: var(--ink-2); -webkit-mask: var(--i-folder) center / contain no-repeat; mask: var(--i-folder) center / contain no-repeat; }
+/* Your approval: your avatar with a green check, the same mark as the cover's human sign-off. */
+section .gate-mark, section .relay .gate::after { content: ""; display: block; width: 34px; height: 34px; border-radius: 50%; background: var(--avatar-tint) url("img/avatar.png") 50% 22% / 150% no-repeat; }
+section .gate-mark { position: relative; flex: none; }
+section .gate-mark i, section .relay .gate i { position: absolute; z-index: 1; width: 16px; height: 16px; border-radius: 50%; background: var(--pass-solid) var(--i-white-check) center / 11px no-repeat; box-shadow: 0 0 0 2px var(--canvas); }
+section .gate-mark i { right: -4px; bottom: -3px; }
 
-/* 03-05: brief, tests, review */
-section .route-detail { display: grid; grid-template-columns: 1fr 1.08fr; gap: 40px; align-items: start; margin-top: 26px; }
-section .route-detail ul { margin: 0; font-size: 25px; }
-section .route-detail .sheet dd { font-size: 19px; }
-section .route-detail .sheet dt { font-size: 18px; }
-section .route-detail .sheet dl { grid-template-columns: 154px 1fr; }
-section .locks { list-style: none; margin: 0; padding: 0; }
-section .sheet .locks > li { display: flex; align-items: baseline; gap: 12px; margin: 0; padding: 8px 0 7px 30px; border-top: 1px solid var(--paper-line); font: 600 20px/1.3 var(--fs-sans); }
-section .sheet .locks > li::before {
-  content: "";
-  left: 0;
-  top: 9px;
-  width: 18px;
-  height: 20px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 20'%3E%3Cpath fill='none' stroke='%231a2540' stroke-width='2.4' d='M4.5 9V6a4.5 4.5 0 0 1 9 0v3'/%3E%3Crect x='1.5' y='9' width='15' height='10' rx='2' fill='%231a2540'/%3E%3C/svg%3E") center / contain no-repeat;
-  box-shadow: none;
-}
-section .sheet .locks > li > b { margin-left: auto; color: #23663f; font: 700 15px/1 var(--fs-data); letter-spacing: 0.08em; text-transform: uppercase; }
-section .readback {
-  position: relative;
-  padding: 26px 28px 22px;
-  border-radius: 4px;
-  background: var(--console-deep);
-  box-shadow: inset 0 0 0 1px var(--rail), 0 14px 28px rgba(0, 0, 0, 0.3);
-}
-section .readback > p { margin: 0; color: var(--lamp); font: 800 30px/1.2 var(--fs-sans); letter-spacing: -0.01em; text-wrap: balance; }
-section .readback > small { display: block; margin-top: 14px; color: var(--dim); font-size: 19px; }
-section .readback > .sign { position: absolute; top: -16px; left: 24px; font-size: 15px; }
+/* ---------- Context budget: one session fills, stops at a natural break, and the next starts small ---------- */
 
-/* ---------- Morph names (one per slide) ---------- */
+section.budget .meter-card { overflow: hidden; }
+section .meter-card .panel-head b { font-weight: 650; }
+section .meter-body { display: grid; grid-template-columns: 124px minmax(0, 1fr); column-gap: 20px; align-items: center; padding: 28px 30px 10px; }
+section .meter-name { color: var(--ink-2); font-size: 20px; font-weight: 620; }
+section .meter { position: relative; display: flex; height: 44px; border: 1px solid var(--line); border-radius: 10px; background: var(--subtle); }
+section .meter .seg { display: block; flex: none; height: 100%; transform-origin: left; }
+section .meter .seg:first-child { border-radius: 9px 0 0 9px; }
+section .seg.base { width: 26%; background: #b8c3cf; }
+section .seg.task { width: 32%; background: #c9b3f5; }
+section .seg.note { width: 4%; background: var(--ink-2); }
+section .drop-zone { position: absolute; top: -1px; right: -1px; bottom: -1px; left: 72%; display: grid; place-items: center; border-left: 2px dashed var(--back-solid); border-radius: 0 10px 10px 0; background: repeating-linear-gradient(135deg, rgb(207 34 46 / 0.12) 0 6px, transparent 6px 12px); color: var(--back); font-size: 19px; font-weight: 640; }
+section .meter .break { position: absolute; top: -9px; bottom: -9px; left: calc(58% - 1.5px); width: 3px; border-radius: 2px; background: var(--ink); transform-origin: top; }
+section .meter-caps { grid-column: 2; position: relative; height: 30px; margin: 8px 0 20px; color: var(--ink-2); font-size: 19px; }
+section .meter-caps > span { position: absolute; top: 0; white-space: nowrap; }
+section .meter-caps .cap-base { left: 0; }
+section .meter-caps .cap-task { left: 26%; padding-left: 10px; }
+section .meter-caps .cap-break { left: 58%; padding-left: 12px; color: var(--ink); font-weight: 620; }
+section .meter-caps .cap-note { left: 26%; color: var(--ink); font-weight: 620; }
+section .meter-caps code { font-size: 18px; }
+section .practices { display: flex; flex-wrap: wrap; gap: 14px 52px; margin-top: 34px; font-size: 24px; font-weight: 620; }
+section .practices > li { position: relative; padding-left: 26px; }
+section .practices > li::before { content: ""; position: absolute; left: 4px; top: 0.6em; width: 9px; height: 9px; border-radius: 50%; background: var(--line-strong); }
 
-section [data-morph="hero"] { view-transition-name: fs-hero; }
+/* ---------- Four roles: each starts fresh from the file the last one handed off ---------- */
 
-/* ---------- Bookend marks ---------- */
+section .relay { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 60px; margin: 6px 0 0; padding: 0; }
+section .relay > li { position: relative; display: flex; flex-direction: column; padding: 18px 18px 16px; }
+section .relay .role { display: flex; align-items: center; gap: 12px; font-size: 25px; line-height: 1.2; }
+section .relay .role b { font-weight: 650; }
+section .relay .bot { width: 40px; height: 40px; }
+section .relay .bot::after { width: 22px; height: 22px; }
+section .relay .job { min-height: 2.6em; margin-top: 12px; color: var(--ink-2); font-size: 21px; line-height: 1.3; }
+section .relay .out { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line-soft); }
+section .relay .out code { font-size: 18px; }
+section .relay code.branch { display: inline-flex; align-items: center; gap: 6px; }
+section .relay code.branch::before { content: ""; width: 14px; height: 14px; background: var(--ink-2); -webkit-mask: var(--i-branch) center / contain no-repeat; mask: var(--i-branch) center / contain no-repeat; }
+/* A handoff is an arrow between two roles, gated by your approval. */
+section .relay .gate { position: absolute; z-index: 1; left: -60px; top: calc(50% - 17px); width: 60px; height: 34px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 34'%3E%3Cpath d='M3 17H50' stroke='%238c959f' stroke-width='2.4' stroke-linecap='round'/%3E%3Cpath d='M58 17l-9.5-5.5v11z' fill='%238c959f'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+section .relay .gate::after { position: absolute; left: 10px; top: 0; box-shadow: 0 0 0 3px var(--canvas); }
+section .relay .gate i { left: 34px; bottom: -3px; }
+section .relay-back { display: block; width: 339px; height: 46px; margin: 0 0 0 697.5px; overflow: visible; }
+section .relay-back path { fill: none; stroke: var(--hold-solid); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+section .relay-back path.head { fill: var(--hold-solid); stroke: none; stroke-dasharray: none; }
+section .approve-line { display: flex; align-items: center; gap: 16px; margin-top: 18px; font-size: 24px; font-weight: 600; }
 
-/* Questions: a grease underline. Thank you: the talk's own clearance tick. */
-section.questions h1 { position: relative; display: inline-block; align-self: flex-start; }
-section.questions h1::after {
-  content: "";
-  position: absolute;
-  left: -4px;
-  right: -10px;
-  bottom: -22px;
-  height: 22px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 22' preserveAspectRatio='none'%3E%3Cpath d='M4 15C70 7 150 5 296 9' fill='none' stroke='%23ff8a6b' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
-}
-section.thanks h1 { display: inline-flex; align-items: center; gap: 18px; }
-section.thanks h1::after {
-  content: "";
-  width: 62px;
-  height: 46px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 32'%3E%3Cpath d='M4 18c4 2 8 6 10 11C19 18 28 8 40 3' fill='none' stroke='%23ff8a6b' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+/* ---------- A change is a folder: explore, propose, apply, archive ---------- */
+
+section .lifecycle { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 4px 0 0; padding: 0; }
+section .lifecycle > li { position: relative; display: grid; justify-items: start; row-gap: 6px; padding: 42px 20px 0 0; }
+section .lifecycle > li > .st { position: absolute; left: 0; top: 0; width: 28px; height: 28px; }
+section .lifecycle > li:not(:last-child)::after { content: ""; position: absolute; left: 42px; right: 14px; top: 13px; height: 2px; border-radius: 1px; background: var(--pass-solid); transform-origin: left; }
+section .lifecycle b { font-size: 25px; font-weight: 650; line-height: 1.2; }
+section .lifecycle code { font-size: 18px; }
+section .lifecycle > li > span:not(.st) { color: var(--ink-2); font-size: 20px; line-height: 1.3; }
+section.changes .tree { margin-top: 34px; overflow: hidden; }
+section .tree .panel-head code { color: var(--ink); font-size: 19px; font-weight: 600; }
+section .tree-status { display: grid; justify-items: end; margin-left: auto; }
+section .tree-status > * { grid-area: 1 / 1; }
+section .tree-files { margin: 0; padding: 0; }
+section .tree-files > li { display: grid; grid-template-columns: 22px 300px minmax(0, 1fr) auto; align-items: center; column-gap: 14px; min-height: 50px; padding: 0 22px; font-size: 21px; }
+section .tree-files > li + li { border-top: 1px solid var(--line-soft); }
+section .tree-files .file-icon { width: 20px; height: 20px; }
+section .tree-files code { padding: 0; border: 0; background: none; font-size: 20px; }
+section .tree-files > li > span:nth-child(3) { color: var(--ink-2); }
+section .tasks-done { padding: 4px 12px; border: 1px solid var(--pass-line); border-radius: 999px; background: var(--pass-tint); color: var(--pass); font-size: 18px; font-weight: 620; white-space: nowrap; counter-reset: n var(--n); }
+
+/* ---------- Reset: a run goes sideways, the branch goes back ---------- */
+
+section.reset .run-log { position: absolute; left: 72px; top: 132px; width: 620px; overflow: hidden; }
+section .run-log .panel-head > span { color: var(--ink-2); font-size: 19px; }
+section .log { margin: 0; padding: 0; }
+section .log > li { display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; align-items: center; column-gap: 14px; min-height: 58px; padding: 0 20px; font-size: 22px; }
+section .log > li + li { border-top: 1px solid var(--line-soft); }
+section .log .st { width: 24px; height: 24px; }
+section .log .sign { padding: 4px 11px; border: 1px solid var(--hold-line); border-radius: 999px; background: var(--hold-tint); color: var(--hold); font-size: 18px; font-weight: 640; white-space: nowrap; }
+section.reset .git-graph { position: absolute; left: 732px; right: 72px; top: 132px; overflow: hidden; }
+section .commits { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 58px 16px 4px; }
+section .commits::before { content: ""; position: absolute; left: 71.5px; right: 71.5px; top: 65px; height: 2px; background: var(--line); }
+section .commits > li { position: relative; display: grid; justify-items: center; row-gap: 8px; font-size: 19px; }
+section .commits i { width: 16px; height: 16px; border-radius: 50%; background: var(--pass-solid); box-shadow: 0 0 0 3px var(--surface); }
+section .commits span { color: var(--ink-2); }
+section .commits .dropped { opacity: 0.55; }
+section .commits .dropped i { background: var(--surface); box-shadow: 0 0 0 3px var(--surface), inset 0 0 0 2px var(--line-strong); }
+section .commits .dropped span { text-decoration: line-through; text-decoration-thickness: 2px; text-decoration-color: var(--back-solid); }
+section .head-tag { --step: 111px; position: absolute; top: -43px; left: 50%; padding: 3px 9px; border-radius: 6px; background: var(--ink); color: #fff; font: 600 18px/1.2 var(--mono); transform: translateX(-50%); }
+section .head-tag::after { content: ""; position: absolute; left: 50%; bottom: -5px; margin-left: -5px; border: 5px solid transparent; border-bottom: 0; border-top-color: var(--ink); }
+section .reset-cmd { padding: 16px 20px 20px; text-align: center; }
+section .reset-cmd code { font-size: 19px; }
+section.reset .reset-next { position: absolute; left: 72px; right: 72px; top: 452px; font-size: 24px; }
+section .reset-next code { font-size: 19px; }
+
+/* ---------- Parallel agents: work finishes in parallel, review happens one at a time ---------- */
+
+section.parallel .agents-par { position: absolute; left: 72px; top: 132px; width: 664px; overflow: hidden; }
+section .par-lanes { margin: 0; padding: 0; }
+section .par-lanes > li { display: grid; grid-template-columns: 32px 150px minmax(0, 1fr) 76px; align-items: center; column-gap: 14px; min-height: 58px; padding: 0 20px; font-size: 21px; }
+section .par-lanes > li + li { border-top: 1px solid var(--line-soft); }
+section .par-lanes .bot { width: 32px; height: 32px; }
+section .par-lanes .bot::after { width: 18px; height: 18px; }
+section .par-lanes b { font-weight: 620; }
+section .par-lanes .bar { position: relative; height: 10px; border-radius: 5px; background: var(--line-soft); }
+section .par-lanes .bar i { position: absolute; inset: 0; border-radius: 5px; background: var(--agent); opacity: 0.55; transform-origin: left; }
+section .par-lanes .pr { justify-self: end; padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--subtle); font: 400 18px/1 var(--mono); }
+section.parallel .review-queue { position: absolute; left: 776px; right: 72px; top: 132px; overflow: hidden; }
+section .review-queue .avatar { width: 32px; height: 32px; }
+section .queue-items { margin: 0; padding: 0; }
+section .queue-items > li { display: grid; grid-template-columns: 24px auto minmax(0, 1fr); align-items: center; column-gap: 14px; min-height: 58px; padding: 0 20px; font-size: 21px; }
+section .queue-items > li + li { border-top: 1px solid var(--line-soft); }
+section .queue-items .st { width: 24px; height: 24px; }
+section .queue-items .id { font-size: 18px; }
+section .queue-items .done > span:last-child { color: var(--pass); font-weight: 620; }
+section .queue-items .waiting > span:last-child { color: var(--hold); font-weight: 620; }
+section.parallel .par-rule { position: absolute; left: 72px; right: 72px; top: 452px; font-size: 24px; }
+
+/* ---------- Security: least privilege, and untrusted text ---------- */
+
+section.guard .perms { position: absolute; left: 72px; top: 132px; width: 540px; overflow: hidden; }
+section .perms [role="row"] { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 58px; padding: 0 20px; font-size: 22px; }
+section .perms [role="row"] + [role="row"] { border-top: 1px solid var(--line-soft); }
+section .perms .perms-head { min-height: 52px; background: var(--subtle); font-size: 21px; }
+section .perms .perms-head b { font-weight: 650; }
+section .perms code { font-size: 19px; }
+section .perms .chip { height: 32px; }
+section.guard .untrusted { position: absolute; left: 652px; right: 72px; top: 132px; overflow: hidden; }
+section .untrusted .panel-head b { font-weight: 650; }
+section .untrusted .panel-head > span { margin-left: auto; color: var(--ink-2); font-size: 19px; }
+section .untrusted blockquote { margin: 0; padding: 18px 22px; border: 0; color: var(--ink); font-size: 23px; line-height: 1.45; }
+section .untrusted mark { padding: 1px 3px; border-radius: 4px; background: linear-gradient(var(--back-tint), var(--back-tint)) 0 0 / 100% 100% no-repeat; color: var(--back); box-shadow: inset 0 -2px 0 var(--back-line); }
+section .tool-call { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 22px 16px; border-top: 1px solid var(--line-soft); font-size: 21px; }
+section .tool-call code { font-size: 19px; }
+
+/* ---------- Extensions: who decides when each one runs ---------- */
+
+section .lever-map { display: grid; grid-template-columns: 220px 300px minmax(0, 1fr); overflow: hidden; }
+section .lever-map [role="row"] { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; align-items: center; min-height: 62px; border-bottom: 1px solid var(--line-soft); }
+section .lever-map [role="row"]:first-child { min-height: 50px; border-bottom-color: var(--line); background: var(--subtle); }
+section .lever-map [role="row"]:last-child { border-bottom: 0; }
+section .lever-map [role="columnheader"] { padding: 0 22px; color: var(--ink-2); font-size: 19px; font-weight: 650; }
+section .lever-map [role="rowheader"], section .lever-map [role="cell"] { padding: 0 22px; font-size: 23px; }
+section .lever-map [role="rowheader"] { font-weight: 650; }
+section .who { display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 12px 0 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--subtle); color: var(--ink-2); font-size: 18px; font-weight: 620; white-space: nowrap; }
+section .who::before { content: ""; width: 15px; height: 15px; background: currentColor; -webkit-mask: var(--icon) center / contain no-repeat; mask: var(--icon) center / contain no-repeat; }
+section .who.model { --icon: var(--i-bot); border-color: var(--agent-line); background: var(--agent-tint); color: var(--agent); }
+section .who.you { --icon: var(--i-person); }
+section .who.code { --icon: var(--i-check); border-color: var(--ink); background: var(--ink); color: #fff; }
+section .lever-map .enforce { background: var(--subtle); }
+section .lever-map .enforce [role="cell"]:last-child { font-weight: 620; }
+
+/* ---------- Measure: DORA's delivery metrics ---------- */
+
+section.measure .dora { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+section .dora-card { overflow: hidden; }
+section .dora-card .panel-head { font-size: 22px; }
+section .dora-card .panel-head b { font-weight: 650; }
+section .dora-card .panel-head span { margin-left: auto; color: var(--ink-2); font-size: 19px; }
+section .dora-card.unstable .panel-head { border-bottom-color: var(--hold-line); background: var(--hold-tint); }
+section .dora-card.unstable .panel-head b, section .dora-card.unstable .panel-head span { color: var(--hold); }
+section .dora-card ul { margin: 0; padding: 4px 0 6px; }
+section .dora-card li { padding: 12px 22px; font-size: 23px; font-weight: 560; }
+section .dora-card li + li { border-top: 1px solid var(--line-soft); }
+section .finding { max-width: 1000px; margin-top: 30px; font-size: 23px; line-height: 1.45; }
+section .finding .src { display: block; margin-top: 6px; color: var(--ink-2); font-size: 18px; }
+
+/* ---------- Transitions ---------- */
+
+/* lift: the next slide rises into place; handoff: a cross-fade that lets AI-0142's card move columns. */
+@keyframes marp-incoming-transition-lift { from { --marp-transition-duration: 620ms; opacity: 0; transform: translateY(calc(var(--marp-transition-direction, 1) * 22px)); } to { opacity: 1; transform: none; } }
+@keyframes marp-outgoing-transition-lift { from { --marp-transition-duration: 620ms; opacity: 1; } 60%, to { opacity: 0; } }
+@keyframes marp-incoming-transition-handoff { from, 45% { --marp-transition-duration: 900ms; opacity: 0; } to { opacity: 1; } }
+@keyframes marp-outgoing-transition-handoff { from { --marp-transition-duration: 900ms; opacity: 1; } 40%, to { opacity: 0; } }
+
+/* ---------- Motion verbs ---------- */
+
+@keyframes sw-rise { from { opacity: 0; transform: translateY(16px); } }
+@keyframes sw-fade { from { opacity: 0; } }
+@keyframes sw-focus { from { opacity: 0; filter: blur(12px); transform: translateY(14px); } }
+@keyframes sw-write { from { clip-path: inset(-20% 100% -20% 0); } to { clip-path: inset(-20% -2% -20% 0); } }
+@keyframes sw-write-key { from { clip-path: inset(-20% 100% -20% -64px); } to { clip-path: inset(-20% -2% -20% -64px); } }
+@keyframes sw-arrive { from { opacity: 0; transform: translateY(12px); } }
+@keyframes sw-enable { from { border-color: var(--line-soft); background: var(--subtle); color: #8c959f; } }
+@keyframes sw-pop { from { opacity: 0; transform: scale(0.6); } }
+@keyframes sw-settle { from { background-color: transparent; box-shadow: inset 0 0 0 2px var(--line-strong); transform: scale(0.86); } }
+@keyframes sw-spin { from { opacity: 1; transform: rotate(0deg); } to { opacity: 1; transform: rotate(540deg); } }
+@keyframes sw-tick { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes sw-grow-x { from { transform: scaleX(0); } }
+@keyframes sw-grow-y { from { transform: scaleY(0); } }
+@keyframes sw-count { from { --n: 0; } }
+@keyframes sw-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes sw-transient { 0%, 94% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
+@keyframes sw-reveal { from { clip-path: inset(9% 9% 9% 9% round 28px); transform: scale(1.06); } to { clip-path: inset(0 0 0 0 round 0); transform: none; } }
+@keyframes sw-wipe { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0); } }
+@keyframes sw-spin-loop { to { transform: rotate(360deg); } }
+@keyframes sw-nudge { 50% { box-shadow: 0 0 0 5px rgb(31 136 61 / 0.25); } }
+@keyframes sw-flash { from { background-color: var(--back-tint); } }
+@keyframes sw-fill-steps { 0% { transform: scaleX(0); } 22%, 32% { transform: scaleX(0.3); } 55%, 65% { transform: scaleX(0.62); } 88%, 100% { transform: scaleX(1); } }
+@keyframes sw-appear { from { transform: scale(0); } }
+@keyframes sw-undrop { from { opacity: 1; } }
+@keyframes sw-unstrike { from { text-decoration-color: transparent; } }
+@keyframes sw-head { 0%, 40% { transform: translateX(-50%); } 41%, 64% { transform: translateX(calc(-50% + var(--step, 112px))); } 66%, 85% { transform: translateX(calc(-50% + 2 * var(--step, 112px))); } 100% { transform: translateX(-50%); } }
+@keyframes sw-arrive-x { from { opacity: 0; transform: translateX(-24px); } }
+@keyframes sw-mark { from { background-size: 0% 100%; color: var(--ink); box-shadow: inset 0 -2px 0 transparent; } }
+@keyframes sw-stamp { from { opacity: 0; transform: scale(1.5); } }
+@keyframes sw-token {
+  0% { opacity: 0; transform: translate(178px, 45px); }
+  5% { opacity: 1; transform: translate(190px, 45px); }
+  19%, 26% { transform: translate(363px, 45px); }
+  30% { transform: translate(363px, 88px); }
+  43%, 48% { transform: translate(190px, 88px); }
+  52% { transform: translate(190px, 45px); }
+  64% { transform: translate(363px, 45px); }
+  70% { transform: translate(608px, 67px); }
+  86% { opacity: 1; transform: translate(781px, 67px); }
+  100% { opacity: 0; transform: translate(824px, 16px) scale(0.5); }
 }
 
-/* ---------- Custom transition: the strip push ---------- */
-
-@keyframes marp-incoming-transition-strip {
-  from {
-    --marp-transition-duration: 650ms;
-    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-    transform: translateX(calc(var(--marp-transition-direction, 1) * 100%));
-  }
-  to { transform: translateX(0); }
-}
-@keyframes marp-outgoing-transition-strip {
-  from { transform: translateX(0); opacity: 1; filter: brightness(1); }
-  to { transform: translateX(calc(var(--marp-transition-direction, 1) * -32%)); opacity: 0; filter: brightness(0.55); }
-}
-
-/* ---------- Motion: print, slot, ink, cock, go-around ---------- */
-
-/* Each verb starts from a visible state and eases out. Fills are backwards-only, so nothing lingers after it lands. */
-@keyframes fs-slot { from { translate: 56px 0; opacity: 0.35; } }
-@keyframes fs-print { from { clip-path: inset(0 0 100% 0); transform: translateY(-28px); } to { clip-path: inset(0 0 0 0); transform: translateY(0); } }
-@keyframes fs-drop { from { translate: 0 -46px; opacity: 0.3; } }
-@keyframes fs-ink { from { clip-path: inset(-40% 110% -40% -10%); } to { clip-path: inset(-40% -10% -40% -10%); } }
-@keyframes fs-cock { from { transform: none; } to { transform: translateX(26px) rotate(-1.4deg); } }
-@keyframes fs-clear-green { 0%, 82% { --holder: var(--amber); } 100% { --holder: var(--green); } }
-@keyframes fs-clear-red { 0%, 70% { --holder: var(--amber); } 100% { --holder: var(--red); } }
-@keyframes fs-cross { from { translate: -110px 0; } }
-@keyframes fs-goaround {
-  0% { translate: 0 var(--ga-from, -140px); }
-  18% { translate: 10px calc(var(--ga-from, -140px) - 8px); }
-  100% { translate: 0 0; }
-}
-@keyframes fs-lift { from { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 2px 0 rgba(0, 0, 0, 0.3), 0 34px 50px rgba(0, 0, 0, 0.55); } }
-@keyframes fs-active { 50% { background-color: rgba(226, 163, 58, 0.45); } }
-@keyframes fs-incident { 30%, 70% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 0 0 4px var(--red), 0 12px 24px rgba(0, 0, 0, 0.32); } }
-/* Marp resets background figures with all: initial, so the photo layer itself powers up. */
-@keyframes fs-photo { from { filter: brightness(0.3) saturate(0.4) sepia(0); } }
-@keyframes fs-stopbar { from, 82% { opacity: 1; } to { opacity: 0; } }
-/* Worker to reviewer, back with comments, to the reviewer again, then to you. */
-@keyframes fs-handoff {
-  0% { translate: 73px 0; }
-  14%, 20% { translate: 500px 0; }
-  32%, 38% { translate: 73px 0; }
-  52%, 58% { translate: 500px 0; }
-  78%, 100% { translate: 943px 0; }
-}
-@keyframes fs-token-holder {
-  0%, 18% { --holder: var(--amber); }
-  22%, 36% { --holder: var(--red); }
-  40%, 74% { --holder: var(--amber); }
-  80%, 100% { --holder: var(--green); }
-}
-/* The handoff: the old slide clears before the new one arrives, so only the moving strip is visible mid-flight. */
-@keyframes marp-outgoing-transition-handoff {
-  from { --marp-transition-duration: 900ms; opacity: 1; }
-  40%, to { opacity: 0; }
-}
-@keyframes marp-incoming-transition-handoff {
-  from, 55% { --marp-transition-duration: 900ms; opacity: 0; }
-  to { opacity: 1; }
-}
-
-@property --holder { syntax: "<color>"; inherits: true; initial-value: #e2a33a; }
-
-/* Every effect plays when its slide appears and settles within five seconds (WCAG 2.2.2). */
+/* Every effect plays once, on the live audience slide, and settles inside five seconds. */
 @media screen and (prefers-reduced-motion: no-preference) {
-  /* Default verbs for authored Markdown: strips and list items slot into their bay. */
-  section.fs-live .strip { animation: fs-slot 760ms var(--fs-ease) backwards; }
-  section.fs-live > ul > li,
-  section.fs-live > ol > li { animation: fs-slot 620ms var(--fs-ease) backwards; }
-  section.fs-live > ul > li:nth-child(2), section.fs-live > ol > li:nth-child(2) { animation-delay: 80ms; }
-  section.fs-live > ul > li:nth-child(3), section.fs-live > ol > li:nth-child(3) { animation-delay: 160ms; }
-  section.fs-live > ul > li:nth-child(4), section.fs-live > ol > li:nth-child(4) { animation-delay: 240ms; }
-  section.fs-live > ul > li:nth-child(5), section.fs-live > ol > li:nth-child(5) { animation-delay: 320ms; }
-  section.fs-live > ul > li:nth-child(n+6), section.fs-live > ol > li:nth-child(n+6) { animation-delay: 400ms; }
-  section.fs-live .strip > i.ok::after,
-  section.fs-live .strip > i.hold::after,
-  section.fs-live .strip > i.no::after,
-  section.fs-live .strip > i > .grease { animation: fs-ink 520ms 620ms ease-out backwards; }
-  section.fs-live .sheet .grease { animation: fs-ink 640ms 900ms ease-out backwards; }
+  /* Shared: status icons queue, spin amber, then settle. Each slide sets --t, the moment of settling. */
+  section.sw-live :is(.run-steps, .prs, .regret, .checks > li.fresh, .runs, .timeline, .merge-checks > li:first-child, .lifecycle > li, .log > li, .queue-items > li) .st:not(.queued, .draft) { animation: sw-settle 420ms var(--ease-pop) var(--t, 0ms) backwards; }
+  section.sw-live :is(.run-steps, .prs, .regret, .checks > li.fresh, .runs, .timeline, .merge-checks > li:first-child, .lifecycle > li, .log > li, .queue-items > li) .st:not(.queued, .draft)::before { animation: sw-spin 640ms linear calc(var(--t, 0ms) - 640ms) 1; }
+  section.sw-live :is(.run-steps, .prs, .regret, .checks > li.fresh, .runs, .timeline, .merge-checks > li:first-child, .lifecycle > li, .log > li, .queue-items > li) .st:not(.queued, .draft)::after,
+  section.sw-live :is(.run-steps, .checks > li.fresh) .st.who .badge { animation: sw-tick 320ms var(--ease) calc(var(--t, 0ms) + 90ms) backwards; }
+  section.sw-live :is(.run-steps, .checks > li.fresh) .st.who img { animation: sw-pop 420ms var(--ease-pop) var(--t, 0ms) backwards; }
+  section.sw-live .takeaway { animation: sw-rise 700ms var(--ease) var(--td, 900ms) backwards; }
 
-  /* Bookends: the photo slides into the light; lines slot in; a grease mark lands. */
-  section.fs-live[data-marpit-advanced-background="background"] { animation: fs-photo 1200ms ease-out backwards; }
-  section.fs-live[data-marpit-advanced-background-split] > p { animation: fs-slot 700ms 120ms var(--fs-ease) backwards; }
-  section.fs-live[data-marpit-advanced-background-split] > p ~ p { animation-delay: 260ms; }
-  section.fs-live.questions h1::after { animation: fs-ink 700ms 700ms ease-out backwards; }
-  section.fs-live.thanks .columns > div { animation: fs-slot 760ms var(--fs-ease) backwards; }
-  section.fs-live.thanks .columns > div + div { animation-delay: 150ms; }
-  section.fs-live.thanks h1::after { animation: fs-ink 520ms 900ms ease-out backwards; }
+  /* Cover: the title focuses in while AI-0142's checks complete in order, then the rings fill. */
+  section.sw-live.cover h1 { animation: sw-focus 900ms var(--ease) 100ms backwards; }
+  section.sw-live.cover .byline { animation: sw-rise 700ms var(--ease) 450ms backwards; }
+  section.sw-live.cover .run { animation: sw-rise 800ms var(--ease) 200ms backwards; }
+  section.sw-live.cover .run-steps > li:nth-child(1) { --t: 1100ms; }
+  section.sw-live.cover .run-steps > li:nth-child(2) { --t: 1750ms; }
+  section.sw-live.cover .run-steps > li:nth-child(3) { --t: 2400ms; }
+  section.sw-live.cover .run-steps > li:nth-child(4) { --t: 3750ms; }
+  section.sw-live.cover .run-steps > li::after { animation: sw-grow-y 380ms var(--ease) calc(var(--t) + 200ms) backwards; }
+  section.sw-live.cover .run-steps .state, section.sw-live.cover .run-steps small { animation: sw-write 420ms var(--ease) calc(var(--t) + 120ms) backwards; }
+  section.sw-live.cover .rings i::after { animation: sw-grow-x 420ms var(--ease) 2650ms backwards; }
+  section.sw-live.cover .rings i:nth-child(2)::after { animation-delay: 2900ms; }
+  section.sw-live.cover .rings i:nth-child(3)::after { animation-delay: 3150ms; }
+  section.sw-live.cover .rings i:nth-child(4)::after { animation-delay: 3400ms; }
+  section.sw-live.cover .run-status .live-only { animation: sw-transient 3900ms linear backwards; }
+  section.sw-live.cover .run-status .pass { animation: sw-pop 420ms var(--ease-pop) 3900ms backwards; }
+  section.sw-live.cover .run figcaption { animation: sw-fade 600ms ease-out 4100ms backwards; }
 
-  /* Cover: print, tick, clear, cross the hold line */
-  section.fs-live.cover .strip-cover { animation: fs-print 900ms var(--fs-ease) backwards, fs-clear-green 3900ms linear backwards, fs-cross 900ms 3500ms var(--fs-ease) backwards; }
-  section.fs-live.cover .strip-fields > i::after { animation: fs-ink 420ms ease-out backwards; }
-  section.fs-live.cover .strip-fields > i:nth-child(1)::after { animation-delay: 1150ms; }
-  section.fs-live.cover .strip-fields > i:nth-child(2)::after { animation-delay: 1650ms; }
-  section.fs-live.cover .strip-fields > i:nth-child(3)::after { animation-delay: 2150ms; }
-  section.fs-live.cover .strip-fields > i:nth-child(4)::after { animation-delay: 2650ms; }
-  section.fs-live.cover .strip-fields > .grease { animation: fs-ink 560ms 3050ms ease-out backwards; }
-  section.fs-live.cover .cover-byline { animation: fs-slot 800ms 600ms var(--fs-ease) backwards; }
-  section.fs-live.cover .hold-line::after { animation: fs-stopbar 3700ms linear backwards; }
+  /* Bio */
+  section.sw-live.bio[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container] > figure:not(#sw) { animation: sw-wipe 1000ms var(--ease) backwards; }
+  section.sw-live.bio h2 { animation: sw-rise 700ms var(--ease) 250ms backwards; }
+  section.sw-live.bio p { animation: sw-rise 700ms var(--ease) 450ms backwards; }
+  section.sw-live.bio p + p { animation-delay: 650ms; }
 
-  /* 01: agents print fast; clearances arrive slowly */
-  section.fs-live .pile > .strip { animation: fs-drop 520ms var(--fs-ease) backwards; }
-  section.fs-live .pile > .strip:nth-child(2) { animation-delay: 140ms; }
-  section.fs-live .pile > .strip:nth-child(3) { animation-delay: 280ms; }
-  section.fs-live .pile > .strip:nth-child(4) { animation-delay: 420ms; }
-  section.fs-live .pile > .strip:nth-child(5) { animation-delay: 560ms; }
-  section.fs-live .pile > .strip:nth-child(6) { animation-delay: 700ms; }
-  section.fs-live .pile > .strip:nth-child(7) { animation-delay: 840ms; }
-  section.fs-live .cleared > .strip { animation: fs-slot 900ms 1300ms var(--fs-ease) backwards; }
-  section.fs-live .cleared > .strip:nth-child(2) { animation-delay: 2700ms; }
-  section.fs-live .cleared > .strip > i.ok::after { animation-delay: 2000ms; }
-  section.fs-live .cleared > .strip:nth-child(2) > i.ok::after { animation-delay: 3400ms; }
+  /* Code got cheap: drafts pour in, the shipped queue fills slowly. */
+  section.sw-live.cheap .queue { animation: sw-rise 700ms var(--ease) backwards; }
+  section.sw-live.cheap .queue + .queue { animation-delay: 120ms; }
+  section.sw-live.cheap .drafted .prs > li { animation: sw-rise 420ms var(--ease) backwards; }
+  section.sw-live.cheap .drafted .prs > li:nth-child(1) { animation-delay: 300ms; }
+  section.sw-live.cheap .drafted .prs > li:nth-child(2) { animation-delay: 380ms; }
+  section.sw-live.cheap .drafted .prs > li:nth-child(3) { animation-delay: 460ms; }
+  section.sw-live.cheap .drafted .prs > li:nth-child(4) { animation-delay: 540ms; }
+  section.sw-live.cheap .drafted .prs > li:nth-child(5) { animation-delay: 620ms; }
+  section.sw-live.cheap .drafted .prs > li:nth-child(6) { animation-delay: 700ms; }
+  section.sw-live.cheap .drafted .prs > li:nth-child(7) { animation-delay: 780ms; }
+  section.sw-live.cheap .count { --n: var(--to); }
+  section.sw-live.cheap .count > span { display: none; }
+  section.sw-live.cheap .count::after { content: counter(n); }
+  section.sw-live.cheap .drafted .count { animation: sw-count 560ms steps(7, jump-start) 300ms backwards; }
+  section.sw-live.cheap .shipped .count { animation: sw-count 2300ms steps(2, jump-start) 1650ms backwards; }
+  section.sw-live.cheap .shipped .prs > li:nth-child(1) { --t: 1650ms; animation: sw-fade 400ms ease-out 1000ms backwards; }
+  section.sw-live.cheap .shipped .prs > li:nth-child(2) { --t: 2800ms; animation: sw-fade 400ms ease-out 2150ms backwards; }
+  section.sw-live.cheap .shipped .prs > li:nth-child(-n + 2) > :not(.st) { animation: sw-write 500ms var(--ease) calc(var(--t) - 150ms) backwards; }
+  section.sw-live.cheap .shipped .awaiting { animation: sw-fade 600ms ease-out 3150ms backwards; }
+  section.sw-live.cheap .illus { animation: sw-fade 600ms ease-out 3400ms backwards; }
+  section.cheap { --td: 3600ms; }
 
-  /* 02: each strip slots in, then gets cocked and ringed */
-  section.fs-live .regret > .strip { animation: fs-slot 700ms var(--fs-ease) backwards, fs-cock 520ms var(--fs-ease) backwards; }
-  section.fs-live .regret > .strip:nth-child(1) { animation-delay: 0ms, 900ms; }
-  section.fs-live .regret > .strip:nth-child(2) { animation-delay: 160ms, 1500ms; }
-  section.fs-live .regret > .strip:nth-child(3) { animation-delay: 320ms, 2100ms; }
-  section.fs-live .regret > .strip:nth-child(1) > i.hold::after { animation-delay: 1250ms; }
-  section.fs-live .regret > .strip:nth-child(2) > i.hold::after { animation-delay: 1850ms; }
-  section.fs-live .regret > .strip:nth-child(3) > i.hold::after { animation-delay: 2450ms; }
+  /* Regret: three checks fail, one after another. */
+  section.sw-live.regret .regrets { animation: sw-rise 700ms var(--ease) backwards; }
+  section.sw-live.regret .regret:nth-child(1) { --t: 900ms; }
+  section.sw-live.regret .regret:nth-child(2) { --t: 1650ms; }
+  section.sw-live.regret .regret:nth-child(3) { --t: 2400ms; }
+  section.sw-live.regret .regret > :not(.st) { animation: sw-rise 520ms var(--ease) calc(var(--t) - 560ms) backwards; }
+  section.sw-live.regret .regret .cue span { animation: sw-write 420ms var(--ease) calc(var(--t) + 80ms) backwards; }
+  section.regret { --td: 3100ms; }
 
-  /* 03-05: the hero strip arrives by morph; only its newest mark is written after it lands */
-  section.fs-live .route .strip { animation: none; }
-  section.fs-live .route .strip > i::after,
-  section.fs-live .route .strip > i > .grease { animation: none; }
-  section.fs-live .route .strip > i.fresh::after,
-  section.fs-live .route .strip > i.fresh > .grease { animation: fs-ink 520ms 760ms ease-out backwards; }
-  section.fs-live .route-detail .sheet { animation: fs-slot 760ms 200ms var(--fs-ease) backwards; }
-  section.fs-live .route-detail .sheet dd { animation: fs-ink 520ms ease-out backwards; }
-  section.fs-live .route-detail .sheet dd:nth-of-type(1) { animation-delay: 500ms; }
-  section.fs-live .route-detail .sheet dd:nth-of-type(2) { animation-delay: 750ms; }
-  section.fs-live .route-detail .sheet dd:nth-of-type(3) { animation-delay: 1000ms; }
-  section.fs-live .route-detail .sheet dd:nth-of-type(4) { animation-delay: 1250ms; }
-  section.fs-live .route-detail .sheet .locks > li { animation: fs-slot 560ms 300ms var(--fs-ease) backwards; }
-  section.fs-live .route-detail .sheet .locks > li:nth-child(2) { animation-delay: 420ms; }
-  section.fs-live .route-detail .sheet .locks > li:nth-child(3) { animation-delay: 540ms; }
-  section.fs-live .route-detail .sheet .grease { animation-delay: 1500ms; }
-  section.fs-live .route-detail ul > li { animation: fs-slot 620ms var(--fs-ease) backwards; }
-  section.fs-live .route-detail ul > li:nth-child(2) { animation-delay: 90ms; }
-  section.fs-live .route-detail ul > li:nth-child(3) { animation-delay: 180ms; }
-  section.fs-live .route-detail ul > li:nth-child(4) { animation-delay: 270ms; }
-  section.fs-live .route-detail .readback { animation: fs-slot 760ms 300ms var(--fs-ease) backwards; }
+  /* Instructions: the file is written line by line, then checked in. */
+  section.sw-live.notes .file { animation: sw-rise 700ms var(--ease) backwards; }
+  section.sw-live.notes .file dd { animation: sw-write 460ms var(--ease) backwards; }
+  section.sw-live.notes .file dt { animation: sw-write-key 460ms var(--ease) backwards; }
+  section.sw-live.notes .file :is(dt, dd):nth-of-type(1) { animation-delay: 420ms; }
+  section.sw-live.notes .file :is(dt, dd):nth-of-type(2) { animation-delay: 680ms; }
+  section.sw-live.notes .file :is(dt, dd):nth-of-type(3) { animation-delay: 940ms; }
+  section.sw-live.notes .file :is(dt, dd):nth-of-type(4) { animation-delay: 1200ms; }
+  section.sw-live.notes .file :is(dt, dd):nth-of-type(5) { animation-delay: 1460ms; }
+  section.sw-live.notes .file :is(dt, dd):nth-of-type(6) { animation-delay: 1720ms; }
+  section.sw-live.notes .file :is(dt, dd) + dd { animation-duration: 560ms; }
+  section.sw-live.notes .file-head .chip { animation: sw-pop 420ms var(--ease-pop) 2250ms backwards; }
+  section.sw-live.notes .files-label { animation: sw-fade 500ms ease-out 2400ms backwards; }
+  section.sw-live.notes .files code { animation: sw-pop 380ms var(--ease-pop) 2500ms backwards; }
+  section.sw-live.notes .files code:nth-child(2) { animation-delay: 2620ms; }
+  section.sw-live.notes .files code:nth-child(3) { animation-delay: 2740ms; }
+  section.notes { --td: 3100ms; }
 
-  /* 06: the lab's strips report state as it changes */
-  section.fs-live .fs-lab .strip { animation: none; }
-  section.fs-live .fs-lab [data-fresh="true"] > em,
-  section.fs-live .fs-lab [data-fresh="true"]::after { animation: fs-ink 480ms ease-out backwards; }
-  section.fs-live .fs-lab[data-state="running"] .strip > i[data-mark="active"] { animation: fs-active 1100ms ease-in-out infinite; }
-  section.fs-live .fs-lab .strip[data-fx="goaround"] { animation: fs-incident 900ms ease-in-out; }
-  section.fs-live .fs-lab .strip[data-fx="incident"] { animation: fs-incident 900ms ease-in-out 2; }
+  /* The board: one more check completes on each slide. */
+  section.sw-live.route .slot { animation: sw-fade 600ms ease-out 300ms backwards; }
+  section.sw-live.route .panel { animation: sw-rise 700ms var(--ease) 150ms backwards; }
+  section.sw-live.at-spec .checks > li.fresh { --t: 950ms; }
+  section.sw-live.at-spec .panel :is(dt, dd) { animation: sw-write 440ms var(--ease) backwards; }
+  section.sw-live.at-spec .panel :is(dt, dd):nth-of-type(1) { animation-delay: 1150ms; }
+  section.sw-live.at-spec .panel :is(dt, dd):nth-of-type(2) { animation-delay: 1400ms; }
+  section.sw-live.at-spec .panel :is(dt, dd):nth-of-type(3) { animation-delay: 1650ms; }
+  section.sw-live.at-spec .panel :is(dt, dd):nth-of-type(4) { animation-delay: 1900ms; }
+  section.at-spec { --td: 2400ms; }
+  section.sw-live.at-build .runs > li:nth-child(1) { --t: 1000ms; }
+  section.sw-live.at-build .runs > li:nth-child(2) { --t: 1600ms; }
+  section.sw-live.at-build .runs > li:nth-child(3) { --t: 2200ms; }
+  section.sw-live.at-build .runs b { animation: sw-write 360ms var(--ease) calc(var(--t) + 100ms) backwards; }
+  section.sw-live.at-build .checks > li.fresh { --t: 2650ms; }
+  section.sw-live.at-build .panel .warn { animation: sw-rise 600ms var(--ease) 3000ms backwards; }
+  section.at-build { --td: 3400ms; }
+  section.sw-live.at-review .actor { animation: sw-rise 600ms var(--ease) backwards; }
+  section.sw-live.at-review .actor:nth-of-type(2) { animation-delay: 120ms; }
+  section.sw-live.at-review .actor:nth-of-type(3) { animation-delay: 240ms; }
+  section.sw-live.at-review .review-loop svg path:not(.head) { animation: sw-draw 600ms var(--ease) 400ms backwards; }
+  section.sw-live.at-review .review-loop svg path.back:not(.head) { animation-delay: 1500ms; }
+  section.sw-live.at-review .review-loop svg.lane-clean path:not(.head) { animation-delay: 2900ms; }
+  section.sw-live.at-review .review-loop svg :is(path.head, text) { animation: sw-fade 300ms ease-out 900ms backwards; }
+  section.sw-live.at-review .review-loop svg :is(path.head.back, text.back) { animation-delay: 2000ms; }
+  section.sw-live.at-review .review-loop svg.lane-clean :is(path.head, text) { animation-delay: 3400ms; }
+  section.sw-live.at-review .loop-token { animation: sw-token 3800ms ease-in-out 300ms backwards; }
+  section.sw-live.at-review .approve-checks b { animation: sw-fade 400ms ease-out 3000ms backwards; }
+  section.sw-live.at-review .approve-checks span { animation: sw-pop 360ms var(--ease-pop) 3200ms backwards; }
+  section.sw-live.at-review .approve-checks span:nth-of-type(2) { animation-delay: 3350ms; }
+  section.sw-live.at-review .approve-checks span:nth-of-type(3) { animation-delay: 3500ms; }
+  section.sw-live.at-review .approve-checks span:nth-of-type(4) { animation-delay: 3650ms; }
+  section.sw-live.at-review .merge-checks > li:first-child { --t: 3550ms; }
+  section.sw-live.at-review .merge-checks .gate > .live-only { animation: sw-transient 3950ms linear backwards; }
+  section.sw-live.at-review .merge-checks .gate > .st:not(.live-only) { animation: sw-pop 420ms var(--ease-pop) 3950ms backwards; }
+  section.sw-live.at-review .merge-checks .gate > .m-done { animation: sw-write 420ms var(--ease) 4000ms backwards; }
+  section.sw-live.at-review .merge-btn { animation: sw-enable 360ms ease-out 4150ms backwards; }
+  section.sw-live.at-review .checks > li.fresh { --t: 4150ms; }
+  section.at-review { --td: 4250ms; }
 
-  /* 07: the health gate trips, then the strip goes around and drops back into hold */
-  section.fs-live .goaround .bay-hold > .strip { animation: fs-goaround 1500ms 1100ms cubic-bezier(0.5, 0, 0.2, 1) backwards, fs-lift 1500ms 1100ms ease-out backwards, fs-clear-red 1700ms linear backwards; }
-  section.fs-live .goaround .bay-hold > .strip > i.no::after { animation-delay: 500ms; }
-  section.fs-live .goaround .bay-hold > .strip > i.ok::after { animation: none; }
-  section.fs-live .goaround .ga-note .grease { animation: fs-ink 600ms 2800ms ease-out backwards; }
-  section.fs-live .goaround ul > li { animation: fs-slot 620ms var(--fs-ease) backwards; }
-  section.fs-live .goaround ul > li:nth-child(2) { animation-delay: 90ms; }
-  section.fs-live .goaround ul > li:nth-child(3) { animation-delay: 180ms; }
-  section.fs-live .goaround ul > li:nth-child(4) { animation-delay: 270ms; }
+  /* Release board */
+  section.sw-live.lab .board { animation: sw-rise 700ms var(--ease) backwards; }
+  section.sw-live.lab .board[data-state="idle"] .btn.run { animation: sw-nudge 1200ms ease-in-out 1200ms 2; }
+  section.sw-live.lab .board[data-state="awaiting"] .btn.approve { animation: sw-nudge 1200ms ease-in-out 2; }
+  section.sw-live .board[data-state="running"] [data-mark="active"] em::before { animation: sw-spin-loop 800ms linear infinite; }
+  section.sw-live .board [data-fresh="true"] em { animation: sw-pop 380ms var(--ease-pop) backwards; }
+  section.sw-live .board-row[data-fx] { animation: sw-flash 1400ms ease-out backwards; }
+  section.sw-live .board-row[data-outcome]:not([data-outcome=""]) output { animation: sw-fade 400ms ease-out backwards; }
+  section.sw-live .board[data-state="complete"] ~ [data-board-outcome] { animation: sw-arrive 700ms var(--ease) 200ms backwards; }
 
-  /* 08: the checklist sheet slides out of its holder */
-  section.fs-live .preflight .sheet { animation: fs-slot 760ms var(--fs-ease) backwards; }
-  section.fs-live .checklist > li[data-checked="true"]::after { animation: fs-ink 380ms ease-out backwards; }
+  /* Rollback: errors cross the health gate, and the gate rolls the change back. */
+  section.sw-live.rollback .deploy { animation: sw-rise 700ms var(--ease) backwards; }
+  section.sw-live.rollback .timeline > li:nth-child(1) { --t: 700ms; }
+  section.sw-live.rollback .timeline > li:nth-child(2) { --t: 1800ms; }
+  section.sw-live.rollback .timeline > li:nth-child(3) { --t: 2500ms; }
+  section.sw-live.rollback .timeline > li > :not(.st) { animation: sw-write 460ms var(--ease) calc(var(--t) - 300ms) backwards; }
+  section.sw-live.rollback .timeline > li.skipped { animation: sw-fade 500ms ease-out 2800ms backwards; }
+  section.sw-live.rollback .errors .rate { animation: sw-draw 1500ms cubic-bezier(0.45, 0, 0.55, 1) 500ms backwards; }
+  section.sw-live.rollback .errors .trip { animation: sw-pop 360ms var(--ease-pop) 1700ms backwards; }
+  section.sw-live.rollback .errors :is(.gate, .gate-label) { animation: sw-fade 500ms ease-out 300ms backwards; }
+  section.sw-live.rollback .deploy-foot { animation: sw-fade 600ms ease-out 3000ms backwards; }
+  section.sw-live.rollback .rb-side li { animation: sw-rise 560ms var(--ease) backwards; }
+  section.sw-live.rollback .rb-side li:nth-child(1) { animation-delay: 300ms; }
+  section.sw-live.rollback .rb-side li:nth-child(2) { animation-delay: 450ms; }
+  section.sw-live.rollback .rb-side li:nth-child(3) { animation-delay: 600ms; }
+  section.rollback { --td: 3300ms; }
 
-  /* Information Alpha: the broadcast prints, then each line is written */
-  section.fs-live .atis .sheet { animation: fs-print 800ms var(--fs-ease) backwards; }
-  section.fs-live .atis .sheet dd { animation: fs-ink 480ms ease-out backwards; }
-  section.fs-live .atis .sheet dd:nth-of-type(1) { animation-delay: 500ms; }
-  section.fs-live .atis .sheet dd:nth-of-type(2) { animation-delay: 700ms; }
-  section.fs-live .atis .sheet dd:nth-of-type(3) { animation-delay: 900ms; }
-  section.fs-live .atis .sheet dd:nth-of-type(4) { animation-delay: 1100ms; }
-  section.fs-live .atis .sheet dd:nth-of-type(5) { animation-delay: 1300ms; }
-  section.fs-live .atis .sheet dd:nth-of-type(6) { animation-delay: 1500ms; }
-  section.fs-live .atis-notes ul > li { animation: fs-slot 620ms var(--fs-ease) backwards; }
-  section.fs-live .atis-notes ul > li:nth-child(2) { animation-delay: 90ms; }
-  section.fs-live .atis-notes ul > li:nth-child(3) { animation-delay: 180ms; }
-  section.fs-live .files code { animation: fs-slot 620ms var(--fs-ease) backwards; }
-  section.fs-live .files code:nth-child(1) { animation-delay: 1700ms; }
-  section.fs-live .files code:nth-child(2) { animation-delay: 1820ms; }
-  section.fs-live .files code:nth-child(3) { animation-delay: 1940ms; }
+  /* Tool map: the table fills cell by cell. */
+  section.sw-live.map .tool-map { animation: sw-fade 500ms ease-out backwards; }
+  section.sw-live.map .tool-map [role="row"] > * { animation: sw-rise 480ms var(--ease) backwards; }
+  section.sw-live.map .tool-map [role="row"]:nth-child(2) > * { animation-delay: 250ms; }
+  section.sw-live.map .tool-map [role="row"]:nth-child(3) > * { animation-delay: 500ms; }
+  section.sw-live.map .tool-map [role="row"]:nth-child(4) > * { animation-delay: 750ms; }
+  section.sw-live.map .tool-map [role="row"]:nth-child(5) > * { animation-delay: 1000ms; }
+  section.sw-live.map .tool-map [role="row"]:nth-child(n + 2) > :nth-child(2) { animation-duration: 560ms; }
+  section.sw-live.map .tool-map [role="row"]:nth-child(n + 2) > :nth-child(3) { animation-duration: 640ms; }
+  section.sw-live.map .tool-map [role="row"]:nth-child(n + 2) > :nth-child(4) { animation-duration: 720ms; }
+  section.sw-live.map .map-note { animation: sw-fade 600ms ease-out 1400ms backwards; }
 
-  /* 05: two review rounds, then the clearance */
-  section.fs-live .review-loop .loop-token { animation: fs-handoff 4200ms 500ms cubic-bezier(0.45, 0, 0.2, 1) backwards, fs-token-holder 4200ms 500ms linear backwards; }
-  section.fs-live .review-loop .station-you > .grease { animation: fs-ink 520ms 3900ms ease-out backwards; }
-  section.fs-live .clear-checks > span { animation: fs-slot 560ms var(--fs-ease) backwards; }
-  section.fs-live .clear-checks > span:nth-of-type(2) { animation-delay: 80ms; }
-  section.fs-live .clear-checks > span:nth-of-type(3) { animation-delay: 160ms; }
-  section.fs-live .clear-checks > span:nth-of-type(4) { animation-delay: 240ms; }
+  /* Checklist */
+  section.sw-live.check .check-card { animation: sw-rise 700ms var(--ease) backwards; }
+  section.sw-live.check .checklist > li { animation: sw-rise 460ms var(--ease) backwards; }
+  section.sw-live.check .checklist > li:nth-child(1) { animation-delay: 200ms; }
+  section.sw-live.check .checklist > li:nth-child(2) { animation-delay: 270ms; }
+  section.sw-live.check .checklist > li:nth-child(3) { animation-delay: 340ms; }
+  section.sw-live.check .checklist > li:nth-child(4) { animation-delay: 410ms; }
+  section.sw-live.check .checklist > li:nth-child(5) { animation-delay: 480ms; }
+  section.sw-live.check .checklist > li:nth-child(6) { animation-delay: 550ms; }
+  section.sw-live.check .checklist > li:nth-child(7) { animation-delay: 620ms; }
+  section.sw-live.check .check-notes p { animation: sw-rise 600ms var(--ease) 900ms backwards; }
+  section.sw-live.check .check-notes p + p { animation-delay: 1100ms; }
+  section .checklist button[aria-pressed="true"]::before { animation: sw-pop 280ms var(--ease-pop); }
+  section.check { --td: 1400ms; }
 
-  /* 09: the map's rows slot in one practice at a time */
-  section.fs-live .tool-map .strip:nth-of-type(3) { animation-delay: 70ms; }
-  section.fs-live .tool-map .strip:nth-of-type(4) { animation-delay: 140ms; }
-  section.fs-live .tool-map .strip:nth-of-type(5) { animation-delay: 210ms; }
-  section.fs-live .tool-map .strip:nth-of-type(6) { animation-delay: 280ms; }
-  section.fs-live .tool-map .strip:nth-of-type(7) { animation-delay: 350ms; }
-  section.fs-live .tool-map .strip:nth-of-type(8) { animation-delay: 420ms; }
-  section.fs-live .tool-map .strip:nth-of-type(9) { animation-delay: 490ms; }
+  /* Expansion: context budget. Session 1 fills in spurts and stops at a natural break; session 2 starts small. */
+  section.sw-live.budget .meter-card { animation: sw-rise 700ms var(--ease) backwards; }
+  section.sw-live.budget .s1 .seg.base { animation: sw-grow-x 380ms var(--ease) 350ms backwards; }
+  section.sw-live.budget .cap-base { animation: sw-write 420ms var(--ease) 550ms backwards; }
+  section.sw-live.budget .drop-zone { animation: sw-fade 500ms ease-out 700ms backwards; }
+  section.sw-live.budget .s1 .seg.task { animation: sw-fill-steps 1600ms linear 900ms backwards; }
+  section.sw-live.budget .cap-task { animation: sw-write 420ms var(--ease) 1150ms backwards; }
+  section.sw-live.budget .meter .break { animation: sw-grow-y 320ms var(--ease) 2500ms backwards; }
+  section.sw-live.budget .cap-break { animation: sw-write 480ms var(--ease) 2650ms backwards; }
+  section.sw-live.budget .meter-body > :nth-child(n + 4) { animation: sw-fade 400ms ease-out 2950ms backwards; }
+  section.sw-live.budget .s2 .seg.base { animation: sw-grow-x 380ms var(--ease) 3050ms backwards; }
+  section.sw-live.budget .s2 .seg.note { animation: sw-appear 360ms var(--ease-pop) 3350ms backwards; }
+  section.sw-live.budget .cap-note { animation: sw-write 420ms var(--ease) 3450ms backwards; }
+  section.sw-live.budget .practices > li { animation: sw-rise 520ms var(--ease) 3550ms backwards; }
+  section.sw-live.budget .practices > li:nth-child(2) { animation-delay: 3650ms; }
+  section.sw-live.budget .practices > li:nth-child(3) { animation-delay: 3750ms; }
+  section.budget { --td: 3950ms; }
 
-  /* Signs never move: they are the fixed infrastructure the strips move past. */
+  /* Four roles: the relay runs left to right, and you approve each handoff. */
+  section.sw-live.roles .relay > li { animation: sw-rise 600ms var(--ease) 200ms backwards; }
+  section.sw-live.roles .relay > li:nth-child(2) { animation-delay: 1050ms; }
+  section.sw-live.roles .relay > li:nth-child(3) { animation-delay: 1900ms; }
+  section.sw-live.roles .relay > li:nth-child(4) { animation-delay: 2750ms; }
+  section.sw-live.roles .relay .out code { animation: sw-write 420ms var(--ease) 650ms backwards; }
+  section.sw-live.roles .relay > li:nth-child(2) .out code { animation-delay: 1500ms; }
+  section.sw-live.roles .relay > li:nth-child(3) .out code { animation-delay: 2350ms; }
+  section.sw-live.roles .relay > li:nth-child(4) .out code { animation-delay: 3200ms; }
+  section.sw-live.roles .relay .gate { animation: sw-fade 300ms ease-out 850ms backwards; }
+  section.sw-live.roles .relay .gate::after { animation: sw-appear 360ms var(--ease-pop) 950ms backwards; }
+  section.sw-live.roles .relay .gate i { animation: sw-appear 300ms var(--ease-pop) 1150ms backwards; }
+  section.sw-live.roles .relay > li:nth-child(3) .gate { animation-delay: 1700ms; }
+  section.sw-live.roles .relay > li:nth-child(3) .gate::after { animation-delay: 1800ms; }
+  section.sw-live.roles .relay > li:nth-child(3) .gate i { animation-delay: 2000ms; }
+  section.sw-live.roles .relay > li:nth-child(4) .gate { animation-delay: 2550ms; }
+  section.sw-live.roles .relay > li:nth-child(4) .gate::after { animation-delay: 2650ms; }
+  section.sw-live.roles .relay > li:nth-child(4) .gate i { animation-delay: 2850ms; }
+  section.sw-live.roles .relay-back path:not(.head) { animation: sw-draw 700ms var(--ease) 3450ms backwards; }
+  section.sw-live.roles .relay-back path.head { animation: sw-fade 250ms ease-out 3950ms backwards; }
+  section.sw-live.roles .approve-line { animation: sw-rise 560ms var(--ease) 3600ms backwards; }
+  section.roles { --td: 4000ms; }
+
+  /* A change is a folder: each step completes like a check, the files appear, the tasks count up, then it archives. */
+  section.sw-live.changes .lifecycle { animation: sw-fade 500ms ease-out backwards; }
+  section.sw-live.changes .lifecycle > li:nth-child(1) { --t: 650ms; }
+  section.sw-live.changes .lifecycle > li:nth-child(2) { --t: 1400ms; }
+  section.sw-live.changes .lifecycle > li:nth-child(3) { --t: 3000ms; }
+  section.sw-live.changes .lifecycle > li:nth-child(4) { --t: 3550ms; }
+  section.sw-live.changes .lifecycle > li::after { animation: sw-grow-x 380ms var(--ease) calc(var(--t) + 150ms) backwards; }
+  section.sw-live.changes .tree { animation: sw-rise 650ms var(--ease) 800ms backwards; }
+  section.sw-live.changes .tree-files > li { animation: sw-write 420ms var(--ease) 1000ms backwards; }
+  section.sw-live.changes .tree-files > li:nth-child(2) { animation-delay: 1150ms; }
+  section.sw-live.changes .tree-files > li:nth-child(3) { animation-delay: 1300ms; }
+  section.sw-live.changes .tree-files > li:nth-child(4) { animation-delay: 1450ms; }
+  section.sw-live.changes .tasks-done { --n: var(--to); animation: sw-count 1000ms steps(4, end) 1900ms backwards; }
+  section.sw-live.changes .tasks-done > span { display: none; }
+  section.sw-live.changes .tasks-done::after { content: counter(n) " of 4 done"; }
+  section.sw-live.changes .tree-status .live-only { animation: sw-transient 3550ms linear backwards; }
+  section.sw-live.changes .tree-status .pass { animation: sw-pop 420ms var(--ease-pop) 3550ms backwards; }
+  section.changes { --td: 3850ms; }
+
+  /* Reset: the warning signs stack up, HEAD walks onto the bad commits, then goes back to the last green one. */
+  section.sw-live.reset .run-log { animation: sw-rise 650ms var(--ease) backwards; }
+  section.sw-live.reset .log > li:nth-child(1) { --t: 500ms; }
+  section.sw-live.reset .log > li:nth-child(2) { --t: 1200ms; }
+  section.sw-live.reset .log > li:nth-child(3) { --t: 1900ms; }
+  section.sw-live.reset .log > li:nth-child(4) { --t: 2600ms; }
+  section.sw-live.reset .log > li > span:not(.st) { animation: sw-write 420ms var(--ease) calc(var(--t) - 300ms) backwards; }
+  section.sw-live.reset .log .sign { animation: sw-appear 360ms var(--ease-pop) calc(var(--t) + 150ms) backwards; }
+  section.sw-live.reset .git-graph { animation: sw-rise 650ms var(--ease) 150ms backwards; }
+  section.sw-live.reset .commits > li:nth-child(3) { animation: sw-appear 320ms var(--ease-pop) 1250ms backwards, sw-undrop 360ms ease-out 3100ms backwards; }
+  section.sw-live.reset .commits > li:nth-child(4) { animation: sw-appear 320ms var(--ease-pop) 2050ms backwards, sw-undrop 360ms ease-out 3100ms backwards; }
+  section.sw-live.reset .commits .dropped span { animation: sw-unstrike 360ms ease-out 3100ms backwards; }
+  section.sw-live.reset .head-tag { animation: sw-head 3200ms var(--ease) backwards; }
+  section.sw-live.reset .reset-cmd code { animation: sw-write 480ms var(--ease) 2900ms backwards; }
+  section.sw-live.reset .reset-next { animation: sw-rise 560ms var(--ease) 3350ms backwards; }
+  section.reset { --td: 3750ms; }
+
+  /* Parallel agents: lanes finish at different speeds; review approves one at a time. */
+  section.sw-live.parallel .agents-par { animation: sw-rise 650ms var(--ease) backwards; }
+  section.sw-live.parallel .par-lanes .bar i { animation: sw-grow-x 900ms cubic-bezier(0.4, 0, 0.2, 1) 300ms backwards; }
+  section.sw-live.parallel .par-lanes > li:nth-child(2) .bar i { animation-duration: 1300ms; }
+  section.sw-live.parallel .par-lanes > li:nth-child(3) .bar i { animation-duration: 1700ms; }
+  section.sw-live.parallel .par-lanes > li:nth-child(4) .bar i { animation-duration: 2100ms; }
+  section.sw-live.parallel .par-lanes .pr { animation: sw-appear 360ms var(--ease-pop) 1200ms backwards; }
+  section.sw-live.parallel .par-lanes > li:nth-child(2) .pr { animation-delay: 1600ms; }
+  section.sw-live.parallel .par-lanes > li:nth-child(3) .pr { animation-delay: 2000ms; }
+  section.sw-live.parallel .par-lanes > li:nth-child(4) .pr { animation-delay: 2400ms; }
+  section.sw-live.parallel .review-queue { animation: sw-rise 650ms var(--ease) 150ms backwards; }
+  section.sw-live.parallel .queue-items > li { animation: sw-arrive-x 420ms var(--ease) 1250ms backwards; }
+  section.sw-live.parallel .queue-items > li:nth-child(1) { --t: 2100ms; }
+  section.sw-live.parallel .queue-items > li:nth-child(2) { --t: 3000ms; animation-delay: 1650ms; }
+  section.sw-live.parallel .queue-items > li:nth-child(3) { --t: 2350ms; animation-delay: 2050ms; }
+  section.sw-live.parallel .queue-items > li:nth-child(4) { --t: 2750ms; animation-delay: 2450ms; }
+  section.sw-live.parallel .queue-items .done > span:last-child { animation: sw-write 360ms var(--ease) calc(var(--t) + 80ms) backwards; }
+  section.sw-live.parallel .par-rule { animation: sw-rise 560ms var(--ease) 3300ms backwards; }
+  section.parallel { --td: 3700ms; }
+
+  /* Security: permissions settle, an injected instruction is caught, and the action is blocked. */
+  section.sw-live.guard .perms { animation: sw-rise 650ms var(--ease) backwards; }
+  section.sw-live.guard .perms .chip { animation: sw-appear 340ms var(--ease-pop) 350ms backwards; }
+  section.sw-live.guard .perms [role="row"]:nth-child(3) .chip { animation-delay: 500ms; }
+  section.sw-live.guard .perms [role="row"]:nth-child(4) .chip { animation-delay: 650ms; }
+  section.sw-live.guard .perms [role="row"]:nth-child(5) .chip { animation-delay: 800ms; }
+  section.sw-live.guard .perms [role="row"]:nth-child(6) .chip { animation-delay: 950ms; }
+  section.sw-live.guard .untrusted { animation: sw-rise 650ms var(--ease) 1150ms backwards; }
+  section.sw-live.guard .untrusted mark { animation: sw-mark 650ms var(--ease) 1850ms backwards; }
+  section.sw-live.guard .tool-call { animation: sw-fade 400ms ease-out 2350ms backwards; }
+  section.sw-live.guard .tool-call .chip { animation: sw-stamp 380ms var(--ease-pop) 2750ms backwards; }
+  section.guard { --td: 3150ms; }
+
+  /* Extensions: rows arrive from advice to enforcement; hooks land last. */
+  section.sw-live.levers .lever-map { animation: sw-fade 500ms ease-out backwards; }
+  section.sw-live.levers .lever-map [role="row"]:nth-child(n + 2) { animation: sw-rise 520ms var(--ease) 250ms backwards; }
+  section.sw-live.levers .lever-map [role="row"]:nth-child(3) { animation-delay: 450ms; }
+  section.sw-live.levers .lever-map [role="row"]:nth-child(4) { animation-delay: 650ms; }
+  section.sw-live.levers .lever-map [role="row"]:nth-child(5) { animation-delay: 850ms; }
+  section.sw-live.levers .lever-map [role="row"]:nth-child(6) { animation-delay: 1350ms; }
+  section.sw-live.levers .lever-map .enforce .who { animation: sw-stamp 380ms var(--ease-pop) 1750ms backwards; }
+  section.levers { --td: 2200ms; }
+
+  /* Measure: the throughput metrics, then the instability ones, then the research. */
+  section.sw-live.measure .dora-card { animation: sw-rise 650ms var(--ease) backwards; }
+  section.sw-live.measure .dora-card.unstable { animation-delay: 150ms; }
+  section.sw-live.measure .dora-card li { animation: sw-write 460ms var(--ease) 400ms backwards; }
+  section.sw-live.measure .dora-card li:nth-child(2) { animation-delay: 550ms; }
+  section.sw-live.measure .dora-card li:nth-child(3) { animation-delay: 700ms; }
+  section.sw-live.measure .dora-card.unstable li { animation-delay: 1000ms; }
+  section.sw-live.measure .dora-card.unstable li:nth-child(2) { animation-delay: 1150ms; }
+  section.sw-live.measure .finding { animation: sw-rise 650ms var(--ease) 1500ms backwards; }
+  section.measure { --td: 2200ms; }
+
+  /* Questions and thanks */
+  section.sw-live.questions h1 { animation: sw-focus 900ms var(--ease) 200ms backwards; }
+  section.sw-live.questions .photo { animation: sw-reveal 1100ms var(--ease) backwards; }
+  section.sw-live.thanks h1 { animation: sw-focus 800ms var(--ease) backwards; }
+  section.sw-live.thanks .columns > div { animation: sw-rise 700ms var(--ease) 250ms backwards; }
+  section.sw-live.thanks .columns > div + div { animation-delay: 400ms; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  section [data-morph], section .route { view-transition-name: none; }
-}
+/* ---------- Print and reduced motion ---------- */
 
 @media print {
-  section { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-  section *, section *::before, section *::after { animation: none !important; transition: none !important; }
-  section [data-morph], section .route { view-transition-name: none; }
-  section .fs-controls, section .fs-dynamic, section .lab-hint { display: none !important; }
-  section .fs-static { display: revert !important; }
-  section .lab-compare.fs-static { display: grid !important; }
-  section .checklist > li::after { opacity: 0 !important; }
+  section, section *, section *::before, section *::after { animation: none !important; transition: none !important; }
+  section .sw-dynamic { display: none !important; }
+  section .board-controls { display: none !important; }
+  section .change[data-morph] { view-transition-name: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  section .change[data-morph] { view-transition-name: none; }
+  section .cl-meter i { transition: none; }
 }

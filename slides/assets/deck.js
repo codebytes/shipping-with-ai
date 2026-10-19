@@ -14,8 +14,8 @@
   function preloadFonts() {
     if (!document.fonts) return;
     for (const face of document.fonts) {
-      if (face.family.replace(/["']/g, "").startsWith("FS ") && face.status === "unloaded") {
-        face.load().catch((error) => console.warn("Flight Strip could not load a bundled font:", error));
+      if (face.family.replace(/["']/g, "").startsWith("SW ") && face.status === "unloaded") {
+        face.load().catch((error) => console.warn("The deck could not load a bundled font:", error));
       }
     }
   }
@@ -35,15 +35,15 @@
     }
   }
 
-  /* ---------- Challenge and response checklist ---------- */
+  /* ---------- Checklist ---------- */
 
   function createChecklist(list) {
+    const card = list.closest(".check-card");
     const count = list.closest("section")?.querySelector("[data-checklist-count]");
     const items = [...list.children].filter((item) => item.tagName === "LI");
     const buttons = items.map((item) => {
       const button = document.createElement("button");
       button.type = "button";
-      button.className = "fs-check";
       button.setAttribute("aria-pressed", "false");
       button.append(...item.childNodes);
       item.append(button);
@@ -59,10 +59,12 @@
 
     function render() {
       const done = buttons.filter((button) => button.getAttribute("aria-pressed") === "true").length;
+      list.dataset.complete = String(done === buttons.length);
+      if (card) card.style.setProperty("--done", String(done / buttons.length));
       if (count) {
         count.textContent = done === buttons.length
-          ? `All ${done} confirmed. Cleared for departure.`
-          : `${done} of ${buttons.length} confirmed`;
+          ? `All ${done} checked. Ready to ship.`
+          : `${done} of ${buttons.length} checked`;
       }
     }
     render();
@@ -77,32 +79,55 @@
   /* ---------- Release board ---------- */
 
   const STAGES = ["tests", "review", "ring0", "ring1", "ring2", "broad"];
+  const STAGE_NAMES = { tests: "Tests", review: "Review", ring0: "Ring 0", ring1: "Ring 1", ring2: "Ring 2", broad: "Broad" };
+  const UNRUN = new Set(["notrun", "skip"]);
+
+  // Stages that never ran collapse into one cell spanning the run, so the row reads as one stop.
+  function layoutRuns(cells) {
+    let index = 0;
+    while (index < STAGES.length) {
+      const cell = cells[STAGES[index]];
+      let end = index;
+      if (UNRUN.has(cell.dataset.mark)) {
+        while (end + 1 < STAGES.length && cells[STAGES[end + 1]].dataset.mark === cell.dataset.mark) end += 1;
+      }
+      const span = end - index + 1;
+      cell.hidden = false;
+      cell.style.gridColumn = span > 1 ? `span ${span}` : "";
+      cell.querySelector(".sr").textContent = span > 1
+        ? `${STAGE_NAMES[STAGES[index]]} to ${STAGE_NAMES[STAGES[end]]}: `
+        : `${STAGE_NAMES[STAGES[index]]}: `;
+      for (let rest = index + 1; rest <= end; rest += 1) cells[STAGES[rest]].hidden = true;
+      index = end + 1;
+    }
+  }
   const STOPS = new Set(["hold", "rollback", "incident"]);
-  const QUIET = { "": "Queued", active: "In progress", skip: "Skipped" };
+  const QUIET = { "": "Queued", active: "In progress", skip: "Skipped", notrun: "Not run" };
   const SCENARIOS = {
     evidence: {
       label: "Evidence first",
       gate: "review",
-      next: "Next: switch the scenario to Vibe shipping and run the same changes.",
+      next: "Next: switch to Vibe shipping and run the same changes.",
       durations: { tests: 1700, review: 1500, ring0: 1500, ring1: 2000, ring2: 1500, broad: 1700 },
       marks: {
         a: { tests: ["pass", "Pass"], review: ["clear", "CA"], ring0: ["pass", "Pass"], ring1: ["pass", "Pass"], ring2: ["pass", "Pass"], broad: ["landed", "Landed"] },
         b: { tests: ["warn", "Pass*"], review: ["hold", "Hold"] },
-        c: { tests: ["pass", "Pass"], review: ["clear", "CA"], ring0: ["pass", "Pass"], ring1: ["rollback", "Back"] },
+        c: { tests: ["pass", "Pass"], review: ["clear", "CA"], ring0: ["pass", "Pass"], ring1: ["rollback", "Rolled back"] },
       },
       outcomes: { a: ["landed", "Landed", "100% exposed"], b: ["held", "Held", "0% exposed"], c: ["rollback", "Rolled back", "1% exposed"] },
       messages: {
-        idle: "Evidence first. Three fictional changes wait at the board. Run it, or Step one bay at a time.",
-        start: "Tests are running on all three strips.",
+        idle: "Evidence first. Three fictional changes are queued. Run the board, or Step one stage at a time.",
+        start: "Tests are running on all three changes.",
         tests: "Tests pass. AI-0157 passes only because the agent edited an assertion.",
-        gate: "Review needs a person. Read each diff, then write the clearance.",
-        review: "Cleared: AI-0142 and PR-0161. Held: AI-0157, because a weakened test is not evidence.",
+        gate: "Review needs a person. Read each diff, then approve.",
+        review: "Approved: AI-0142 and PR-0161. Held: AI-0157, because a weakened test is not evidence.",
         ring0: "Ring 0: the team runs both changes first. Health holds.",
         ring1: "Ring 1 at 1%: PR-0161 raises errors, so the health gate rolls it back.",
         ring2: "Ring 2 at 10%: only AI-0142 continues.",
-        broad: "Broad: AI-0142 reaches everyone, with evidence at every bay.",
-        complete: "One landed. One held before anyone saw it. One rolled back after reaching 1%.",
+        broad: "Broad: AI-0142 reaches everyone, with evidence at every stage.",
       },
+      // The closing line, with each outcome in its status colour.
+      outcome: [["One "], ["landed", "t-pass"], [". One "], ["held", "t-hold"], [" before anyone saw it. One "], ["rolled back", "t-back"], [" after reaching 1%."]],
     },
     vibe: {
       label: "Vibe shipping",
@@ -117,45 +142,45 @@
       outcomes: { a: ["landed", "Landed", "100% exposed"], b: ["incident", "Incident", "100% exposed"], c: ["incident", "Incident", "100% exposed"] },
       messages: {
         idle: "Vibe shipping. The same three changes, with no review gate and no rings. Run the board.",
-        start: "Tests are running on all three strips.",
+        start: "Tests are running on all three changes.",
         tests: "Tests pass. AI-0157 passes because the agent edited an assertion.",
-        review: "Review is a rubber stamp: LGTM on every strip, and nobody reads the diffs.",
+        review: "Review is a rubber stamp: LGTM on every change, and nobody reads the diffs.",
         ring0: "No ring 0. The team never sees these changes first.",
         ring1: "No 1% ring, so nothing limits the blast radius.",
         ring2: "No 10% ring either.",
         broad: "Broad at 100%: checkout totals and sign-in both break, for everyone.",
-        complete: "One landed. Two incidents reached 100% of users. That's the regret.",
       },
+      outcome: [["One "], ["landed", "t-pass"], [". "], ["Two incidents", "t-back"], [" reached 100% of users. That's the regret."]],
     },
   };
 
   function createBoard(root) {
     const section = root.closest("section");
-    const controls = root.querySelector(".fs-controls");
+    const controls = root.querySelector(".board-controls");
     const toggle = root.querySelector('[data-board-action="toggle"]');
     const stepButton = root.querySelector('[data-board-action="step"]');
-    const clearButton = root.querySelector('[data-board-action="clear"]');
+    const approveButton = root.querySelector('[data-board-action="clear"]');
+    const scenarioButtons = [...root.querySelectorAll("[data-board-scenario]")];
+    const speedButton = root.querySelector("[data-board-speed]");
     const stateLabel = root.querySelector("[data-board-state]");
     const summary = root.querySelector("[data-board-summary]");
     const progress = root.querySelector("[data-board-progress]");
-    const outcomeSign = section?.querySelector("[data-board-outcome]");
-    const nextStep = root.querySelector("[data-board-next]");
+    const outcomeNote = section?.querySelector("[data-board-outcome]");
     const columns = [...root.querySelectorAll("[data-col]")];
-    const strips = [...root.querySelectorAll("[data-change]")].map((strip) => ({
-      strip,
-      id: strip.dataset.change,
-      output: strip.querySelector("output"),
-      boxes: Object.fromEntries([...strip.querySelectorAll("[data-stage]")].map((box) => [box.dataset.stage, box])),
+    const rows = [...root.querySelectorAll("[data-change]")].map((row) => ({
+      row,
+      id: row.dataset.change,
+      output: row.querySelector("output"),
+      cells: Object.fromEntries([...row.querySelectorAll("[data-stage]")].map((cell) => [cell.dataset.stage, cell])),
     }));
     // The authored markup is the static snapshot; print, presenter, and no-JavaScript views keep it.
     const authored = {
-      summary: summary.textContent,
+      summary: summary.innerHTML,
       progress: progress.value,
-      strips: strips.map(({ strip, output, boxes }) => ({
-        holder: strip.dataset.holder || "",
-        outcome: strip.dataset.outcome || "",
+      rows: rows.map(({ row, output, cells }) => ({
+        outcome: row.dataset.outcome || "",
         output: output.innerHTML,
-        boxes: Object.fromEntries(Object.entries(boxes).map(([stage, box]) => [stage, [box.dataset.mark || "", box.querySelector("em").textContent]])),
+        cells: Object.fromEntries(Object.entries(cells).map(([stage, cell]) => [stage, [cell.dataset.mark || "", cell.querySelector("em").textContent]])),
       })),
     };
 
@@ -173,23 +198,33 @@
 
     const scene = () => SCENARIOS[scenario];
 
-    // The index of the bay where a change stops, or the last bay if it flies all the way.
+    // The index of the stage where a change stops, or the last stage if it goes all the way.
     function stopIndex(id) {
       const marks = scene().marks[id];
       const index = STAGES.findIndex((stage) => marks[stage] && STOPS.has(marks[stage][0]));
       return index === -1 ? STAGES.length - 1 : index;
     }
 
-    function boxState(id, index) {
-      if (index > stopIndex(id)) return ["", done > stopIndex(id) || mode === "complete" ? "Not run" : ""];
+    function cellState(id, index) {
+      if (index > stopIndex(id)) return done > stopIndex(id) || mode === "complete" ? ["notrun", "Not run"] : ["", ""];
       if (index < done) return scene().marks[id][STAGES[index]] || ["", ""];
       if (index === done && ["running", "paused", "awaiting"].includes(mode)) return ["active", ""];
       return ["", ""];
     }
 
+    // How far a change in flight has reached: the widest ring it has passed so far.
+    function exposureSoFar(id) {
+      const marks = scene().marks[id];
+      for (const [stage, label] of [["ring2", "10% exposed"], ["ring1", "1% exposed"], ["ring0", "Team only"]]) {
+        if (STAGES.indexOf(stage) < done && marks[stage]?.[0] === "pass") return label;
+      }
+      return "0% exposed";
+    }
+
     function message() {
       const { messages } = scene();
-      if (mode === "idle" || mode === "complete") return messages[mode];
+      if (mode === "idle") return messages.idle;
+      if (mode === "complete") return `Complete. ${scene().next}`;
       if (mode === "awaiting") return messages.gate;
       const text = done === 0 ? messages.start : messages[STAGES[done - 1]];
       return mode === "paused" ? `Paused. ${text}` : text;
@@ -209,65 +244,74 @@
         column.dataset.state = mode !== "idle" && (index < done || mode === "complete") ? "done"
           : mode !== "idle" && index === done ? "active" : "queued";
       }
-      for (const { strip, id, output, boxes } of strips) {
+      for (const { row, id, output, cells } of rows) {
         STAGES.forEach((stage, index) => {
-          const [mark, text] = boxState(id, index);
-          const box = boxes[stage];
-          box.dataset.mark = mark;
-          box.dataset.fresh = String(fresh.has(`${id}:${stage}`));
-          box.querySelector("em").textContent = text || QUIET[mark] || "";
+          const [mark, text] = cellState(id, index);
+          const cell = cells[stage];
+          cell.dataset.mark = mark;
+          cell.dataset.fresh = String(fresh.has(`${id}:${stage}`));
+          cell.querySelector("em").textContent = text || QUIET[mark] || "";
         });
+        layoutRuns(cells);
         const finished = mode === "complete" || done > stopIndex(id);
         const [kind, label, exposure] = data.outcomes[id];
-        strip.dataset.outcome = finished ? kind : "";
-        strip.dataset.holder = !finished ? "amber" : kind === "landed" ? "green" : "red";
-        strip.dataset.fx = effects.get(id) || "";
+        row.dataset.outcome = finished ? kind : "";
+        if (effects.has(id)) row.dataset.fx = effects.get(id);
+        else delete row.dataset.fx;
         const detail = document.createElement("small");
-        detail.textContent = finished ? exposure : "";
-        output.replaceChildren(finished ? label : mode === "idle" ? "Waiting" : "In flight", detail);
+        detail.textContent = finished ? exposure : exposureSoFar(id);
+        output.replaceChildren(finished ? label : mode === "idle" ? "Waiting" : "In progress", detail);
       }
-      const names = { idle: "Ready", running: "Running", paused: "Paused", awaiting: "Hold short: awaiting clearance", complete: "Complete" };
-      stateLabel.textContent = `${names[mode]} / ${data.label}`;
-      toggle.textContent = mode === "running" ? "Pause" : mode === "paused" ? "Resume" : mode === "complete" ? "Run again" : "Run board";
+      const names = { idle: "Ready", running: "Running", paused: "Paused", awaiting: "Awaiting approval", complete: "Complete" };
+      stateLabel.textContent = names[mode];
+      toggle.textContent = mode === "running" ? "Pause" : mode === "paused" ? "Resume" : mode === "complete" ? "Run again" : "Run";
       toggle.disabled = mode === "awaiting";
       stepButton.disabled = mode === "awaiting" || mode === "complete";
-      clearButton.disabled = mode !== "awaiting";
+      approveButton.disabled = mode !== "awaiting";
+      for (const button of scenarioButtons) button.setAttribute("aria-pressed", String(button.dataset.boardScenario === scenario));
       summary.textContent = message();
-      if (outcomeSign) outcomeSign.textContent = data.messages.complete;
-      if (nextStep) nextStep.textContent = data.next;
+      // The outcome is announced once, when the run completes; the console reports the process.
+      if (outcomeNote) {
+        outcomeNote.replaceChildren(...(mode === "complete" ? data.outcome : []).map(([text, tone]) => {
+          if (!tone) return document.createTextNode(text);
+          const span = document.createElement("span");
+          span.className = tone;
+          span.textContent = text;
+          return span;
+        }));
+      }
       renderProgress();
     }
 
     function restoreAuthored() {
       root.dataset.state = "static";
       for (const column of columns) column.dataset.state = "queued";
-      strips.forEach(({ strip, output, boxes }, index) => {
-        const snapshot = authored.strips[index];
-        strip.dataset.holder = snapshot.holder;
-        strip.dataset.outcome = snapshot.outcome;
-        strip.dataset.fx = "";
+      rows.forEach(({ row, output, cells }, index) => {
+        const snapshot = authored.rows[index];
+        row.dataset.outcome = snapshot.outcome;
+        delete row.dataset.fx;
         output.innerHTML = snapshot.output;
-        for (const [stage, [mark, text]] of Object.entries(snapshot.boxes)) {
-          boxes[stage].dataset.mark = mark;
-          boxes[stage].dataset.fresh = "false";
-          boxes[stage].querySelector("em").textContent = text;
+        for (const [stage, [mark, text]] of Object.entries(snapshot.cells)) {
+          cells[stage].dataset.mark = mark;
+          cells[stage].dataset.fresh = "false";
+          cells[stage].querySelector("em").textContent = text;
         }
+        layoutRuns(cells);
       });
-      summary.textContent = authored.summary;
+      summary.innerHTML = authored.summary;
       progress.value = authored.progress;
     }
 
-    // Completes the bay in progress: writes its marks, then moves on, or waits at the clearance gate.
+    // Completes the stage in progress: writes its marks, then moves on, or waits at the approval gate.
     function completeStage() {
       const stage = STAGES[done];
       fresh = new Set();
       effects = new Map();
-      for (const { id } of strips) {
+      for (const { id } of rows) {
         const mark = done <= stopIndex(id) ? scene().marks[id][stage] : null;
         if (!mark) continue;
         fresh.add(`${id}:${stage}`);
-        if (mark[0] === "rollback") effects.set(id, "goaround");
-        if (mark[0] === "incident") effects.set(id, "incident");
+        if (mark[0] === "rollback" || mark[0] === "incident") effects.set(id, mark[0]);
       }
       done += 1;
       elapsed = 0;
@@ -328,25 +372,25 @@
       render();
       sync();
     });
-    root.querySelector('[data-board-action="replay"]').addEventListener("click", () => {
-      reset();
-      run();
-    });
-    clearButton.addEventListener("click", () => {
+    approveButton.addEventListener("click", () => {
       if (mode !== "awaiting") return;
       mode = "running";
       completeStage();
       render();
       sync();
     });
-    root.querySelector("[data-board-scenario]").addEventListener("change", (event) => {
-      scenario = event.target.value;
-      reset();
-      render();
-      sync();
-    });
-    root.querySelector("[data-board-speed]").addEventListener("change", (event) => {
-      speed = Number(event.target.value);
+    for (const button of scenarioButtons) {
+      button.addEventListener("click", () => {
+        if (button.dataset.boardScenario === scenario) return;
+        scenario = button.dataset.boardScenario;
+        reset();
+        render();
+        sync();
+      });
+    }
+    speedButton?.addEventListener("click", () => {
+      speed = speed === 1 ? 2 : 1;
+      speedButton.setAttribute("aria-pressed", String(speed === 2));
     });
     shieldControls(controls);
 
@@ -369,11 +413,13 @@
 
   /* ---------- Slide life cycle ---------- */
 
-  // Paint the page canvas in the console colour, so a handoff transition never flashes black between slides.
+  // Paint the page canvas in the slide colour, so a transition never flashes black between slides.
   function paintCanvas() {
     const section = document.querySelector("section:not(.invert)");
-    const color = section && getComputedStyle(section).getPropertyValue("--console").trim();
-    if (color) document.documentElement.style.backgroundColor = color;
+    const color = section && getComputedStyle(section).getPropertyValue("--canvas").trim();
+    if (!color) return;
+    document.documentElement.style.backgroundColor = color;
+    document.body.style.backgroundColor = color;
   }
 
   function initialize() {
@@ -401,7 +447,7 @@
       const audience = audienceView();
       for (const { svg, sections } of slides) {
         const live = active(svg) && !reducedMotion.matches;
-        for (const section of sections) section.classList.toggle("fs-live", live);
+        for (const section of sections) section.classList.toggle("sw-live", live);
       }
       for (const { svg, api } of boards) api.update(active(svg), audience);
       for (const { section, api } of lists) {

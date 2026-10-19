@@ -1,717 +1,882 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-15T17:42:30-04:00",
-  "title": "Design System: Flight Strip Board",
+  "generatedAt": "2026-10-19T10:56:13Z",
+  "title": "Design System: Shipping with AI",
   "extensions": {
     "colorMeta": {
-      "sign-yellow": {
+      "accent": {
         "role": "primary",
-        "displayName": "Sign Yellow",
-        "canonical": "#f6c21c",
+        "displayName": "Takeaway Blue",
+        "canonical": "#0a5bc4",
         "tonalRamp": [
-          "#110a00",
-          "#2f2200",
-          "#503d00",
-          "#745a00",
-          "#9b7800",
-          "#c79b00",
-          "#f4c016",
-          "#ffedc1"
-        ]
+          "oklch(15% 0.179 258.4)",
+          "oklch(26% 0.179 258.4)",
+          "oklch(38% 0.179 258.4)",
+          "oklch(49% 0.179 258.4)",
+          "oklch(61% 0.179 258.4)",
+          "oklch(72% 0.179 258.4)",
+          "oklch(84% 0.179 258.4)",
+          "oklch(95% 0.179 258.4)"
+        ],
+        "purpose": "The takeaway line and links. Never a status, a fill or a heading."
       },
-      "sign-black": {
+      "accent-solid": {
         "role": "primary",
-        "displayName": "Sign Black",
-        "canonical": "#121416",
+        "displayName": "Focus Blue",
+        "canonical": "#0969da",
         "tonalRamp": [
-          "#090b0d",
-          "#222426",
-          "#3e4042",
-          "#5b5e60",
-          "#7b7d80",
-          "#9fa2a5",
-          "#c5c8ca",
-          "#eceff2"
-        ]
+          "oklch(15% 0.191 257.5)",
+          "oklch(26% 0.191 257.5)",
+          "oklch(38% 0.191 257.5)",
+          "oklch(49% 0.191 257.5)",
+          "oklch(61% 0.191 257.5)",
+          "oklch(72% 0.191 257.5)",
+          "oklch(84% 0.191 257.5)",
+          "oklch(95% 0.191 257.5)"
+        ],
+        "purpose": "The 2px focus outline on buttons, the scenario switch and checklist rows."
       },
-      "sign-red": {
-        "role": "primary",
-        "displayName": "Mandatory Red",
-        "canonical": "#c8102e",
+      "pass": {
+        "role": "secondary",
+        "displayName": "Pass Green (ink)",
+        "canonical": "#116329",
         "tonalRamp": [
-          "#1f0002",
-          "#4b0009",
-          "#7c0016",
-          "#b10025",
-          "#de3040",
-          "#ff6a6b",
-          "#ffafab",
-          "#ffe8e7"
-        ]
+          "oklch(15% 0.118 148.1)",
+          "oklch(26% 0.118 148.1)",
+          "oklch(38% 0.118 148.1)",
+          "oklch(49% 0.118 148.1)",
+          "oklch(61% 0.118 148.1)",
+          "oklch(72% 0.118 148.1)",
+          "oklch(84% 0.118 148.1)",
+          "oklch(95% 0.118 148.1)"
+        ],
+        "purpose": "Letters for passed, agreed, approved, shipped and landed."
       },
-      "sign-white": {
-        "role": "primary",
-        "displayName": "Legend White",
+      "pass-solid": {
+        "role": "secondary",
+        "displayName": "Pass Green (solid)",
+        "canonical": "#1a7f37",
+        "tonalRamp": [
+          "oklch(15% 0.140 148.0)",
+          "oklch(26% 0.140 148.0)",
+          "oklch(38% 0.140 148.0)",
+          "oklch(49% 0.140 148.0)",
+          "oklch(61% 0.140 148.0)",
+          "oklch(72% 0.140 148.0)",
+          "oklch(84% 0.140 148.0)",
+          "oklch(95% 0.140 148.0)"
+        ],
+        "purpose": "Discs, connectors, ring bars, the checklist meter, progress when complete, checked boxes."
+      },
+      "pass-tint": {
+        "role": "secondary",
+        "displayName": "Pass Tint",
+        "canonical": "#dafbe1",
+        "tonalRamp": [
+          "oklch(15% 0.049 151.6)",
+          "oklch(26% 0.049 151.6)",
+          "oklch(38% 0.049 151.6)",
+          "oklch(49% 0.049 151.6)",
+          "oklch(61% 0.049 151.6)",
+          "oklch(72% 0.049 151.6)",
+          "oklch(84% 0.049 151.6)",
+          "oklch(95% 0.049 151.6)"
+        ],
+        "purpose": "Fill of pass chips, stage marks and the completed checklist head."
+      },
+      "pass-line": {
+        "role": "secondary",
+        "displayName": "Pass Line",
+        "canonical": "#aceebb",
+        "tonalRamp": [
+          "oklch(15% 0.096 151.1)",
+          "oklch(26% 0.096 151.1)",
+          "oklch(38% 0.096 151.1)",
+          "oklch(49% 0.096 151.1)",
+          "oklch(61% 0.096 151.1)",
+          "oklch(72% 0.096 151.1)",
+          "oklch(84% 0.096 151.1)",
+          "oklch(95% 0.096 151.1)"
+        ],
+        "purpose": "Border of pass chips, stage marks and pill rows."
+      },
+      "merge": {
+        "role": "secondary",
+        "displayName": "Merge Green",
+        "canonical": "#1f883d",
+        "tonalRamp": [
+          "oklch(15% 0.145 148.2)",
+          "oklch(26% 0.145 148.2)",
+          "oklch(38% 0.145 148.2)",
+          "oklch(49% 0.145 148.2)",
+          "oklch(61% 0.145 148.2)",
+          "oklch(72% 0.145 148.2)",
+          "oklch(84% 0.145 148.2)",
+          "oklch(95% 0.145 148.2)"
+        ],
+        "purpose": "The one filled action: Approve on the release board and the Merge pull request button."
+      },
+      "hold": {
+        "role": "secondary",
+        "displayName": "Hold Amber (ink)",
+        "canonical": "#7d4e00",
+        "tonalRamp": [
+          "oklch(15% 0.101 70.2)",
+          "oklch(26% 0.101 70.2)",
+          "oklch(38% 0.101 70.2)",
+          "oklch(49% 0.101 70.2)",
+          "oklch(61% 0.101 70.2)",
+          "oklch(72% 0.101 70.2)",
+          "oklch(84% 0.101 70.2)",
+          "oklch(95% 0.101 70.2)"
+        ],
+        "purpose": "Letters for in progress, awaiting approval, held and suspect (Pass*)."
+      },
+      "hold-solid": {
+        "role": "secondary",
+        "displayName": "Hold Amber (solid)",
+        "canonical": "#9a6700",
+        "tonalRamp": [
+          "oklch(15% 0.117 75.0)",
+          "oklch(26% 0.117 75.0)",
+          "oklch(38% 0.117 75.0)",
+          "oklch(49% 0.117 75.0)",
+          "oklch(61% 0.117 75.0)",
+          "oklch(72% 0.117 75.0)",
+          "oklch(84% 0.117 75.0)",
+          "oklch(95% 0.117 75.0)"
+        ],
+        "purpose": "Hold discs and the review loop return path."
+      },
+      "spin": {
+        "role": "secondary",
+        "displayName": "Spinner Amber",
+        "canonical": "#bf8700",
+        "tonalRamp": [
+          "oklch(15% 0.137 79.3)",
+          "oklch(26% 0.137 79.3)",
+          "oklch(38% 0.137 79.3)",
+          "oklch(49% 0.137 79.3)",
+          "oklch(61% 0.137 79.3)",
+          "oklch(72% 0.137 79.3)",
+          "oklch(84% 0.137 79.3)",
+          "oklch(95% 0.137 79.3)"
+        ],
+        "purpose": "Only the rotating arcs of work in progress and the progress bar while a run is underway."
+      },
+      "hold-tint": {
+        "role": "secondary",
+        "displayName": "Hold Tint",
+        "canonical": "#fff8c5",
+        "tonalRamp": [
+          "oklch(15% 0.066 101.0)",
+          "oklch(26% 0.066 101.0)",
+          "oklch(38% 0.066 101.0)",
+          "oklch(49% 0.066 101.0)",
+          "oklch(61% 0.066 101.0)",
+          "oklch(72% 0.066 101.0)",
+          "oklch(84% 0.066 101.0)",
+          "oklch(95% 0.066 101.0)"
+        ],
+        "purpose": "Fill of hold chips, hold and active stage marks, the warning row and the running state pill."
+      },
+      "hold-line": {
+        "role": "secondary",
+        "displayName": "Hold Line",
+        "canonical": "#eed888",
+        "tonalRamp": [
+          "oklch(15% 0.103 94.5)",
+          "oklch(26% 0.103 94.5)",
+          "oklch(38% 0.103 94.5)",
+          "oklch(49% 0.103 94.5)",
+          "oklch(61% 0.103 94.5)",
+          "oklch(72% 0.103 94.5)",
+          "oklch(84% 0.103 94.5)",
+          "oklch(95% 0.103 94.5)"
+        ],
+        "purpose": "Border of hold chips and stage marks; top rule of the warning row."
+      },
+      "back": {
+        "role": "secondary",
+        "displayName": "Back Red (ink)",
+        "canonical": "#a40e26",
+        "tonalRamp": [
+          "oklch(15% 0.178 21.9)",
+          "oklch(26% 0.178 21.9)",
+          "oklch(38% 0.178 21.9)",
+          "oklch(49% 0.178 21.9)",
+          "oklch(61% 0.178 21.9)",
+          "oklch(72% 0.178 21.9)",
+          "oklch(84% 0.178 21.9)",
+          "oklch(95% 0.178 21.9)"
+        ],
+        "purpose": "Letters for failures, errors, incidents, the health gate label and rollbacks."
+      },
+      "back-solid": {
+        "role": "secondary",
+        "displayName": "Back Red (solid)",
+        "canonical": "#cf222e",
+        "tonalRamp": [
+          "oklch(15% 0.205 24.5)",
+          "oklch(26% 0.205 24.5)",
+          "oklch(38% 0.205 24.5)",
+          "oklch(49% 0.205 24.5)",
+          "oklch(61% 0.205 24.5)",
+          "oklch(72% 0.205 24.5)",
+          "oklch(84% 0.205 24.5)",
+          "oklch(95% 0.205 24.5)"
+        ],
+        "purpose": "Fail and rollback discs, the dashed health gate and its trip dot."
+      },
+      "back-tint": {
+        "role": "secondary",
+        "displayName": "Back Tint",
+        "canonical": "#ffebe9",
+        "tonalRamp": [
+          "oklch(15% 0.022 24.4)",
+          "oklch(26% 0.022 24.4)",
+          "oklch(38% 0.022 24.4)",
+          "oklch(49% 0.022 24.4)",
+          "oklch(61% 0.022 24.4)",
+          "oklch(72% 0.022 24.4)",
+          "oklch(84% 0.022 24.4)",
+          "oklch(95% 0.022 24.4)"
+        ],
+        "purpose": "Fill of rollback and incident marks, the regret cues and the row flash."
+      },
+      "back-line": {
+        "role": "secondary",
+        "displayName": "Back Line",
+        "canonical": "#ffcecb",
+        "tonalRamp": [
+          "oklch(15% 0.056 22.3)",
+          "oklch(26% 0.056 22.3)",
+          "oklch(38% 0.056 22.3)",
+          "oklch(49% 0.056 22.3)",
+          "oklch(61% 0.056 22.3)",
+          "oklch(72% 0.056 22.3)",
+          "oklch(84% 0.056 22.3)",
+          "oklch(95% 0.056 22.3)"
+        ],
+        "purpose": "Border of rollback and incident marks and the regret cues."
+      },
+      "agent": {
+        "role": "tertiary",
+        "displayName": "Agent Violet",
+        "canonical": "#6639ba",
+        "tonalRamp": [
+          "oklch(15% 0.191 293.8)",
+          "oklch(26% 0.191 293.8)",
+          "oklch(38% 0.191 293.8)",
+          "oklch(49% 0.191 293.8)",
+          "oklch(61% 0.191 293.8)",
+          "oklch(72% 0.191 293.8)",
+          "oklch(84% 0.191 293.8)",
+          "oklch(95% 0.191 293.8)"
+        ],
+        "purpose": "Authorship, not state: the Agent chip, the bot glyph, the AI-0142 loop token."
+      },
+      "agent-tint": {
+        "role": "tertiary",
+        "displayName": "Agent Tint",
+        "canonical": "#fbefff",
+        "tonalRamp": [
+          "oklch(15% 0.025 317.7)",
+          "oklch(26% 0.025 317.7)",
+          "oklch(38% 0.025 317.7)",
+          "oklch(49% 0.025 317.7)",
+          "oklch(61% 0.025 317.7)",
+          "oklch(72% 0.025 317.7)",
+          "oklch(84% 0.025 317.7)",
+          "oklch(95% 0.025 317.7)"
+        ],
+        "purpose": "Fill of the Agent chip and the bot disc."
+      },
+      "agent-line": {
+        "role": "tertiary",
+        "displayName": "Agent Line",
+        "canonical": "#e4d0ff",
+        "tonalRamp": [
+          "oklch(15% 0.067 304.4)",
+          "oklch(26% 0.067 304.4)",
+          "oklch(38% 0.067 304.4)",
+          "oklch(49% 0.067 304.4)",
+          "oklch(61% 0.067 304.4)",
+          "oklch(72% 0.067 304.4)",
+          "oklch(84% 0.067 304.4)",
+          "oklch(95% 0.067 304.4)"
+        ],
+        "purpose": "Border of the Agent chip, the bot disc and the loop token."
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Cool Canvas",
+        "canonical": "#f4f6f9",
+        "tonalRamp": [
+          "oklch(15% 0.005 258.3)",
+          "oklch(26% 0.005 258.3)",
+          "oklch(38% 0.005 258.3)",
+          "oklch(49% 0.005 258.3)",
+          "oklch(61% 0.005 258.3)",
+          "oklch(72% 0.005 258.3)",
+          "oklch(84% 0.005 258.3)",
+          "oklch(95% 0.005 258.3)"
+        ],
+        "purpose": "Every slide's ground; deck.js also paints the page in it so transitions never flash black."
+      },
+      "canvas-wash": {
+        "role": "neutral",
+        "displayName": "Canvas Wash",
+        "canonical": "#e6eefa",
+        "tonalRamp": [
+          "oklch(15% 0.018 258.4)",
+          "oklch(26% 0.018 258.4)",
+          "oklch(38% 0.018 258.4)",
+          "oklch(49% 0.018 258.4)",
+          "oklch(61% 0.018 258.4)",
+          "oklch(72% 0.018 258.4)",
+          "oklch(84% 0.018 258.4)",
+          "oklch(95% 0.018 258.4)"
+        ],
+        "purpose": "A radial ellipse from the top-right corner, faded into the canvas by 72%."
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Panel White",
         "canonical": "#ffffff",
         "tonalRamp": [
-          "#0b0b0b",
-          "#242424",
-          "#404040",
-          "#5d5d5d",
-          "#7d7d7d",
-          "#a1a1a1",
-          "#c7c7c7",
-          "#eeeeee"
-        ]
+          "oklch(15% 0.000 0.0)",
+          "oklch(26% 0.000 0.0)",
+          "oklch(38% 0.000 0.0)",
+          "oklch(49% 0.000 0.0)",
+          "oklch(61% 0.000 0.0)",
+          "oklch(72% 0.000 0.0)",
+          "oklch(84% 0.000 0.0)",
+          "oklch(95% 0.000 0.0)"
+        ],
+        "purpose": "Panels, cards, actor boxes, the check run, default buttons."
       },
-      "grease": {
-        "role": "secondary",
-        "displayName": "Grease Pencil",
-        "canonical": "#b8281a",
-        "tonalRamp": [
-          "#1f0000",
-          "#4b0100",
-          "#7c0500",
-          "#ad1a0d",
-          "#d44534",
-          "#ff6d59",
-          "#ffb0a3",
-          "#ffe9e5"
-        ]
-      },
-      "grease-lamp": {
-        "role": "secondary",
-        "displayName": "Grease Under Lamp",
-        "canonical": "#ff8a6b",
-        "tonalRamp": [
-          "#1d0200",
-          "#460c00",
-          "#741b00",
-          "#a03415",
-          "#c55639",
-          "#ef7c5d",
-          "#ffb19c",
-          "#ffe9e3"
-        ]
-      },
-      "amber": {
-        "role": "tertiary",
-        "displayName": "Amber Holder",
-        "canonical": "#e2a33a",
-        "tonalRamp": [
-          "#130900",
-          "#332000",
-          "#573900",
-          "#7e5400",
-          "#a77100",
-          "#d29425",
-          "#faba54",
-          "#ffebd0"
-        ]
-      },
-      "green": {
-        "role": "tertiary",
-        "displayName": "Green Holder",
-        "canonical": "#3f9a6b",
-        "tonalRamp": [
-          "#001006",
-          "#002d18",
-          "#004d2d",
-          "#007044",
-          "#359163",
-          "#5db786",
-          "#84deab",
-          "#c3ffdb"
-        ]
-      },
-      "red": {
-        "role": "tertiary",
-        "displayName": "Red Holder",
-        "canonical": "#c9402b",
-        "tonalRamp": [
-          "#1f0000",
-          "#490400",
-          "#7a0d00",
-          "#ab200a",
-          "#d14833",
-          "#fc6f58",
-          "#ffb1a1",
-          "#ffe9e4"
-        ]
-      },
-      "pass-ink": {
-        "role": "tertiary",
-        "displayName": "Pass Ink",
-        "canonical": "#23663f",
-        "tonalRamp": [
-          "#001005",
-          "#002d15",
-          "#004d28",
-          "#2b6d45",
-          "#4c8e64",
-          "#71b387",
-          "#96daac",
-          "#c5ffd7"
-        ]
-      },
-      "edge-light": {
-        "role": "tertiary",
-        "displayName": "Edge Light",
-        "canonical": "#8fc4ff",
-        "tonalRamp": [
-          "#000b1e",
-          "#002448",
-          "#0b4173",
-          "#2e6094",
-          "#4e80b7",
-          "#72a6df",
-          "#9eccff",
-          "#e3f0ff"
-        ]
-      },
-      "blue": {
-        "role": "tertiary",
-        "displayName": "Holder Blue",
-        "canonical": "#4a7cc0",
-        "tonalRamp": [
-          "#000a21",
-          "#00224f",
-          "#0a3e7c",
-          "#2c5d9f",
-          "#4c7ec2",
-          "#70a3ea",
-          "#a3caff",
-          "#e4f0ff"
-        ]
-      },
-      "console": {
+      "subtle": {
         "role": "neutral",
-        "displayName": "Graphite Console",
-        "canonical": "#1b2023",
+        "displayName": "Subtle Gray",
+        "canonical": "#f6f8fa",
         "tonalRamp": [
-          "#080c0f",
-          "#202528",
-          "#3b4144",
-          "#595f62",
-          "#787e82",
-          "#9ca3a6",
-          "#c2c8cc",
-          "#e9f0f4"
-        ]
+          "oklch(15% 0.003 247.9)",
+          "oklch(26% 0.003 247.9)",
+          "oklch(38% 0.003 247.9)",
+          "oklch(49% 0.003 247.9)",
+          "oklch(61% 0.003 247.9)",
+          "oklch(72% 0.003 247.9)",
+          "oklch(84% 0.003 247.9)",
+          "oklch(95% 0.003 247.9)"
+        ],
+        "purpose": "Panel head bars, neutral chips, the board bar, table header rows, disabled buttons."
       },
-      "console-night": {
+      "well": {
         "role": "neutral",
-        "displayName": "Night Console",
-        "canonical": "#111416",
+        "displayName": "Well Gray",
+        "canonical": "#e9edf2",
         "tonalRamp": [
-          "#090c0d",
-          "#212527",
-          "#3d4043",
-          "#5a5e61",
-          "#7a7e80",
-          "#9ea2a5",
-          "#c4c8cb",
-          "#ebeff2"
-        ]
+          "oklch(15% 0.008 253.9)",
+          "oklch(26% 0.008 253.9)",
+          "oklch(38% 0.008 253.9)",
+          "oklch(49% 0.008 253.9)",
+          "oklch(61% 0.008 253.9)",
+          "oklch(72% 0.008 253.9)",
+          "oklch(84% 0.008 253.9)",
+          "oklch(95% 0.008 253.9)"
+        ],
+        "purpose": "Recessed ground: board lanes, counts, the switch track, the state pill at rest."
       },
-      "console-deep": {
+      "code-fill": {
         "role": "neutral",
-        "displayName": "Deep Well",
-        "canonical": "#121618",
+        "displayName": "Code Fill",
+        "canonical": "#eef1f4",
         "tonalRamp": [
-          "#080c0e",
-          "#202527",
-          "#3c4143",
-          "#5a5e61",
-          "#797e81",
-          "#9da2a5",
-          "#c3c8cb",
-          "#eaeff2"
-        ]
+          "oklch(15% 0.005 247.9)",
+          "oklch(26% 0.005 247.9)",
+          "oklch(38% 0.005 247.9)",
+          "oklch(49% 0.005 247.9)",
+          "oklch(61% 0.005 247.9)",
+          "oklch(72% 0.005 247.9)",
+          "oklch(84% 0.005 247.9)",
+          "oklch(95% 0.005 247.9)"
+        ],
+        "purpose": "Inline code."
       },
-      "console-raised": {
+      "avatar-tint": {
         "role": "neutral",
-        "displayName": "Raised Graphite",
-        "canonical": "#242b2f",
+        "displayName": "Avatar Tint",
+        "canonical": "#dbe8f8",
         "tonalRamp": [
-          "#060c10",
-          "#1e2529",
-          "#3a4145",
-          "#575f63",
-          "#767f83",
-          "#9aa3a8",
-          "#c0c9ce",
-          "#e7f0f5"
-        ]
+          "oklch(15% 0.026 253.6)",
+          "oklch(26% 0.026 253.6)",
+          "oklch(38% 0.026 253.6)",
+          "oklch(49% 0.026 253.6)",
+          "oklch(61% 0.026 253.6)",
+          "oklch(72% 0.026 253.6)",
+          "oklch(84% 0.026 253.6)",
+          "oklch(95% 0.026 253.6)"
+        ],
+        "purpose": "Behind the speaker's avatar and the bio portrait."
       },
-      "rail": {
+      "line": {
         "role": "neutral",
-        "displayName": "Rack Rail",
-        "canonical": "#3a444a",
+        "displayName": "Hairline",
+        "canonical": "#d0d7de",
         "tonalRamp": [
-          "#050c11",
-          "#1c252b",
-          "#374147",
-          "#555f66",
-          "#747f86",
-          "#98a3aa",
-          "#bdc9d1",
-          "#e4f1f8"
-        ]
+          "oklch(15% 0.012 248.0)",
+          "oklch(26% 0.012 248.0)",
+          "oklch(38% 0.012 248.0)",
+          "oklch(49% 0.012 248.0)",
+          "oklch(61% 0.012 248.0)",
+          "oklch(72% 0.012 248.0)",
+          "oklch(84% 0.012 248.0)",
+          "oklch(95% 0.012 248.0)"
+        ],
+        "purpose": "Panel, chip and button borders."
       },
-      "rail-light": {
+      "line-soft": {
         "role": "neutral",
-        "displayName": "Lit Rail",
-        "canonical": "#56636a",
+        "displayName": "Soft Hairline",
+        "canonical": "#e3e8ee",
         "tonalRamp": [
-          "#040d12",
-          "#1a262c",
-          "#364248",
-          "#536067",
-          "#728087",
-          "#96a4ac",
-          "#bbcad2",
-          "#e2f1f9"
-        ]
+          "oklch(15% 0.010 252.8)",
+          "oklch(26% 0.010 252.8)",
+          "oklch(38% 0.010 252.8)",
+          "oklch(49% 0.010 252.8)",
+          "oklch(61% 0.010 252.8)",
+          "oklch(72% 0.010 252.8)",
+          "oklch(84% 0.010 252.8)",
+          "oklch(95% 0.010 252.8)"
+        ],
+        "purpose": "Row dividers and head-bar bottoms inside panels."
       },
-      "lamp": {
+      "line-strong": {
         "role": "neutral",
-        "displayName": "Lamp Light",
-        "canonical": "#ebe5d5",
+        "displayName": "Strong Line",
+        "canonical": "#8c959f",
         "tonalRamp": [
-          "#0f0b02",
-          "#282418",
-          "#443f32",
-          "#625d50",
-          "#827d6f",
-          "#a7a192",
-          "#cdc7b7",
-          "#f4eede"
-        ]
-      },
-      "dim": {
-        "role": "neutral",
-        "displayName": "Dimmed Lamp",
-        "canonical": "#a9b1ad",
-        "tonalRamp": [
-          "#070d0a",
-          "#1f2623",
-          "#3b423e",
-          "#58605c",
-          "#787f7c",
-          "#9ca4a0",
-          "#c1cac5",
-          "#e8f1ed"
-        ]
-      },
-      "paper": {
-        "role": "neutral",
-        "displayName": "Buff Card Stock",
-        "canonical": "#efe6cc",
-        "tonalRamp": [
-          "#100a00",
-          "#2a230f",
-          "#473f2a",
-          "#655d47",
-          "#857d65",
-          "#aaa189",
-          "#d0c7ae",
-          "#f7eed4"
-        ]
-      },
-      "paper-shade": {
-        "role": "neutral",
-        "displayName": "Shaded Card Stock",
-        "canonical": "#e3d7b5",
-        "tonalRamp": [
-          "#100a00",
-          "#2d2305",
-          "#493f21",
-          "#685d3f",
-          "#887d5d",
-          "#aca180",
-          "#d3c7a5",
-          "#faeecb"
-        ]
-      },
-      "paper-line": {
-        "role": "neutral",
-        "displayName": "Printed Rule",
-        "canonical": "#c4b48b",
-        "tonalRamp": [
-          "#100a00",
-          "#2e2200",
-          "#4c3e18",
-          "#6b5c36",
-          "#8b7c55",
-          "#b0a078",
-          "#d6c69d",
-          "#feedc3"
-        ]
+          "oklch(15% 0.018 250.9)",
+          "oklch(26% 0.018 250.9)",
+          "oklch(38% 0.018 250.9)",
+          "oklch(49% 0.018 250.9)",
+          "oklch(61% 0.018 250.9)",
+          "oklch(72% 0.018 250.9)",
+          "oklch(84% 0.018 250.9)",
+          "oklch(95% 0.018 250.9)"
+        ],
+        "purpose": "Bullets, hollow rings, arrows, checkbox borders and gutter line numbers; 3:1, never reading text (disabled labels aside)."
       },
       "ink": {
         "role": "neutral",
-        "displayName": "Strip Ink",
-        "canonical": "#1a2540",
+        "displayName": "Ink",
+        "canonical": "#1f2328",
         "tonalRamp": [
-          "#030921",
-          "#18233e",
-          "#333f5c",
-          "#505d7c",
-          "#6f7d9d",
-          "#92a1c3",
-          "#b7c7eb",
-          "#e7efff"
-        ]
+          "oklch(15% 0.011 254.0)",
+          "oklch(26% 0.011 254.0)",
+          "oklch(38% 0.011 254.0)",
+          "oklch(49% 0.011 254.0)",
+          "oklch(61% 0.011 254.0)",
+          "oklch(72% 0.011 254.0)",
+          "oklch(84% 0.011 254.0)",
+          "oklch(95% 0.011 254.0)"
+        ],
+        "purpose": "Headings and body text."
       },
-      "ink-soft": {
+      "ink-2": {
         "role": "neutral",
-        "displayName": "Faded Ink",
-        "canonical": "#485166",
+        "displayName": "Secondary Ink",
+        "canonical": "#57606a",
         "tonalRamp": [
-          "#050a1b",
-          "#1c2336",
-          "#373f54",
-          "#545d73",
-          "#737d94",
-          "#97a1b9",
-          "#bcc7e0",
-          "#e7eeff"
-        ]
+          "oklch(15% 0.020 251.0)",
+          "oklch(26% 0.020 251.0)",
+          "oklch(38% 0.020 251.0)",
+          "oklch(49% 0.020 251.0)",
+          "oklch(61% 0.020 251.0)",
+          "oklch(72% 0.020 251.0)",
+          "oklch(84% 0.020 251.0)",
+          "oklch(95% 0.020 251.0)"
+        ],
+        "purpose": "Meta, captions, IDs, column headers and the footer."
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Deck and bookend titles (h1); 88px on lead slides; printed on the cover strip in Strip Ink."
+        "purpose": "The cover title (two lines, left column). Closing slides scale the same cut to 96px and 64px."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Every content slide's title (h2), written as the claim in one sentence."
-      },
-      "title": {
-        "displayName": "Title",
-        "purpose": "Sub-heads (h3)."
-      },
-      "body": {
-        "displayName": "Body",
-        "purpose": "The slide's base size on the console."
-      },
-      "body-dense": {
-        "displayName": "Body Dense",
-        "purpose": "Bullet columns beside a strip or sheet."
+        "purpose": "One claim per content slide, max 1080px wide, balanced wrapping."
       },
       "takeaway": {
         "displayName": "Takeaway",
-        "purpose": "The single sentence on a direction sign at the bottom of a content slide."
+        "purpose": "The one closing line of an argument slide, in Takeaway Blue (Ink on the release board)."
       },
-      "sign": {
-        "displayName": "Sign",
-        "purpose": "Uppercase airfield-sign legends: bay labels, page numbers, station placards."
+      "body": {
+        "displayName": "Body",
+        "purpose": "The theme's base for un-classed slides; the byline name and the check run title sit at this size in bold."
+      },
+      "body-side": {
+        "displayName": "Body Side",
+        "purpose": "Prose beside a panel or under the board lanes."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Terms, row titles, change titles, timeline steps, table row heads."
+      },
+      "row": {
+        "displayName": "Row",
+        "purpose": "Definitions and list rows inside panels."
+      },
+      "panel-head": {
+        "displayName": "Panel Head",
+        "purpose": "The head bar of every panel; the name inside it at 650."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "Lane names, check names, counts and the pill rows under a slide."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Uppercase column heads, sheet title bars, and station roles."
+        "purpose": "Chips, buttons, switch options and board marks."
       },
-      "data-id": {
-        "displayName": "Data ID",
-        "purpose": "Strip callsigns in B612 Mono; never wraps."
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Step, actor, timeline and table notes; exposure lines and ring subtitles use 450, the illustrative label and board foot 500."
       },
-      "data-label": {
-        "displayName": "Data Label",
-        "purpose": "B612 Mono caps for row keys and field captions; never for paths or anything with a period."
+      "id": {
+        "displayName": "ID",
+        "purpose": "Change IDs such as AI-0142 and PR-0161."
       },
       "code": {
         "displayName": "Code",
-        "purpose": "File names, paths, and commands in Overpass Mono."
+        "purpose": "Inline code, file names, paths and commands."
       },
-      "hand": {
-        "displayName": "Hand",
-        "purpose": "Grease-pencil handwriting only: initials and short notes, slightly rotated."
+      "chrome": {
+        "displayName": "Chrome",
+        "purpose": "The footer; the page number is Monaspace Neon 400 at the same size."
       }
     },
     "shadows": [
       {
-        "name": "sign-cast",
-        "value": "0 0 0 2px #121416, 0 6px 14px rgba(0, 0, 0, 0.35)",
-        "purpose": "Mandatory and direction signs with their black rim; location signs and page numbers use the cast alone."
+        "name": "panel",
+        "value": "0 1px 2px rgb(31 35 40 / 0.06), 0 12px 28px -14px rgb(31 35 40 / 0.2)",
+        "purpose": "Panels, actor boxes, change cards and the loop token."
       },
       {
-        "name": "strip-in-holder",
-        "value": "inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 2px 0 rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.32)",
-        "purpose": "Plastic lip highlight, contact line, and cast under every flight strip."
+        "name": "lift",
+        "value": "0 2px 4px rgb(31 35 40 / 0.05), 0 22px 44px -18px rgb(31 35 40 / 0.28)",
+        "purpose": "The cover's check run and the Questions photo only."
       },
       {
-        "name": "paper-on-board",
-        "value": "0 3px 0 rgba(0, 0, 0, 0.28), 0 16px 30px rgba(0, 0, 0, 0.32)",
-        "purpose": "Paper sheets lying on the console."
+        "name": "control",
+        "value": "0 1px 0 rgb(31 35 40 / 0.04)",
+        "purpose": "Resting buttons."
       },
       {
-        "name": "chip",
-        "value": "0 2px 0 rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.25)",
-        "purpose": "Small paper tags: file names and evidence tags."
+        "name": "selected-segment",
+        "value": "0 1px 2px rgb(31 35 40 / 0.14), 0 0 0 1px #d0d7de",
+        "purpose": "The selected option in the scenario switch."
       },
       {
-        "name": "takeaway",
-        "value": "0 0 0 3px #121416, 0 12px 26px rgba(0, 0, 0, 0.4)",
-        "purpose": "The heaviest sign on the slide."
+        "name": "hollow-ring",
+        "value": "inset 0 0 0 2px #8c959f",
+        "purpose": "Queued status discs and lane dots the change hasn't reached."
       },
       {
-        "name": "console-key",
-        "value": "inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 3px 0 #0b0d0e, 0 8px 14px rgba(0, 0, 0, 0.35)",
-        "purpose": "Raised key cap; pressed, it travels 2px and the contact line shrinks to 1px."
-      },
-      {
-        "name": "recessed-well",
-        "value": "inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 10px 24px rgba(0, 0, 0, 0.28)",
-        "purpose": "Code blocks; the release-board panel deepens the cast to 18px 34px."
-      },
-      {
-        "name": "in-flight",
-        "value": "0 34px 50px rgba(0, 0, 0, 0.55)",
-        "purpose": "A strip lifted off the board during a go-around."
+        "name": "badge-cutout",
+        "value": "0 0 0 2px #ffffff",
+        "purpose": "Separates a check badge from the avatar it sits on."
       }
     ],
     "motion": [
       {
-        "name": "fs-ease",
+        "name": "settle-budget",
+        "value": "4.95s",
+        "purpose": "Every effect plays once on the live audience slide (section.sw-live) inside prefers-reduced-motion: no-preference, fills backwards from a visible default, and has finished by 4.95s."
+      },
+      {
+        "name": "ease",
         "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "House ease: fast out, long settle. Used for slot, print, cock, cross, and the strip transition."
+        "purpose": "Arrivals: rise, write, focus, grow, draw, reveal, the takeaway."
       },
       {
-        "name": "slot",
-        "value": "fs-slot 560–900ms fs-ease backwards; from translate 56px 0, opacity 0.35; 70–160ms stagger",
-        "purpose": "Strips and list items arrive sideways into their bay."
+        "name": "ease-pop",
+        "value": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "purpose": "Results that pop: disc settle, chips, badges, checked boxes."
       },
       {
-        "name": "print",
-        "value": "fs-print 800–900ms fs-ease backwards; clip-path inset(0 0 100% 0) and translateY(-28px) to rest",
-        "purpose": "A strip or sheet prints top-down."
+        "name": "status-settle",
+        "value": "spin 640ms linear ending at --t; settle 420ms ease-pop at --t; glyph tick 320ms ease at --t + 90ms",
+        "purpose": "The signature beat: a check queues, spins amber, then settles green (or amber, or red)."
       },
       {
-        "name": "drop",
-        "value": "fs-drop 520ms fs-ease backwards; from translate 0 -46px, opacity 0.3; 140ms stagger",
-        "purpose": "A pile of freshly printed strips lands."
+        "name": "takeaway",
+        "value": "rise 700ms ease at --td (default 900ms)",
+        "purpose": "The takeaway enters only after the slide's moment completes."
       },
       {
-        "name": "ink",
-        "value": "fs-ink 380–700ms ease-out backwards; clip-path reveal left to right",
-        "purpose": "A grease mark is written after its object lands."
+        "name": "rise",
+        "value": "translateY(16px) and fade, 420-800ms ease",
+        "purpose": "Panels, rows and bullets arriving."
       },
       {
-        "name": "cock",
-        "value": "fs-cock 520ms fs-ease backwards; to translateX(26px) rotate(-1.4deg)",
-        "purpose": "A strip is pushed out of line to flag it."
+        "name": "write",
+        "value": "clip-path wipe left to right, 360-560ms ease",
+        "purpose": "Text being written: definitions, states, file lines."
       },
       {
-        "name": "clear",
-        "value": "fs-clear-green / fs-clear-red; --holder amber to green or red in the last 18–30%; 400ms ease on --holder changes",
-        "purpose": "The holder changes color only when state changes."
+        "name": "focus",
+        "value": "blur(12px) and translateY(14px) to sharp, 800-900ms ease",
+        "purpose": "Bookend titles (cover, Questions, Thank You)."
       },
       {
-        "name": "cross",
-        "value": "fs-cross 900ms fs-ease backwards; from translate -110px 0",
-        "purpose": "The cleared cover strip crosses the hold line."
+        "name": "pop",
+        "value": "scale(0.6) and fade, 280-420ms ease-pop",
+        "purpose": "Chips, badges, pill rows and checked boxes."
       },
       {
-        "name": "go-around",
-        "value": "fs-goaround + fs-lift 1500ms cubic-bezier(0.5, 0, 0.2, 1)",
-        "purpose": "A strip lifts off the board and drops back into hold."
+        "name": "draw",
+        "value": "stroke-dashoffset 1 to 0 on pathLength 1; 600ms arrows, 1500ms error line",
+        "purpose": "Review-loop arrows and the error-rate line."
       },
       {
-        "name": "handoff-token",
-        "value": "fs-handoff + fs-token-holder 4200ms cubic-bezier(0.45, 0, 0.2, 1)",
-        "purpose": "The review token travels worker, reviewer, worker, reviewer, you; its holder changes with each pass."
+        "name": "count",
+        "value": "@property --n integer, steps() counter; 560ms drafts, 2300ms shipped",
+        "purpose": "Queue counts ticking up at different rates."
       },
       {
-        "name": "active",
-        "value": "fs-active 1100ms ease-in-out infinite",
-        "purpose": "Amber pulse on the box being worked, only while a presenter-started board runs."
+        "name": "transient",
+        "value": "visible during the moment, hidden at the end; 3900-3950ms linear",
+        "purpose": "Live-only in-progress text that gives way to the authored final state."
       },
       {
-        "name": "incident",
-        "value": "fs-incident 900ms ease-in-out, once or twice",
-        "purpose": "A 4px red ring flashes on a strip that trips a health gate."
+        "name": "nudge",
+        "value": "0 0 0 5px rgb(31 136 61 / 0.25), 1200ms ease-in-out, 2 iterations",
+        "purpose": "A control waiting on the speaker: Run when idle, Approve at the gate."
       },
       {
-        "name": "transition-strip",
-        "value": "650ms; incoming pushes in from 100%; outgoing slides -32%, fades, brightness 0.55",
-        "purpose": "Default Marp slide transition: the board pushes to the next bay."
+        "name": "flash",
+        "value": "background from back-tint, 1400ms ease-out",
+        "purpose": "A board row that rolls back or becomes an incident."
+      },
+      {
+        "name": "spin-loop",
+        "value": "800ms linear infinite",
+        "purpose": "The only infinite animation: the board's active stage while a speaker-started run is going."
+      },
+      {
+        "name": "transition-lift",
+        "value": "620ms; incoming rises 22px and fades in, outgoing gone by 60%",
+        "purpose": "Default slide transition."
       },
       {
         "name": "transition-handoff",
-        "value": "900ms; outgoing gone by 40%, incoming from 55%",
-        "purpose": "Clear-then-arrive so only the morphing hero strip is visible mid-flight."
+        "value": "900ms cross-fade; incoming waits to 45%, outgoing gone by 40%; view-transition-name sw-hero",
+        "purpose": "Slides 6 to 8, so the AI-0142 change card moves column to column."
       },
       {
-        "name": "morphs",
-        "value": "view-transition-name: fs-hero (one per slide), fs-route (route band)",
-        "purpose": "Carry one strip bay to bay across consecutive slides; disabled under reduced motion and print."
-      },
-      {
-        "name": "settle-ceiling",
-        "value": "4.7s",
-        "purpose": "Every slide's motion settles within 4.7 seconds (WCAG 2.2.2); gated by fs-live (audience view, visible tab, not printing, no reduced-motion preference)."
+        "name": "reduced-motion-and-print",
+        "value": "no animation; view-transition-name none; checklist meter transition none",
+        "purpose": "Static views show the complete authored slide."
       }
-    ],
-    "breakpoints": []
+    ]
   },
   "components": [
     {
-      "name": "Flight Strip",
-      "kind": "custom",
-      "refersTo": "strip",
-      "description": "The signature evidence object: card stock in a plastic holder. Shown at the hero-strip sizes of the route slides, cleared: two grease ticks and handwritten initials.",
-      "html": "<div class=\"ds-cab\"><div class=\"ds-strip\" data-holder=\"green\"><b>AI-0142<small>Agent</small></b><span><strong>Keyboard nav for search</strong><small>Arrow keys move the selection</small></span><i class=\"ds-ok\">Spec</i><i class=\"ds-ok\">Test</i><i>Rev<em>CA</em></i></div></div>",
-      "css": ".ds-cab { padding: 28px 32px; background: radial-gradient(700px 360px at 12% -16%, rgba(240, 226, 190, 0.13), transparent 62%), #1b2023; color: #ebe5d5; font-family: 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-strip { --holder: #e2a33a; position: relative; display: grid; grid-auto-flow: column; grid-template-columns: 172px minmax(0, 1fr); grid-auto-columns: minmax(96px, auto); min-height: 92px; padding: 4px 5px 4px 18px; border-radius: 6px; color: #1a2540; font-family: 'FS B612 Mono', 'B612 Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; background-image: linear-gradient(180deg, #f5edd6 0%, #efe6cc 45%, #e3d7b5 100%), repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0 2px, transparent 2px 7px), linear-gradient(180deg, color-mix(in srgb, var(--holder) 70%, white), var(--holder) 40%, color-mix(in srgb, var(--holder) 78%, black)); background-clip: content-box, border-box, border-box; background-origin: content-box, border-box, border-box; background-size: 100% 100%, 18px 100%, 100% 100%; background-repeat: no-repeat; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 2px 0 rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.32); } .ds-strip[data-holder=\"green\"] { --holder: #3f9a6b; } .ds-strip[data-holder=\"red\"] { --holder: #c9402b; } .ds-strip > b { display: flex; flex-direction: column; justify-content: center; padding: 10px 16px; border-right: 2px solid #c4b48b; font: 700 26px/1 'FS B612 Mono', 'B612 Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; letter-spacing: 0.01em; white-space: nowrap; } .ds-strip > b > small { display: block; margin-top: 7px; color: #485166; font: 400 18px/1.2 'FS B612 Mono', 'B612 Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; } .ds-strip > span { display: flex; flex-direction: column; justify-content: center; min-width: 0; padding: 9px 18px; } .ds-strip > span > strong { font: 800 25px/1.12 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; letter-spacing: -0.01em; } .ds-strip > span > small { margin-top: 4px; color: #485166; font: 400 22px/1.3 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-strip > i { position: relative; display: block; min-width: 96px; padding: 8px 10px; border-left: 2px solid #c4b48b; color: #485166; font: 700 18px/1 'FS B612 Mono', 'B612 Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-style: normal; text-transform: uppercase; white-space: nowrap; } .ds-strip > i::after { content: \"\"; position: absolute; inset: 34px 18px 8px; background: center / contain no-repeat; } .ds-strip > i.ds-ok::after { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 32'%3E%3Cpath d='M4 18c4 2 8 6 10 11C19 18 28 8 40 3' fill='none' stroke='%23b8281a' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\"); } .ds-strip > i.ds-no::after { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 32'%3E%3Cpath d='M7 5l30 23M36 4 9 27' fill='none' stroke='%23b8281a' stroke-width='5.5' stroke-linecap='round'/%3E%3C/svg%3E\"); } .ds-strip > i.ds-hold { display: grid; place-items: center; padding: 0; color: #b8281a; letter-spacing: 0.12em; } .ds-strip > i.ds-hold::after { inset: 14px 10px; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60' preserveAspectRatio='none'%3E%3Cpath d='M58 7C34 3 8 11 6 29s24 27 48 25 41-10 40-27S72 3 44 7' fill='none' stroke='%23b8281a' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E\"); background-size: 100% 100%; } .ds-strip > i > em { position: absolute; left: 12px; bottom: 6px; color: #b8281a; font: 400 26px/1.1 'FS Marker', 'Permanent Marker', 'Marker Felt', 'Comic Sans MS', cursive; font-style: normal; rotate: -4deg; }"
+      "name": "Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "The white box every tool already uses: hairline border, soft offset shadow, a Subtle Gray head bar, rows divided by soft hairlines, an optional Hold warning footer.",
+      "html": "<div class=\"ds-panel\"><p class=\"ds-panel-head\"><b>Tests</b><code>search.spec.ts</code></p><ul class=\"ds-panel-runs\"><li><span class=\"ds-panel-st\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M3.4 8.5l3 3 6.2-7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span><span>Arrow keys move the selection</span><b>Pass</b></li><li><span class=\"ds-panel-st\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M3.4 8.5l3 3 6.2-7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span><span>Escape closes the results</span><b>Pass</b></li><li><span class=\"ds-panel-st\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M3.4 8.5l3 3 6.2-7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span><span>Focus returns to the input</span><b>Pass</b></li></ul><p class=\"ds-panel-warn\"><span class=\"ds-panel-st ds-panel-st-hold\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\" fill=\"currentColor\"><rect x=\"3.6\" y=\"3\" width=\"3\" height=\"10\" rx=\"1\"/><rect x=\"9.4\" y=\"3\" width=\"3\" height=\"10\" rx=\"1\"/></svg></span><span>Agent edits a test? Hold.</span></p></div>",
+      "css": ".ds-panel { width: 600px; overflow: hidden; background: #ffffff; border: 1px solid #d0d7de; border-radius: 14px; box-shadow: 0 1px 2px rgb(31 35 40 / 0.06), 0 12px 28px -14px rgb(31 35 40 / 0.2); color: #1f2328; font: 430 22px/1.45 \"SW Sans\", \"Mona Sans\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif; letter-spacing: -0.004em; } .ds-panel-head { display: flex; align-items: center; gap: 12px; margin: 0; padding: 12px 20px; border-bottom: 1px solid #e3e8ee; background: #f6f8fa; font-size: 21px; line-height: 1.25; } .ds-panel-head b { font-weight: 650; } .ds-panel-head code { font: 400 18px/1 \"SW Mono\", \"Monaspace Neon\", ui-monospace, \"SF Mono\", Menlo, Consolas, monospace; letter-spacing: 0; color: #57606a; } .ds-panel-runs { margin: 0; padding: 0; list-style: none; } .ds-panel-runs li { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; align-items: center; column-gap: 12px; padding: 9px 20px; } .ds-panel-runs li + li { border-top: 1px solid #e3e8ee; } .ds-panel-runs b { color: #116329; font-size: 19px; font-weight: 640; } .ds-panel-st { display: inline-grid; place-items: center; flex: none; width: 22px; height: 22px; border-radius: 50%; background: #1a7f37; color: #ffffff; } .ds-panel-st svg { width: 62%; height: 62%; } .ds-panel-st-hold { background: #9a6700; } .ds-panel-warn { display: flex; align-items: center; gap: 12px; margin: 0; padding: 10px 20px; border-top: 1px solid #eed888; background: #fff8c5; color: #7d4e00; font-size: 21px; font-weight: 620; }"
     },
     {
-      "name": "Holder States",
-      "kind": "custom",
-      "refersTo": "strip-holder",
-      "description": "Holder color is state: amber in progress (default), green cleared, red held. The held strip is cocked, shifted 26px and tilted -1.4deg, to flag it. Mini sizes as in the release-board comparison row.",
-      "html": "<div class=\"ds-cab ds-stack\"><div class=\"ds-mini\"><b>AI-0158</b><span>In progress</span></div><div class=\"ds-mini\" data-holder=\"green\"><b>AI-0142</b><span>Cleared</span></div><div class=\"ds-mini ds-cocked\" data-holder=\"red\"><b>AI-0157</b><span>Held for attention</span></div></div>",
-      "css": ".ds-cab { padding: 28px 32px; background: radial-gradient(700px 360px at 12% -16%, rgba(240, 226, 190, 0.13), transparent 62%), #1b2023; color: #ebe5d5; font-family: 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-stack { display: grid; gap: 12px; max-width: 520px; } .ds-mini { --holder: #e2a33a; display: grid; grid-template-columns: 112px minmax(0, 1fr); min-height: 54px; padding: 3px 4px 3px 14px; border-radius: 6px; color: #1a2540; background-image: linear-gradient(180deg, #f5edd6 0%, #efe6cc 45%, #e3d7b5 100%), repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0 2px, transparent 2px 7px), linear-gradient(180deg, color-mix(in srgb, var(--holder) 70%, white), var(--holder) 40%, color-mix(in srgb, var(--holder) 78%, black)); background-clip: content-box, border-box, border-box; background-origin: content-box, border-box, border-box; background-size: 100% 100%, 14px 100%, 100% 100%; background-repeat: no-repeat; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 2px 0 rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.32); } .ds-mini[data-holder=\"green\"] { --holder: #3f9a6b; } .ds-mini[data-holder=\"red\"] { --holder: #c9402b; } .ds-mini.ds-cocked { transform: translateX(26px) rotate(-1.4deg); } .ds-mini > b { display: flex; align-items: center; padding: 6px 10px; border-right: 2px solid #c4b48b; font: 700 19px/1 'FS B612 Mono', 'B612 Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; white-space: nowrap; } .ds-mini > span { display: flex; align-items: center; padding: 6px 12px; font: 800 20px/1.12 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; letter-spacing: -0.01em; }"
+      "name": "Status Chips",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "State in a 32px pill: tint fill, line border, ink letters and a glyph that says the same thing as the color.",
+      "html": "<div class=\"ds-chips\"><span class=\"ds-chip\">Draft</span><span class=\"ds-chip ds-chip-pass\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M3.4 8.5l3 3 6.2-7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>Shipped</span><span class=\"ds-chip ds-chip-hold\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\" fill=\"currentColor\"><rect x=\"3.6\" y=\"3\" width=\"3\" height=\"10\" rx=\"1\"/><rect x=\"9.4\" y=\"3\" width=\"3\" height=\"10\" rx=\"1\"/></svg>In progress</span><span class=\"ds-chip ds-chip-agent\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"currentColor\"><path d=\"M12 2.2a1.4 1.4 0 0 1 .7 2.6v1.6h4.1A3.2 3.2 0 0 1 20 9.6v7.6a3.2 3.2 0 0 1-3.2 3.2H7.2A3.2 3.2 0 0 1 4 17.2V9.6a3.2 3.2 0 0 1 3.2-3.2h4.1V4.8A1.4 1.4 0 0 1 12 2.2zM9 11.6a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2zm6 0a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2zM1.6 11h1.2v5H1.6a.8.8 0 0 1-.8-.8v-3.4a.8.8 0 0 1 .8-.8zm20.8 0h-1.2v5h1.2a.8.8 0 0 0 .8-.8v-3.4a.8.8 0 0 0-.8-.8z\"/></svg>Agent</span><span class=\"ds-chip ds-chip-human\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\" fill=\"currentColor\"><circle cx=\"8\" cy=\"5\" r=\"2.9\"/><path d=\"M2.4 14.2c.5-3.1 2.8-4.9 5.6-4.9s5.1 1.8 5.6 4.9z\"/></svg>Human</span></div>",
+      "css": ".ds-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; } .ds-chip { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border: 1px solid #d0d7de; border-radius: 999px; background: #f6f8fa; color: #57606a; font: 600 18px/1 \"SW Sans\", \"Mona Sans\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif; letter-spacing: 0; white-space: nowrap; } .ds-chip svg { flex: none; width: 15px; height: 15px; } .ds-chip-pass, .ds-chip-hold, .ds-chip-agent, .ds-chip-human { padding-left: 10px; } .ds-chip-pass { border-color: #aceebb; background: #dafbe1; color: #116329; } .ds-chip-hold { border-color: #eed888; background: #fff8c5; color: #7d4e00; } .ds-chip-agent { border-color: #e4d0ff; background: #fbefff; color: #6639ba; }"
     },
     {
-      "name": "Airfield Signs",
+      "name": "Status Discs",
       "kind": "custom",
-      "refersTo": "sign-location",
-      "description": "Mandatory (stop until cleared), location (you are here: bay labels, page numbers, station placards), and direction (the way to go). Signs never move.",
-      "html": "<div class=\"ds-cab ds-signs\"><span class=\"ds-sign ds-sign-hold\">Prod</span><span class=\"ds-sign ds-sign-here\">Review</span><span class=\"ds-sign ds-sign-go\">Ring 1</span></div>",
-      "css": ".ds-cab { padding: 28px 32px; background: radial-gradient(700px 360px at 12% -16%, rgba(240, 226, 190, 0.13), transparent 62%), #1b2023; color: #ebe5d5; font-family: 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-signs { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; } .ds-sign { display: inline-flex; align-items: center; gap: 0.4em; padding: 9px 13px 6px; border-radius: 3px; font: 800 19px/1.1 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; } .ds-sign-hold { background: #c8102e; color: #fff; box-shadow: 0 0 0 2px #121416, 0 6px 14px rgba(0, 0, 0, 0.35); } .ds-sign-here { background: #121416; color: #f6c21c; outline: 2px solid #f6c21c; outline-offset: -5px; box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35); } .ds-sign-go { background: #f6c21c; color: #121416; box-shadow: 0 0 0 2px #121416, 0 6px 14px rgba(0, 0, 0, 0.35); } .ds-sign-go::after { content: \"\"; width: 1em; height: 0.75em; background: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 26'%3E%3Cpath fill='%23121416' d='M0 9h19V1l15 12-15 12v-8H0z'/%3E%3C/svg%3E\") center / contain no-repeat; }"
+      "refersTo": "status-icon",
+      "description": "A check's state as a circle: solid with a white glyph when done (pass, hold, fail, rolled back), amber arcs while running, a hollow ring when queued, a dashed ring when drafted, and a person with a green badge when a person approved (the deck uses the speaker's avatar photo there).",
+      "html": "<div class=\"ds-discs\"><span class=\"ds-st\" title=\"Pass\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M3.4 8.5l3 3 6.2-7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span><span class=\"ds-st ds-st-hold\" title=\"Hold\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\" fill=\"currentColor\"><rect x=\"3.6\" y=\"3\" width=\"3\" height=\"10\" rx=\"1\"/><rect x=\"9.4\" y=\"3\" width=\"3\" height=\"10\" rx=\"1\"/></svg></span><span class=\"ds-st ds-st-fail\" title=\"Failed\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M4.6 4.6l6.8 6.8M11.4 4.6l-6.8 6.8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\"/></svg></span><span class=\"ds-st ds-st-fail\" title=\"Rolled back\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.1\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6 3.4 2.9 6.5 6 9.6\"/><path d=\"M3.3 6.5h6.2a3.5 3.5 0 0 1 0 7H7\"/></svg></span><span class=\"ds-st ds-st-run\" title=\"In progress\"></span><span class=\"ds-st ds-st-queued\" title=\"Queued\"></span><span class=\"ds-st ds-st-draft\" title=\"Draft\"></span><span class=\"ds-st ds-st-who\" title=\"Approved by a person\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\" fill=\"currentColor\"><circle cx=\"8\" cy=\"5\" r=\"2.9\"/><path d=\"M2.4 14.2c.5-3.1 2.8-4.9 5.6-4.9s5.1 1.8 5.6 4.9z\"/></svg><i class=\"ds-st-badge\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M3.4 8.5l3 3 6.2-7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></i></span></div>",
+      "css": ".ds-discs { display: flex; align-items: center; gap: 18px; } .ds-st { position: relative; display: inline-grid; place-items: center; flex: none; box-sizing: border-box; width: 26px; height: 26px; border-radius: 50%; background: #1a7f37; color: #ffffff; } .ds-st > svg { width: 62%; height: 62%; } .ds-st-hold { background: #9a6700; } .ds-st-fail { background: #cf222e; } .ds-st-queued, .ds-st-run { background: transparent; box-shadow: inset 0 0 0 2px #8c959f; } .ds-st-draft { background: transparent; border: 2px dashed #8c959f; } .ds-st-run::before { content: \"\"; position: absolute; inset: 0; border: 3px solid transparent; border-top-color: #bf8700; border-right-color: #bf8700; border-radius: 50%; } @media (prefers-reduced-motion: no-preference) { .ds-st-run::before { animation: ds-st-spin 640ms linear 1; } } @keyframes ds-st-spin { from { transform: rotate(0deg); } to { transform: rotate(540deg); } } .ds-st-who { width: 32px; height: 32px; background: #dbe8f8; color: #57606a; } .ds-st-who > svg { width: 58%; height: 58%; } .ds-st-badge { position: absolute; right: -4px; bottom: -4px; display: grid; place-items: center; width: 17px; height: 17px; border-radius: 50%; background: #1a7f37; color: #ffffff; box-shadow: 0 0 0 2px #ffffff; } .ds-st-badge svg { width: 11px; height: 11px; }"
     },
     {
-      "name": "Takeaway",
+      "name": "Default Button",
+      "kind": "button",
+      "refersTo": "button",
+      "description": "An 8px white rectangle with a masked glyph and an 18px/600 label: Run, Step, the 2x toggle. Hover #f3f4f6, Focus Blue outline, flat when disabled.",
+      "html": "<div class=\"ds-btns\"><button class=\"ds-btn\" type=\"button\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\" fill=\"currentColor\"><path d=\"M4.6 2.8v10.4L13 8z\"/></svg>Run</button><button class=\"ds-btn\" type=\"button\" disabled><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\" fill=\"currentColor\"><path d=\"M2.8 2.8v10.4L10.2 8z\"/><rect x=\"11\" y=\"2.8\" width=\"2.4\" height=\"10.4\" rx=\"1\"/></svg>Step</button></div>",
+      "css": ".ds-btns { display: flex; gap: 8px; } .ds-btn { display: inline-flex; align-items: center; gap: 7px; height: 38px; padding: 0 14px; border: 1px solid #d0d7de; border-radius: 8px; background: #ffffff; color: #1f2328; font: 600 18px/1 \"SW Sans\", \"Mona Sans\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif; white-space: nowrap; cursor: pointer; box-shadow: 0 1px 0 rgb(31 35 40 / 0.04); } .ds-btn svg { width: 14px; height: 14px; } .ds-btn:hover:not(:disabled) { background: #f3f4f6; } .ds-btn:focus-visible { outline: 2px solid #0969da; outline-offset: 2px; } .ds-btn:disabled { border-color: #e3e8ee; background: #f6f8fa; color: #8c959f; box-shadow: none; cursor: default; }"
+    },
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one filled action, in Merge Green: Approve at the release gate (and the Merge pull request button on the review slide). It nudges twice with a green ring when it is waiting on the speaker.",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M3.4 8.5l3 3 6.2-7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>Approve</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 7px; height: 38px; padding: 0 14px; border: 1px solid rgb(31 35 40 / 0.15); border-radius: 8px; background: #1f883d; color: #ffffff; font: 600 18px/1 \"SW Sans\", \"Mona Sans\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif; white-space: nowrap; cursor: pointer; box-shadow: 0 1px 0 rgb(31 35 40 / 0.04); } .ds-btn-primary svg { width: 14px; height: 14px; } .ds-btn-primary:hover:not(:disabled) { background: #1a7f37; } .ds-btn-primary:focus-visible { outline: 2px solid #0969da; outline-offset: 2px; } @media (prefers-reduced-motion: no-preference) { .ds-btn-primary { animation: ds-nudge 1200ms ease-in-out 2; } } @keyframes ds-nudge { 50% { box-shadow: 0 0 0 5px rgb(31 136 61 / 0.25); } }"
+    },
+    {
+      "name": "Scenario Switch",
+      "kind": "nav",
+      "refersTo": "segmented",
+      "description": "A segmented toggle on a Well Gray track: the selected option lifts to Panel White with a hairline ring, exposed as aria-pressed.",
+      "html": "<div class=\"ds-seg\" role=\"group\" aria-label=\"Scenario\"><button type=\"button\" aria-pressed=\"true\">Evidence first</button><button type=\"button\" aria-pressed=\"false\">Vibe shipping</button></div>",
+      "css": ".ds-seg { display: inline-flex; gap: 2px; padding: 3px; border: 1px solid #d0d7de; border-radius: 10px; background: #e9edf2; } .ds-seg button { height: 32px; padding: 0 12px; border: 0; border-radius: 7px; background: transparent; color: #57606a; font: 600 18px/1 \"SW Sans\", \"Mona Sans\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif; cursor: pointer; } .ds-seg button[aria-pressed=\"true\"] { background: #ffffff; color: #1f2328; box-shadow: 0 1px 2px rgb(31 35 40 / 0.14), 0 0 0 1px #d0d7de; } .ds-seg button:hover:not([aria-pressed=\"true\"]) { background: #f3f4f6; } .ds-seg button:focus-visible { outline: 2px solid #0969da; outline-offset: 2px; }"
+    },
+    {
+      "name": "Check Run",
+      "kind": "card",
+      "refersTo": "check-run",
+      "description": "The cover's hero: change AI-0142's checks on a connector that fills green, the rollout as four ring bars, the Lift shadow, and its illustrative caption.",
+      "html": "<figure class=\"ds-run\"><p class=\"ds-run-title\">Keyboard nav for search</p><p class=\"ds-run-meta\"><span class=\"ds-run-id\">AI-0142</span><span class=\"ds-run-chip ds-run-agent\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"currentColor\"><path d=\"M12 2.2a1.4 1.4 0 0 1 .7 2.6v1.6h4.1A3.2 3.2 0 0 1 20 9.6v7.6a3.2 3.2 0 0 1-3.2 3.2H7.2A3.2 3.2 0 0 1 4 17.2V9.6a3.2 3.2 0 0 1 3.2-3.2h4.1V4.8A1.4 1.4 0 0 1 12 2.2zM9 11.6a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2zm6 0a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2zM1.6 11h1.2v5H1.6a.8.8 0 0 1-.8-.8v-3.4a.8.8 0 0 1 .8-.8zm20.8 0h-1.2v5h1.2a.8.8 0 0 0 .8-.8v-3.4a.8.8 0 0 0-.8-.8z\"/></svg>Agent</span><span class=\"ds-run-chip ds-run-pass\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M3.4 8.5l3 3 6.2-7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>Landed</span></p><ol class=\"ds-run-steps\"><li><span class=\"ds-run-st\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M3.4 8.5l3 3 6.2-7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span><b>Spec</b><span class=\"ds-run-state\">Agreed</span></li><li><span class=\"ds-run-st\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M3.4 8.5l3 3 6.2-7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span><b>Tests</b><span class=\"ds-run-state\">Pass</span></li><li><span class=\"ds-run-st\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M3.4 8.5l3 3 6.2-7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span><b>Review</b><span class=\"ds-run-state\">Approved</span><small>Human sign-off</small></li><li><span class=\"ds-run-st\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M3.4 8.5l3 3 6.2-7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span><b>Rollout</b><span class=\"ds-run-state\">100%</span><span class=\"ds-run-rings\"><i>Ring 0<small>team</small></i><i>Ring 1<small>1%</small></i><i>Ring 2<small>10%</small></i><i>Broad<small>100%</small></i></span></li></ol><figcaption>Fictional change, illustrative only</figcaption></figure>",
+      "css": ".ds-run { position: relative; box-sizing: border-box; width: 468px; margin: 0 0 40px; padding: 24px 28px 26px; background: #ffffff; border: 1px solid #d0d7de; border-radius: 18px; box-shadow: 0 2px 4px rgb(31 35 40 / 0.05), 0 22px 44px -18px rgb(31 35 40 / 0.28); color: #1f2328; font: 430 26px/1.45 \"SW Sans\", \"Mona Sans\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif; letter-spacing: -0.004em; } .ds-run p { margin: 0; } .ds-run-title { font-size: 26px; font-weight: 650; line-height: 1.2; letter-spacing: -0.012em; } .ds-run-meta { display: flex; align-items: center; gap: 10px; margin-top: 10px; padding-bottom: 18px; border-bottom: 1px solid #e3e8ee; } .ds-run-id { font: 400 18px/1 \"SW Mono\", \"Monaspace Neon\", ui-monospace, \"SF Mono\", Menlo, Consolas, monospace; letter-spacing: 0; color: #57606a; } .ds-run-chip { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px 0 10px; border: 1px solid; border-radius: 999px; font: 600 18px/1 \"SW Sans\", \"Mona Sans\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif; letter-spacing: 0; white-space: nowrap; } .ds-run-chip svg { width: 15px; height: 15px; } .ds-run-agent { border-color: #e4d0ff; background: #fbefff; color: #6639ba; } .ds-run-pass { margin-left: auto; border-color: #aceebb; background: #dafbe1; color: #116329; } .ds-run-steps { display: grid; gap: 18px; margin: 20px 0 0; padding: 0; list-style: none; } .ds-run-steps > li { position: relative; display: grid; grid-template-columns: 26px 1fr auto; align-items: center; column-gap: 16px; } .ds-run-steps > li:not(:last-child)::after { content: \"\"; position: absolute; left: 12px; top: 31px; bottom: -19px; width: 2px; border-radius: 1px; background: #1a7f37; } .ds-run-steps b { font-size: 23px; font-weight: 620; line-height: 1.35; } .ds-run-state { font-size: 20px; font-weight: 620; color: #116329; } .ds-run-steps small { grid-column: 2 / -1; margin-top: -2px; font-size: 18px; color: #57606a; } .ds-run-st { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: #1a7f37; color: #ffffff; } .ds-run-st svg { width: 62%; height: 62%; } .ds-run-rings { grid-column: 2 / -1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 12px; } .ds-run-rings i { position: relative; display: block; padding-top: 16px; font-size: 18px; font-style: normal; font-weight: 620; line-height: 1.25; } .ds-run-rings i::before { content: \"\"; position: absolute; left: 0; right: 0; top: 0; height: 6px; border-radius: 3px; background: #1a7f37; } .ds-run-rings small { display: block; font-size: 18px; font-weight: 450; color: #57606a; } .ds-run figcaption { position: absolute; right: 2px; top: calc(100% + 14px); font-size: 18px; color: #57606a; }"
+    },
+    {
+      "name": "Release Board Rows",
+      "kind": "custom",
+      "refersTo": "board-mark",
+      "description": "An excerpt of the interactive release board: stage marks as 32px pills (amber check for Pass*, amber pause for Hold, red undo for a rollback), runs that never happened merged into one dashed pill, and an outcome word with its exposure.",
+      "html": "<div class=\"ds-board\" role=\"group\" aria-label=\"Release board excerpt\"><div class=\"ds-board-cols\"><span>Change</span><span>Tests</span><span>Review</span><span>Ring 0<small>team</small></span><span>Ring 1<small>1%</small></span><span>Ring 2<small>10%</small></span><span>Broad<small>100%</small></span><span>Outcome</span></div><div class=\"ds-board-row\"><b class=\"ds-board-chg\"><span>Refactor checkout totals</span><span><span class=\"ds-board-id\">AI-0157</span><span class=\"ds-board-chip ds-board-agent\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"currentColor\"><path d=\"M12 2.2a1.4 1.4 0 0 1 .7 2.6v1.6h4.1A3.2 3.2 0 0 1 20 9.6v7.6a3.2 3.2 0 0 1-3.2 3.2H7.2A3.2 3.2 0 0 1 4 17.2V9.6a3.2 3.2 0 0 1 3.2-3.2h4.1V4.8A1.4 1.4 0 0 1 12 2.2zM9 11.6a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2zm6 0a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2zM1.6 11h1.2v5H1.6a.8.8 0 0 1-.8-.8v-3.4a.8.8 0 0 1 .8-.8zm20.8 0h-1.2v5h1.2a.8.8 0 0 0 .8-.8v-3.4a.8.8 0 0 0-.8-.8z\"/></svg>Agent</span></span></b><span class=\"ds-board-cell\"><span class=\"ds-mark ds-mark-hold\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M3.4 8.5l3 3 6.2-7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>Pass*</span></span><span class=\"ds-board-cell\"><span class=\"ds-mark ds-mark-hold\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\" fill=\"currentColor\"><rect x=\"3.6\" y=\"3\" width=\"3\" height=\"10\" rx=\"1\"/><rect x=\"9.4\" y=\"3\" width=\"3\" height=\"10\" rx=\"1\"/></svg>Hold</span></span><span class=\"ds-board-cell ds-span-4\"><span class=\"ds-mark ds-mark-notrun\">Not run</span></span><output class=\"ds-board-out ds-out-held\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\" fill=\"currentColor\"><rect x=\"3.6\" y=\"3\" width=\"3\" height=\"10\" rx=\"1\"/><rect x=\"9.4\" y=\"3\" width=\"3\" height=\"10\" rx=\"1\"/></svg><span>Held</span><small>0% exposed</small></output></div><div class=\"ds-board-row\"><b class=\"ds-board-chg\"><span>Bump the auth library</span><span><span class=\"ds-board-id\">PR-0161</span><span class=\"ds-board-chip\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\" fill=\"currentColor\"><circle cx=\"8\" cy=\"5\" r=\"2.9\"/><path d=\"M2.4 14.2c.5-3.1 2.8-4.9 5.6-4.9s5.1 1.8 5.6 4.9z\"/></svg>Human</span></span></b><span class=\"ds-board-cell\"><span class=\"ds-mark ds-mark-pass\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M3.4 8.5l3 3 6.2-7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>Pass</span></span><span class=\"ds-board-cell\"><span class=\"ds-mark ds-mark-pass\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M3.4 8.5l3 3 6.2-7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>CA</span></span><span class=\"ds-board-cell\"><span class=\"ds-mark ds-mark-pass\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M3.4 8.5l3 3 6.2-7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>Pass</span></span><span class=\"ds-board-cell\"><span class=\"ds-mark ds-mark-back\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.1\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6 3.4 2.9 6.5 6 9.6\"/><path d=\"M3.3 6.5h6.2a3.5 3.5 0 0 1 0 7H7\"/></svg>Rolled back</span></span><span class=\"ds-board-cell ds-span-2\"><span class=\"ds-mark ds-mark-notrun\">Not run</span></span><output class=\"ds-board-out ds-out-back\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.1\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6 3.4 2.9 6.5 6 9.6\"/><path d=\"M3.3 6.5h6.2a3.5 3.5 0 0 1 0 7H7\"/></svg><span>Rolled back</span><small>1% exposed</small></output></div></div>",
+      "css": ".ds-board { max-width: 100%; overflow-x: auto; background: #ffffff; border: 1px solid #d0d7de; border-radius: 14px; box-shadow: 0 1px 2px rgb(31 35 40 / 0.06), 0 12px 28px -14px rgb(31 35 40 / 0.2); color: #1f2328; font-family: \"SW Sans\", \"Mona Sans\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif; } .ds-board-cols, .ds-board-row { display: grid; grid-template-columns: minmax(0, 1fr) 106px 106px 112px 152px 110px 114px 158px; align-items: center; min-width: 1100px; padding: 0 16px 0 18px; } .ds-board-cols { height: 56px; border-bottom: 1px solid #e3e8ee; color: #57606a; font-size: 18px; font-weight: 640; line-height: 1.12; } .ds-board-cols > span { display: flex; flex-direction: column; align-items: center; text-align: center; } .ds-board-cols > span:first-child, .ds-board-cols > span:last-child { align-items: flex-start; text-align: left; } .ds-board-cols small { font-size: 18px; font-weight: 450; } .ds-board-row { height: 72px; border-bottom: 1px solid #e3e8ee; } .ds-board-row:last-child { border-bottom: 0; } .ds-board-chg { display: grid; gap: 3px; font-weight: 400; } .ds-board-chg > span:first-child { font-size: 20px; font-weight: 640; line-height: 1.2; white-space: nowrap; } .ds-board-chg > span:last-child { display: flex; align-items: center; gap: 8px; } .ds-board-id { font: 400 17px/1 \"SW Mono\", \"Monaspace Neon\", ui-monospace, \"SF Mono\", Menlo, Consolas, monospace; color: #57606a; } .ds-board-chip { display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 9px 0 8px; border: 1px solid #d0d7de; border-radius: 999px; background: #f6f8fa; color: #57606a; font: 600 16px/1 \"SW Sans\", \"Mona Sans\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif; } .ds-board-chip svg { width: 13px; height: 13px; } .ds-board-agent { border-color: #e4d0ff; background: #fbefff; color: #6639ba; } .ds-board-cell { display: flex; justify-content: center; } .ds-span-4 { grid-column: span 4; } .ds-span-2 { grid-column: span 2; } .ds-mark { display: inline-flex; align-items: center; gap: 5px; height: 32px; padding: 0 10px 0 8px; border: 1px solid #d0d7de; border-radius: 999px; background: #f6f8fa; color: #57606a; font: 600 18px/1 \"SW Sans\", \"Mona Sans\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif; white-space: nowrap; } .ds-mark svg { flex: none; width: 14px; height: 14px; } .ds-mark-pass { border-color: #aceebb; background: #dafbe1; color: #116329; } .ds-mark-hold { border-color: #eed888; background: #fff8c5; color: #7d4e00; } .ds-mark-back { border-color: #ffcecb; background: #ffebe9; color: #a40e26; } .ds-mark-notrun { justify-content: center; width: calc(100% - 20px); padding: 0 12px; border: 1.5px dashed #b8c1cb; background: none; color: #57606a; font-weight: 520; } .ds-board-out { display: grid; grid-template-columns: 18px 1fr; column-gap: 7px; align-items: center; font: 650 20px/1.2 \"SW Sans\", \"Mona Sans\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif; } .ds-board-out svg { width: 18px; height: 18px; } .ds-board-out small { grid-column: 2; font-size: 18px; font-weight: 450; color: #57606a; } .ds-out-held { color: #7d4e00; } .ds-out-back { color: #a40e26; }"
+    },
+    {
+      "name": "Checklist",
+      "kind": "custom",
+      "refersTo": "checklist-row",
+      "description": "Challenge-and-response rows the speaker ticks: rounded-square boxes that fill Pass Green with a white check, responses that turn Pass ink, and a meter that grows with the count.",
+      "html": "<div class=\"ds-cl\"><p class=\"ds-cl-head\"><b>Before you ship</b><span class=\"ds-cl-count\">2 of 3 checked</span></p><ol class=\"ds-cl-list\" aria-label=\"Before you ship checklist\"><li><button type=\"button\" aria-pressed=\"true\"><span>Instructions</span><b>Current</b></button></li><li><button type=\"button\" aria-pressed=\"true\"><span>Spec</span><b>Agreed</b></button></li><li><button type=\"button\" aria-pressed=\"false\"><span>Step size</span><b>Small</b></button></li></ol><span class=\"ds-cl-meter\" aria-hidden=\"true\"><i></i></span></div>",
+      "css": ".ds-cl { width: 600px; overflow: hidden; background: #ffffff; border: 1px solid #d0d7de; border-radius: 14px; box-shadow: 0 1px 2px rgb(31 35 40 / 0.06), 0 12px 28px -14px rgb(31 35 40 / 0.2); color: #1f2328; font-family: \"SW Sans\", \"Mona Sans\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif; } .ds-cl-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0; padding: 12px 20px; border-bottom: 1px solid #e3e8ee; background: #f6f8fa; font-size: 21px; line-height: 1.25; } .ds-cl-head b { font-weight: 650; } .ds-cl-count { color: #57606a; font-size: 18px; font-weight: 620; } .ds-cl-list { margin: 0; padding: 0; list-style: none; } .ds-cl-list > li + li { border-top: 1px solid #e3e8ee; } .ds-cl-list button { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; align-items: center; column-gap: 16px; width: 100%; height: 49px; margin: 0; padding: 0 20px; border: 0; background: transparent; color: #1f2328; font: 560 23px/1 \"SW Sans\", \"Mona Sans\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif; text-align: left; cursor: pointer; } .ds-cl-list button::before { content: \"\"; box-sizing: border-box; width: 24px; height: 24px; border: 2px solid #8c959f; border-radius: 7px; background: #ffffff center / 16px no-repeat; } .ds-cl-list b { color: #57606a; font-size: 20px; font-weight: 560; } .ds-cl-list button[aria-pressed=\"true\"]::before { border-color: #1a7f37; background-color: #1a7f37; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.4 8.5l3 3 6.2-7' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\"); } .ds-cl-list button[aria-pressed=\"true\"] b { color: #116329; } .ds-cl-list button:hover { background: #f6f8fa; } .ds-cl-list button:focus-visible { outline: 2px solid #0969da; outline-offset: -3px; } .ds-cl-meter { display: block; height: 5px; } .ds-cl-meter i { display: block; width: 66.67%; height: 100%; background: #1a7f37; transition: width 360ms cubic-bezier(0.16, 1, 0.3, 1); }"
+    },
+    {
+      "name": "Takeaway Line",
       "kind": "custom",
       "refersTo": "takeaway",
-      "description": "The last element of a content slide: one sentence on a direction sign, arrow first, pinned bottom left. At most one per slide.",
-      "html": "<div class=\"ds-cab\"><p class=\"ds-takeaway\">Throughput is set by clearances, not by printing.</p></div>",
-      "css": ".ds-cab { padding: 28px 32px; background: radial-gradient(700px 360px at 12% -16%, rgba(240, 226, 190, 0.13), transparent 62%), #1b2023; color: #ebe5d5; font-family: 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-takeaway { display: inline-flex; align-items: center; gap: 18px; max-width: 100%; margin: 0; padding: 13px 24px 10px 18px; background: #f6c21c; color: #121416; border-radius: 4px; box-shadow: 0 0 0 3px #121416, 0 12px 26px rgba(0, 0, 0, 0.4); font: 800 27px/1.18 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; letter-spacing: -0.005em; } .ds-takeaway::before { content: \"\"; flex: none; width: 36px; height: 28px; margin-top: -3px; background: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 26'%3E%3Cpath fill='%23121416' d='M0 9h19V1l15 12-15 12v-8H0z'/%3E%3C/svg%3E\") center / contain no-repeat; }"
-    },
-    {
-      "name": "Bays and Slots",
-      "kind": "custom",
-      "refersTo": "slot",
-      "description": "A board of open racks: Rack Rail uprights under a location-sign label plate; a hold bay takes the mandatory sign. An empty position is a dashed slot the height of a strip.",
-      "html": "<div class=\"ds-cab\"><div class=\"ds-board\"><div class=\"ds-bay\" data-label=\"Build\"><div class=\"ds-slot\"></div></div><div class=\"ds-bay ds-bay-mandatory\" data-label=\"Hold\"><div class=\"ds-slot\"></div></div></div></div>",
-      "css": ".ds-cab { padding: 28px 32px; background: radial-gradient(700px 360px at 12% -16%, rgba(240, 226, 190, 0.13), transparent 62%), #1b2023; color: #ebe5d5; font-family: 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-board { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 26px; } .ds-bay { position: relative; min-width: 0; padding: 56px 14px 14px; background: linear-gradient(90deg, #3a444a 0 3px, transparent 3px calc(100% - 3px), #3a444a calc(100% - 3px)) 0 40px / 100% calc(100% - 40px) no-repeat, linear-gradient(180deg, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.08)) 0 40px / 100% calc(100% - 40px) no-repeat; } .ds-bay::before { content: attr(data-label); position: absolute; top: 0; left: 0; padding: 9px 13px 6px; background: #121416; border-radius: 3px; outline: 2px solid #f6c21c; outline-offset: -5px; box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35); color: #f6c21c; font: 800 19px/1.1 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; } .ds-bay-mandatory::before { background: #c8102e; color: #fff; outline: 0; box-shadow: 0 0 0 2px #121416, 0 6px 14px rgba(0, 0, 0, 0.35); } .ds-slot { min-height: 86px; border: 2px dashed #56636a; border-radius: 6px; }"
-    },
-    {
-      "name": "Paper Sheet",
-      "kind": "card",
-      "refersTo": "sheet",
-      "description": "Flight plans, test contracts, and standing information: top-lit card stock with a Sign Black title bar and ruled definition rows (B612 keys, Overpass values).",
-      "html": "<div class=\"ds-cab\"><div class=\"ds-sheet\"><p class=\"ds-sheet-title\">Flight plan: add-keyboard-nav</p><dl><dt>Given</dt><dd>Search results are showing</dd><dt>When</dt><dd>I press the down arrow</dd><dt>Then</dt><dd>The next result is selected</dd></dl></div></div>",
-      "css": ".ds-cab { padding: 28px 32px; background: radial-gradient(700px 360px at 12% -16%, rgba(240, 226, 190, 0.13), transparent 62%), #1b2023; color: #ebe5d5; font-family: 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-sheet { position: relative; max-width: 600px; padding: 18px 24px 20px; background: linear-gradient(180deg, #f6eed8, #efe6cc 30%, #e3d7b5); border-radius: 4px; box-shadow: 0 3px 0 rgba(0, 0, 0, 0.28), 0 16px 30px rgba(0, 0, 0, 0.32); color: #1a2540; } .ds-sheet-title { margin: -18px -24px 14px; padding: 9px 24px 6px; background: #121416; border-radius: 4px 4px 0 0; color: #fff; font: 800 18px/1.2 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; } .ds-sheet dl { display: grid; grid-template-columns: 150px 1fr; margin: 0; } .ds-sheet dt, .ds-sheet dd { margin: 0; padding: 8px 0 7px; border-top: 1px solid #c4b48b; } .ds-sheet dt { color: #485166; font: 700 18px/1.6 'FS B612 Mono', 'B612 Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; letter-spacing: 0.06em; text-transform: uppercase; } .ds-sheet dd { color: #1a2540; font: 600 21px/1.3 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; }"
-    },
-    {
-      "name": "Challenge-and-Response Checklist",
-      "kind": "input",
-      "refersTo": "sheet",
-      "description": "Each line is a toggle button (aria-pressed) built by the runtime from a plain list; a checked line gets a grease tick over its box. Focus is a 3px Holder Blue ring.",
-      "html": "<div class=\"ds-cab\"><div class=\"ds-card\"><p class=\"ds-card-title\">Before departure</p><ol class=\"ds-checklist\"><li data-checked=\"true\"><button type=\"button\" class=\"ds-check\" aria-pressed=\"true\"><span>Tests</span><b>Prove behavior</b></button></li><li><button type=\"button\" class=\"ds-check\" aria-pressed=\"false\"><span>Review</span><b>Human cleared</b></button></li><li><button type=\"button\" class=\"ds-check\" aria-pressed=\"false\"><span>Rollback</span><b>Rehearsed</b></button></li></ol></div></div>",
-      "css": ".ds-cab { padding: 28px 32px; background: radial-gradient(700px 360px at 12% -16%, rgba(240, 226, 190, 0.13), transparent 62%), #1b2023; color: #ebe5d5; font-family: 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-card { position: relative; max-width: 600px; padding: 18px 24px 12px; background: linear-gradient(180deg, #f6eed8, #efe6cc 30%, #e3d7b5); border-radius: 4px; box-shadow: 0 3px 0 rgba(0, 0, 0, 0.28), 0 16px 30px rgba(0, 0, 0, 0.32); color: #1a2540; } .ds-card-title { margin: -18px -24px 14px; padding: 9px 24px 6px; background: #121416; border-radius: 4px 4px 0 0; color: #fff; font: 800 18px/1.2 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; } .ds-checklist { list-style: none; margin: 0; padding: 0; } .ds-checklist > li { position: relative; display: flex; align-items: baseline; margin: 0; padding: 10px 0 8px 48px; border-top: 1px solid #c4b48b; font: 600 25px/1.25 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-checklist > li::before { content: \"\"; position: absolute; left: 2px; top: 12px; width: 28px; height: 28px; border: 2.5px solid #1a2540; border-radius: 3px; background: rgba(255, 255, 255, 0.35); } .ds-checklist > li::after { content: \"\"; position: absolute; left: -2px; top: 2px; width: 44px; height: 36px; background: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 32'%3E%3Cpath d='M4 18c4 2 8 6 10 11C19 18 28 8 40 3' fill='none' stroke='%23b8281a' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\") center / contain no-repeat; opacity: 0; } .ds-checklist > li[data-checked=\"true\"]::after { opacity: 1; } .ds-check { all: unset; display: flex; flex: 1; align-items: baseline; cursor: pointer; border-radius: 3px; } .ds-check:focus-visible { outline: 3px solid #4a7cc0; outline-offset: 6px; } .ds-check > span { display: flex; flex: 1; align-items: baseline; min-width: 0; } .ds-check > span::after { content: \"\"; flex: 1; min-width: 24px; margin: 0 12px; border-bottom: 3px dotted #485166; translate: 0 -0.22em; } .ds-check > b { color: #1a2540; font: 700 22px/1.25 'FS B612 Mono', 'B612 Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; letter-spacing: 0.04em; text-transform: uppercase; }"
-    },
-    {
-      "name": "Console Keys",
-      "kind": "button",
-      "refersTo": "console-key",
-      "description": "Release-board keys: default, primary (Run board), clear (Write clearance, the human gate), and disabled. Raised caps that travel 2px when pressed. Legends are 15px as shipped, under the label floor (see The Back Row Rule).",
-      "html": "<div class=\"ds-cab ds-keys\"><button type=\"button\" class=\"ds-key ds-key-primary\">Run board</button><button type=\"button\" class=\"ds-key\">Step</button><button type=\"button\" class=\"ds-key ds-key-clear\">Write clearance</button><button type=\"button\" class=\"ds-key\" disabled>Replay</button></div>",
-      "css": ".ds-cab { padding: 28px 32px; background: radial-gradient(700px 360px at 12% -16%, rgba(240, 226, 190, 0.13), transparent 62%), #1b2023; color: #ebe5d5; font-family: 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-keys { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; } .ds-key { min-height: 42px; padding: 9px 15px 6px; background: linear-gradient(180deg, #343d42, #232a2e); border: 1px solid #0b0d0e; border-radius: 6px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 3px 0 #0b0d0e, 0 8px 14px rgba(0, 0, 0, 0.35); color: #ebe5d5; cursor: pointer; font: 800 15px/1.1 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; letter-spacing: 0.06em; text-transform: uppercase; } .ds-key-primary { min-width: 140px; background: linear-gradient(180deg, #f6f1e4, #dcd3bf); color: #121416; } .ds-key-clear:not(:disabled) { background: linear-gradient(180deg, #ffd640, #f6c21c); color: #121416; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 3px 0 #7a5d00, 0 0 0 3px #121416, 0 0 0 5px #f6c21c; } .ds-key:not(:disabled):hover { filter: brightness(1.12); } .ds-key:active:not(:disabled) { translate: 0 2px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 #0b0d0e, 0 4px 8px rgba(0, 0, 0, 0.3); } .ds-key:focus-visible { outline: 3px solid #8fc4ff; outline-offset: 3px; } .ds-key:disabled { color: #8b9590; cursor: not-allowed; opacity: 0.6; }"
-    },
-    {
-      "name": "Paper Chips",
-      "kind": "chip",
-      "refersTo": "chip-paper",
-      "description": "Paper tags on the console: file names in Overpass Mono 700, evidence tags in Overpass 600.",
-      "html": "<div class=\"ds-cab\"><p class=\"ds-chips\"><code class=\"ds-chip ds-chip-file\">AGENTS.md</code><code class=\"ds-chip ds-chip-file\">CLAUDE.md</code><span class=\"ds-chip\">Intent matches the diff</span><span class=\"ds-chip\">Rollback ready</span></p></div>",
-      "css": ".ds-cab { padding: 28px 32px; background: radial-gradient(700px 360px at 12% -16%, rgba(240, 226, 190, 0.13), transparent 62%), #1b2023; color: #ebe5d5; font-family: 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0; } .ds-chip { padding: 9px 12px 7px; background: #efe6cc; border-radius: 4px; box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.25); color: #1a2540; font: 600 18px/1 'FS Overpass', Overpass, 'Segoe UI', system-ui, sans-serif; } .ds-chip-file { font: 700 17px/1 'FS Overpass Mono', 'Overpass Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; }"
+      "description": "The one line to remember, in Takeaway Blue; on the release board it becomes the outcome sentence in Ink with each outcome in its status ink. Simulated material carries its 18px illustrative label.",
+      "html": "<div class=\"ds-tk\"><p class=\"ds-takeaway\">If you can't explain the diff out loud, you can't approve it.</p><p class=\"ds-takeaway ds-takeaway-outcome\">One <span class=\"ds-t-pass\">landed</span>. One <span class=\"ds-t-hold\">held</span> before anyone saw it. One <span class=\"ds-t-back\">rolled back</span> after reaching 1%.</p><p class=\"ds-illus\">Fictional changes, illustrative only</p></div>",
+      "css": ".ds-tk { display: grid; gap: 24px; max-width: 1136px; font-family: \"SW Sans\", \"Mona Sans\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif; } .ds-takeaway { margin: 0; color: #0a5bc4; font-size: 30px; font-weight: 650; line-height: 1.25; letter-spacing: -0.012em; text-wrap: balance; } .ds-takeaway-outcome { color: #1f2328; } .ds-t-pass { color: #116329; } .ds-t-hold { color: #7d4e00; } .ds-t-back { color: #a40e26; } .ds-illus { margin: 0; color: #57606a; font-size: 18px; font-weight: 500; }"
     }
   ],
   "narrative": {
-    "northStar": "The Night Tower Cab",
-    "overview": "The deck is a night tower cab seen from the controller's seat: a graphite strip console under one warm lamp, buff card-stock flight strips in amber, green, and red plastic holders, red grease-pencil marks, and airfield signs. Every AI-written change is a strip, and a strip moves to the next bay only when a person writes its clearance. Every visual device is an object that cab would contain, and the slides argue for release discipline by handling those objects, not by decorating a page.\n\nDensity is that of a working board on a fixed 1280×720 frame: one claim per slide, stated as the headline; one composed board, sheet, or strip stack under it; and at most one direction-sign takeaway pinned to the bottom. Material carries the hierarchy. The lit console is the room's voice, card stock holds evidence and documents, signs give instructions, and grease records human decisions. Type is sized for the back of a conference room.\n\nThe direction rejects two things by name: the neon AI-talk deck and the white corporate template. Motion is the mechanism, never ornament. Strips print, slot into bays, get cocked or ringed, collect grease ticks, change holder, and cross the hold line. Each slide's motion is finite, plays only on the live audience slide, and animates into a finished state that the markup already holds.",
+    "northStar": "The Tooling Is the Illustration",
+    "overview": "There is no governing metaphor, and the North Star says so on purpose. Every picture in the deck is a piece of release tooling the audience already trusts: a check run, a pull-request queue, a project board, an instructions file, a deployment timeline, a checklist. Each is redrawn crisp and large for a 1280×720 slide. The talk argues that a change needs evidence before it ships, so the illustrations are the evidence surfaces themselves. The deck refuses costume worlds and the dark neon AI deck.\n\nThe material is a light product UI, enlarged for a room. A cool off-white canvas carries a faint blue wash from the top-right corner. White panels have hairline borders and soft, ink-tinted offset shadows. Mona Sans sets every word, and Monaspace Neon appears only where the audience reads a literal string. Color stays neutral until something has a state: four status hues with fixed meanings, each paired with a glyph, and one blue saved for the slide's takeaway, links and focus. Density is GitHub-scale (rows, chips, counts, IDs), but every size is lifted for the back of the room.\n\nEach slide has one authored moment: the cover's checks turning green, two queues filling at different rates, three checks failing, a file written line by line, one more check on each board slide, a review loop that ends in a merge box, an error line crossing the health gate, a table filling, a checklist cascade. The finished state is the markup. Motion only replays how the slide got there, once, on the live audience slide. It uses two easings: `cubic-bezier(0.16, 1, 0.3, 1)` for arrivals and an overshooting `cubic-bezier(0.34, 1.56, 0.64, 1)` for results that pop.",
     "keyCharacteristics": [
-      "Two lit materials: graphite console with lamp-colored text, and buff card stock with navy ink.",
-      "Saturated color only where it means something: airfield signs, holder states, grease marks, real lights.",
-      "Overpass for words and signs, B612 Mono for strip data, Overpass Mono for code and paths, Permanent Marker for grease only.",
-      "Physical depth from one overhead lamp: a hard contact line plus a soft cast, always straight down.",
-      "Finite motion that settles within 4.7 seconds into an authored static state, so print, PDF, and reduced motion lose nothing."
+      "Cool off-white canvas, white hairline panels, soft offset shadows; panels never nest.",
+      "Mona Sans throughout, in a slightly widened heavy cut for headings; Monaspace Neon only for literal strings.",
+      "Four status hues with fixed meanings, each paired with a glyph; one blue for takeaways, links and focus.",
+      "Pills report state, circles report checks, and rounded rectangles are controls or literal tokens.",
+      "One authored moment per slide, played once and settled by 4.95s; the static slide is already complete.",
+      "Simulated material is labeled illustrative on the slide itself."
     ],
     "rules": [
       {
-        "name": "The Real Objects Rule",
-        "body": "Saturated color always means something in the world: a sign's instruction, a holder's state, a person's mark, or a real light. It is never decoration. Edge Light marks links and focus, and the brand icons in the contact blocks keep their tuned colors. Light comes only from the overhead lamp, the faint edge light in the far corner, and real lights such as the stop bar on the cover.",
+        "name": "The Complete Without Motion Rule",
+        "body": "The authored markup is the finished slide; motion only replays the path to it. deck.js adds `sw-live` to a slide only in the audience window, while that slide is active, the page is visible and not printing, and no reduced-motion preference is set. Every effect sits inside `prefers-reduced-motion: no-preference`, fills `backwards` from a visible default, and settles by 4.95s (the review slide is the longest). The one infinite animation is the release board's stage spinner while a speaker-started run is going.",
+        "section": "overview"
+      },
+      {
+        "name": "The Static Twin Rule",
+        "body": "Anything that only makes sense live has a static twin. `.sw-static` shows until its section is `data-enhanced=\"true\"`, and `.sw-dynamic` only after. `.live-only` text stays hidden and appears only inside a finite `transient` animation. Print turns off all animation and transitions and hides dynamic twins and board controls. The release board's authored markup is its PDF snapshot, and the script restores it whenever the slide leaves the audience view.",
+        "section": "overview"
+      },
+      {
+        "name": "The Illustrative Label Rule",
+        "body": "Every simulated change, count, rate or board says so on the slide in an 18px Secondary Ink line (\"Fictional change, illustrative only\", \"Illustrative: seven drafted and two shipped is not measured data\"), never only in the speaker notes.",
+        "section": "overview"
+      },
+      {
+        "name": "The Fixed Meaning Rule",
+        "body": "A status hue means one thing everywhere: on chips, status discs, board marks, timeline outcomes and the colored words of a takeaway. Green is passed, amber is in progress or held, red is failed or rolled back, violet is an agent. A landed or merged change is green, never GitHub's purple, because violet already means agent. No hue carries a status alone: a glyph (check, pause, undo, x, bot, person) or the word itself says the same thing.",
         "section": "colors"
       },
       {
-        "name": "The Three Reds Rule",
-        "body": "Mandatory Red is a sign, Red Holder is a strip state, and Grease Pencil is a person's mark. Each red keeps its job, so never swap them.",
+        "name": "The Ink and Solid Rule",
+        "body": "Letters use a family's ink step. Discs, bars, connectors and strokes use its solid step. Chips sit on the tint with the line as their border. Never set text in a solid or fill a disc with an ink.",
         "section": "colors"
       },
       {
-        "name": "The Holder Is State Rule",
-        "body": "A holder's color changes only when the strip's state changes: amber means in progress, green means cleared, and red means held. A holder color is never picked for variety.",
+        "name": "The One Blue Rule",
+        "body": "The accent is the takeaway, the link and the focus ring. It never marks a status, fills a surface or colors a heading. Brand marks are not the accent: the contact icons keep their own brand colors.",
         "section": "colors"
       },
       {
-        "name": "The Back Row Rule",
-        "body": "At 1280×720, labels are about 18px or more and sentences about 22px or more. A few built sizes run under this floor (13–17px): printed captions in the base strip, empty-slot legends, the footer, and the release board's keys, column heads, and readouts. They are not steps on the scale, so never reuse them for new text.",
+        "name": "The Mono Means Literal Rule",
+        "body": "Monaspace Neon sets only what the audience would type or search for: change IDs, file names, paths, commands, inline code, the file's line numbers and the page number. Headings, labels, column heads and prose are Mona Sans.",
         "section": "typography"
       },
       {
-        "name": "The Right Mono Rule",
-        "body": "B612 Mono prints strip data only: callsigns, field captions, and readouts. Its period renders left-shifted, so file names, paths, and anything else with a period go in Overpass Mono. Overpass's middle dot is also left-shifted, so `·` never appears in Overpass text. Separate items with the small Sign Yellow square used in the cover byline.",
+        "name": "The Floor Rule",
+        "body": "At 1280×720, argument text (bullets, side notes, definitions, step names) is 22px or larger. Panel UI text sits at 19–21px: panel heads, table cells, the board console, panel footers and the source note under a table. Labels and captions never go below 18px, and the footer and page number are 17px chrome. Known exceptions, not precedents: the Agent and Human chips inside release-board rows (16px), the change IDs in those rows and in the comparison line (17px), and the moving AI-0142 token (17px mono).",
         "section": "typography"
       },
       {
-        "name": "The Hand Is Grease Rule",
-        "body": "Permanent Marker appears only as a person's handwriting: short, slightly tilted, and in Grease Pencil or Grease Under Lamp. The one exception is the release board's rubber-stamp LGTM, written in Faded Ink. The face is never used for headings or body text.",
+        "name": "The Bundled Type Rule",
+        "body": "Both families ship beside the deck (`slides/assets/fonts/`, OFL-1.1) with `font-display: block`, and deck.js loads every face before the first transition, so a slide never captures invisible or fallback text.",
         "section": "typography"
       },
       {
-        "name": "The Lamp Overhead Rule",
-        "body": "All shadows fall straight down from the one lamp, with zero x-offset and black only. Objects lying on the board add a hard contact line under the soft cast. Lift is a longer cast, never a glow. Rings (a black sign rim, a yellow lit-position ring, a red incident ring) are outlines, not light.",
+        "name": "The 72px Margin Rule",
+        "body": "Everything that anchors to an edge anchors to the 72px margin: the footer, the page number, the takeaway, positioned panels and the release board's static comparison line.",
+        "section": "layout"
+      },
+      {
+        "name": "The One Takeaway Rule",
+        "body": "An argument slide ends with at most one takeaway line, pinned 82px from the bottom, entering only after the slide's moment completes (each slide sets its own `--td`). On the release board the takeaway is the outcome sentence: it's set in Ink with each outcome word in its status ink, and it appears only when a run completes.",
+        "section": "layout"
+      },
+      {
+        "name": "The One Surface Rule",
+        "body": "Panels never nest. Inside a panel, structure is a head bar, a Soft Hairline or a tinted footer row. A white card may sit in a gray well (the change card in its lane), never in another panel.",
         "section": "elevation"
       },
       {
-        "name": "The Real Holder Rule",
-        "body": "A holder is a carrier the card sits in, built from layered backgrounds. Never fake one with a colored left border or a tinted card. The 2px tan rules between printed fields are print on the card and stay.",
-        "section": "components"
+        "name": "The Lift Is for Heroes Rule",
+        "body": "Only the cover's check run and the Questions photo take the Lift shadow. Everything else that floats takes the Panel shadow.",
+        "section": "elevation"
       },
       {
-        "name": "The Fixed Infrastructure Rule",
-        "body": "Signs never move. They are the infrastructure the strips move past, so they get no entrance animation, no hover, and no lift.",
-        "section": "components"
+        "name": "The Pill Means State Rule",
+        "body": "A pill reports a state; a rounded rectangle is something you press or a literal string. Buttons, the scenario switch, the merge button and the AI-0142 token are rectangles; chips, counts, stage marks and outcome rows are pills.",
+        "section": "shapes"
       },
       {
-        "name": "The Complete Without Motion Rule",
-        "body": "The authored markup is the finished state. Motion only animates into it, with backwards fills, so nothing lingers. Every effect is gated by the live audience slide (`fs-live`: visible tab, not printing, no reduced-motion preference) and settles within 4.7 seconds. Print restores the authored snapshot, and runtime-only content has a static twin.",
-        "section": "components"
+        "name": "The Circle Means a Check Rule",
+        "body": "A circle is a check's state. It's filled with a white glyph when done, a hollow ring when queued, a dashed ring when drafted, amber arcs while running, and the person's face with a green badge when a person approved. Checklist boxes are rounded squares because the speaker ticks them.",
+        "section": "shapes"
       }
     ],
     "dos": [
-      "Do put every slide on Graphite Console (#1b2023) with Lamp Light text, and put evidence (strips, sheets, chips, quotes) on Buff Card Stock (#efe6cc) in Strip Ink (#1a2540).",
-      "Do end a content slide with at most one takeaway: a direction sign pinned bottom left, with clear air between it and the composition above.",
-      "Do show a change's state with its holder (amber in progress, green cleared, red held) and a person's decision with grease (tick, ring, strike, initials).",
-      "Do set callsigns, field captions, and readouts in B612 Mono, and file names, paths, and commands in Overpass Mono.",
-      "Do keep labels at about 18px or more and sentences at about 22px or more at 1280×720.",
-      "Do keep every motion finite. Play it only on the live audience slide, use backwards fills, and let it settle within 4.7 seconds.",
-      "Do author the finished state in markup, so reduced-motion, print and PDF, presenter, and no-JavaScript views show a complete slide, and give runtime-only content a static twin.",
-      "Do carry one strip across consecutive slides with the shared hero morph name, one hero per slide.",
-      "Do label illustrative boards, changes, and percentages as fictional or illustrative on the slide itself."
+      "Do draw each argument as the tool that proves it (a check run, a pull-request queue, a board, an instructions file, a deploy timeline, a checklist), built from panels, chips and status discs.",
+      "Do give every status its fixed hue and its glyph: check for pass, pause for hold, undo for rollback, x for failure or incident, bot for agent, person for human.",
+      "Do set status words in the ink step and draw discs, bars, connectors and strokes in the solid step.",
+      "Do end an argument slide with one Takeaway line, 82px from the bottom, entering only after the slide's moment (`--td`).",
+      "Do author the finished state in markup and let motion replay the path to it: `backwards` fills, gated on `section.sw-live` and `prefers-reduced-motion: no-preference`, settled by 4.95s.",
+      "Do give anything live-only a static twin (`.sw-static` / `.sw-dynamic`, or `.live-only` revealed by a finite `transient`) so the PDF, presenter, reduced-motion and no-script views read complete.",
+      "Do label every simulated change, count, rate and board on the slide itself, in an 18px Secondary Ink line.",
+      "Do show a person's approval as their avatar with a green check badge, and an agent's work with the violet bot and the Agent chip.",
+      "Do keep a 2px Focus Blue outline on every control (2px outside buttons and switch options, 3px inside checklist rows), and let arrow keys and clickers advance the deck from a focused control.",
+      "Do keep the bio and Thank You contact blocks exactly as authored, including the Font Awesome icons in their brand colors and the struck-through Twitter line in Secondary Ink."
     ],
     "donts": [
-      "Don't use the neon AI-talk look or a white corporate template. The lightest surface is buff card stock, and light comes only from the lamp, the faint edge light, and real signal lights.",
-      "Don't fake a holder with a colored left border or a tinted card. Build it from layered backgrounds, and keep the 2px printed field rules inside the card.",
-      "Don't swap the reds. Mandatory Red goes only on signs, Red Holder only on strips, and Grease only on a person's marks and the holds they cause.",
-      "Don't pick holder colors for variety or give the deck's strips a fourth state color.",
-      "Don't set file paths or anything with a period in B612 Mono, and don't put `·` in Overpass text.",
-      "Don't animate signs or loop motion. The only repeating motion is the active-box pulse while a presenter-started board runs.",
-      "Don't suggest lift with x-offset shadows, colored shadows, or glows. Lengthen the cast instead.",
-      "Don't reuse the sub-floor sizes (13–17px) of strip captions, slot legends, and release-board controls as a scale step for new text."
+      "Don't use Takeaway Blue or Focus Blue for a status, a fill or a heading.",
+      "Don't spend a status hue on decoration or a second meaning; a landed or merged change is green, never purple, because violet means agent.",
+      "Don't nest a panel in a panel, or give anything but the cover's check run and the Questions photo the Lift shadow.",
+      "Don't set prose, headings or labels in Monaspace Neon.",
+      "Don't set argument text below 22px or labels below 18px; the board rows' 16px chips, their 17px IDs and the 17px loop token are exceptions, not precedents.",
+      "Don't shape a button as a pill or a status chip as a rectangle.",
+      "Don't add looping or autoplaying motion; the board's stage spinner is the only infinite animation, and it runs only after the speaker presses Run.",
+      "Don't add colored or blurred glows or tinted shadows; shadows are Ink at low alpha, and the only colored halo is the zero-blur nudge on a control waiting for the speaker.",
+      "Don't dress the deck in a costume world or the dark neon AI look; the release tooling is the only illustration.",
+      "Don't present a number, chart or change as real; nothing on a slide is connected to a real model, repository, pipeline or production traffic."
     ]
   }
 }

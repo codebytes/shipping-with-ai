@@ -12,13 +12,13 @@
 - Use local directives for slide-specific settings:
   - `<!-- _class: lead -->` for title slides
   - `<!-- _class: invert -->` for dark slides
-  - `<!-- _class: paper -->` for light card-stock slides
   - `<!-- _class: columns -->` for two-column layout
   - `<!-- _class: small -->` for dense content
   - `<!-- _paginate: skip -->` to hide page number
-- `custom-default` is the Flight Strip Board theme. Build its components from the HTML
-  used in `slides/Slides.md` (strips, bays, signs, sheets, grease marks, checklists), and load
-  `slides/assets/flight-strip.js` once on the first slide. Exports need `--html`.
+- `custom-default` is a light release-tooling theme: white panels, status chips, and status
+  icons, with checks, boards, and deployment rings as the illustrations. Build its components
+  from the HTML used in `slides/Slides.md` (check runs, chips, board lanes, the release board,
+  checklists), and load `slides/assets/deck.js` once on the first slide. Exports need `--html`.
   `DESIGN.md` records its tokens, type floor, and named rules; follow it for new slides.
 - Keep motion finite and in the theme: effects settle within five seconds, respect
   `prefers-reduced-motion`, and every slide stays complete in the PDF and without JavaScript.

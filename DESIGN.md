@@ -1,439 +1,533 @@
 ---
-name: Flight Strip Board
-description: "A night tower cab for the talk Shipping with AI Without Shipping Regret: every change is a flight strip that moves only when a person writes its clearance."
+name: Shipping with AI
+description: "Shipping with AI Without Shipping Regret, illustrated with the release tooling the audience already trusts: checks, pull requests, boards and deployment rings, shown crisp and large on a light canvas."
 colors:
-  sign-yellow: "#f6c21c"
-  sign-black: "#121416"
-  sign-red: "#c8102e"
-  sign-white: "#ffffff"
-  grease: "#b8281a"
-  grease-lamp: "#ff8a6b"
-  amber: "#e2a33a"
-  green: "#3f9a6b"
-  red: "#c9402b"
-  pass-ink: "#23663f"
-  edge-light: "#8fc4ff"
-  blue: "#4a7cc0"
-  console: "#1b2023"
-  console-night: "#111416"
-  console-deep: "#121618"
-  console-raised: "#242b2f"
-  rail: "#3a444a"
-  rail-light: "#56636a"
-  lamp: "#ebe5d5"
-  dim: "#a9b1ad"
-  paper: "#efe6cc"
-  paper-shade: "#e3d7b5"
-  paper-line: "#c4b48b"
-  ink: "#1a2540"
-  ink-soft: "#485166"
+  accent: "#0a5bc4"
+  accent-solid: "#0969da"
+  pass: "#116329"
+  pass-solid: "#1a7f37"
+  pass-tint: "#dafbe1"
+  pass-line: "#aceebb"
+  merge: "#1f883d"
+  hold: "#7d4e00"
+  hold-solid: "#9a6700"
+  spin: "#bf8700"
+  hold-tint: "#fff8c5"
+  hold-line: "#eed888"
+  back: "#a40e26"
+  back-solid: "#cf222e"
+  back-tint: "#ffebe9"
+  back-line: "#ffcecb"
+  agent: "#6639ba"
+  agent-tint: "#fbefff"
+  agent-line: "#e4d0ff"
+  canvas: "#f4f6f9"
+  canvas-wash: "#e6eefa"
+  surface: "#ffffff"
+  subtle: "#f6f8fa"
+  well: "#e9edf2"
+  code-fill: "#eef1f4"
+  avatar-tint: "#dbe8f8"
+  line: "#d0d7de"
+  line-soft: "#e3e8ee"
+  line-strong: "#8c959f"
+  ink: "#1f2328"
+  ink-2: "#57606a"
 typography:
   display:
-    fontFamily: "FS Overpass, Overpass, Segoe UI, system-ui, sans-serif"
-    fontSize: "80px"
-    fontWeight: 800
-    lineHeight: 0.98
-    letterSpacing: "-0.015em"
+    fontFamily: "SW Sans, Mona Sans, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "74px"
+    fontWeight: 690
+    lineHeight: 1.03
+    letterSpacing: "-0.035em"
+    fontVariation: "'wdth' 104"
   headline:
-    fontFamily: "FS Overpass, Overpass, Segoe UI, system-ui, sans-serif"
-    fontSize: "50px"
-    fontWeight: 800
-    lineHeight: 1.06
-    letterSpacing: "-0.015em"
-  title:
-    fontFamily: "FS Overpass, Overpass, Segoe UI, system-ui, sans-serif"
-    fontSize: "32px"
-    fontWeight: 600
-    lineHeight: 1.15
-    letterSpacing: "-0.01em"
+    fontFamily: "SW Sans, Mona Sans, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "48px"
+    fontWeight: 690
+    lineHeight: 1.1
+    letterSpacing: "-0.027em"
+    fontVariation: "'wdth' 104"
+  takeaway:
+    fontFamily: "SW Sans, Mona Sans, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "30px"
+    fontWeight: 650
+    lineHeight: 1.25
+    letterSpacing: "-0.012em"
   body:
-    fontFamily: "FS Overpass, Overpass, Segoe UI, system-ui, sans-serif"
-    fontSize: "28px"
-    fontWeight: 400
-    lineHeight: 1.38
-    letterSpacing: "0"
-  body-dense:
-    fontFamily: "FS Overpass, Overpass, Segoe UI, system-ui, sans-serif"
-    fontSize: "25px"
-    fontWeight: 400
-    lineHeight: 1.38
-    letterSpacing: "0"
-  takeaway:
-    fontFamily: "FS Overpass, Overpass, Segoe UI, system-ui, sans-serif"
-    fontSize: "27px"
-    fontWeight: 800
-    lineHeight: 1.18
-    letterSpacing: "-0.005em"
-  sign:
-    fontFamily: "FS Overpass, Overpass, Segoe UI, system-ui, sans-serif"
-    fontSize: "19px"
-    fontWeight: 800
-    lineHeight: 1.1
-    letterSpacing: "0.06em"
-  label:
-    fontFamily: "FS Overpass, Overpass, Segoe UI, system-ui, sans-serif"
-    fontSize: "18px"
-    fontWeight: 800
-    lineHeight: 1.2
-    letterSpacing: "0.06em"
-  data-id:
-    fontFamily: "FS B612 Mono, B612 Mono, ui-monospace, SF Mono, Menlo, Consolas, monospace"
+    fontFamily: "SW Sans, Mona Sans, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
     fontSize: "26px"
-    fontWeight: 700
-    lineHeight: 1
-    letterSpacing: "0.01em"
-  data-label:
-    fontFamily: "FS B612 Mono, B612 Mono, ui-monospace, SF Mono, Menlo, Consolas, monospace"
-    fontSize: "18px"
-    fontWeight: 700
-    letterSpacing: "0.06em"
-  code:
-    fontFamily: "FS Overpass Mono, Overpass Mono, ui-monospace, SF Mono, Menlo, Consolas, monospace"
-    fontSize: "20px"
-    fontWeight: 700
+    fontWeight: 430
+    lineHeight: 1.45
+    letterSpacing: "-0.004em"
+  body-side:
+    fontFamily: "SW Sans, Mona Sans, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "24px"
+    fontWeight: 430
+    lineHeight: 1.4
+  title:
+    fontFamily: "SW Sans, Mona Sans, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "22px"
+    fontWeight: 650
     lineHeight: 1.3
-  hand:
-    fontFamily: "FS Marker, Permanent Marker, Marker Felt, Comic Sans MS, cursive"
-    fontSize: "26px"
+  row:
+    fontFamily: "SW Sans, Mona Sans, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "22px"
+    fontWeight: 430
+    lineHeight: 1.3
+  panel-head:
+    fontFamily: "SW Sans, Mona Sans, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "21px"
+    fontWeight: 430
+    lineHeight: 1.25
+  meta:
+    fontFamily: "SW Sans, Mona Sans, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "19px"
+    fontWeight: 600
+    lineHeight: 1.3
+  label:
+    fontFamily: "SW Sans, Mona Sans, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "18px"
+    fontWeight: 600
+    lineHeight: 1
+    letterSpacing: "0"
+  caption:
+    fontFamily: "SW Sans, Mona Sans, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "18px"
+    fontWeight: 430
+    lineHeight: 1.3
+  id:
+    fontFamily: "SW Mono, Monaspace Neon, ui-monospace, SF Mono, Menlo, Consolas, monospace"
+    fontSize: "18px"
     fontWeight: 400
-    lineHeight: 1.1
-    letterSpacing: "0.01em"
+    letterSpacing: "0"
+  code:
+    fontFamily: "SW Mono, Monaspace Neon, ui-monospace, SF Mono, Menlo, Consolas, monospace"
+    fontSize: "0.76em"
+    fontWeight: 400
+    letterSpacing: "0"
+  chrome:
+    fontFamily: "SW Sans, Mona Sans, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "17px"
+    fontWeight: 500
+    lineHeight: 1
+    letterSpacing: "0"
 rounded:
-  sign: "3px"
-  card: "4px"
-  holder: "6px"
-  panel: "8px"
+  pill: "999px"
+  circle: "50%"
+  panel: "14px"
+  card: "12px"
+  control: "8px"
+  box: "7px"
+  code: "6px"
 spacing:
-  slide-top: "60px"
-  slide-x: "72px"
-  slide-bottom: "70px"
-  block: "18px"
-  stack: "12px"
-  bay-gap: "26px"
-  gutter: "40px"
+  margin: "72px"
+  top: "50px"
+  chrome-bottom: "28px"
+  takeaway-bottom: "82px"
+  heading-gap: "28px"
+  column-gap: "48px"
+  gap: "18px"
+  panel-x: "20px"
+  panel-head-y: "12px"
+  item: "12px"
 components:
-  strip:
-    backgroundColor: "{colors.paper}"
+  panel:
+    backgroundColor: "{colors.surface}"
+    rounded: "{rounded.panel}"
+  panel-head:
+    backgroundColor: "{colors.subtle}"
     textColor: "{colors.ink}"
-    typography: "{typography.data-id}"
-    rounded: "{rounded.holder}"
-    padding: "4px 5px 4px 18px"
-  strip-holder:
-    backgroundColor: "{colors.amber}"
-    rounded: "{rounded.holder}"
-  strip-holder-cleared:
-    backgroundColor: "{colors.green}"
-    rounded: "{rounded.holder}"
-  strip-holder-held:
-    backgroundColor: "{colors.red}"
-    rounded: "{rounded.holder}"
-  sign-mandatory:
-    backgroundColor: "{colors.sign-red}"
-    textColor: "{colors.sign-white}"
-    typography: "{typography.sign}"
-    rounded: "{rounded.sign}"
-    padding: "0.3em 0.55em 0.18em"
-  sign-location:
-    backgroundColor: "{colors.sign-black}"
-    textColor: "{colors.sign-yellow}"
-    typography: "{typography.sign}"
-    rounded: "{rounded.sign}"
-    padding: "9px 13px 6px"
-  sign-direction:
-    backgroundColor: "{colors.sign-yellow}"
-    textColor: "{colors.sign-black}"
-    typography: "{typography.sign}"
-    rounded: "{rounded.sign}"
-    padding: "0.3em 0.55em 0.18em"
-  takeaway:
-    backgroundColor: "{colors.sign-yellow}"
-    textColor: "{colors.sign-black}"
-    typography: "{typography.takeaway}"
-    rounded: "{rounded.card}"
-    padding: "13px 24px 10px 18px"
-  pagination:
-    backgroundColor: "{colors.sign-black}"
-    textColor: "{colors.sign-yellow}"
-    typography: "{typography.sign}"
-    rounded: "{rounded.sign}"
-    padding: "3px 12px 0"
-    height: "34px"
-  sheet:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.card}"
-    padding: "18px 24px 20px"
-  sheet-title:
-    backgroundColor: "{colors.sign-black}"
-    textColor: "{colors.sign-white}"
+    typography: "{typography.panel-head}"
+    padding: "12px 20px"
+  chip:
+    backgroundColor: "{colors.subtle}"
+    textColor: "{colors.ink-2}"
     typography: "{typography.label}"
-    padding: "9px 24px 6px"
-  chip-paper:
-    backgroundColor: "{colors.paper}"
+    rounded: "{rounded.pill}"
+    height: "32px"
+    padding: "0 12px"
+  chip-pass:
+    backgroundColor: "{colors.pass-tint}"
+    textColor: "{colors.pass}"
+    typography: "{typography.label}"
+    rounded: "{rounded.pill}"
+    height: "32px"
+    padding: "0 12px 0 10px"
+  chip-hold:
+    backgroundColor: "{colors.hold-tint}"
+    textColor: "{colors.hold}"
+    typography: "{typography.label}"
+    rounded: "{rounded.pill}"
+    height: "32px"
+    padding: "0 12px 0 10px"
+  chip-agent:
+    backgroundColor: "{colors.agent-tint}"
+    textColor: "{colors.agent}"
+    typography: "{typography.label}"
+    rounded: "{rounded.pill}"
+    height: "32px"
+    padding: "0 12px 0 10px"
+  chip-human:
+    backgroundColor: "{colors.subtle}"
+    textColor: "{colors.ink-2}"
+    typography: "{typography.label}"
+    rounded: "{rounded.pill}"
+    height: "32px"
+    padding: "0 12px 0 10px"
+  status-icon:
+    backgroundColor: "{colors.pass-solid}"
+    rounded: "{rounded.circle}"
+    size: "26px"
+  status-icon-hold:
+    backgroundColor: "{colors.hold-solid}"
+    rounded: "{rounded.circle}"
+    size: "26px"
+  status-icon-fail:
+    backgroundColor: "{colors.back-solid}"
+    rounded: "{rounded.circle}"
+    size: "26px"
+  status-icon-person:
+    backgroundColor: "{colors.avatar-tint}"
+    rounded: "{rounded.circle}"
+    size: "32px"
+  id:
+    textColor: "{colors.ink-2}"
+    typography: "{typography.id}"
+  code-inline:
+    backgroundColor: "{colors.code-fill}"
     textColor: "{colors.ink}"
+    typography: "{typography.code}"
+    rounded: "{rounded.code}"
+    padding: "0.1em 0.38em"
+  takeaway:
+    textColor: "{colors.accent}"
+    typography: "{typography.takeaway}"
+  footer:
+    textColor: "{colors.ink-2}"
+    typography: "{typography.chrome}"
+  button:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    typography: "{typography.label}"
+    rounded: "{rounded.control}"
+    height: "38px"
+    padding: "0 14px"
+  button-hover:
+    backgroundColor: "#f3f4f6"
+  button-disabled:
+    backgroundColor: "{colors.subtle}"
+    textColor: "{colors.line-strong}"
+  button-primary:
+    backgroundColor: "{colors.merge}"
+    textColor: "#ffffff"
+    typography: "{typography.label}"
+    rounded: "{rounded.control}"
+    height: "38px"
+    padding: "0 14px"
+  button-primary-hover:
+    backgroundColor: "{colors.pass-solid}"
+  segmented:
+    backgroundColor: "{colors.well}"
+    rounded: "10px"
+    padding: "3px"
+  segmented-option:
+    textColor: "{colors.ink-2}"
+    typography: "{typography.label}"
+    rounded: "{rounded.box}"
+    height: "32px"
+    padding: "0 12px"
+  segmented-option-selected:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+  check-run:
+    backgroundColor: "{colors.surface}"
+    rounded: "18px"
+    padding: "24px 28px 26px"
+    width: "468px"
+  lane:
+    backgroundColor: "{colors.well}"
+    rounded: "16px"
+    padding: "10px 12px 12px"
+  change-card:
+    backgroundColor: "{colors.surface}"
     rounded: "{rounded.card}"
-    padding: "9px 12px 7px"
-  slot:
-    textColor: "{colors.dim}"
-    rounded: "{rounded.holder}"
-  console-key:
-    textColor: "{colors.lamp}"
-    rounded: "{rounded.holder}"
-    padding: "9px 15px 6px"
-    height: "42px"
-  console-key-clear:
-    backgroundColor: "{colors.sign-yellow}"
-    textColor: "{colors.sign-black}"
-    rounded: "{rounded.holder}"
-    padding: "9px 15px 6px"
-    height: "42px"
+    padding: "12px 16px 14px"
+  board-mark:
+    backgroundColor: "{colors.subtle}"
+    textColor: "{colors.ink-2}"
+    typography: "{typography.label}"
+    rounded: "{rounded.pill}"
+    height: "32px"
+    padding: "0 10px 0 8px"
+  board-mark-pass:
+    backgroundColor: "{colors.pass-tint}"
+    textColor: "{colors.pass}"
+  board-mark-hold:
+    backgroundColor: "{colors.hold-tint}"
+    textColor: "{colors.hold}"
+  board-mark-back:
+    backgroundColor: "{colors.back-tint}"
+    textColor: "{colors.back}"
+  board-mark-active:
+    backgroundColor: "{colors.hold-tint}"
+    rounded: "{rounded.pill}"
+    height: "32px"
+    width: "44px"
+  checklist-row:
+    textColor: "{colors.ink}"
+    height: "49px"
+    padding: "0 20px"
+  checklist-box:
+    backgroundColor: "{colors.surface}"
+    rounded: "{rounded.box}"
+    size: "24px"
+  checklist-box-checked:
+    backgroundColor: "{colors.pass-solid}"
+    rounded: "{rounded.box}"
+    size: "24px"
 ---
 
-# Design System: Flight Strip Board
+# Design System: Shipping with AI
 
 ## Overview
 
-**Creative North Star: "The Night Tower Cab"**
+**Creative North Star: "The Tooling Is the Illustration"**
 
-The deck is a night tower cab seen from the controller's seat: a graphite strip console under one warm lamp, buff card-stock flight strips in amber, green, and red plastic holders, red grease-pencil marks, and airfield signs. Every AI-written change is a strip, and a strip moves to the next bay only when a person writes its clearance. Every visual device is an object that cab would contain, and the slides argue for release discipline by handling those objects, not by decorating a page.
+There is no governing metaphor, and the North Star says so on purpose. Every picture in the deck is a piece of release tooling the audience already trusts: a check run, a pull-request queue, a project board, an instructions file, a deployment timeline, a checklist. Each is redrawn crisp and large for a 1280×720 slide. The talk argues that a change needs evidence before it ships, so the illustrations are the evidence surfaces themselves. The deck refuses costume worlds and the dark neon AI deck.
 
-Density is that of a working board on a fixed 1280×720 frame: one claim per slide, stated as the headline; one composed board, sheet, or strip stack under it; and at most one direction-sign takeaway pinned to the bottom. Material carries the hierarchy. The lit console is the room's voice, card stock holds evidence and documents, signs give instructions, and grease records human decisions. Type is sized for the back of a conference room.
+The material is a light product UI, enlarged for a room. A cool off-white canvas carries a faint blue wash from the top-right corner. White panels have hairline borders and soft, ink-tinted offset shadows. Mona Sans sets every word, and Monaspace Neon appears only where the audience reads a literal string. Color stays neutral until something has a state: four status hues with fixed meanings, each paired with a glyph, and one blue saved for the slide's takeaway, links and focus. Density is GitHub-scale (rows, chips, counts, IDs), but every size is lifted for the back of the room.
 
-The direction rejects two things by name: the neon AI-talk deck and the white corporate template. Motion is the mechanism, never ornament. Strips print, slot into bays, get cocked or ringed, collect grease ticks, change holder, and cross the hold line. Each slide's motion is finite, plays only on the live audience slide, and animates into a finished state that the markup already holds.
+Each slide has one authored moment: the cover's checks turning green, two queues filling at different rates, three checks failing, a file written line by line, one more check on each board slide, a review loop that ends in a merge box, an error line crossing the health gate, a table filling, a checklist cascade. The finished state is the markup. Motion only replays how the slide got there, once, on the live audience slide. It uses two easings: `cubic-bezier(0.16, 1, 0.3, 1)` for arrivals and an overshooting `cubic-bezier(0.34, 1.56, 0.64, 1)` for results that pop.
 
 **Key Characteristics:**
-- Two lit materials: graphite console with lamp-colored text, and buff card stock with navy ink.
-- Saturated color only where it means something: airfield signs, holder states, grease marks, real lights.
-- Overpass for words and signs, B612 Mono for strip data, Overpass Mono for code and paths, Permanent Marker for grease only.
-- Physical depth from one overhead lamp: a hard contact line plus a soft cast, always straight down.
-- Finite motion that settles within 4.7 seconds into an authored static state, so print, PDF, and reduced motion lose nothing.
+- Cool off-white canvas, white hairline panels, soft offset shadows; panels never nest.
+- Mona Sans throughout, in a slightly widened heavy cut for headings; Monaspace Neon only for literal strings.
+- Four status hues with fixed meanings, each paired with a glyph; one blue for takeaways, links and focus.
+- Pills report state, circles report checks, and rounded rectangles are controls or literal tokens.
+- One authored moment per slide, played once and settled by 4.95s; the static slide is already complete.
+- Simulated material is labeled illustrative on the slide itself.
+
+### Named Rules
+**The Complete Without Motion Rule.** The authored markup is the finished slide; motion only replays the path to it. deck.js adds `sw-live` to a slide only in the audience window, while that slide is active, the page is visible and not printing, and no reduced-motion preference is set. Every effect sits inside `prefers-reduced-motion: no-preference`, fills `backwards` from a visible default, and settles by 4.95s (the review slide is the longest). The one infinite animation is the release board's stage spinner while a speaker-started run is going.
+
+**The Static Twin Rule.** Anything that only makes sense live has a static twin. `.sw-static` shows until its section is `data-enhanced="true"`, and `.sw-dynamic` only after. `.live-only` text stays hidden and appears only inside a finite `transient` animation. Print turns off all animation and transitions and hides dynamic twins and board controls. The release board's authored markup is its PDF snapshot, and the script restores it whenever the slide leaves the audience view.
+
+**The Illustrative Label Rule.** Every simulated change, count, rate or board says so on the slide in an 18px Secondary Ink line ("Fictional change, illustrative only", "Illustrative: seven drafted and two shipped is not measured data"), never only in the speaker notes.
 
 ## Colors
 
-Two lit materials carry the deck, and saturated color appears only where it means something in the cab: a sign, a holder, a grease mark, or a real light.
+GitHub's light product palette at slide scale: cool grays carry structure, four status families carry meaning, and one blue carries the point.
 
 ### Primary
-- **Sign Yellow** (#f6c21c): the airfield-sign accent and the most-used accent in the deck. It is the legend and inset border of location signs (bay labels, page numbers, station placards, table headers), the face of direction signs (every takeaway), list bullets and ordered-list numerals, and the release board's active column and state readout. It reads at 9.9:1 on the console.
-- **Sign Black** (#121416): the face of location signs, the 2px rim around mandatory and direction signs, and the title bar of paper sheets.
-- **Mandatory Red** (#c8102e): mandatory-instruction signs only, meaning stop here until cleared. It appears on the PROD hold sign, a hold bay's label, and the release board's awaiting-clearance readout.
-- **Legend White** (#ffffff): legends on Mandatory Red and on a sheet's black title bar (5.9:1 on red). It is never a surface.
+- **Takeaway Blue** (#0a5bc4): the slide's one-line takeaway and links (1.5px underline at 40% alpha, 4px offset). 5.9:1 on the canvas.
+- **Focus Blue** (#0969da): the 2px focus outline on buttons, the scenario switch and checklist rows.
 
 ### Secondary
-- **Grease Pencil** (#b8281a): a person's marks on card stock, meaning ticks, rings, strikes, initials, and short handwritten notes, plus the held and rolled-back readouts those marks cause (5.0:1 on paper).
-- **Grease Under Lamp** (#ff8a6b): the same mark written on the console, lifted for contrast (7.1:1 on graphite). It is also used for the Questions underline, the Thank You tick, and the review loop's return lane.
+The release states. Each family has four steps: an **ink** for letters (at least 6.5:1 on its own tint), a **solid** for discs, bars and strokes (white glyphs on it hold at least 4.8:1), a **tint** for chip and row fills, and a **line** for chip borders.
+- **Pass Green** (#116329 ink, #1a7f37 solid, #dafbe1 tint, #aceebb line): agreed, passed, approved, shipped, landed; completed rings, connectors, meters and progress.
+- **Merge Green** (#1f883d): the one filled action, drawn from the merge button: the release board's Approve and the review slide's "Merge pull request". Hover darkens it to Pass Green's solid. White 18px/600 on it is 4.5:1, so its label never drops below weight 600.
+- **Hold Amber** (#7d4e00 ink, #9a6700 solid, #fff8c5 tint, #eed888 line): in progress, waiting on a person, held, and suspect ("Pass*", a test edited until it passed).
+- **Spinner Amber** (#bf8700): only the rotating arcs of work in progress and the progress bar while a run is underway.
+- **Back Red** (#a40e26 ink, #cf222e solid, #ffebe9 tint, #ffcecb line): failed checks, errors, incidents, the health gate and rollbacks.
 
 ### Tertiary
-- **Amber Holder** (#e2a33a): the default, in-progress holder, and the tint of the box being worked on the release board.
-- **Green Holder** (#3f9a6b): a cleared strip.
-- **Red Holder** (#c9402b): a held or rolled-back strip, and the incident ring.
-- **Pass Ink** (#23663f): printed PASS and LANDED readouts on card stock, where the green holder itself would be too light to read (5.5:1 on paper).
-- **Edge Light** (#8fc4ff): links, code titles, and keyboard focus rings on the console. It is the console's one cool light, and at 5% it tints the faint glow in the far corner.
-- **Holder Blue** (#4a7cc0): the focus ring on card stock (3.4:1 against paper). The theme also keeps blue and grey holder hooks, but strips in this deck use only the three state holders.
+- **Agent Violet** (#6639ba ink, #fbefff tint, #e4d0ff line): authorship, not state. The Agent chip, the bot glyph and the AI-0142 token that travels the review loop.
 
 ### Neutral
-- **Graphite Console** (#1b2023): the canvas of every slide, with a warm lamp pool falling from the top left. Marp's own background variables map to it, so slide transitions never flash black.
-- **Night Console** (#111416): the darker cab of `invert` slides, used on the cover.
-- **Deep Well** (#121618): recessed wells such as code blocks and review-loop stations.
-- **Raised Graphite** (#242b2f): inline code chips and alternate table rows.
-- **Rack Rail** (#3a444a): bay uprights, panel borders, and rules between rows on the console.
-- **Lit Rail** (#56636a): the dashes of an empty slot and the review loop's lanes.
-- **Lamp Light** (#ebe5d5): primary text on the console (13:1).
-- **Dimmed Lamp** (#a9b1ad): secondary text, column heads, captions, and the footer (7.5:1).
-- **Buff Card Stock** (#efe6cc): strips, sheets, quotes, and chips. It is the lightest surface in the system.
-- **Shaded Card Stock** (#e3d7b5): the lower edge of every card gradient, and raised rows on paper.
-- **Printed Rule** (#c4b48b): the 2px rules printed between strip fields and the 1px rules between sheet rows.
-- **Strip Ink** (#1a2540): navy ink for all text on card stock (12.2:1).
-- **Faded Ink** (#485166): printed captions, row keys, and secondary text on card stock (6.4:1).
+- **Cool Canvas** (#f4f6f9) with **Canvas Wash** (#e6eefa): every slide's ground, a radial ellipse (62% × 70%) of wash from the top-right corner that has faded into the canvas by 72%. deck.js paints the page itself in the canvas color, so transitions never flash black.
+- **Panel White** (#ffffff): panels, cards, actor boxes, the check run, default buttons.
+- **Subtle Gray** (#f6f8fa): panel head bars, neutral chips, the board bar, table header rows, disabled buttons.
+- **Well Gray** (#e9edf2): recessed ground. Board lanes, counts, the scenario switch track, the board's state pill at rest.
+- **Code Fill** (#eef1f4): inline code.
+- **Avatar Tint** (#dbe8f8): behind the speaker's avatar and the bio portrait.
+- **Hairline** (#d0d7de), **Soft Hairline** (#e3e8ee), **Strong Line** (#8c959f): panel and chip borders; row dividers and head-bar bottoms; bullets, hollow rings, arrows and the file's line numbers. Strong Line holds 3:1, so it is for strokes and gutter numbers, never reading text (disabled labels aside).
+- **Ink** (#1f2328) and **Secondary Ink** (#57606a): headings and body; meta, captions, IDs, column headers and the footer. Secondary Ink holds at least 5.4:1 on the canvas, panels, head bars and wells.
+
+The `invert` template class remaps every role to its GitHub dark-mode equivalent. This deck sets every slide light.
 
 ### Named Rules
-**The Real Objects Rule.** Saturated color always means something in the world: a sign's instruction, a holder's state, a person's mark, or a real light. It is never decoration. Edge Light marks links and focus, and the brand icons in the contact blocks keep their tuned colors. Light comes only from the overhead lamp, the faint edge light in the far corner, and real lights such as the stop bar on the cover.
+**The Fixed Meaning Rule.** A status hue means one thing everywhere: on chips, status discs, board marks, timeline outcomes and the colored words of a takeaway. Green is passed, amber is in progress or held, red is failed or rolled back, violet is an agent. A landed or merged change is green, never GitHub's purple, because violet already means agent. No hue carries a status alone: a glyph (check, pause, undo, x, bot, person) or the word itself says the same thing.
 
-**The Three Reds Rule.** Mandatory Red is a sign, Red Holder is a strip state, and Grease Pencil is a person's mark. Each red keeps its job, so never swap them.
+**The Ink and Solid Rule.** Letters use a family's ink step. Discs, bars, connectors and strokes use its solid step. Chips sit on the tint with the line as their border. Never set text in a solid or fill a disc with an ink.
 
-**The Holder Is State Rule.** A holder's color changes only when the strip's state changes: amber means in progress, green means cleared, and red means held. A holder color is never picked for variety.
+**The One Blue Rule.** The accent is the takeaway, the link and the focus ring. It never marks a status, fills a surface or colors a heading. Brand marks are not the accent: the contact icons keep their own brand colors.
 
 ## Typography
 
-**Display Font:** FS Overpass, the bundled Overpass in weights 400, 600, and 800 plus 400 italic (falls back to Overpass, Segoe UI, system-ui)
-**Body Font:** FS Overpass
-**Label/Mono Font:** FS B612 Mono, bundled at 400 and 700, for strip data. FS Overpass Mono, bundled at 400 and 700, for code and paths. FS Marker (Permanent Marker) for grease handwriting only.
+**Display Font:** Mona Sans, bundled as "SW Sans" (variable weight 200–900, width 75–125%), with a system UI sans fallback
+**Body Font:** Mona Sans, the same family
+**Label/Mono Font:** Monaspace Neon, bundled as "SW Mono" (400 and 600), with a system monospace fallback
 
-**Character:** Overpass descends from Highway Gothic road signage, so headings, body, and signs share one public-infrastructure voice. B612 Mono, drawn for cockpit displays, prints the strip data. Permanent Marker is the controller's hand. All four faces ship beside the deck and load before the first transition, so nothing renders in a fallback mid-slide. Theme text uses only these four families. The Helvetica in Marp's presenter chrome belongs to Marp, not to the theme.
+**Character:** One grotesque in many weights, the way the product UI the deck depicts is set. Headings use a heavy, slightly widened cut (690 weight, 104% width) with tight tracking, reading text uses an in-between 430, and labels use 600. Monaspace Neon is the sound of a literal string.
 
 ### Hierarchy
-- **Display** (800, 80px, 0.98, −0.015em): deck and bookend titles (h1). Title slides with the `lead` class set it at 88px. On the cover it is printed on the title strip in Strip Ink.
-- **Headline** (800, 50px, 1.06, −0.015em): every content slide's title (h2), written as the claim in one sentence. The two densest compositions step it down to 44–48px.
-- **Title** (600, 32px, 1.15, −0.01em): sub-heads (h3). An h4 is an uppercase Dimmed Lamp eyebrow (800, 20px, +0.08em).
-- **Body** (400, 28px, 1.38): the slide's base size. Bullet columns beside a strip or sheet use Body Dense (400, 25px, 1.38). The `small` class drops the base to 23px.
-- **Takeaway** (800, 27px, 1.18, −0.005em): the single sentence on a direction sign.
-- **Sign** (800, 19px, 1.1, +0.06em, uppercase): bay labels, page numbers, and station placards.
-- **Label** (800, 18px, 1.2, +0.06em, uppercase): column heads, sheet title bars, and station roles.
-- **Data ID** (B612 Mono 700, 26px, 1): strip callsigns such as AI-0142. Data Label (B612 Mono 700, 18px, +0.06em, uppercase) sets row keys and field captions.
-- **Code** (Overpass Mono 700, 20px, 1.3): file names, paths, and commands inside strips and tables. Code blocks run at 22px/1.5.
-- **Hand** (Permanent Marker 400, 26px in a strip box, 1.1): initials, short notes, and the opening mark of a quote, tilted −4° to −10°.
+- **Display** (690, 74px, 1.03): the cover title, in a two-line left column. The theme's base h1 is 76px; the closing slides scale the same cut to 96px ("Questions?") and 64px ("Thank You!").
+- **Headline** (690, 48px, 1.1): one claim per content slide, at most 1080px wide with balanced wrapping. The bio name sits at 56px.
+- **Takeaway** (650, 30px, 1.25): the closing line of an argument slide, in Takeaway Blue.
+- **Body** (430, 26px, 1.45): the theme's base for un-classed slides; the byline name and the check run's title sit at this size in bold. This deck's composed slides set prose smaller: 25px for the bio and checklist notes, Body Side beside panels.
+- **Body Side** (430, 24px, 1.4): prose beside a panel or under the board.
+- **Title** and **Row** (650 and 430, 22px, 1.3): term-and-definition pairs inside panels, row titles, change titles, timeline steps, table row heads.
+- **Panel Head** (21px, 1.25; the name inside it at 650): the head bar of every panel.
+- **Meta** (600, 19px, 1.3): lane names, check names, counts, the pill rows under a slide. Lane names and counts step up to 650.
+- **Label** (600, 18px, 1, no tracking): chips, buttons, board marks.
+- **Caption** (430, 18px, 1.3): step, actor, timeline and table notes. Exposure lines and ring subtitles use 450; the illustrative label and the board's foot use 500.
+- **ID** and **Code** (Monaspace Neon 400, 18px and 0.76em): change IDs (AI-0142, PR-0161), file names, paths, commands.
+- **Chrome** (500, 17px): the footer. The page number is Monaspace Neon 400 at 17px.
+
+The ramp is a dense UI band from 17 to 23px in near-single-pixel steps (status words, step names, the board console and checklist rows take the 20 and 23px steps), a reading band at 24–26px, then jumps to 30, 48 and 74.
 
 ### Named Rules
-**The Back Row Rule.** At 1280×720, labels are about 18px or more and sentences about 22px or more. A few built sizes run under this floor (13–17px): printed captions in the base strip, empty-slot legends, the footer, and the release board's keys, column heads, and readouts. They are not steps on the scale, so never reuse them for new text.
+**The Mono Means Literal Rule.** Monaspace Neon sets only what the audience would type or search for: change IDs, file names, paths, commands, inline code, the file's line numbers and the page number. Headings, labels, column heads and prose are Mona Sans.
 
-**The Right Mono Rule.** B612 Mono prints strip data only: callsigns, field captions, and readouts. Its period renders left-shifted, so file names, paths, and anything else with a period go in Overpass Mono. Overpass's middle dot is also left-shifted, so `·` never appears in Overpass text. Separate items with the small Sign Yellow square used in the cover byline.
+**The Floor Rule.** At 1280×720, argument text (bullets, side notes, definitions, step names) is 22px or larger. Panel UI text sits at 19–21px: panel heads, table cells, the board console, panel footers and the source note under a table. Labels and captions never go below 18px, and the footer and page number are 17px chrome. Known exceptions, not precedents: the Agent and Human chips inside release-board rows (16px), the change IDs in those rows and in the comparison line (17px), and the moving AI-0142 token (17px mono).
 
-**The Hand Is Grease Rule.** Permanent Marker appears only as a person's handwriting: short, slightly tilted, and in Grease Pencil or Grease Under Lamp. The one exception is the release board's rubber-stamp LGTM, written in Faded Ink. The face is never used for headings or body text.
+**The Bundled Type Rule.** Both families ship beside the deck (`slides/assets/fonts/`, OFL-1.1) with `font-display: block`, and deck.js loads every face before the first transition, so a slide never captures invisible or fallback text.
 
 ## Layout
 
-The frame is a fixed 1280×720 Marp slide, exported as bespoke HTML and as PDF. It is not responsive. There are no breakpoints and no fluid type, and both exports show the same frame.
+A fixed 1280×720 canvas, padded 50px at the top and 72px at the sides, with nothing at the bottom. The 72px margin is the spine: the footer and page number sit 28px from the bottom edge on it, the takeaway runs margin to margin 82px from the bottom, and positioned panels start on it.
 
-- **Slide box:** padding is 60px top, 72px sides, and 70px bottom, in a flex column. Content slides, meaning those with an h2, read from the top. Title, question, and split-photo slides center.
-- **The spine of a content slide:** the headline comes first, then the composition 26–30px below it, then the takeaway. An auto top margin pins the takeaway to the bottom left. The composition must end with clear air above that sign.
-- **Rhythm:** 18px separates paragraphs, lists, tables, and the element after a heading. Strips in a bay stack 12px apart, and list items 0.3em apart.
-- **Compositions:** two-column grids are weighted toward the evidence object, at 1.1–1.35fr to 1fr, with 40–48px gutters. A board is a row of equal bays 26px apart. The route band is three bays (Spec, Build, Review) 20px apart, and it repeats across consecutive slides so the hero strip appears to travel.
-- **Chrome:** the footer sits bottom left (72px in, 28px up) in Dimmed Lamp. The page number is a location sign at the bottom right (72px in, 22px up). Bookend slides hide both.
-- **Photos:** photos enter as split backgrounds 40–45% wide. They are dimmed and warmed (brightness 0.86, sepia 0.12) to sit in the lamp light.
-- **Slide classes:** `lead` centers a title slide. `invert` darkens the cab. `paper` turns the whole slide into card stock with Strip Ink text. `small` tightens type for dense slides. `columns` and `columns3` lay out section grids, and the `columns`, `columns3`, and `split` divs lay out two- and three-up groups.
+- **Bookends** (cover, Questions): a two-column grid, text left and object right (the check run in a 468px column, the photo in 608px), 48px apart and vertically centered. The cover, Questions and Thank You slides drop the footer and page number.
+- **Bio**: the portrait as a left 40% background over Avatar Tint, the text centered vertically.
+- **Content**: headline at the top, the tooling object beneath, takeaway pinned at the bottom. The object takes one of four forms:
+  - Panel left, prose right: a 600–664px panel on the left margin, 132–134px from the top, with prose starting 40–50px to its right.
+  - Two queues side by side, 36px apart.
+  - Board slides: three lanes 18px apart, then a detail grid of prose and a 600px panel, 40px apart.
+  - One full-width panel: the regret list, the release board, the tool map.
+- **Thank You**: two columns 56px apart, references and contact, under 32px column heads.
+
+Rhythm: list items 12px apart (14–16px in side columns), panel rows divided by Soft Hairlines rather than gaps, list rows 47–49px tall, board rows 72px, panel content 20px from the panel's sides. Template classes from the theme: `lead` centers a slide, `columns` makes two columns 48px apart, `small` drops the body to 22px and h2 to 40px.
+
+### Named Rules
+**The 72px Margin Rule.** Everything that anchors to an edge anchors to the 72px margin: the footer, the page number, the takeaway, positioned panels and the release board's static comparison line.
+
+**The One Takeaway Rule.** An argument slide ends with at most one takeaway line, pinned 82px from the bottom, entering only after the slide's moment completes (each slide sets its own `--td`). On the release board the takeaway is the outcome sentence: it's set in Ink with each outcome word in its status ink, and it appears only when a run completes.
 
 ## Elevation & Depth
 
-One warm lamp hangs over the console, so depth is physical rather than tonal. Strips, sheets, chips, and keys lie on the board, so each has a hard 2–3px contact line with no blur under a soft black cast. Signs cast without a contact line. Wells such as code blocks, the release-board panel, and console stations are recessed, with a faint inset top highlight. Bays are open racks with a darkened floor, not raised cards. Lift is a longer, darker cast.
+Two levels and a recess. The canvas is the floor. Panels float one step above it, with a hairline border and a soft, ink-tinted offset shadow. Gray wells (board lanes, counts, the switch track) sit recessed with no shadow. The two hero objects, the cover's check run and the Questions photo, lift one step higher. Depth never comes from colored glow or blur.
 
 ### Shadow Vocabulary
-- **Sign cast** (`box-shadow: 0 0 0 2px #121416, 0 6px 14px rgba(0, 0, 0, 0.35)`): mandatory and direction signs, with their black rim. Location signs and page numbers use the same cast without the rim, and draw their yellow border as an inset outline.
-- **Strip in holder** (`box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 2px 0 rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.32)`): the plastic lip highlight, the contact line, and the cast.
-- **Paper on the board** (`box-shadow: 0 3px 0 rgba(0, 0, 0, 0.28), 0 16px 30px rgba(0, 0, 0, 0.32)`): sheets. Quotes use a slightly lighter version.
-- **Chip** (`box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.25)`): small paper tags.
-- **Takeaway** (`box-shadow: 0 0 0 3px #121416, 0 12px 26px rgba(0, 0, 0, 0.4)`): the heaviest sign on the slide.
-- **Console key** (`box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 3px 0 #0b0d0e, 0 8px 14px rgba(0, 0, 0, 0.35)`): a raised cap. When pressed, it travels 2px and its contact line shrinks to 1px.
-- **Recessed well** (`box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 10px 24px rgba(0, 0, 0, 0.28)`): code blocks. The release-board panel deepens the cast to 18px 34px.
-- **In flight** (`box-shadow: 0 34px 50px rgba(0, 0, 0, 0.55)`): a strip lifted off the board during a go-around. The cover's title strip rests on a similar deep cast.
+- **Panel** (`box-shadow: 0 1px 2px rgb(31 35 40 / 0.06), 0 12px 28px -14px rgb(31 35 40 / 0.2)`): panels, actor boxes, change cards, the loop token.
+- **Lift** (`box-shadow: 0 2px 4px rgb(31 35 40 / 0.05), 0 22px 44px -18px rgb(31 35 40 / 0.28)`): the cover's check run and the Questions photo only.
+- **Control** (`box-shadow: 0 1px 0 rgb(31 35 40 / 0.04)`): resting buttons.
+- **Selected segment** (`box-shadow: 0 1px 2px rgb(31 35 40 / 0.14), 0 0 0 1px #d0d7de`): the selected option in the scenario switch.
+- **Hollow ring** (`box-shadow: inset 0 0 0 2px #8c959f`): queued status discs and lane dots the change hasn't reached.
+- **Badge cutout** (`box-shadow: 0 0 0 2px #ffffff`): separates a check badge from the avatar it sits on.
 
 ### Named Rules
-**The Lamp Overhead Rule.** All shadows fall straight down from the one lamp, with zero x-offset and black only. Objects lying on the board add a hard contact line under the soft cast. Lift is a longer cast, never a glow. Rings (a black sign rim, a yellow lit-position ring, a red incident ring) are outlines, not light.
+**The One Surface Rule.** Panels never nest. Inside a panel, structure is a head bar, a Soft Hairline or a tinted footer row. A white card may sit in a gray well (the change card in its lane), never in another panel.
+
+**The Lift Is for Heroes Rule.** Only the cover's check run and the Questions photo take the Lift shadow. Everything else that floats takes the Panel shadow.
 
 ## Shapes
 
-The form language is the hardware of a strip board: square-ish, printed, and handled.
+Radius grows with the object: 6px inline code, 7px checkboxes and switch options, 8px buttons and the moving token, 10px the switch track, 12px change cards and empty slots, 14px panels and actor boxes, 16px board lanes, 18px the cover's check run, 22px the Questions photo. State takes two pure forms: pills for chips, counts, stage marks, the regret cues and the pill rows, and circles for status discs, avatars, the bot and lane dots. Borders are 1px hairlines. Placeholders are dashed: the empty "Next" slot, draft discs, stages that never ran, the "LGTM" rubber-stamp mark. The health gate is a dashed red line.
 
-- **Corners by object:** signs are 3px, card stock and takeaways 4px, holders, slots, keys, and code blocks 6px, and large panels 8px (the cover strip and the release board). Console stations are nearly square, at 2px with corner rivets. Nothing is pill-shaped.
-- **The strip silhouette:** a long horizontal bar. On the left is a ribbed 18px grip where the holder shows; then the ID cell, the title cell, and a row of square printed field boxes. Each part is divided by a 2px rule printed on the card in Printed Rule tan.
-- **Sign silhouettes:** location signs are black rectangles with a 2px yellow border inset 5–6px from the edge. Mandatory and direction signs carry a 2px black rim. The direction sign leads or ends with a solid arrow glyph.
-- **Grease marks:** hand-drawn strokes with round caps: a tick, an oval ring, a crossed strike, and an underline. Each is written left to right.
-- **Rotation means attention:** a cocked strip shifts 26px and tilts −1.4°. Grease writing tilts −4° to −10°, and a pile of fresh strips scatters within ±2.2°. Everything else sits square to the board.
-- **Markers:** list bullets are small Sign Yellow squares with a 2px black rim, like miniature signs. Ordered lists use bold yellow numerals, and sheet lists use ink squares.
-- **Empty positions:** a 2px dashed Lit Rail outline with 6px corners, the same height as the strip it would hold.
-- **Bays:** open racks with 3px rails on the left and right under a sign plate. A bay is never a closed box.
+Icons are drawn once, as inline SVG data URIs in the theme (check, x, pause, undo, play, step, replay, bot, person, file), and tinted with `currentColor` through CSS masks. Strokes are round-capped, mostly 2 to 2.3 units on a 16-unit grid. Font Awesome appears only in the contact blocks, and each mark keeps its brand color: Bluesky #1185fe, LinkedIn #0a66c2, blog #0366d6, GitHub #333333 (Ink under `invert`), Mastodon #6364ff, Twitter #1da1f2.
+
+### Named Rules
+**The Pill Means State Rule.** A pill reports a state; a rounded rectangle is something you press or a literal string. Buttons, the scenario switch, the merge button and the AI-0142 token are rectangles; chips, counts, stage marks and outcome rows are pills.
+
+**The Circle Means a Check Rule.** A circle is a check's state. It's filled with a white glyph when done, a hollow ring when queued, a dashed ring when drafted, amber arcs while running, and the person's face with a green badge when a person approved. Checklist boxes are rounded squares because the speaker ticks them.
 
 ## Components
 
-Every component is a physical thing on the board. It is printed, held, signed, or written on, and it behaves the way that thing would.
-
-### Flight Strip (signature)
-The evidence object: printed card stock in a plastic holder.
-- **Construction:** three stacked backgrounds on one element. The card-stock gradient is clipped to the content box, a ribbed 18px grip shows at the left, and the holder gradient fills the border box, mixed 70% with white at the top and 78% with black at the bottom. The strip has 6px corners and the strip-in-holder cast.
-- **Cells:** the ID cell holds a B612 callsign (which never wraps) and an uppercase sub-ID. The title cell holds an Overpass 800 title and a detail line. The printed field boxes are at least 96px wide with a caption at the top left.
-- **Holder states:** set with `data-holder`. Amber is the default, green means cleared, and red means held. A registered color property animates the holder over 400ms when state changes.
-- **Marks in a box:** a grease tick means done, a grease ring means held for attention, a grease strike means not this way, and handwritten initials (CA) mean cleared by a person.
-- **Variants:** a cocked strip is offset and tilted to flag it. The mini strip (54px tall, 112px ID cell) is for piles and comparisons. The cover strip stacks its rows, uses 8px corners, and prints the deck title in Display type.
-
-**The Real Holder Rule.** A holder is a carrier the card sits in, built from layered backgrounds. Never fake one with a colored left border or a tinted card. The 2px tan rules between printed fields are print on the card and stay.
-
-### Airfield Signs
-Fixed instructions in the world's public voice. They are uppercase Overpass 800, tracked +0.04–0.06em, and never wrap.
-- **Mandatory** (Mandatory Red, Legend White, black rim): stop here until cleared. It marks the PROD hold line, hold bays, the board's awaiting-clearance state, and the unsafe comparison row.
-- **Location** (Sign Black, Sign Yellow legend, inset yellow border): you are here. It labels bays, page numbers, and review-loop stations. Table header rows use the same sign, with a 3px yellow underline.
-- **Direction** (Sign Yellow, black legend and arrow, black rim): the way to go. Every takeaway is a direction sign.
-
-**The Fixed Infrastructure Rule.** Signs never move. They are the infrastructure the strips move past, so they get no entrance animation, no hover, and no lift.
-
-### Takeaway
-- At most one per slide, as the last element. It is one sentence on a direction sign, with the arrow first, pinned bottom left by an auto top margin.
-- On the release board, the outcome sentence becomes the takeaway only after the board completes.
-
-### Bays, Boards, and Slots
-- **Board:** a row of equal bays.
-- **Bay:** an open rack with Rack Rail uprights and a faint dark floor, under a location-sign label plate. A hold bay takes the mandatory sign instead.
-- **Slot:** an empty position. It may carry a short uppercase legend ("Next").
-- **Route band:** the Spec, Build, and Review bays repeat on consecutive slides with a shared morph name, so one hero strip (AI-0142) travels bay to bay.
-
-### Paper Sheets
-Flight plans, test contracts, and the standing-information broadcast.
-- **Body:** a top-lit card-stock gradient with 4px corners, the paper cast, and Strip Ink text.
-- **Title bar:** a Sign Black bar flush with the top edge, with Legend White label caps tracked +0.1em. A second span on the right can carry a file name in Overpass Mono and Sign Yellow.
-- **Rows:** definition rows divided by 1px Printed Rule. Keys are in B612 Mono caps in Faded Ink, and values are in Overpass 600 in Strip Ink.
-- **Lists:** bullets on a sheet are ink squares. A lock list pairs a padlock glyph with a PASS readout in Pass Ink.
-
-### Challenge-and-Response Checklist
-- **Line:** each line has a 28px ink-bordered box (3px corners), the challenge in Overpass 600 at 25px, a 3px dotted Faded Ink leader, and the response in B612 Mono caps.
-- **Behavior:** the runtime wraps each line in a toggle button with `aria-pressed`. A checked line gets a grease tick written over its box, and a B612 counter beneath reads "0 of 7 confirmed".
-- **Focus:** a 3px Holder Blue outline, offset 6px.
-- **Print:** a blank card that people can keep.
-
-### Release Board (interactive)
-- **Panel:** a recessed 8px panel with a Rack Rail border. Its header carries a B612 state readout in Sign Yellow, which becomes a mandatory sign while the board waits for a human clearance.
-- **Rows and columns:** the column heads are uppercase Overpass 800, and the active column turns Sign Yellow (Grease Under Lamp while waiting). Strips are the rows, with 80px stage boxes.
-- **Marks:** a grease tick means pass or clear, a ring means hold or rollback, a tilted Faded Ink stamp means a rubber-stamp review, a faint slash means skipped, and a red tint means an incident.
-- **Outcome column:** Pass Ink when landed, and Grease Pencil when held, rolled back, or an incident.
-- **Console line:** a live region announces each step under the strips.
-- **Static state:** print and no-JavaScript views show the authored Evidence-first snapshot, with a one-line Vibe-shipping comparison of mini strips.
-
-### Buttons (console keys)
-- **Shape:** raised graphite caps with 6px corners, 42px tall, padding 9px 15px 6px, and legends in uppercase Overpass 800 tracked +0.06em.
-- **Default:** a graphite gradient with a Lamp Light legend.
-- **Primary:** a pale card-stock cap with a Sign Black legend.
-- **Clear:** a Sign Yellow cap ringed in black and then yellow, like a direction sign made into a key. It is the human gate, and it is disabled until the board reaches review.
-- **Hover / Focus / Active:** hover brightens by 12%. Pressing makes the key travel 2px and shrinks its contact line. Focus is a 3px Edge Light outline offset 3px. A disabled key is 60% opacity with a not-allowed cursor.
-- **Selects:** selects use the same caps with a Lamp Light chevron.
+### Panels (cards and containers)
+The white box every tool already uses.
+- **Corner Style:** 14px.
+- **Background:** Panel White, with a 1px Hairline border.
+- **Shadow Strategy:** Panel (see Elevation & Depth).
+- **Head bar:** Subtle Gray with a Soft Hairline bottom, 12px 20px padding, 21px text: the name at 650, a slug or file name in Monaspace Neon, and a chip or count at the far end.
+- **Internal Padding:** rows 20px from the sides, divided by Soft Hairlines; definition lists pair a Title term with a Row definition.
+- **Footers:** a Hold-tinted warning row with a Hold-line top ("Agent edits a test? Hold."), or a plain foot with a Soft Hairline top.
+- The panel family is the spec, the test run, the queues, the regret list, the instructions file (with a mono gutter of line numbers), the context meter, the role cards, the change folder, the session log, the branch graph, the agent lanes, the review queue, the permissions list, the untrusted-text panel, the extension map, the DORA cards, the release board, the deploy timeline, the tool map and the checklist card.
 
 ### Chips
-- **Style:** paper tags on the console, in card stock with Strip Ink, 4px corners, and the chip cast. File-name chips use Overpass Mono 700. Evidence tags such as "Intent matches the diff" use Overpass 600.
+- **Style:** a 32px pill, Label type, a 15px glyph before the word in `currentColor`. The neutral chip is Subtle Gray with a Hairline border and Secondary Ink.
+- **State:** pass (check), hold (pause), agent (bot), human (person, on the neutral chip), deny (x on Back tint: Blocked) and ask (person on Hold tint: Ask first). The theme also defines a back chip (undo) that this deck doesn't use. Chips drop to 28–30px inside dense heads and pull-request rows.
+- **Who decides:** on the extension map, the same pill names who runs an extension: violet bot for the model, the neutral person for you, and solid Ink with a check for code (hooks), the one chip that is filled.
 
-### Code, Tables, and Quotes
-- **Inline code:** Overpass Mono at 0.8em on Raised Graphite, with 4px corners.
-- **Code blocks:** a Deep Well with a 1px Rack Rail border and 6px corners. Keywords are Sign Yellow, titles are Edge Light, and comments are Dimmed Lamp italic.
-- **Tables:** the header row is a location sign. Body rows are ruled in Rack Rail with Raised Graphite zebra rows.
-- **Quotes:** a card-stock note opened by a grease-pencil quotation mark in Permanent Marker.
+### Status discs (signature)
+- **Shape:** a 26px circle in a family's solid with a white glyph at 62%: pass check, hold pause, fail x, back undo. A queued disc is a hollow Strong Line ring, a draft disc is a dashed ring, and a person's approval is their 32px avatar with a 17px green check badge.
+- **Choreography:** every disc has a moment, `--t`. Amber arcs spin for 640ms ending at `--t`, the disc settles from a hollow ring (420ms, overshoot easing), and the glyph wipes in 90ms later (320ms). The cover, the queues, the regrets, the board checks, the test run, the merge checks and the rollback timeline all reuse this beat.
 
-### Grease Pencil (inline)
-- **Style:** initials or a short note in Permanent Marker, tilted −4°. Use Grease Pencil on paper and Grease Under Lamp on the console.
-- **Bookend marks:** the bookends carry their own marks: a grease underline under "Questions?" and a clearance tick after "Thank You!".
+### Buttons
+- **Shape:** an 8px rectangle, 38px tall, padded 0 14px, with a 14px masked glyph before a Label.
+- **Default:** Panel White, Hairline border, Ink, Control shadow. A pressed toggle (2×) turns Well Gray with a Secondary Ink border.
+- **Primary:** Merge Green with a white label and a 15% ink border (Approve).
+- **Hover / Focus:** default buttons go to #f3f4f6 and primary to Pass Green's solid; focus draws a 2px Focus Blue outline 2px outside.
+- **Disabled:** Subtle Gray, Soft Hairline border, Strong Line text, no shadow.
+- **Behavior:** the run button's glyph follows the board: play, pause while running, replay when complete. A control waiting on the speaker (Run when idle, Approve at the gate) breathes a green 5px ring twice, 1200ms each, then stops. Arrow keys and clickers pressed on a focused control release it and advance the deck.
 
-### Navigation
-- **Deck navigation:** Marp's arrow keys and clicker drive the deck, and the page-number location sign is the only navigation chrome.
-- **Interactive controls:** controls keep their own keys. A navigation key pressed on a focused button releases focus and goes back to the deck, so a presenter's clicker never gets stuck.
+### Navigation: the scenario switch
+- **Style:** a Well Gray track (Hairline border, 10px radius, 3px padding) holding 32px options at 7px radius in Label type and Secondary Ink.
+- **Selected:** Panel White, Ink and the Selected-segment shadow, exposed as `aria-pressed`. **Hover:** #f3f4f6 on unselected options. **Focus:** the same Focus Blue outline as buttons.
 
-### Motion Verbs
-Motion belongs to the objects above. The house ease is a fast-out, long-settle curve, `cubic-bezier(0.16, 1, 0.3, 1)`.
-- **Slot:** a strip or list item slides in from 56px to the right, at 560–900ms with a 70–160ms stagger.
-- **Print:** a strip or sheet is revealed top-down while dropping 28px, at 800–900ms.
-- **Drop:** a pile lands from 46px above.
-- **Ink:** a grease mark reveals left to right, at 380–700ms, after its object lands.
-- **Cock:** the strip shifts out of line.
-- **Clear:** the holder turns green or red at the end of the sequence.
-- **Cross:** a cleared strip crosses the hold line.
-- **Go-around:** a strip lifts with a deep cast and falls back into hold.
-- **Handoff:** the review token travels worker, reviewer, worker, reviewer, you, and its holder changes with each pass.
-- **Transitions:** `strip` is a 650ms push, and the outgoing slide dims to 55%. `handoff` is a 900ms clear-then-arrive, so only the morphing strip is visible mid-flight.
-- **Morphs:** one `fs-hero` per slide, plus the `fs-route` band.
+### Check run (signature, cover)
+The talk in one picture. A 468px card at 18px radius with the Lift shadow, padded 24px 28px 26px. It holds a 26px/650 title; a meta row with the mono ID, the Agent chip and a status that swaps from In progress (amber) to Landed (green); four steps on a 2px connector that fills green top-down as each step settles; and the rollout as four 6px ring bars filling left to right (team, 1%, 10%, 100%). Its caption, "Fictional change, illustrative only", hangs below the card.
 
-**The Complete Without Motion Rule.** The authored markup is the finished state. Motion only animates into it, with backwards fills, so nothing lingers. Every effect is gated by the live audience slide (`fs-live`: visible tab, not printing, no reduced-motion preference) and settles within 4.7 seconds. Print restores the authored snapshot, and runtime-only content has a static twin.
+### Board lanes and the change card (signature)
+- **Lanes:** Spec, Build and Review in Well Gray at 16px radius with a soft border. Lane names are Meta at 650, after a dot that fills Pass Green once the change has reached that lane. The next empty lane shows a dashed "Next" slot.
+- **Change card:** Panel White, 12px radius, Panel shadow, holding the ID and Agent chip, a Title, and three checks with 22px discs. It carries `view-transition-name: sw-hero`, so under the `handoff` transition it moves column to column across slides 9 to 11, with one more check completing on each slide.
+
+### Release board (signature, interactive)
+- **Structure:** one full-width panel. A Subtle Gray bar (title, state pill, controls), a column head (Change, six stages with ring subtitles, Outcome), three 72px rows, a foot and a console with a 4px progress bar along its bottom edge.
+- **Stage marks:** 32px pills in Label type with a 14px glyph. Pass, CA and Landed are green checks. Pass* is an amber check (it passed, but the test was edited). Hold is an amber pause. Rolled back is a red undo, Errors and Incident a red x. LGTM is a dashed neutral check, for review as a rubber stamp. Queued is a 14px hollow ring. Active is a 44px amber pill with a spinner, which becomes a person glyph while awaiting approval and a pause glyph when paused. Stages that never ran merge into one dashed pill across their columns ("Not run", "Skipped").
+- **Outcome:** an 18px glyph and a 20px/650 word in its status ink, with the exposure as a caption beneath. A row flashes Back tint (1400ms) when it rolls back or becomes an incident.
+- **States:** static (the authored snapshot, used for print, presenter and no-script), idle (Ready), running (amber state pill, amber progress, spinning stage), paused, awaiting (waits for Approve; Step never skips the gate) and complete (green state pill; the outcome takeaway arrives). Nothing autoplays. A 2× toggle doubles the speed.
+- **Static twin:** a "Static snapshot: Evidence first" label, and a one-line Vibe-shipping comparison in pass and back pills, stand in for the controls and the outcome takeaway.
+
+### Review loop
+Three actor boxes (Worker and Reviewer with the violet bot, You with the avatar) joined by SVG arrows in Strong Line, with the return path ("comments.md") in Hold amber. The AI-0142 token, an 8px violet-bordered mono label, travels the loop once (3.8s) into the merge box. There, "Waiting for your approval" gives way to "Approved", and the Merge pull request button turns from disabled to Merge Green.
+
+### Checklist (signature, interactive)
+- **Rows:** challenge and response, 49px tall: a 23px/560 item and a 20px response in Secondary Ink, after a 24px rounded-square box (7px radius, 2px Strong Line border).
+- **Checked:** the box fills Pass Green's solid with a white check (a 280ms pop) and the response turns Pass ink. A 5px green meter grows with the count. At seven of seven the card border goes Pass line, and the head goes Pass tint with a check before "All 7 checked. Ready to ship."
+- **Focus:** a 2px Focus Blue outline 3px inside the row. Print shows a blank list to keep.
+
+### Flow pieces (expansion slides)
+- **Context meter:** a 44px rounded bar per session in Subtle Gray. Segments fill left to right: Well-toned slate for what loads every session, a violet tint for the task, a 4% Secondary Ink sliver for `progress.md`. A dashed red zone with Back tint hatching marks where quality drops, and a 3px Ink tick marks the natural break. Captions sit under their segments.
+- **Role relay:** four role cards (bot, name, job, and the file each hands off) joined by gray arrows. Each arrow carries your avatar with a green check, the approval gate. An amber path returns from the Reviewer to the Worker.
+- **Change lifecycle:** four steps on a green connector, each a 28px status disc over a 25px/650 name, its command in Code type, and a 20px note; the change folder below is a file list with the mono path in the head and an Archived chip that replaces In progress.
+- **Branch graph:** commits as 16px discs on a gray line, an Ink HEAD tag that walks forward onto the bad commits and back, and dropped commits as hollow rings at 55% opacity with a red strike.
+- **Agent lanes and review queue:** violet progress bars of different lengths ending in mono pull-request pills, beside a queue of status discs (approved green, waiting amber).
+
+### Lists, links, code and charts
+- **Bullets:** 9px Strong Line dots with a 30px indent.
+- **Links:** Takeaway Blue with a 1.5px underline at 40% alpha, 4px offset.
+- **Inline code:** Code type on Code Fill with a Soft Hairline border at 6px radius; it never wraps.
+- **Deploy timeline:** 26px discs on a 2px connector, a 22px/640 step, an 18px note, and the outcome word right-aligned in its status ink.
+- **Error chart:** a 3px Ink line against a dashed red health gate, with a red trip dot where it crosses.
+
+### Transitions
+- **lift** (default): the next slide rises 22px and fades in over 620ms while the outgoing slide is gone by 60%.
+- **handoff** (slides 9 to 11): a 900ms cross-fade whose incoming slide waits until 45%, so the change card's view transition reads as the card moving. Print and reduced motion drop the view-transition name.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** put every slide on Graphite Console (#1b2023) with Lamp Light text, and put evidence (strips, sheets, chips, quotes) on Buff Card Stock (#efe6cc) in Strip Ink (#1a2540).
-- **Do** end a content slide with at most one takeaway: a direction sign pinned bottom left, with clear air between it and the composition above.
-- **Do** show a change's state with its holder (amber in progress, green cleared, red held) and a person's decision with grease (tick, ring, strike, initials).
-- **Do** set callsigns, field captions, and readouts in B612 Mono, and file names, paths, and commands in Overpass Mono.
-- **Do** keep labels at about 18px or more and sentences at about 22px or more at 1280×720.
-- **Do** keep every motion finite. Play it only on the live audience slide, use backwards fills, and let it settle within 4.7 seconds.
-- **Do** author the finished state in markup, so reduced-motion, print and PDF, presenter, and no-JavaScript views show a complete slide, and give runtime-only content a static twin.
-- **Do** carry one strip across consecutive slides with the shared hero morph name, one hero per slide.
-- **Do** label illustrative boards, changes, and percentages as fictional or illustrative on the slide itself.
+- **Do** draw each argument as the tool that proves it (a check run, a pull-request queue, a board, an instructions file, a deploy timeline, a checklist), built from panels, chips and status discs.
+- **Do** give every status its fixed hue and its glyph: check for pass, pause for hold, undo for rollback, x for failure or incident, bot for agent, person for human.
+- **Do** set status words in the ink step and draw discs, bars, connectors and strokes in the solid step.
+- **Do** end an argument slide with one Takeaway line, 82px from the bottom, entering only after the slide's moment (`--td`).
+- **Do** author the finished state in markup and let motion replay the path to it: `backwards` fills, gated on `section.sw-live` and `prefers-reduced-motion: no-preference`, settled by 4.95s.
+- **Do** give anything live-only a static twin (`.sw-static` / `.sw-dynamic`, or `.live-only` revealed by a finite `transient`) so the PDF, presenter, reduced-motion and no-script views read complete.
+- **Do** label every simulated change, count, rate and board on the slide itself, in an 18px Secondary Ink line.
+- **Do** show a person's approval as their avatar with a green check badge, and an agent's work with the violet bot and the Agent chip.
+- **Do** keep a 2px Focus Blue outline on every control (2px outside buttons and switch options, 3px inside checklist rows), and let arrow keys and clickers advance the deck from a focused control.
+- **Do** keep the bio and Thank You contact blocks exactly as authored, including the Font Awesome icons in their brand colors and the struck-through Twitter line in Secondary Ink.
 
 ### Don't:
-- **Don't** use the neon AI-talk look or a white corporate template. The lightest surface is buff card stock, and light comes only from the lamp, the faint edge light, and real signal lights.
-- **Don't** fake a holder with a colored left border or a tinted card. Build it from layered backgrounds, and keep the 2px printed field rules inside the card.
-- **Don't** swap the reds. Mandatory Red goes only on signs, Red Holder only on strips, and Grease only on a person's marks and the holds they cause.
-- **Don't** pick holder colors for variety or give the deck's strips a fourth state color.
-- **Don't** set file paths or anything with a period in B612 Mono, and don't put `·` in Overpass text.
-- **Don't** animate signs or loop motion. The only repeating motion is the active-box pulse while a presenter-started board runs.
-- **Don't** suggest lift with x-offset shadows, colored shadows, or glows. Lengthen the cast instead.
-- **Don't** reuse the sub-floor sizes (13–17px) of strip captions, slot legends, and release-board controls as a scale step for new text.
+- **Don't** use Takeaway Blue or Focus Blue for a status, a fill or a heading.
+- **Don't** spend a status hue on decoration or a second meaning; a landed or merged change is green, never purple, because violet means agent.
+- **Don't** nest a panel in a panel, or give anything but the cover's check run and the Questions photo the Lift shadow.
+- **Don't** set prose, headings or labels in Monaspace Neon.
+- **Don't** set argument text below 22px or labels below 18px; the board rows' 16px chips, their 17px IDs and the 17px loop token are exceptions, not precedents.
+- **Don't** crowd a slide: one diagram or panel pair, at most one supporting line, then the takeaway. Detail and sources go in the speaker notes.
+- **Don't** shape a button as a pill or a status chip as a rectangle.
+- **Don't** add looping or autoplaying motion; the board's stage spinner is the only infinite animation, and it runs only after the speaker presses Run.
+- **Don't** add colored or blurred glows or tinted shadows; shadows are Ink at low alpha, and the only colored halo is the zero-blur nudge on a control waiting for the speaker.
+- **Don't** dress the deck in a costume world or the dark neon AI look; the release tooling is the only illustration.
+- **Don't** present a number, chart or change as real; nothing on a slide is connected to a real model, repository, pipeline or production traffic.
