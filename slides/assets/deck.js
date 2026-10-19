@@ -265,9 +265,14 @@
       const names = { idle: "Ready", running: "Running", paused: "Paused", awaiting: "Awaiting approval", complete: "Complete" };
       stateLabel.textContent = names[mode];
       toggle.textContent = mode === "running" ? "Pause" : mode === "paused" ? "Resume" : mode === "complete" ? "Run again" : "Run";
+      // Disabling a focused button drops focus to the page, where Space would leave the slide; hand it on instead.
+      const focused = document.activeElement;
       toggle.disabled = mode === "awaiting";
       stepButton.disabled = mode === "awaiting" || mode === "complete";
       approveButton.disabled = mode !== "awaiting";
+      if ([toggle, stepButton, approveButton].includes(focused) && focused.disabled) {
+        (mode === "awaiting" ? approveButton : toggle).focus();
+      }
       for (const button of scenarioButtons) button.setAttribute("aria-pressed", String(button.dataset.boardScenario === scenario));
       summary.textContent = message();
       // The outcome is announced once, when the run completes; the console reports the process.
@@ -414,7 +419,9 @@
   /* ---------- Slide life cycle ---------- */
 
   // Paint the page canvas in the slide colour, so a transition never flashes black between slides.
+  // Only the audience view: the presenter view keeps Marp's dark background for its info bar.
   function paintCanvas() {
+    if (!audienceView()) return;
     const section = document.querySelector("section:not(.invert)");
     const color = section && getComputedStyle(section).getPropertyValue("--canvas").trim();
     if (!color) return;
