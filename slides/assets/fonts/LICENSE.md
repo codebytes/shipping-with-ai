@@ -1,30 +1,23 @@
 # Deck fonts
 
 These WOFF2 files are unmodified latin subsets from the Fontsource 5.3.0 npm
-packages (`@fontsource/<family>`), which redistribute Google Fonts. Saira Semi
-Condensed, Architects Daughter, and Overpass Mono are licensed under the SIL Open
+packages `@fontsource-variable/mona-sans` and `@fontsource/monaspace-neon`.
+Mona Sans and Monaspace Neon are typefaces by GitHub, licensed under the SIL Open
 Font License, Version 1.1, reproduced below. These fonts are not covered by the
 repository's MIT license.
 
-## Saira Semi Condensed
+## Mona Sans
 
-`saira-semi-condensed-latin-400-normal.woff2`, `saira-semi-condensed-latin-500-normal.woff2`,
-`saira-semi-condensed-latin-600-normal.woff2`, `saira-semi-condensed-latin-700-normal.woff2`,
-`saira-semi-condensed-latin-800-normal.woff2`
+`mona-sans-latin-standard-normal.woff2`, `mona-sans-latin-standard-italic.woff2`
+(variable: width 75 to 125, weight 200 to 900)
 
-OFL-1.1. Copyright 2016 The Saira Project Authors (omnibus.type@gmail.com), with reserved font name "Saira".
+OFL-1.1. Copyright 2022 The Mona Sans Project Authors (https://github.com/github/mona-sans), with Reserved Font Name "Mona".
 
-## Architects Daughter
+## Monaspace Neon
 
-`architects-daughter-latin-400-normal.woff2`
+`monaspace-neon-latin-400-normal.woff2`, `monaspace-neon-latin-600-normal.woff2`
 
-OFL-1.1. Copyright (c) 2010, Kimberly Geswein (kimberlygeswein.com)
-
-## Overpass Mono
-
-`overpass-mono-latin-400-normal.woff2`, `overpass-mono-latin-700-normal.woff2`
-
-OFL-1.1. Copyright 2021 The Overpass Project Authors (https://github.com/RedHatOfficial/Overpass)
+OFL-1.1. Copyright (c) 2023, GitHub (https://github.com/githubnext/monaspace), with Reserved Font Name "Monaspace", including subfamilies: "Argon", "Neon", "Xenon", "Radon", and "Krypton".
 
 ## SIL Open Font License, Version 1.1
 

@@ -15,10 +15,10 @@
   - `<!-- _class: columns -->` for two-column layout
   - `<!-- _class: small -->` for dense content
   - `<!-- _paginate: skip -->` to hide page number
-- `custom-default` is the Change Order theme: an engineering drawing sheet. Build its components
-  from the HTML used in `slides/Slides.md` (title blocks, revision clouds, delta tags, stamps,
-  schedules, checklists), and load `slides/assets/change-order.js` once on the first slide.
-  Exports need `--html`.
+- `custom-default` is a light release-tooling theme: white panels, status chips, and status
+  icons, with checks, boards, and deployment rings as the illustrations. Build its components
+  from the HTML used in `slides/Slides.md` (check runs, chips, board lanes, the release board,
+  checklists), and load `slides/assets/deck.js` once on the first slide. Exports need `--html`.
   `DESIGN.md` records its tokens, type floor, and named rules; follow it for new slides.
 - Keep motion finite and in the theme: effects settle within five seconds, respect
   `prefers-reduced-motion`, and every slide stays complete in the PDF and without JavaScript.

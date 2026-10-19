@@ -6,37 +6,44 @@ description: Pair AI coding speed with release-engineering discipline, from cura
 theme: custom-default
 paginate: true
 math: mathjax
-transition: sheet
-header: '<span class="tb" aria-hidden="true"><i class="sig ck">Checked</i><i class="sig ap">Approved</i><i class="rev">Rev</i><i class="sheet">Sheet</i></span>'
+transition: lift
 footer: 'Chris Ayers - https://chris-ayers.com'
 ---
 
 <!-- _class: cover -->
 <!-- _paginate: skip -->
 <!-- _footer: "" -->
-<!-- _header: "" -->
 
-<table class="revtable" aria-label="Revision record for this change"><thead><tr><th>Rev</th><th>Description</th><th>By</th><th>Appd</th></tr></thead><tbody><tr><td>A</td><td>Spec agreed</td><td>Agent</td><td><span class="hand">CA</span></td></tr><tr><td>B</td><td>Tests pass, review cleared</td><td>Agent</td><td><span class="hand">CA</span></td></tr><tr><td>C</td><td>Issued to team, 1%, 10%, 100%</td><td>CA</td><td><span class="hand">CA</span></td></tr></tbody></table>
+<div class="cover-copy">
 
-<h1><span class="ln">Shipping <span class="cl clouded">with AI<span class="delta">A</span><span class="co-note">AI-written. Checked and approved before it was issued.</span></span></span><br><span class="ln">Without Shipping Regret</span></h1>
+# Shipping with AI<br>Without Shipping Regret
 
-<div class="stamps"><span class="stamp prelim struck">Preliminary</span><span class="stamp issued">Issued for production</span></div>
+<p class="byline"><span class="avatar" aria-hidden="true"><img src="./img/avatar.png" alt=""></span><span><b>Chris Ayers</b><span>Principal Software Engineer, Microsoft</span></span></p>
 
-<div class="tblock"><div class="drawn"><b>Drawn</b><span>Chris Ayers</span><small>Principal Software Engineer, Microsoft</small></div><div><b>Checked</b><span class="hand">CA</span></div><div><b>Approved</b><span class="hand">CA</span></div><div><b>Rev</b><span>C</span></div></div>
+</div>
 
-<script src="assets/change-order.js" defer></script>
+<figure class="run" role="img" aria-label="Fictional change AI-0142, Keyboard nav for search, written by an agent. Spec agreed, tests pass, review approved by a person, then rolled out to the team, 1%, 10%, and 100% of users. Landed.">
+<p class="run-title">Keyboard nav for search</p>
+<p class="run-meta"><span class="id">AI-0142</span><span class="chip agent">Agent</span><span class="run-status"><span class="chip pass">Landed</span><span class="chip hold live-only">In progress</span></span></p>
+<ol class="run-steps">
+<li><span class="st"></span><b>Spec</b><span class="state">Agreed</span></li>
+<li><span class="st"></span><b>Tests</b><span class="state">Pass</span></li>
+<li><span class="st who"><img src="./img/avatar.png" alt=""><i class="badge"></i></span><b>Review</b><span class="state">Approved</span><small>Human sign-off</small></li>
+<li><span class="st"></span><b>Rollout</b><span class="state">100%</span><span class="rings"><i>Ring 0<small>team</small></i><i>Ring 1<small>1%</small></i><i>Ring 2<small>10%</small></i><i>Broad<small>100%</small></i></span></li>
+</ol>
+<figcaption>Fictional change, illustrative only</figcaption>
+</figure>
+
+<script src="assets/deck.js" defer></script>
 
 <!--
-The cover is the talk's thesis: an AI-written change is a revision. It is clouded where it
-changed, and it is not issued until someone checks and approves it.
+The cover is the talk in one picture: a change an agent wrote, AI-0142, earning its way to
+production. In the HTML deck its checks complete one by one: the spec is agreed, the tests
+pass, a person approves the review, and the rollout widens from the team to 1%, 10%, and
+everyone before it reads Landed.
 
-In the HTML deck the title is lettered on its guide lines, the AI part is clouded as revision A,
-the revision table fills in (spec, tests and review, then issue to the team, 1%, 10%, and
-everyone), the checker initials the title block, PRELIMINARY is struck, and ISSUED FOR
-PRODUCTION is stamped.
-
-The visual language is the engineering drawing: revision clouds, delta tags, title blocks, and
-rubber stamps. Every board, change, and number in this deck is illustrative. No real model,
+The visual language is the release tooling you already use: checks, pull requests, boards, and
+deployment rings. Every change, board, and number in this deck is illustrative. No real model,
 repository, pipeline, or production traffic is connected.
 -->
 
@@ -66,20 +73,43 @@ _Microsoft_
 
 ## Writing code got cheap. Knowing it works didn't.
 
-<div class="registers">
-<table class="register drafted"><caption>Drafted by agents</caption><colgroup><col style="width:104px"><col><col style="width:112px"></colgroup><thead><tr><th>Change</th><th>Title</th><th>Status</th></tr></thead><tbody><tr><td>AI-0142</td><td>Keyboard nav for search</td><td><span class="stamp sm prelim">Draft</span></td></tr><tr><td>AI-0143</td><td>Retry on HTTP 503</td><td><span class="stamp sm prelim">Draft</span></td></tr><tr><td>AI-0151</td><td>CSV export for reports</td><td><span class="stamp sm prelim">Draft</span></td></tr><tr><td>AI-0157</td><td>Refactor checkout totals</td><td><span class="stamp sm prelim">Draft</span></td></tr><tr><td>AI-0158</td><td>Fix flaky date test</td><td><span class="stamp sm prelim">Draft</span></td></tr><tr><td>AI-0160</td><td>Rename config keys</td><td><span class="stamp sm prelim">Draft</span></td></tr><tr><td>AI-0162</td><td>Paginate the audit log</td><td><span class="stamp sm prelim">Draft</span></td></tr></tbody></table>
-<table class="register issued-reg"><caption>Issued for production</caption><colgroup><col style="width:104px"><col><col style="width:112px"></colgroup><thead><tr><th>Change</th><th>Title</th><th>Status</th></tr></thead><tbody><tr><td>AI-0131</td><td>Cache warm-up</td><td><span class="stamp sm issued">Issued</span></td></tr><tr><td>AI-0138</td><td>Null-safe parser</td><td><span class="stamp sm issued">Issued</span></td></tr><tr class="awaiting"><td></td><td>Awaiting evidence</td><td></td></tr><tr class="awaiting"><td></td><td></td><td></td></tr><tr class="awaiting"><td></td><td></td><td></td></tr><tr class="awaiting"><td></td><td></td><td></td></tr><tr class="awaiting"><td></td><td></td><td></td></tr></tbody></table>
+<div class="queues">
+<div class="queue drafted" role="group" aria-label="Drafted by agents: seven changes">
+<p class="queue-head"><b>Drafted by agents</b><span class="count" style="--to: 7"><span>7</span></span></p>
+<ul class="prs">
+<li><span class="st draft"></span><span class="pr-title">Keyboard nav for search</span><span class="id">AI-0142</span><span class="chip">Draft</span></li>
+<li><span class="st draft"></span><span class="pr-title">Retry on HTTP 503</span><span class="id">AI-0143</span><span class="chip">Draft</span></li>
+<li><span class="st draft"></span><span class="pr-title">CSV export for reports</span><span class="id">AI-0151</span><span class="chip">Draft</span></li>
+<li><span class="st draft"></span><span class="pr-title">Refactor checkout totals</span><span class="id">AI-0157</span><span class="chip">Draft</span></li>
+<li><span class="st draft"></span><span class="pr-title">Fix flaky date test</span><span class="id">AI-0158</span><span class="chip">Draft</span></li>
+<li><span class="st draft"></span><span class="pr-title">Rename config keys</span><span class="id">AI-0160</span><span class="chip">Draft</span></li>
+<li><span class="st draft"></span><span class="pr-title">Paginate the audit log</span><span class="id">AI-0162</span><span class="chip">Draft</span></li>
+</ul>
+</div>
+<div class="queue shipped" role="group" aria-label="Shipped to production: two changes">
+<p class="queue-head"><b>Shipped to production</b><span class="count" style="--to: 2"><span>2</span></span></p>
+<ul class="prs">
+<li><span class="st"></span><span class="pr-title">Cache warm-up</span><span class="id">AI-0131</span><span class="chip pass">Shipped</span></li>
+<li><span class="st"></span><span class="pr-title">Null-safe parser</span><span class="id">AI-0138</span><span class="chip pass">Shipped</span></li>
+<li class="awaiting"><span>Awaiting evidence</span></li>
+<li class="awaiting" aria-hidden="true"></li>
+<li class="awaiting" aria-hidden="true"></li>
+<li class="awaiting" aria-hidden="true"></li>
+<li class="awaiting" aria-hidden="true"></li>
+</ul>
+</div>
 </div>
 
-<p class="label illus">Illustrative: seven drafted and two issued is not measured data</p>
+<p class="illus">Illustrative: seven drafted and two shipped is not measured data</p>
 
 <p class="takeaway">Throughput is set by approvals, not by drafting.</p>
 
 <!--
 Agents draft fast. Approvals still take evidence, and evidence still takes people.
-The drafts fill their register in under a second in the HTML deck; the issued sheets arrive slowly.
+In the HTML deck the drafts pour into their queue in under a second; the shipped changes
+arrive slowly, one at a time.
 
-These registers are a metaphor, not measured data. Seven drafted and two issued is illustrative.
+Seven drafted and two shipped is illustrative, not measured data.
 
 Kent Beck draws the line between vibe coding and augmented coding: in augmented coding
 "you care about the code, its complexity, the tests, & their coverage."
@@ -92,19 +122,16 @@ Source: https://tidyfirst.substack.com/p/augmented-coding-beyond-the-vibes
 
 ## Regret is change you can't explain, verify, or undo.
 
-<div class="ncs">
-<div class="nc clouded" style="--cloud: var(--cloud-a)"><p class="cue"><span class="delta">A</span><span class="hand">Why? (No context)</span></p><strong>Can't explain it</strong><p class="line">Nobody can say why the diff looks like this.</p></div>
-<div class="nc clouded" style="--cloud: var(--cloud-b)"><p class="cue"><span class="delta">B</span><span class="hand">Proof? (No evidence)</span></p><strong>Can't verify it</strong><p class="line">The tests were edited until they passed.</p></div>
-<div class="nc clouded" style="--cloud: var(--cloud-c)"><p class="cue"><span class="delta">C</span><span class="hand">Undo? (No way back)</span></p><strong>Can't undo it</strong><p class="line">It went to everyone at once.</p></div>
+<div class="regrets">
+<div class="regret"><span class="st fail"></span><p class="cue"><b>Why?</b><span>No context</span></p><strong>Can't explain it</strong><p class="line">Nobody can say why the diff looks like this.</p></div>
+<div class="regret"><span class="st fail"></span><p class="cue"><b>Proof?</b><span>No evidence</span></p><strong>Can't verify it</strong><p class="line">The tests were edited until they passed.</p></div>
+<div class="regret"><span class="st fail"></span><p class="cue"><b>Undo?</b><span>No way back</span></p><strong>Can't undo it</strong><p class="line">It went to everyone at once.</p></div>
 </div>
-
-<p class="nfi"><span class="stamp prelim">Not for issue</span></p>
 
 <p class="takeaway">Every practice that follows removes one of these.</p>
 
 <!--
-Each regret is clouded like a nonconformance on a drawing: marked for attention, not yet fixed.
-The sheet's Checked and Approved boxes are still empty.
+Three ways a change turns into regret, each one the question someone asks after the incident.
 
 - Can't explain it: fixed by standing instructions, a spec, and a read-back (next slides).
 - Can't verify it: fixed by tests as the contract and a human approval.
@@ -115,21 +142,21 @@ The sheet's Checked and Approved boxes are still empty.
 
 <!-- _class: notes -->
 
-## Every session starts from the same general notes.
+## Every session starts from the same instructions.
 
-<div class="gen-notes">
-<p class="gn-title"><span>General notes</span><code>AGENTS.md</code></p>
+<div class="file" role="group" aria-label="An example AGENTS.md instructions file">
+<p class="file-head"><span class="file-icon" aria-hidden="true"></span><code>AGENTS.md</code><span class="chip pass">Checked in</span></p>
 <dl>
-<dt>Build</dt><dd>npm run build, then npm test</dd>
-<dt>Style</dt><dd>Match .editorconfig and existing patterns</dd>
+<dt>Build</dt><dd><code>npm run build</code>, then <code>npm test</code></dd>
+<dt>Style</dt><dd>Match <code>.editorconfig</code> and existing patterns</dd>
 <dt>Practice</dt><dd>Tests first; the smallest change that passes</dd>
 <dt>Never</dt><dd>Edit a test to make it pass</dd>
 <dt>Ask first</dt><dd>New dependencies and schema changes</dd>
-<dt>Decisions</dt><dd>Read docs/adr before redesigning</dd>
+<dt>Decisions</dt><dd>Read <code>docs/adr</code> before redesigning</dd>
 </dl>
 </div>
 
-<div class="gn-side">
+<div class="notes-side">
 
 - Commands, conventions, and the hard rules
 - Checked in and reviewed like code
@@ -142,9 +169,8 @@ The sheet's Checked and Approved boxes are still empty.
 <p class="takeaway">If every session needs it, write it down once.</p>
 
 <!--
-On a drawing set, the general notes apply to every sheet, so nobody repeats them sheet by sheet.
-An instructions file does the same job for agents: every session starts from it, so context
-stops getting lost between sessions.
+An instructions file is the context every session starts from, so it stops getting lost
+between sessions. Nobody should have to repeat the build command or the hard rules.
 
 What goes in: build and test commands, conventions, hard rules ("never edit a test to make it
 pass"), when to ask first, and links to decisions instead of pasting them.
@@ -160,15 +186,15 @@ window fill up.
 
 ---
 
-<!-- _class: route-slide rev-a -->
+<!-- _class: route at-spec -->
 <!-- _transition: handoff -->
 
 ## Agree the spec before anyone writes code.
 
-<div class="route">
-<div class="station" data-label="Spec"><div class="change-tag" data-morph="hero"><span class="delta">A</span><b>AI-0142<small>Search</small></b><i class="ok fresh">Spec</i><i>Test</i><i>Rev</i></div></div>
-<div class="station" data-label="Build"><span class="slot">Next</span></div>
-<div class="station" data-label="Review"><span class="slot"></span></div>
+<div class="lanes">
+<div class="lane"><p class="lane-name">Spec</p><div class="change" data-morph="hero"><p class="change-head"><span class="id">AI-0142</span><span class="chip agent">Agent</span></p><p class="change-title">Keyboard nav for search</p><ol class="checks"><li class="fresh"><span class="st"></span>Spec</li><li><span class="st queued"></span>Tests</li><li><span class="st queued"></span>Review</li></ol></div></div>
+<div class="lane"><p class="lane-name">Build</p><span class="slot">Next</span></div>
+<div class="lane"><p class="lane-name">Review</p></div>
 </div>
 
 <div class="route-detail">
@@ -179,8 +205,8 @@ window fill up.
 - Read-back: the agent restates the plan before any code
 
 </div>
-<div class="spec-sheet">
-<p class="ss-title">Spec: <code>add-keyboard-nav</code></p>
+<div class="panel spec">
+<p class="panel-head"><b>Spec</b><code>add-keyboard-nav</code></p>
 <dl>
 <dt>Given</dt><dd>Search results are showing</dd>
 <dt>When</dt><dd>I press the down arrow</dd>
@@ -206,21 +232,21 @@ Try it as two personas: an analyst that interviews you until nothing is ambiguou
 Read-back: ask the agent to restate the plan, and correct it before code exists, while mistakes
 are still cheap.
 
-Slides 6 to 8 share one change tag, AI-0142. It moves from sheet to sheet as you advance, its
-revision letter follows the cover's revision table (A, then B), and the cell that changed is clouded.
+Slides 6 to 8 follow one change, AI-0142, across the board. Its card moves from column to
+column as you advance, and one more check completes on each slide.
 -->
 
 ---
 
-<!-- _class: route-slide rev-b -->
+<!-- _class: route at-build -->
 <!-- _transition: handoff -->
 
 ## Small steps. The tests are the contract.
 
-<div class="route">
-<div class="station" data-label="Spec"><span class="slot"></span></div>
-<div class="station" data-label="Build"><div class="change-tag" data-morph="hero"><span class="delta">B</span><b>AI-0142<small>Search</small></b><i class="ok">Spec</i><i class="ok fresh">Test</i><i>Rev</i></div></div>
-<div class="station" data-label="Review"><span class="slot">Next</span></div>
+<div class="lanes">
+<div class="lane"><p class="lane-name">Spec</p></div>
+<div class="lane"><p class="lane-name">Build</p><div class="change" data-morph="hero"><p class="change-head"><span class="id">AI-0142</span><span class="chip agent">Agent</span></p><p class="change-title">Keyboard nav for search</p><ol class="checks"><li><span class="st"></span>Spec</li><li class="fresh"><span class="st"></span>Tests</li><li><span class="st queued"></span>Review</li></ol></div></div>
+<div class="lane"><p class="lane-name">Review</p><span class="slot">Next</span></div>
 </div>
 
 <div class="route-detail">
@@ -231,14 +257,14 @@ revision letter follows the cover's revision table (A, then B), and the cell tha
 - The worker proposes code, not new expectations
 
 </div>
-<div class="spec-sheet">
-<p class="ss-title">Contract: <code>search.spec.ts</code></p>
-<ul class="locks">
-<li>Arrow keys move the selection<b>Pass</b></li>
-<li>Escape closes the results<b>Pass</b></li>
-<li>Focus returns to the input<b>Pass</b></li>
+<div class="panel tests">
+<p class="panel-head"><b>Tests</b><code>search.spec.ts</code></p>
+<ul class="runs">
+<li><span class="st"></span><span>Arrow keys move the selection</span><b>Pass</b></li>
+<li><span class="st"></span><span>Escape closes the results</span><b>Pass</b></li>
+<li><span class="st"></span><span>Focus returns to the input</span><b>Pass</b></li>
 </ul>
-<p class="redline hand">Agent edits a test? Hold.</p>
+<p class="warn"><span class="st hold"></span><span>Agent edits a test? Hold.</span></p>
 </div>
 </div>
 
@@ -261,34 +287,35 @@ requirements, so it needs its own review.
 
 ---
 
-<!-- _class: route-slide review approved rev-b -->
+<!-- _class: route at-review -->
 
 ## Agents propose. People approve.
 
-<div class="route">
-<div class="station" data-label="Spec"><span class="slot"></span></div>
-<div class="station" data-label="Build"><span class="slot"></span></div>
-<div class="station" data-label="Review"><div class="change-tag" data-morph="hero"><span class="delta">B</span><b>AI-0142<small>Search</small></b><i class="ok">Spec</i><i class="ok">Test</i><i class="fresh">Rev<span class="hand">CA</span></i></div></div>
+<div class="lanes">
+<div class="lane"><p class="lane-name">Spec</p></div>
+<div class="lane"><p class="lane-name">Build</p></div>
+<div class="lane"><p class="lane-name">Review</p><div class="change" data-morph="hero"><p class="change-head"><span class="id">AI-0142</span><span class="chip agent">Agent</span></p><p class="change-title">Keyboard nav for search</p><ol class="checks"><li><span class="st"></span>Spec</li><li><span class="st"></span>Tests</li><li class="fresh"><span class="st who"><img src="./img/avatar.png" alt=""><i class="badge"></i></span>Review</li></ol></div></div>
 </div>
 
-<div class="review-loop" role="img" aria-label="The worker commits. A fresh reviewer returns comments until the build is clean and every test passes. Then you approve the change.">
-<p class="desk"><b>Drawn</b><strong>Worker</strong><small>One task, tests first, on its own branch</small></p>
-<svg viewBox="0 0 129 150" aria-hidden="true"><path pathLength="1" d="M8 52H112"/><path class="head" d="M122 52l-12-6v12z"/><path class="redline" pathLength="1" d="M121 100H17"/><path class="head redline" d="M7 100l12-6v12z"/><text x="64" y="38" text-anchor="middle">commit</text><text class="redline" x="64" y="132" text-anchor="middle">comments.md</text></svg>
-<p class="desk"><b>Checked</b><strong>Reviewer</strong><small>Fresh context: reads the code and the tests</small></p>
-<svg class="lane-clean" viewBox="0 0 129 150" aria-hidden="true"><path pathLength="1" d="M8 76H112"/><path class="head" d="M122 76l-12-6v12z"/><text x="64" y="58" text-anchor="middle">clean build</text><text x="64" y="106" text-anchor="middle">all tests pass</text></svg>
-<p class="desk"><b>Approved</b><strong>You</strong><small>Nothing merges until you approve it</small><span class="hand">CA</span></p>
+<div class="review-loop" role="img" aria-label="The worker commits. A reviewer with a fresh context returns comments until the build is clean and every test passes. Then you approve, and only then can the pull request merge.">
+<div class="actor"><span class="bot" aria-hidden="true"></span><strong>Worker</strong><small>One task, tests first, on its own branch</small></div>
+<svg class="lane-loop" viewBox="0 0 220 130" aria-hidden="true"><path pathLength="1" d="M12 40H196"/><path class="head" d="M208 40l-13-6.5v13z"/><path class="back" pathLength="1" d="M208 90H24"/><path class="head back" d="M12 90l13-6.5v13z"/><text x="110" y="26" text-anchor="middle">commit</text><text class="back file" x="110" y="121" text-anchor="middle">comments.md</text></svg>
+<div class="actor"><span class="bot" aria-hidden="true"></span><strong>Reviewer</strong><small>Fresh context: reads the code and the tests</small></div>
+<svg class="lane-clean" viewBox="0 0 220 130" aria-hidden="true"><path pathLength="1" d="M12 65H196"/><path class="head" d="M208 65l-13-6.5v13z"/><text x="110" y="49" text-anchor="middle">clean build</text><text x="110" y="95" text-anchor="middle">all tests pass</text></svg>
+<div class="actor you merge"><span class="avatar" aria-hidden="true"><img src="./img/avatar.png" alt=""></span><strong>You</strong><ul class="merge-checks"><li><span class="st"></span><span>All checks passed</span></li><li class="gate"><span class="st hold live-only"></span><span class="st"></span><span class="live-only">Waiting for your approval</span><span class="m-done">Approved</span></li></ul><span class="merge-btn">Merge pull request</span></div>
 <span class="loop-token" aria-hidden="true">AI-0142</span>
 </div>
 
-<p class="clear-checks"><b>Before you initial it</b><span>Intent matches the diff</span><span>Tests prove behavior</span><span>Blast radius known</span><span>Rollback ready</span></p>
+<p class="approve-checks"><b>Before you approve</b><span>Intent matches the diff</span><span>Tests prove behavior</span><span>Blast radius known</span><span>Rollback ready</span></p>
 
 <p class="takeaway">If you can't explain the diff out loud, you can't approve it.</p>
 
 <!--
-On a drawing, whoever drew a sheet doesn't check it. Give the agent the same split. The worker
-implements one task with tests on its own branch. A reviewer with a fresh context (a new session
-or a separate reviewer agent) reads the diff, the code and the tests, and writes findings to a
-comments.md file. The worker addresses them. Repeat until the build is clean and every test passes.
+Whoever wrote a change shouldn't be the one who checks it. Give the agent the same split. The
+worker implements one task with tests on its own branch. A reviewer with a fresh context (a new
+session or a separate reviewer agent) reads the diff, the code and the tests, and writes
+findings to a comments.md file. The worker addresses them. Repeat until the build is clean and
+every test passes.
 
 Then a person approves it, after checking the four boxes on the slide: the intent matches the
 diff, the tests prove behavior rather than just pass, the blast radius is known, and the rollback
@@ -307,96 +334,101 @@ Source: https://chris-ayers.com/posts/copilot-or-rubber-ducky/
 
 ---
 
-<!-- _class: lab approved rev-c -->
+<!-- _class: lab -->
 
 ## Ship to a few, then to everyone.
 
-<div class="co-lab" data-release-board role="group" aria-label="Interactive issue schedule with three fictional changes">
-<div class="lab-head"><b>Issue schedule</b><span class="co-static">Static snapshot: Evidence first</span><span class="co-dynamic" data-board-state>Ready / Evidence first</span></div>
-<div class="lab-cols" aria-hidden="true"><span>Change</span><span data-col="tests">Tests</span><span data-col="review">Review</span><span data-col="ring0">Ring 0<small>team</small></span><span data-col="ring1">Ring 1<small>1%</small></span><span data-col="ring2">Ring 2<small>10%</small></span><span data-col="broad">Broad<small>100%</small></span><span>Outcome</span></div>
-<div class="lab-row" data-change="a" data-holder="green" data-outcome="landed"><b><span>AI-0142<small>Agent</small></span><span>Keyboard nav for search</span></b><i data-stage="tests" data-mark="pass"><span class="sr">Tests: </span><em>Pass</em></i><i data-stage="review" data-mark="clear"><span class="sr">Review: </span><em>CA</em></i><i data-stage="ring0" data-mark="pass"><span class="sr">Ring 0: </span><em>Pass</em></i><i data-stage="ring1" data-mark="pass"><span class="sr">Ring 1: </span><em>Pass</em></i><i data-stage="ring2" data-mark="pass"><span class="sr">Ring 2: </span><em>Pass</em></i><i data-stage="broad" data-mark="landed"><span class="sr">Broad: </span><em>Landed</em></i><output>Landed<small>100% exposed</small></output></div>
-<div class="lab-row" data-change="b" data-holder="red" data-outcome="held"><b><span>AI-0157<small>Agent</small></span><span>Refactor checkout totals</span></b><i data-stage="tests" data-mark="warn"><span class="sr">Tests: </span><em>Pass*</em></i><i data-stage="review" data-mark="hold"><span class="sr">Review: </span><em>Hold</em></i><i data-stage="ring0" data-mark="notrun"><span class="sr">Ring 0: </span><em>Not run</em></i><i data-stage="ring1" data-mark="notrun"><span class="sr">Ring 1: </span><em>Not run</em></i><i data-stage="ring2" data-mark="notrun"><span class="sr">Ring 2: </span><em>Not run</em></i><i data-stage="broad" data-mark="notrun"><span class="sr">Broad: </span><em>Not run</em></i><output>Held<small>0% exposed</small></output></div>
-<div class="lab-row" data-change="c" data-holder="red" data-outcome="rollback"><b><span>PR-0161<small>Human</small></span><span>Bump the auth library</span></b><i data-stage="tests" data-mark="pass"><span class="sr">Tests: </span><em>Pass</em></i><i data-stage="review" data-mark="clear"><span class="sr">Review: </span><em>CA</em></i><i data-stage="ring0" data-mark="pass"><span class="sr">Ring 0: </span><em>Pass</em></i><i data-stage="ring1" data-mark="rollback"><span class="sr">Ring 1: </span><em>Back</em></i><i data-stage="ring2" data-mark="notrun"><span class="sr">Ring 2: </span><em>Not run</em></i><i data-stage="broad" data-mark="notrun"><span class="sr">Broad: </span><em>Not run</em></i><output>Rolled back<small>1% exposed</small></output></div>
-<p class="lab-key"><span class="label">Fictional changes, illustrative only</span><span class="hand">* Pass* means the tests were edited until they passed</span></p>
-<div class="lab-console"><b aria-hidden="true">Note</b><span data-board-summary role="status" aria-live="polite" aria-atomic="true">Evidence first: one landed, one held before anyone saw it, one rolled back after reaching 1%.</span><span class="console-next" data-board-next></span><progress data-board-progress max="1" value="1" aria-label="Schedule progress"></progress></div>
-<div class="lab-controls" hidden>
-<button type="button" class="primary" data-board-action="toggle">Run board</button>
-<button type="button" data-board-action="step">Step</button>
-<button type="button" data-board-action="replay">Replay</button>
-<button type="button" class="approve" data-board-action="clear" disabled>Approve</button>
-<label>Scenario <select data-board-scenario><option value="evidence">Evidence first</option><option value="vibe">Vibe shipping</option></select></label>
-<label>Speed <select data-board-speed><option value="1">1x</option><option value="2">2x</option></select></label>
+<div class="board" data-release-board role="group" aria-label="Interactive release board with three fictional changes">
+<div class="board-bar">
+<p class="board-title"><b>Release board</b><span class="sw-static">Static snapshot: Evidence first</span><span class="sw-dynamic" data-board-state>Ready</span></p>
+<div class="board-controls" hidden>
+<div class="seg" role="group" aria-label="Scenario"><button type="button" data-board-scenario="evidence" aria-pressed="true">Evidence first</button><button type="button" data-board-scenario="vibe" aria-pressed="false">Vibe shipping</button></div>
+<button type="button" class="btn run" data-board-action="toggle">Run</button>
+<button type="button" class="btn step" data-board-action="step">Step</button>
+<button type="button" class="btn primary approve" data-board-action="clear" disabled>Approve</button>
+<button type="button" class="btn speed" data-board-speed aria-pressed="false" aria-label="Double speed">2×</button>
 </div>
+</div>
+<div class="board-cols" aria-hidden="true"><span>Change</span><span data-col="tests">Tests</span><span data-col="review">Review</span><span data-col="ring0">Ring 0<small>team</small></span><span data-col="ring1">Ring 1<small>1%</small></span><span data-col="ring2">Ring 2<small>10%</small></span><span data-col="broad">Broad<small>100%</small></span><span>Outcome</span></div>
+<div class="board-row" data-change="a" data-outcome="landed"><b class="chg"><span>Keyboard nav for search</span><span><span class="id">AI-0142</span><span class="chip agent">Agent</span></span></b><i data-stage="tests" data-mark="pass"><span class="sr">Tests: </span><em>Pass</em></i><i data-stage="review" data-mark="clear"><span class="sr">Review: </span><em>CA</em></i><i data-stage="ring0" data-mark="pass"><span class="sr">Ring 0: </span><em>Pass</em></i><i data-stage="ring1" data-mark="pass"><span class="sr">Ring 1: </span><em>Pass</em></i><i data-stage="ring2" data-mark="pass"><span class="sr">Ring 2: </span><em>Pass</em></i><i data-stage="broad" data-mark="landed"><span class="sr">Broad: </span><em>Landed</em></i><output>Landed<small>100% exposed</small></output></div>
+<div class="board-row" data-change="b" data-outcome="held"><b class="chg"><span>Refactor checkout totals</span><span><span class="id">AI-0157</span><span class="chip agent">Agent</span></span></b><i data-stage="tests" data-mark="warn"><span class="sr">Tests: </span><em>Pass*</em></i><i data-stage="review" data-mark="hold"><span class="sr">Review: </span><em>Hold</em></i><i data-stage="ring0" data-mark="notrun" style="grid-column: span 4"><span class="sr">Ring 0 to Broad: </span><em>Not run</em></i><i data-stage="ring1" data-mark="notrun" hidden><span class="sr">Ring 1: </span><em>Not run</em></i><i data-stage="ring2" data-mark="notrun" hidden><span class="sr">Ring 2: </span><em>Not run</em></i><i data-stage="broad" data-mark="notrun" hidden><span class="sr">Broad: </span><em>Not run</em></i><output>Held<small>0% exposed</small></output></div>
+<div class="board-row" data-change="c" data-outcome="rollback"><b class="chg"><span>Bump the auth library</span><span><span class="id">PR-0161</span><span class="chip human">Human</span></span></b><i data-stage="tests" data-mark="pass"><span class="sr">Tests: </span><em>Pass</em></i><i data-stage="review" data-mark="clear"><span class="sr">Review: </span><em>CA</em></i><i data-stage="ring0" data-mark="pass"><span class="sr">Ring 0: </span><em>Pass</em></i><i data-stage="ring1" data-mark="rollback"><span class="sr">Ring 1: </span><em>Rolled back</em></i><i data-stage="ring2" data-mark="notrun" style="grid-column: span 2"><span class="sr">Ring 2 to Broad: </span><em>Not run</em></i><i data-stage="broad" data-mark="notrun" hidden><span class="sr">Broad: </span><em>Not run</em></i><output>Rolled back<small>1% exposed</small></output></div>
+<p class="board-foot"><span>Fictional changes, illustrative only</span><span>Pass* means the tests were edited until they passed</span></p>
+<p class="board-console"><span data-board-summary role="status" aria-live="polite" aria-atomic="true">Evidence first: one <span class="t-pass">landed</span>, one <span class="t-hold">held</span> before anyone saw it, one <span class="t-back">rolled back</span> after reaching 1%.</span><progress data-board-progress max="1" value="1" aria-label="Release progress"></progress></p>
 </div>
 
-<div class="lab-compare co-static" role="group" aria-label="Vibe shipping: the same changes with no review gate and no rings"><span class="stamp sm void">Vibe shipping</span><span class="sheetlet"><b>AI-0142</b><span>Landed, 100%</span></span><span class="sheetlet"><b>AI-0157</b><span>Incident, 100%</span></span><span class="sheetlet"><b>PR-0161</b><span>Incident, 100%</span></span></div>
-<p class="takeaway lab-outcome co-dynamic" data-board-outcome>One landed. One held before anyone saw it. One rolled back after reaching 1%.</p>
+<p class="board-compare sw-static" role="group" aria-label="Vibe shipping: the same changes with no review gate and no rings"><b>Vibe shipping, same changes</b><span><span class="id">AI-0142</span>Landed, 100%</span><span class="bad"><span class="id">AI-0157</span>Incident, 100%</span><span class="bad"><span class="id">PR-0161</span>Incident, 100%</span></p>
+<p class="takeaway outcome sw-dynamic" data-board-outcome aria-live="polite">One <span class="t-pass">landed</span>. One <span class="t-hold">held</span> before anyone saw it. One <span class="t-back">rolled back</span> after reaching 1%.</p>
 
 <!--
 Interactive in the HTML deck, in the audience window. Nothing autoplays.
 
-1. Run board. Tests pass on all three changes, but AI-0157 only passes because the agent
-   edited an assertion.
-2. The schedule stops at review. Click Approve: AI-0142 and PR-0161 are approved,
-   AI-0157 is held before any user sees it.
-3. Rings widen exposure: team, 1%, 10%, everyone. PR-0161 raises errors at 1% and the
-   health gate withdraws it. AI-0142 lands.
+1. Run. Tests pass on all three changes, but AI-0157 only passes because the agent edited an
+   assertion.
+2. The board stops at review. Click Approve: AI-0142 and PR-0161 are approved, and AI-0157 is
+   held before any user sees it.
+3. Rings widen exposure: team, 1%, 10%, everyone. PR-0161 raises errors at 1% and the health
+   gate rolls it back. AI-0142 lands.
 4. Switch the scenario to Vibe shipping and run again: review is a rubber stamp, rings are
    skipped, and two changes become incidents at 100%.
 
-Step advances one stage but never skips the approval. Changes, timings, and percentages are
-fictional and illustrative. The PDF shows the Evidence first outcome, with a one-line Vibe
-shipping comparison underneath.
+Step advances one stage but never skips the approval. 2x doubles the speed. Changes, timings,
+and percentages are fictional and illustrative. The PDF shows the Evidence first outcome, with a
+one-line Vibe shipping comparison underneath.
 -->
 
 ---
 
-<!-- _class: rollback approved rev-c -->
+<!-- _class: rollback -->
 
 ## A rollback is a procedure, not a failure.
 
-<div class="withdrawal">
-<p class="wd-title"><span>PR-0161</span><span>Bump the auth library</span><span class="label">Human</span></p>
-<table class="wd-table" aria-label="Revision record for PR-0161"><thead><tr><th>Rev</th><th>Issued to</th><th>Status</th></tr></thead><tbody><tr><td>A</td><td>Ring 0, team</td><td><span class="tick" role="img" aria-label="Healthy"></span></td></tr><tr><td>B</td><td>Ring 1, 1% of users</td><td><span class="hand">Errors up at 1%</span></td></tr><tr><td>C</td><td>Withdrawn to hold</td><td>Health gate</td></tr></tbody></table>
-<span class="wd-cloud clouded" aria-hidden="true"></span>
+<div class="deploy">
+<p class="deploy-head"><span class="id">PR-0161</span><b>Bump the auth library</b><span class="chip human">Human</span></p>
+<div class="deploy-body">
+<ol class="timeline">
+<li><span class="st"></span><b>Ring 0</b><span>Team</span><em>Healthy</em></li>
+<li class="bad"><span class="st fail"></span><b>Ring 1</b><span>1% of users</span><em>Errors up</em></li>
+<li class="undo"><span class="st back"></span><b>Health gate</b><span>Rolled back</span><em>Last good build</em></li>
+<li class="skipped"><span class="st queued"></span><b>Ring 2, Broad</b><span>Not run</span></li>
+</ol>
+<svg class="errors" viewBox="0 0 240 236" role="img" aria-label="Illustrative error rate: flat at ring 0, rising past the health gate at ring 1, then back to normal after the rollback."><text class="axis" x="0" y="16">Error rate</text><path class="gate" d="M0 92H240"/><text class="gate-label" x="0" y="82">Health gate</text><path class="base" d="M0 214H240"/><path class="rate" pathLength="1" d="M0 200 L60 198 L96 196 L122 150 L142 70 L156 56 L168 120 L184 190 L210 198 L240 199"/><circle class="trip" cx="139" cy="92" r="6"/></svg>
+</div>
+<p class="deploy-foot"><span>Back to the last good build. Nobody past ring 1 saw it.</span><span class="illus">Fictional change, illustrative only</span></p>
 </div>
 
-<p class="wd-note hand">Back in hold. Nobody past ring 1 saw it.</p>
-<p class="wd-stamp"><span class="stamp void">Withdrawn</span></p>
-
-<div class="wd-side">
+<div class="rb-side">
 
 - Flags turn behavior off without a deploy
 - Immutable artifacts: the last good build is one step back
 - Health gates trigger the rollback, not a meeting
 - Rehearse the path before release day
 
-<p class="label wd-illus">Fictional change, illustrative only</p>
 </div>
 
 <p class="takeaway">Decide the rollback before you need it.</p>
 
 <!--
-Withdrawing a sheet is routine document control: the revision is recorded, the sheet goes back
-to hold, and nobody treats it as a failure. Make rollback just as boring: feature flags,
-immutable artifacts so the last good build is one step back, health gates that trigger
-automatically, and a path you have rehearsed.
+Make rollback boring: feature flags, immutable artifacts so the last good build is one step
+back, health gates that trigger automatically, and a path you have rehearsed. A rollback is a
+routine release step, not a failure to explain in a meeting.
 
-PR-0161 is the same fictional change from the issue schedule. The 1% exposure is illustrative.
+PR-0161 is the same fictional change from the release board. The error rate and the 1% exposure
+are illustrative.
 -->
 
 ---
 
-<!-- _class: map checked -->
+<!-- _class: map -->
 
 ## Same practices, any agent.
 
 <div class="tool-map" role="table" aria-label="Where instructions, specs, roles, and skills live in GitHub Copilot and Claude Code">
 <div role="row"><span role="columnheader">Practice</span><span role="columnheader">Open convention</span><span role="columnheader">GitHub Copilot</span><span role="columnheader">Claude Code</span></div>
-<div role="row"><b role="rowheader">Instructions</b><span role="cell"><code>AGENTS.md</code></span><span role="cell"><code>.github/copilot-instructions.md</code><small>Also reads AGENTS.md</small></span><span role="cell"><code>CLAUDE.md</code><small>Or AGENTS.md if there is no CLAUDE.md</small></span></div>
+<div role="row"><b role="rowheader">Instructions</b><span role="cell"><code>AGENTS.md</code></span><span role="cell"><code>.github/copilot-instructions.md</code><small>Also reads <code>AGENTS.md</code></small></span><span role="cell"><code>CLAUDE.md</code><small>Or <code>AGENTS.md</code> if there is no <code>CLAUDE.md</code></small></span></div>
 <div role="row"><b role="rowheader">Specs</b><span role="cell"><em>OpenSpec, Spec Kit</em></span><span role="cell"><code>/opsx-propose</code><code>/speckit-specify</code></span><span role="cell"><code>/opsx:propose</code><code>/speckit-specify</code></span></div>
 <div role="row"><b role="rowheader">Roles</b><span role="cell"><em>A role prompt per agent</em></span><span role="cell"><code>.github/agents/</code><small>Custom agents</small></span><span role="cell"><code>.claude/agents/</code><small>Subagents</small></span></div>
-<div role="row"><b role="rowheader">Skills</b><span role="cell"><code>SKILL.md</code><small>Agent Skills</small></span><span role="cell"><code>.github/skills/</code><small>Also reads .claude/skills</small></span><span role="cell"><code>.claude/skills/</code></span></div>
+<div role="row"><b role="rowheader">Skills</b><span role="cell"><code>SKILL.md</code><small>Agent Skills</small></span><span role="cell"><code>.github/skills/</code><small>Also reads <code>.claude/skills</code></small></span><span role="cell"><code>.claude/skills/</code></span></div>
 </div>
 
 <!--
@@ -417,7 +449,7 @@ Sources are listed on the next slide's notes.
 
 ---
 
-<!-- _class: map checked -->
+<!-- _class: map -->
 
 ## Same guardrails, any agent.
 
@@ -451,8 +483,8 @@ https://code.claude.com/docs/en/overview
 ## Read it aloud, every change.
 
 <div class="check-card">
-<p class="cc-title"><span>Before issue</span><span class="label">Checker's list</span></p>
-<ol class="checklist" data-checklist aria-label="Before issue checklist">
+<p class="cl-head"><b>Before you ship</b><span class="cl-count sw-dynamic" data-checklist-count>0 of 7 checked</span></p>
+<ol class="checklist" data-checklist aria-label="Before you ship checklist">
 <li><span>Instructions</span><b>Current</b></li>
 <li><span>Spec</span><b>Agreed</b></li>
 <li><span>Step size</span><b>Small</b></li>
@@ -461,21 +493,20 @@ https://code.claude.com/docs/en/overview
 <li><span>Exposure</span><b>Staged</b></li>
 <li><span>Rollback</span><b>Rehearsed</b></li>
 </ol>
-<p class="cc-count co-dynamic" data-checklist-count>0 of 7 checked</p>
-<span class="stamp issued check-stamp co-dynamic">Approved for issue</span>
+<span class="cl-meter sw-dynamic" aria-hidden="true"><i></i></span>
 </div>
 
 <div class="check-notes">
 <p>One person reads the challenge. Another confirms the response.</p>
-<p>A checker runs the same list on every drawing, however experienced the drafter.</p>
+<p>Run the same list on every change, however experienced the author.</p>
 </div>
 
 <p class="takeaway">Speed is the agent's job. Evidence is ours.</p>
 
 <!--
 A challenge-and-response checklist: one person reads the item, the other confirms the state.
-In the HTML deck, click each line to tick it in red; all seven approves the card for issue.
-The PDF prints a blank card people can keep.
+In the HTML deck, click each line to check it; all seven marks the change ready to ship.
+The PDF prints a blank list people can keep.
 
 Recap: current instructions, an agreed spec, small steps, tests that prove behavior, a human
 approval, staged exposure, and a rehearsed rollback.
@@ -489,12 +520,11 @@ approval, staged exposure, and a rehearsed rollback.
 
 # Questions?
 
-<div class="detail" aria-hidden="true"><img src="./img/questions.jpg" alt=""></div>
-<p class="view-label detail-label">Detail A</p>
+<div class="photo" aria-hidden="true"><img src="./img/questions.jpg" alt=""></div>
 
 ---
 
-<!-- _class: small thanks approved -->
+<!-- _class: small thanks -->
 <!-- _paginate: skip -->
 <!-- _footer: "" -->
 

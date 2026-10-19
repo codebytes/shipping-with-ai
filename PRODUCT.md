@@ -70,13 +70,19 @@ techniques Chris proved in codebytes/marp-demo.
   (commit 7bfa7ee).
 - Animation and interaction techniques come from codebytes/marp-demo, also by
   Chris Ayers under the MIT license.
+- Visual direction: the category standard, light. The release tooling the
+  audience already uses (checks, pull requests, boards, deployment rings) is the
+  illustration, with no governing metaphor; the speaker turned down the air
+  traffic control and engineering drawing worlds. Craft bar: Chris's marp-demo
+  decks and GitHub Universe keynotes.
 
 ## Evidence on Hand
 
 - References: "Rubber Duck Debugging in the Age of AI" (chris-ayers.com),
   "Augmented Coding: Beyond the Vibes" (Kent Beck), and "Context Engineering
   for Coding Agents" (martinfowler.com).
-- Images: `slides/img/portrait.png` and `slides/img/questions.jpg`.
+- Images: `slides/img/portrait.png`, a 320px copy of it for avatars
+  (`slides/img/avatar.png`), and `slides/img/questions.jpg`.
 - There are no measured data, incident statistics, customer stories, or
   benchmarks for this talk. Do not invent them; any number inside a simulation
   is labeled illustrative.
