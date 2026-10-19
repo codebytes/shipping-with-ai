@@ -805,7 +805,7 @@
       },
       {
         "name": "The One Blue Rule",
-        "body": "The accent is the takeaway, the link and the focus ring. It never marks a status, fills a surface or colors a heading.",
+        "body": "The accent is the takeaway, the link and the focus ring. It never marks a status, fills a surface or colors a heading. Brand marks are not the accent: the contact icons keep their own brand colors.",
         "section": "colors"
       },
       {
@@ -864,7 +864,7 @@
       "Do label every simulated change, count, rate and board on the slide itself, in an 18px Secondary Ink line.",
       "Do show a person's approval as their avatar with a green check badge, and an agent's work with the violet bot and the Agent chip.",
       "Do keep a 2px Focus Blue outline on every control (2px outside buttons and switch options, 3px inside checklist rows), and let arrow keys and clickers advance the deck from a focused control.",
-      "Do keep the bio and Thank You contact blocks exactly as authored, including the Font Awesome icons and the struck-through Twitter line in Secondary Ink."
+      "Do keep the bio and Thank You contact blocks exactly as authored, including the Font Awesome icons in their brand colors and the struck-through Twitter line in Secondary Ink."
     ],
     "donts": [
       "Don't use Takeaway Blue or Focus Blue for a status, a fill or a heading.",

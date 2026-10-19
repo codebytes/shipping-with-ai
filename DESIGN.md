@@ -351,7 +351,7 @@ The `invert` template class remaps every role to its GitHub dark-mode equivalent
 
 **The Ink and Solid Rule.** Letters use a family's ink step. Discs, bars, connectors and strokes use its solid step. Chips sit on the tint with the line as their border. Never set text in a solid or fill a disc with an ink.
 
-**The One Blue Rule.** The accent is the takeaway, the link and the focus ring. It never marks a status, fills a surface or colors a heading.
+**The One Blue Rule.** The accent is the takeaway, the link and the focus ring. It never marks a status, fills a surface or colors a heading. Brand marks are not the accent: the contact icons keep their own brand colors.
 
 ## Typography
 
@@ -425,7 +425,7 @@ Two levels and a recess. The canvas is the floor. Panels float one step above it
 
 Radius grows with the object: 6px inline code, 7px checkboxes and switch options, 8px buttons and the moving token, 10px the switch track, 12px change cards and empty slots, 14px panels and actor boxes, 16px board lanes, 18px the cover's check run, 22px the Questions photo. State takes two pure forms: pills for chips, counts, stage marks, the regret cues and the pill rows, and circles for status discs, avatars, the bot and lane dots. Borders are 1px hairlines. Placeholders are dashed: the empty "Next" slot, draft discs, stages that never ran, the "LGTM" rubber-stamp mark. The health gate is a dashed red line.
 
-Icons are drawn once, as inline SVG data URIs in the theme (check, x, pause, undo, play, step, replay, bot, person, file), and tinted with `currentColor` through CSS masks. Strokes are round-capped, mostly 2 to 2.3 units on a 16-unit grid. Font Awesome appears only in the contact blocks.
+Icons are drawn once, as inline SVG data URIs in the theme (check, x, pause, undo, play, step, replay, bot, person, file), and tinted with `currentColor` through CSS masks. Strokes are round-capped, mostly 2 to 2.3 units on a 16-unit grid. Font Awesome appears only in the contact blocks, and each mark keeps its brand color: Bluesky #1185fe, LinkedIn #0a66c2, blog #0366d6, GitHub #333333 (Ink under `invert`), Mastodon #6364ff, Twitter #1da1f2.
 
 ### Named Rules
 **The Pill Means State Rule.** A pill reports a state; a rounded rectangle is something you press or a literal string. Buttons, the scenario switch, the merge button and the AI-0142 token are rectangles; chips, counts, stage marks and outcome rows are pills.
@@ -517,7 +517,7 @@ Three actor boxes (Worker and Reviewer with the violet bot, You with the avatar)
 - **Do** label every simulated change, count, rate and board on the slide itself, in an 18px Secondary Ink line.
 - **Do** show a person's approval as their avatar with a green check badge, and an agent's work with the violet bot and the Agent chip.
 - **Do** keep a 2px Focus Blue outline on every control (2px outside buttons and switch options, 3px inside checklist rows), and let arrow keys and clickers advance the deck from a focused control.
-- **Do** keep the bio and Thank You contact blocks exactly as authored, including the Font Awesome icons and the struck-through Twitter line in Secondary Ink.
+- **Do** keep the bio and Thank You contact blocks exactly as authored, including the Font Awesome icons in their brand colors and the struck-through Twitter line in Secondary Ink.
 
 ### Don't:
 - **Don't** use Takeaway Blue or Focus Blue for a status, a fill or a heading.

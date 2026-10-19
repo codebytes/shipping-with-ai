@@ -143,6 +143,15 @@ section table:not([class]) th, section table:not([class]) td { padding: 10px 16p
 section table:not([class]) th { font-size: 18px; font-weight: 640; color: var(--ink-2); }
 section blockquote { margin: 0; padding: 4px 0 4px 24px; border-left: 1px solid var(--line-strong); color: var(--ink-2); }
 section .fa, section .fa-brands { width: 1.3em; color: var(--ink-2); text-align: center; }
+/* Brand marks keep their own colors: they are logos, not the accent. */
+section .fa-twitter, section .fa-x-twitter { color: #1da1f2; }
+section .fa-mastodon { color: #6364ff; }
+section .fa-linkedin { color: #0a66c2; }
+section .fa-window-maximize { color: #0366d6; }
+section .fa-github { color: #333333; }
+section .fa-bluesky { color: #1185fe; }
+section .fa-youtube { color: #ff0000; }
+section.invert .fa-github { color: var(--ink); }
 
 /* ---------- Chrome: footer and page number ---------- */
 
@@ -336,7 +345,7 @@ section.bio h2 { margin-bottom: 14px; font-size: 56px; }
 section.bio p { font-size: 25px; line-height: 1.5; }
 section.bio p em { color: var(--ink-2); }
 section.bio p + p { margin-top: 22px; }
-section.bio del, section.thanks del { color: var(--ink-2); }
+section.bio :is(s, del), section.thanks :is(s, del) { color: var(--ink-2); }
 
 /* ---------- Two queues: drafts pour in, shipped changes arrive one at a time ---------- */
 
