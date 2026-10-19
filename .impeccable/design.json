@@ -675,7 +675,7 @@
       {
         "name": "transition-handoff",
         "value": "900ms cross-fade; incoming waits to 45%, outgoing gone by 40%; view-transition-name sw-hero",
-        "purpose": "Slides 6 to 8, so the AI-0142 change card moves column to column."
+        "purpose": "Slides 9 to 11, so the AI-0142 change card moves column to column."
       },
       {
         "name": "reduced-motion-and-print",
@@ -872,6 +872,7 @@
       "Don't nest a panel in a panel, or give anything but the cover's check run and the Questions photo the Lift shadow.",
       "Don't set prose, headings or labels in Monaspace Neon.",
       "Don't set argument text below 22px or labels below 18px; the board rows' 16px chips, their 17px IDs and the 17px loop token are exceptions, not precedents.",
+      "Don't crowd a slide: one diagram or panel pair, at most one supporting line, then the takeaway. Detail and sources go in the speaker notes.",
       "Don't shape a button as a pill or a status chip as a rectangle.",
       "Don't add looping or autoplaying motion; the board's stage spinner is the only infinite animation, and it runs only after the speaker presses Run.",
       "Don't add colored or blurred glows or tinted shadows; shadows are Ink at low alpha, and the only colored halo is the zero-blur nudge on a control waiting for the speaker.",

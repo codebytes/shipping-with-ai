@@ -467,7 +467,7 @@ section .board[data-state="awaiting"] [data-board-state] { background: var(--hol
 section .board[data-state="complete"] [data-board-state] { background: var(--pass-tint); color: var(--pass); }
 section .board-controls { display: flex; align-items: center; gap: 8px; }
 section .board-controls[hidden] { display: none; }
-section .seg { display: inline-flex; gap: 2px; margin-right: 6px; padding: 3px; border: 1px solid var(--line); border-radius: 10px; background: var(--well); }
+section .board-controls .seg { display: inline-flex; gap: 2px; margin-right: 6px; padding: 3px; border: 1px solid var(--line); border-radius: 10px; background: var(--well); }
 section .seg button { height: 32px; padding: 0 12px; border: 0; border-radius: 7px; background: transparent; color: var(--ink-2); font: 600 18px/1 var(--sans); cursor: pointer; }
 section .seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgb(31 35 40 / 0.14), 0 0 0 1px var(--line); }
 section .btn { --icon: none; display: inline-flex; align-items: center; gap: 7px; height: 38px; padding: 0 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font: 600 18px/1 var(--sans); white-space: nowrap; cursor: pointer; box-shadow: 0 1px 0 rgb(31 35 40 / 0.04); }
@@ -799,11 +799,11 @@ section .lever-map [role="row"]:last-child { border-bottom: 0; }
 section .lever-map [role="columnheader"] { padding: 0 22px; color: var(--ink-2); font-size: 19px; font-weight: 650; }
 section .lever-map [role="rowheader"], section .lever-map [role="cell"] { padding: 0 22px; font-size: 23px; }
 section .lever-map [role="rowheader"] { font-weight: 650; }
-section .who { display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 12px 0 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--subtle); color: var(--ink-2); font-size: 18px; font-weight: 620; white-space: nowrap; }
-section .who::before { content: ""; width: 15px; height: 15px; background: currentColor; -webkit-mask: var(--icon) center / contain no-repeat; mask: var(--icon) center / contain no-repeat; }
-section .who.model { --icon: var(--i-bot); border-color: var(--agent-line); background: var(--agent-tint); color: var(--agent); }
-section .who.you { --icon: var(--i-person); }
-section .who.code { --icon: var(--i-check); border-color: var(--ink); background: var(--ink); color: #fff; }
+section .lever-map .who { display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 12px 0 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--subtle); color: var(--ink-2); font-size: 18px; font-weight: 620; white-space: nowrap; }
+section .lever-map .who::before { content: ""; width: 15px; height: 15px; background: currentColor; -webkit-mask: var(--icon) center / contain no-repeat; mask: var(--icon) center / contain no-repeat; }
+section .lever-map .who.model { --icon: var(--i-bot); border-color: var(--agent-line); background: var(--agent-tint); color: var(--agent); }
+section .lever-map .who.you { --icon: var(--i-person); }
+section .lever-map .who.code { --icon: var(--i-check); border-color: var(--ink); background: var(--ink); color: #fff; }
 section .lever-map .enforce { background: var(--subtle); }
 section .lever-map .enforce [role="cell"]:last-child { font-weight: 620; }
 
