@@ -25,7 +25,7 @@ The category standard, light (seed e24629bc, re-roll 1). After seeing six render
 speaker turned down metaphor worlds (Flight Strip Board, then Change Order) and chose the familiar
 release-tooling deck, set light. Craft bar: the speaker's marp-demo decks and GitHub Universe
 keynotes. The cover runs AI-0142's checks green one by one (spec, tests, a human approval, rings
-to 100%) before it reads Landed. Slides 6 to 8 move AI-0142's card across a Spec, Build, Review
+to 100%) before it reads Landed. Slides 9 to 11 move AI-0142's card across a Spec, Build, Review
 board with native morphs, one more check completing on each slide.
 
 ## Unresolved

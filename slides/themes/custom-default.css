@@ -92,6 +92,8 @@ section {
   --i-bot: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.2a1.4 1.4 0 0 1 .7 2.6v1.6h4.1A3.2 3.2 0 0 1 20 9.6v7.6a3.2 3.2 0 0 1-3.2 3.2H7.2A3.2 3.2 0 0 1 4 17.2V9.6a3.2 3.2 0 0 1 3.2-3.2h4.1V4.8A1.4 1.4 0 0 1 12 2.2zM9 11.6a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2zm6 0a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2zM1.6 11h1.2v5H1.6a.8.8 0 0 1-.8-.8v-3.4a.8.8 0 0 1 .8-.8zm20.8 0h-1.2v5h1.2a.8.8 0 0 0 .8-.8v-3.4a.8.8 0 0 0-.8-.8z'/%3E%3C/svg%3E");
   --i-person: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='5' r='2.9'/%3E%3Cpath d='M2.4 14.2c.5-3.1 2.8-4.9 5.6-4.9s5.1 1.8 5.6 4.9z'/%3E%3C/svg%3E");
   --i-file: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'%3E%3Cpath d='M3.5 1.8h6l3 3v9.4h-9z'/%3E%3Cpath d='M9.3 1.8v3.2h3.2'/%3E%3Cpath d='M5.6 8.6h4.8M5.6 11.2h4.8' stroke-linecap='round'/%3E%3C/svg%3E");
+  --i-folder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M1.8 3.7c0-.7.5-1.2 1.2-1.2h3.2l1.6 1.6h5.2c.7 0 1.2.5 1.2 1.2v7c0 .7-.5 1.2-1.2 1.2H3c-.7 0-1.2-.5-1.2-1.2z'/%3E%3C/svg%3E");
+  --i-branch: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.6'%3E%3Ccircle cx='4.5' cy='3.5' r='1.8'/%3E%3Ccircle cx='4.5' cy='12.5' r='1.8'/%3E%3Ccircle cx='11.5' cy='4.5' r='1.8'/%3E%3Cpath d='M4.5 5.3v5.4M11.5 6.3c0 3.2-7 2.2-7 4.4'/%3E%3C/svg%3E");
   --i-white-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.4 8.5l3 3 6.2-7' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 
   width: 1280px;
@@ -373,10 +375,10 @@ section .file dt, section .file dd { margin: 0; padding: 8px 0; font-size: 22px;
 section .file dt { position: relative; counter-increment: line; color: var(--ink); font-weight: 650; }
 section .file dd code { padding: 0.04em 0.3em; font-size: 0.86em; }
 section .file dt::before { content: counter(line); position: absolute; left: -52px; width: 30px; text-align: right; font: 400 18px/1.6 var(--mono); color: var(--line-strong); }
-section .notes-side { position: absolute; left: 776px; right: 72px; top: 140px; font-size: 24px; line-height: 1.4; }
-section .files-label { margin-top: 30px; font-size: 19px; font-weight: 620; color: var(--ink-2); }
-section .files { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
-section .files code { font-size: 18px; padding: 5px 10px; background: var(--surface); border-color: var(--line); }
+section .notes-side { position: absolute; left: 776px; right: 72px; top: 150px; }
+section .files-label { font-size: 21px; font-weight: 620; color: var(--ink-2); }
+section .files { display: grid; justify-items: start; gap: 12px; margin-top: 16px; }
+section .files code { padding: 6px 12px; border-color: var(--line); background: var(--surface); font-size: 20px; }
 
 /* ---------- One change crosses the board: spec, build, review ---------- */
 
@@ -397,17 +399,19 @@ section .checks > li { display: inline-flex; align-items: center; gap: 8px; font
 section .checks .st { width: 22px; height: 22px; }
 section .checks .st.who { width: 28px; height: 28px; }
 section .checks > li:has(.st.who) { gap: 12px; }
-section .route-detail { display: grid; grid-template-columns: minmax(0, 1fr) 600px; gap: 40px; margin-top: 24px; font-size: 24px; line-height: 1.4; }
-section .route-detail ul:not([class]) > li + li { margin-top: 14px; }
+/* The detail panel sits under the lanes the change is moving through. */
+section .route-detail { margin-top: 22px; }
+section.at-spec .route-detail .panel { width: 751px; }
+section.at-build .route-detail .panel { width: 751px; margin-left: auto; }
 section .panel dl { display: grid; grid-template-columns: 92px minmax(0, 1fr); margin: 0; padding: 4px 20px 8px; }
-section .panel dt, section .panel dd { margin: 0; padding: 8px 0; font-size: 22px; line-height: 1.3; }
+section .panel dt, section .panel dd { margin: 0; padding: 6px 0; font-size: 22px; line-height: 1.3; }
 section .panel dt { color: var(--ink); font-weight: 650; }
 section .panel dt ~ dt, section .panel dt ~ dt + dd { border-top: 1px solid var(--line-soft); }
-section .runs > li { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; align-items: center; column-gap: 12px; padding: 9px 20px; font-size: 22px; }
+section .runs > li { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; align-items: center; column-gap: 12px; padding: 6px 20px; font-size: 22px; }
 section .runs > li + li { border-top: 1px solid var(--line-soft); }
 section .runs .st { width: 22px; height: 22px; }
 section .runs b { color: var(--pass); font-size: 19px; font-weight: 640; }
-section .panel .warn { display: flex; align-items: center; gap: 12px; padding: 10px 20px; border-top: 1px solid var(--hold-line); border-radius: 0 0 var(--radius) var(--radius); background: var(--hold-tint); color: var(--hold); font-size: 21px; font-weight: 620; }
+section .panel .warn { display: flex; align-items: center; gap: 12px; padding: 8px 20px; border-top: 1px solid var(--hold-line); border-radius: 0 0 var(--radius) var(--radius); background: var(--hold-tint); color: var(--hold); font-size: 21px; font-weight: 620; }
 section .panel .warn .st { width: 22px; height: 22px; }
 
 /* Review: worker, fresh reviewer, then a person. */
@@ -624,6 +628,191 @@ section.thanks p { line-height: 1.5; }
 section.thanks p + p { margin-top: 16px; }
 section.thanks p em { color: var(--ink-2); }
 
+/* ---------- Expansion: shared parts ---------- */
+
+section .meter-card, section .relay > li, section .tree, section .run-log, section .git-graph, section .agents-par, section .review-queue, section .perms, section .untrusted, section .lever-map, section .dora-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+section .panel-head .illus { margin-left: auto; font-size: 18px; }
+section .chip.deny, section .chip.ask { padding-left: 10px; }
+section .chip.deny::before, section .chip.ask::before { content: ""; flex: none; width: 15px; height: 15px; background: currentColor; -webkit-mask: var(--icon) center / contain no-repeat; mask: var(--icon) center / contain no-repeat; }
+section .chip.deny { --icon: var(--i-x); border-color: var(--back-line); background: var(--back-tint); color: var(--back); }
+section .chip.ask { --icon: var(--i-person); border-color: var(--hold-line); background: var(--hold-tint); color: var(--hold); }
+section .folder-icon { width: 20px; height: 20px; background: var(--ink-2); -webkit-mask: var(--i-folder) center / contain no-repeat; mask: var(--i-folder) center / contain no-repeat; }
+/* Your approval: your avatar with a green check, the same mark as the cover's human sign-off. */
+section .gate-mark, section .relay .gate::after { content: ""; display: block; width: 34px; height: 34px; border-radius: 50%; background: var(--avatar-tint) url("img/avatar.png") 50% 22% / 150% no-repeat; }
+section .gate-mark { position: relative; flex: none; }
+section .gate-mark i, section .relay .gate i { position: absolute; z-index: 1; width: 16px; height: 16px; border-radius: 50%; background: var(--pass-solid) var(--i-white-check) center / 11px no-repeat; box-shadow: 0 0 0 2px var(--canvas); }
+section .gate-mark i { right: -4px; bottom: -3px; }
+
+/* ---------- Context budget: one session fills, stops at a natural break, and the next starts small ---------- */
+
+section.budget .meter-card { overflow: hidden; }
+section .meter-card .panel-head b { font-weight: 650; }
+section .meter-body { display: grid; grid-template-columns: 124px minmax(0, 1fr); column-gap: 20px; align-items: center; padding: 28px 30px 10px; }
+section .meter-name { color: var(--ink-2); font-size: 20px; font-weight: 620; }
+section .meter { position: relative; display: flex; height: 44px; border: 1px solid var(--line); border-radius: 10px; background: var(--subtle); }
+section .meter .seg { display: block; flex: none; height: 100%; transform-origin: left; }
+section .meter .seg:first-child { border-radius: 9px 0 0 9px; }
+section .seg.base { width: 26%; background: #b8c3cf; }
+section .seg.task { width: 32%; background: #c9b3f5; }
+section .seg.note { width: 4%; background: var(--ink-2); }
+section .drop-zone { position: absolute; top: -1px; right: -1px; bottom: -1px; left: 72%; display: grid; place-items: center; border-left: 2px dashed var(--back-solid); border-radius: 0 10px 10px 0; background: repeating-linear-gradient(135deg, rgb(207 34 46 / 0.12) 0 6px, transparent 6px 12px); color: var(--back); font-size: 19px; font-weight: 640; }
+section .meter .break { position: absolute; top: -9px; bottom: -9px; left: calc(58% - 1.5px); width: 3px; border-radius: 2px; background: var(--ink); transform-origin: top; }
+section .meter-caps { grid-column: 2; position: relative; height: 30px; margin: 8px 0 20px; color: var(--ink-2); font-size: 19px; }
+section .meter-caps > span { position: absolute; top: 0; white-space: nowrap; }
+section .meter-caps .cap-base { left: 0; }
+section .meter-caps .cap-task { left: 26%; padding-left: 10px; }
+section .meter-caps .cap-break { left: 58%; padding-left: 12px; color: var(--ink); font-weight: 620; }
+section .meter-caps .cap-note { left: 26%; color: var(--ink); font-weight: 620; }
+section .meter-caps code { font-size: 18px; }
+section .practices { display: flex; flex-wrap: wrap; gap: 14px 52px; margin-top: 34px; font-size: 24px; font-weight: 620; }
+section .practices > li { position: relative; padding-left: 26px; }
+section .practices > li::before { content: ""; position: absolute; left: 4px; top: 0.6em; width: 9px; height: 9px; border-radius: 50%; background: var(--line-strong); }
+
+/* ---------- Four roles: each starts fresh from the file the last one handed off ---------- */
+
+section .relay { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 60px; margin: 6px 0 0; padding: 0; }
+section .relay > li { position: relative; display: flex; flex-direction: column; padding: 18px 18px 16px; }
+section .relay .role { display: flex; align-items: center; gap: 12px; font-size: 25px; line-height: 1.2; }
+section .relay .role b { font-weight: 650; }
+section .relay .bot { width: 40px; height: 40px; }
+section .relay .bot::after { width: 22px; height: 22px; }
+section .relay .job { min-height: 2.6em; margin-top: 12px; color: var(--ink-2); font-size: 21px; line-height: 1.3; }
+section .relay .out { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line-soft); }
+section .relay .out code { font-size: 18px; }
+section .relay code.branch { display: inline-flex; align-items: center; gap: 6px; }
+section .relay code.branch::before { content: ""; width: 14px; height: 14px; background: var(--ink-2); -webkit-mask: var(--i-branch) center / contain no-repeat; mask: var(--i-branch) center / contain no-repeat; }
+/* A handoff is an arrow between two roles, gated by your approval. */
+section .relay .gate { position: absolute; z-index: 1; left: -60px; top: calc(50% - 17px); width: 60px; height: 34px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 34'%3E%3Cpath d='M3 17H50' stroke='%238c959f' stroke-width='2.4' stroke-linecap='round'/%3E%3Cpath d='M58 17l-9.5-5.5v11z' fill='%238c959f'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+section .relay .gate::after { position: absolute; left: 10px; top: 0; box-shadow: 0 0 0 3px var(--canvas); }
+section .relay .gate i { left: 34px; bottom: -3px; }
+section .relay-back { display: block; width: 339px; height: 46px; margin: 0 0 0 697.5px; overflow: visible; }
+section .relay-back path { fill: none; stroke: var(--hold-solid); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+section .relay-back path.head { fill: var(--hold-solid); stroke: none; stroke-dasharray: none; }
+section .approve-line { display: flex; align-items: center; gap: 16px; margin-top: 18px; font-size: 24px; font-weight: 600; }
+
+/* ---------- A change is a folder: explore, propose, apply, archive ---------- */
+
+section .lifecycle { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 4px 0 0; padding: 0; }
+section .lifecycle > li { position: relative; display: grid; justify-items: start; row-gap: 6px; padding: 42px 20px 0 0; }
+section .lifecycle > li > .st { position: absolute; left: 0; top: 0; width: 28px; height: 28px; }
+section .lifecycle > li:not(:last-child)::after { content: ""; position: absolute; left: 42px; right: 14px; top: 13px; height: 2px; border-radius: 1px; background: var(--pass-solid); transform-origin: left; }
+section .lifecycle b { font-size: 25px; font-weight: 650; line-height: 1.2; }
+section .lifecycle code { font-size: 18px; }
+section .lifecycle > li > span:not(.st) { color: var(--ink-2); font-size: 20px; line-height: 1.3; }
+section.changes .tree { margin-top: 34px; overflow: hidden; }
+section .tree .panel-head code { color: var(--ink); font-size: 19px; font-weight: 600; }
+section .tree-status { display: grid; justify-items: end; margin-left: auto; }
+section .tree-status > * { grid-area: 1 / 1; }
+section .tree-files { margin: 0; padding: 0; }
+section .tree-files > li { display: grid; grid-template-columns: 22px 300px minmax(0, 1fr) auto; align-items: center; column-gap: 14px; min-height: 50px; padding: 0 22px; font-size: 21px; }
+section .tree-files > li + li { border-top: 1px solid var(--line-soft); }
+section .tree-files .file-icon { width: 20px; height: 20px; }
+section .tree-files code { padding: 0; border: 0; background: none; font-size: 20px; }
+section .tree-files > li > span:nth-child(3) { color: var(--ink-2); }
+section .tasks-done { padding: 4px 12px; border: 1px solid var(--pass-line); border-radius: 999px; background: var(--pass-tint); color: var(--pass); font-size: 18px; font-weight: 620; white-space: nowrap; counter-reset: n var(--n); }
+
+/* ---------- Reset: a run goes sideways, the branch goes back ---------- */
+
+section.reset .run-log { position: absolute; left: 72px; top: 132px; width: 620px; overflow: hidden; }
+section .run-log .panel-head > span { color: var(--ink-2); font-size: 19px; }
+section .log { margin: 0; padding: 0; }
+section .log > li { display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; align-items: center; column-gap: 14px; min-height: 58px; padding: 0 20px; font-size: 22px; }
+section .log > li + li { border-top: 1px solid var(--line-soft); }
+section .log .st { width: 24px; height: 24px; }
+section .log .sign { padding: 4px 11px; border: 1px solid var(--hold-line); border-radius: 999px; background: var(--hold-tint); color: var(--hold); font-size: 18px; font-weight: 640; white-space: nowrap; }
+section.reset .git-graph { position: absolute; left: 732px; right: 72px; top: 132px; overflow: hidden; }
+section .commits { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 58px 16px 4px; }
+section .commits::before { content: ""; position: absolute; left: 71.5px; right: 71.5px; top: 65px; height: 2px; background: var(--line); }
+section .commits > li { position: relative; display: grid; justify-items: center; row-gap: 8px; font-size: 19px; }
+section .commits i { width: 16px; height: 16px; border-radius: 50%; background: var(--pass-solid); box-shadow: 0 0 0 3px var(--surface); }
+section .commits span { color: var(--ink-2); }
+section .commits .dropped { opacity: 0.55; }
+section .commits .dropped i { background: var(--surface); box-shadow: 0 0 0 3px var(--surface), inset 0 0 0 2px var(--line-strong); }
+section .commits .dropped span { text-decoration: line-through; text-decoration-thickness: 2px; text-decoration-color: var(--back-solid); }
+section .head-tag { --step: 111px; position: absolute; top: -43px; left: 50%; padding: 3px 9px; border-radius: 6px; background: var(--ink); color: #fff; font: 600 18px/1.2 var(--mono); transform: translateX(-50%); }
+section .head-tag::after { content: ""; position: absolute; left: 50%; bottom: -5px; margin-left: -5px; border: 5px solid transparent; border-bottom: 0; border-top-color: var(--ink); }
+section .reset-cmd { padding: 16px 20px 20px; text-align: center; }
+section .reset-cmd code { font-size: 19px; }
+section.reset .reset-next { position: absolute; left: 72px; right: 72px; top: 452px; font-size: 24px; }
+section .reset-next code { font-size: 19px; }
+
+/* ---------- Parallel agents: work finishes in parallel, review happens one at a time ---------- */
+
+section.parallel .agents-par { position: absolute; left: 72px; top: 132px; width: 664px; overflow: hidden; }
+section .par-lanes { margin: 0; padding: 0; }
+section .par-lanes > li { display: grid; grid-template-columns: 32px 150px minmax(0, 1fr) 76px; align-items: center; column-gap: 14px; min-height: 58px; padding: 0 20px; font-size: 21px; }
+section .par-lanes > li + li { border-top: 1px solid var(--line-soft); }
+section .par-lanes .bot { width: 32px; height: 32px; }
+section .par-lanes .bot::after { width: 18px; height: 18px; }
+section .par-lanes b { font-weight: 620; }
+section .par-lanes .bar { position: relative; height: 10px; border-radius: 5px; background: var(--line-soft); }
+section .par-lanes .bar i { position: absolute; inset: 0; border-radius: 5px; background: var(--agent); opacity: 0.55; transform-origin: left; }
+section .par-lanes .pr { justify-self: end; padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--subtle); font: 400 18px/1 var(--mono); }
+section.parallel .review-queue { position: absolute; left: 776px; right: 72px; top: 132px; overflow: hidden; }
+section .review-queue .avatar { width: 32px; height: 32px; }
+section .queue-items { margin: 0; padding: 0; }
+section .queue-items > li { display: grid; grid-template-columns: 24px auto minmax(0, 1fr); align-items: center; column-gap: 14px; min-height: 58px; padding: 0 20px; font-size: 21px; }
+section .queue-items > li + li { border-top: 1px solid var(--line-soft); }
+section .queue-items .st { width: 24px; height: 24px; }
+section .queue-items .id { font-size: 18px; }
+section .queue-items .done > span:last-child { color: var(--pass); font-weight: 620; }
+section .queue-items .waiting > span:last-child { color: var(--hold); font-weight: 620; }
+section.parallel .par-rule { position: absolute; left: 72px; right: 72px; top: 452px; font-size: 24px; }
+
+/* ---------- Security: least privilege, and untrusted text ---------- */
+
+section.guard .perms { position: absolute; left: 72px; top: 132px; width: 540px; overflow: hidden; }
+section .perms [role="row"] { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 58px; padding: 0 20px; font-size: 22px; }
+section .perms [role="row"] + [role="row"] { border-top: 1px solid var(--line-soft); }
+section .perms .perms-head { min-height: 52px; background: var(--subtle); font-size: 21px; }
+section .perms .perms-head b { font-weight: 650; }
+section .perms code { font-size: 19px; }
+section .perms .chip { height: 32px; }
+section.guard .untrusted { position: absolute; left: 652px; right: 72px; top: 132px; overflow: hidden; }
+section .untrusted .panel-head b { font-weight: 650; }
+section .untrusted .panel-head > span { margin-left: auto; color: var(--ink-2); font-size: 19px; }
+section .untrusted blockquote { margin: 0; padding: 18px 22px; border: 0; color: var(--ink); font-size: 23px; line-height: 1.45; }
+section .untrusted mark { padding: 1px 3px; border-radius: 4px; background: linear-gradient(var(--back-tint), var(--back-tint)) 0 0 / 100% 100% no-repeat; color: var(--back); box-shadow: inset 0 -2px 0 var(--back-line); }
+section .tool-call { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 22px 16px; border-top: 1px solid var(--line-soft); font-size: 21px; }
+section .tool-call code { font-size: 19px; }
+
+/* ---------- Extensions: who decides when each one runs ---------- */
+
+section .lever-map { display: grid; grid-template-columns: 220px 300px minmax(0, 1fr); overflow: hidden; }
+section .lever-map [role="row"] { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; align-items: center; min-height: 62px; border-bottom: 1px solid var(--line-soft); }
+section .lever-map [role="row"]:first-child { min-height: 50px; border-bottom-color: var(--line); background: var(--subtle); }
+section .lever-map [role="row"]:last-child { border-bottom: 0; }
+section .lever-map [role="columnheader"] { padding: 0 22px; color: var(--ink-2); font-size: 19px; font-weight: 650; }
+section .lever-map [role="rowheader"], section .lever-map [role="cell"] { padding: 0 22px; font-size: 23px; }
+section .lever-map [role="rowheader"] { font-weight: 650; }
+section .who { display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 12px 0 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--subtle); color: var(--ink-2); font-size: 18px; font-weight: 620; white-space: nowrap; }
+section .who::before { content: ""; width: 15px; height: 15px; background: currentColor; -webkit-mask: var(--icon) center / contain no-repeat; mask: var(--icon) center / contain no-repeat; }
+section .who.model { --icon: var(--i-bot); border-color: var(--agent-line); background: var(--agent-tint); color: var(--agent); }
+section .who.you { --icon: var(--i-person); }
+section .who.code { --icon: var(--i-check); border-color: var(--ink); background: var(--ink); color: #fff; }
+section .lever-map .enforce { background: var(--subtle); }
+section .lever-map .enforce [role="cell"]:last-child { font-weight: 620; }
+
+/* ---------- Measure: DORA's delivery metrics ---------- */
+
+section.measure .dora { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+section .dora-card { overflow: hidden; }
+section .dora-card .panel-head { font-size: 22px; }
+section .dora-card .panel-head b { font-weight: 650; }
+section .dora-card .panel-head span { margin-left: auto; color: var(--ink-2); font-size: 19px; }
+section .dora-card.unstable .panel-head { border-bottom-color: var(--hold-line); background: var(--hold-tint); }
+section .dora-card.unstable .panel-head b, section .dora-card.unstable .panel-head span { color: var(--hold); }
+section .dora-card ul { margin: 0; padding: 4px 0 6px; }
+section .dora-card li { padding: 12px 22px; font-size: 23px; font-weight: 560; }
+section .dora-card li + li { border-top: 1px solid var(--line-soft); }
+section .finding { max-width: 1000px; margin-top: 30px; font-size: 23px; line-height: 1.45; }
+section .finding .src { display: block; margin-top: 6px; color: var(--ink-2); font-size: 18px; }
+
 /* ---------- Transitions ---------- */
 
 /* lift: the next slide rises into place; handoff: a cross-fade that lets AI-0142's card move columns. */
@@ -655,6 +844,14 @@ section.thanks p em { color: var(--ink-2); }
 @keyframes sw-spin-loop { to { transform: rotate(360deg); } }
 @keyframes sw-nudge { 50% { box-shadow: 0 0 0 5px rgb(31 136 61 / 0.25); } }
 @keyframes sw-flash { from { background-color: var(--back-tint); } }
+@keyframes sw-fill-steps { 0% { transform: scaleX(0); } 22%, 32% { transform: scaleX(0.3); } 55%, 65% { transform: scaleX(0.62); } 88%, 100% { transform: scaleX(1); } }
+@keyframes sw-appear { from { transform: scale(0); } }
+@keyframes sw-undrop { from { opacity: 1; } }
+@keyframes sw-unstrike { from { text-decoration-color: transparent; } }
+@keyframes sw-head { 0%, 40% { transform: translateX(-50%); } 41%, 64% { transform: translateX(calc(-50% + var(--step, 112px))); } 66%, 85% { transform: translateX(calc(-50% + 2 * var(--step, 112px))); } 100% { transform: translateX(-50%); } }
+@keyframes sw-arrive-x { from { opacity: 0; transform: translateX(-24px); } }
+@keyframes sw-mark { from { background-size: 0% 100%; color: var(--ink); box-shadow: inset 0 -2px 0 transparent; } }
+@keyframes sw-stamp { from { opacity: 0; transform: scale(1.5); } }
 @keyframes sw-token {
   0% { opacity: 0; transform: translate(178px, 45px); }
   5% { opacity: 1; transform: translate(190px, 45px); }
@@ -671,9 +868,9 @@ section.thanks p em { color: var(--ink-2); }
 /* Every effect plays once, on the live audience slide, and settles inside five seconds. */
 @media screen and (prefers-reduced-motion: no-preference) {
   /* Shared: status icons queue, spin amber, then settle. Each slide sets --t, the moment of settling. */
-  section.sw-live :is(.run-steps, .prs, .regret, .checks > li.fresh, .runs, .timeline, .merge-checks > li:first-child) .st:not(.queued, .draft) { animation: sw-settle 420ms var(--ease-pop) var(--t, 0ms) backwards; }
-  section.sw-live :is(.run-steps, .prs, .regret, .checks > li.fresh, .runs, .timeline, .merge-checks > li:first-child) .st:not(.queued, .draft)::before { animation: sw-spin 640ms linear calc(var(--t, 0ms) - 640ms) 1; }
-  section.sw-live :is(.run-steps, .prs, .regret, .checks > li.fresh, .runs, .timeline, .merge-checks > li:first-child) .st:not(.queued, .draft)::after,
+  section.sw-live :is(.run-steps, .prs, .regret, .checks > li.fresh, .runs, .timeline, .merge-checks > li:first-child, .lifecycle > li, .log > li, .queue-items > li) .st:not(.queued, .draft) { animation: sw-settle 420ms var(--ease-pop) var(--t, 0ms) backwards; }
+  section.sw-live :is(.run-steps, .prs, .regret, .checks > li.fresh, .runs, .timeline, .merge-checks > li:first-child, .lifecycle > li, .log > li, .queue-items > li) .st:not(.queued, .draft)::before { animation: sw-spin 640ms linear calc(var(--t, 0ms) - 640ms) 1; }
+  section.sw-live :is(.run-steps, .prs, .regret, .checks > li.fresh, .runs, .timeline, .merge-checks > li:first-child, .lifecycle > li, .log > li, .queue-items > li) .st:not(.queued, .draft)::after,
   section.sw-live :is(.run-steps, .checks > li.fresh) .st.who .badge { animation: sw-tick 320ms var(--ease) calc(var(--t, 0ms) + 90ms) backwards; }
   section.sw-live :is(.run-steps, .checks > li.fresh) .st.who img { animation: sw-pop 420ms var(--ease-pop) var(--t, 0ms) backwards; }
   section.sw-live .takeaway { animation: sw-rise 700ms var(--ease) var(--td, 900ms) backwards; }
@@ -746,22 +943,14 @@ section.thanks p em { color: var(--ink-2); }
   section.sw-live.notes .file :is(dt, dd):nth-of-type(6) { animation-delay: 1720ms; }
   section.sw-live.notes .file :is(dt, dd) + dd { animation-duration: 560ms; }
   section.sw-live.notes .file-head .chip { animation: sw-pop 420ms var(--ease-pop) 2250ms backwards; }
-  section.sw-live.notes .notes-side li { animation: sw-rise 600ms var(--ease) backwards; }
-  section.sw-live.notes .notes-side li:nth-child(1) { animation-delay: 2400ms; }
-  section.sw-live.notes .notes-side li:nth-child(2) { animation-delay: 2550ms; }
-  section.sw-live.notes .notes-side li:nth-child(3) { animation-delay: 2700ms; }
-  section.sw-live.notes .files-label { animation: sw-fade 500ms ease-out 2950ms backwards; }
-  section.sw-live.notes .files code { animation: sw-pop 380ms var(--ease-pop) 3050ms backwards; }
-  section.sw-live.notes .files code:nth-child(2) { animation-delay: 3150ms; }
-  section.sw-live.notes .files code:nth-child(3) { animation-delay: 3250ms; }
-  section.notes { --td: 3500ms; }
+  section.sw-live.notes .files-label { animation: sw-fade 500ms ease-out 2400ms backwards; }
+  section.sw-live.notes .files code { animation: sw-pop 380ms var(--ease-pop) 2500ms backwards; }
+  section.sw-live.notes .files code:nth-child(2) { animation-delay: 2620ms; }
+  section.sw-live.notes .files code:nth-child(3) { animation-delay: 2740ms; }
+  section.notes { --td: 3100ms; }
 
   /* The board: one more check completes on each slide. */
   section.sw-live.route .slot { animation: sw-fade 600ms ease-out 300ms backwards; }
-  section.sw-live.route .route-detail ul > li { animation: sw-rise 560ms var(--ease) backwards; }
-  section.sw-live.route .route-detail ul > li:nth-child(1) { animation-delay: 250ms; }
-  section.sw-live.route .route-detail ul > li:nth-child(2) { animation-delay: 400ms; }
-  section.sw-live.route .route-detail ul > li:nth-child(3) { animation-delay: 550ms; }
   section.sw-live.route .panel { animation: sw-rise 700ms var(--ease) 150ms backwards; }
   section.sw-live.at-spec .checks > li.fresh { --t: 950ms; }
   section.sw-live.at-spec .panel :is(dt, dd) { animation: sw-write 440ms var(--ease) backwards; }
@@ -825,7 +1014,6 @@ section.thanks p em { color: var(--ink-2); }
   section.sw-live.rollback .rb-side li:nth-child(1) { animation-delay: 300ms; }
   section.sw-live.rollback .rb-side li:nth-child(2) { animation-delay: 450ms; }
   section.sw-live.rollback .rb-side li:nth-child(3) { animation-delay: 600ms; }
-  section.sw-live.rollback .rb-side li:nth-child(4) { animation-delay: 750ms; }
   section.rollback { --td: 3300ms; }
 
   /* Tool map: the table fills cell by cell. */
@@ -854,6 +1042,137 @@ section.thanks p em { color: var(--ink-2); }
   section.sw-live.check .check-notes p + p { animation-delay: 1100ms; }
   section .checklist button[aria-pressed="true"]::before { animation: sw-pop 280ms var(--ease-pop); }
   section.check { --td: 1400ms; }
+
+  /* Expansion: context budget. Session 1 fills in spurts and stops at a natural break; session 2 starts small. */
+  section.sw-live.budget .meter-card { animation: sw-rise 700ms var(--ease) backwards; }
+  section.sw-live.budget .s1 .seg.base { animation: sw-grow-x 380ms var(--ease) 350ms backwards; }
+  section.sw-live.budget .cap-base { animation: sw-write 420ms var(--ease) 550ms backwards; }
+  section.sw-live.budget .drop-zone { animation: sw-fade 500ms ease-out 700ms backwards; }
+  section.sw-live.budget .s1 .seg.task { animation: sw-fill-steps 1600ms linear 900ms backwards; }
+  section.sw-live.budget .cap-task { animation: sw-write 420ms var(--ease) 1150ms backwards; }
+  section.sw-live.budget .meter .break { animation: sw-grow-y 320ms var(--ease) 2500ms backwards; }
+  section.sw-live.budget .cap-break { animation: sw-write 480ms var(--ease) 2650ms backwards; }
+  section.sw-live.budget .meter-body > :nth-child(n + 4) { animation: sw-fade 400ms ease-out 2950ms backwards; }
+  section.sw-live.budget .s2 .seg.base { animation: sw-grow-x 380ms var(--ease) 3050ms backwards; }
+  section.sw-live.budget .s2 .seg.note { animation: sw-appear 360ms var(--ease-pop) 3350ms backwards; }
+  section.sw-live.budget .cap-note { animation: sw-write 420ms var(--ease) 3450ms backwards; }
+  section.sw-live.budget .practices > li { animation: sw-rise 520ms var(--ease) 3550ms backwards; }
+  section.sw-live.budget .practices > li:nth-child(2) { animation-delay: 3650ms; }
+  section.sw-live.budget .practices > li:nth-child(3) { animation-delay: 3750ms; }
+  section.budget { --td: 3950ms; }
+
+  /* Four roles: the relay runs left to right, and you approve each handoff. */
+  section.sw-live.roles .relay > li { animation: sw-rise 600ms var(--ease) 200ms backwards; }
+  section.sw-live.roles .relay > li:nth-child(2) { animation-delay: 1050ms; }
+  section.sw-live.roles .relay > li:nth-child(3) { animation-delay: 1900ms; }
+  section.sw-live.roles .relay > li:nth-child(4) { animation-delay: 2750ms; }
+  section.sw-live.roles .relay .out code { animation: sw-write 420ms var(--ease) 650ms backwards; }
+  section.sw-live.roles .relay > li:nth-child(2) .out code { animation-delay: 1500ms; }
+  section.sw-live.roles .relay > li:nth-child(3) .out code { animation-delay: 2350ms; }
+  section.sw-live.roles .relay > li:nth-child(4) .out code { animation-delay: 3200ms; }
+  section.sw-live.roles .relay .gate { animation: sw-fade 300ms ease-out 850ms backwards; }
+  section.sw-live.roles .relay .gate::after { animation: sw-appear 360ms var(--ease-pop) 950ms backwards; }
+  section.sw-live.roles .relay .gate i { animation: sw-appear 300ms var(--ease-pop) 1150ms backwards; }
+  section.sw-live.roles .relay > li:nth-child(3) .gate { animation-delay: 1700ms; }
+  section.sw-live.roles .relay > li:nth-child(3) .gate::after { animation-delay: 1800ms; }
+  section.sw-live.roles .relay > li:nth-child(3) .gate i { animation-delay: 2000ms; }
+  section.sw-live.roles .relay > li:nth-child(4) .gate { animation-delay: 2550ms; }
+  section.sw-live.roles .relay > li:nth-child(4) .gate::after { animation-delay: 2650ms; }
+  section.sw-live.roles .relay > li:nth-child(4) .gate i { animation-delay: 2850ms; }
+  section.sw-live.roles .relay-back path:not(.head) { animation: sw-draw 700ms var(--ease) 3450ms backwards; }
+  section.sw-live.roles .relay-back path.head { animation: sw-fade 250ms ease-out 3950ms backwards; }
+  section.sw-live.roles .approve-line { animation: sw-rise 560ms var(--ease) 3600ms backwards; }
+  section.roles { --td: 4000ms; }
+
+  /* A change is a folder: each step completes like a check, the files appear, the tasks count up, then it archives. */
+  section.sw-live.changes .lifecycle { animation: sw-fade 500ms ease-out backwards; }
+  section.sw-live.changes .lifecycle > li:nth-child(1) { --t: 650ms; }
+  section.sw-live.changes .lifecycle > li:nth-child(2) { --t: 1400ms; }
+  section.sw-live.changes .lifecycle > li:nth-child(3) { --t: 3000ms; }
+  section.sw-live.changes .lifecycle > li:nth-child(4) { --t: 3550ms; }
+  section.sw-live.changes .lifecycle > li::after { animation: sw-grow-x 380ms var(--ease) calc(var(--t) + 150ms) backwards; }
+  section.sw-live.changes .tree { animation: sw-rise 650ms var(--ease) 800ms backwards; }
+  section.sw-live.changes .tree-files > li { animation: sw-write 420ms var(--ease) 1000ms backwards; }
+  section.sw-live.changes .tree-files > li:nth-child(2) { animation-delay: 1150ms; }
+  section.sw-live.changes .tree-files > li:nth-child(3) { animation-delay: 1300ms; }
+  section.sw-live.changes .tree-files > li:nth-child(4) { animation-delay: 1450ms; }
+  section.sw-live.changes .tasks-done { --n: var(--to); animation: sw-count 1000ms steps(4, end) 1900ms backwards; }
+  section.sw-live.changes .tasks-done > span { display: none; }
+  section.sw-live.changes .tasks-done::after { content: counter(n) " of 4 done"; }
+  section.sw-live.changes .tree-status .live-only { animation: sw-transient 3550ms linear backwards; }
+  section.sw-live.changes .tree-status .pass { animation: sw-pop 420ms var(--ease-pop) 3550ms backwards; }
+  section.changes { --td: 3850ms; }
+
+  /* Reset: the warning signs stack up, HEAD walks onto the bad commits, then goes back to the last green one. */
+  section.sw-live.reset .run-log { animation: sw-rise 650ms var(--ease) backwards; }
+  section.sw-live.reset .log > li:nth-child(1) { --t: 500ms; }
+  section.sw-live.reset .log > li:nth-child(2) { --t: 1200ms; }
+  section.sw-live.reset .log > li:nth-child(3) { --t: 1900ms; }
+  section.sw-live.reset .log > li:nth-child(4) { --t: 2600ms; }
+  section.sw-live.reset .log > li > span:not(.st) { animation: sw-write 420ms var(--ease) calc(var(--t) - 300ms) backwards; }
+  section.sw-live.reset .log .sign { animation: sw-appear 360ms var(--ease-pop) calc(var(--t) + 150ms) backwards; }
+  section.sw-live.reset .git-graph { animation: sw-rise 650ms var(--ease) 150ms backwards; }
+  section.sw-live.reset .commits > li:nth-child(3) { animation: sw-appear 320ms var(--ease-pop) 1250ms backwards, sw-undrop 360ms ease-out 3100ms backwards; }
+  section.sw-live.reset .commits > li:nth-child(4) { animation: sw-appear 320ms var(--ease-pop) 2050ms backwards, sw-undrop 360ms ease-out 3100ms backwards; }
+  section.sw-live.reset .commits .dropped span { animation: sw-unstrike 360ms ease-out 3100ms backwards; }
+  section.sw-live.reset .head-tag { animation: sw-head 3200ms var(--ease) backwards; }
+  section.sw-live.reset .reset-cmd code { animation: sw-write 480ms var(--ease) 2900ms backwards; }
+  section.sw-live.reset .reset-next { animation: sw-rise 560ms var(--ease) 3350ms backwards; }
+  section.reset { --td: 3750ms; }
+
+  /* Parallel agents: lanes finish at different speeds; review approves one at a time. */
+  section.sw-live.parallel .agents-par { animation: sw-rise 650ms var(--ease) backwards; }
+  section.sw-live.parallel .par-lanes .bar i { animation: sw-grow-x 900ms cubic-bezier(0.4, 0, 0.2, 1) 300ms backwards; }
+  section.sw-live.parallel .par-lanes > li:nth-child(2) .bar i { animation-duration: 1300ms; }
+  section.sw-live.parallel .par-lanes > li:nth-child(3) .bar i { animation-duration: 1700ms; }
+  section.sw-live.parallel .par-lanes > li:nth-child(4) .bar i { animation-duration: 2100ms; }
+  section.sw-live.parallel .par-lanes .pr { animation: sw-appear 360ms var(--ease-pop) 1200ms backwards; }
+  section.sw-live.parallel .par-lanes > li:nth-child(2) .pr { animation-delay: 1600ms; }
+  section.sw-live.parallel .par-lanes > li:nth-child(3) .pr { animation-delay: 2000ms; }
+  section.sw-live.parallel .par-lanes > li:nth-child(4) .pr { animation-delay: 2400ms; }
+  section.sw-live.parallel .review-queue { animation: sw-rise 650ms var(--ease) 150ms backwards; }
+  section.sw-live.parallel .queue-items > li { animation: sw-arrive-x 420ms var(--ease) 1250ms backwards; }
+  section.sw-live.parallel .queue-items > li:nth-child(1) { --t: 2100ms; }
+  section.sw-live.parallel .queue-items > li:nth-child(2) { --t: 3000ms; animation-delay: 1650ms; }
+  section.sw-live.parallel .queue-items > li:nth-child(3) { --t: 2350ms; animation-delay: 2050ms; }
+  section.sw-live.parallel .queue-items > li:nth-child(4) { --t: 2750ms; animation-delay: 2450ms; }
+  section.sw-live.parallel .queue-items .done > span:last-child { animation: sw-write 360ms var(--ease) calc(var(--t) + 80ms) backwards; }
+  section.sw-live.parallel .par-rule { animation: sw-rise 560ms var(--ease) 3300ms backwards; }
+  section.parallel { --td: 3700ms; }
+
+  /* Security: permissions settle, an injected instruction is caught, and the action is blocked. */
+  section.sw-live.guard .perms { animation: sw-rise 650ms var(--ease) backwards; }
+  section.sw-live.guard .perms .chip { animation: sw-appear 340ms var(--ease-pop) 350ms backwards; }
+  section.sw-live.guard .perms [role="row"]:nth-child(3) .chip { animation-delay: 500ms; }
+  section.sw-live.guard .perms [role="row"]:nth-child(4) .chip { animation-delay: 650ms; }
+  section.sw-live.guard .perms [role="row"]:nth-child(5) .chip { animation-delay: 800ms; }
+  section.sw-live.guard .perms [role="row"]:nth-child(6) .chip { animation-delay: 950ms; }
+  section.sw-live.guard .untrusted { animation: sw-rise 650ms var(--ease) 1150ms backwards; }
+  section.sw-live.guard .untrusted mark { animation: sw-mark 650ms var(--ease) 1850ms backwards; }
+  section.sw-live.guard .tool-call { animation: sw-fade 400ms ease-out 2350ms backwards; }
+  section.sw-live.guard .tool-call .chip { animation: sw-stamp 380ms var(--ease-pop) 2750ms backwards; }
+  section.guard { --td: 3150ms; }
+
+  /* Extensions: rows arrive from advice to enforcement; hooks land last. */
+  section.sw-live.levers .lever-map { animation: sw-fade 500ms ease-out backwards; }
+  section.sw-live.levers .lever-map [role="row"]:nth-child(n + 2) { animation: sw-rise 520ms var(--ease) 250ms backwards; }
+  section.sw-live.levers .lever-map [role="row"]:nth-child(3) { animation-delay: 450ms; }
+  section.sw-live.levers .lever-map [role="row"]:nth-child(4) { animation-delay: 650ms; }
+  section.sw-live.levers .lever-map [role="row"]:nth-child(5) { animation-delay: 850ms; }
+  section.sw-live.levers .lever-map [role="row"]:nth-child(6) { animation-delay: 1350ms; }
+  section.sw-live.levers .lever-map .enforce .who { animation: sw-stamp 380ms var(--ease-pop) 1750ms backwards; }
+  section.levers { --td: 2200ms; }
+
+  /* Measure: the throughput metrics, then the instability ones, then the research. */
+  section.sw-live.measure .dora-card { animation: sw-rise 650ms var(--ease) backwards; }
+  section.sw-live.measure .dora-card.unstable { animation-delay: 150ms; }
+  section.sw-live.measure .dora-card li { animation: sw-write 460ms var(--ease) 400ms backwards; }
+  section.sw-live.measure .dora-card li:nth-child(2) { animation-delay: 550ms; }
+  section.sw-live.measure .dora-card li:nth-child(3) { animation-delay: 700ms; }
+  section.sw-live.measure .dora-card.unstable li { animation-delay: 1000ms; }
+  section.sw-live.measure .dora-card.unstable li:nth-child(2) { animation-delay: 1150ms; }
+  section.sw-live.measure .finding { animation: sw-rise 650ms var(--ease) 1500ms backwards; }
+  section.measure { --td: 2200ms; }
 
   /* Questions and thanks */
   section.sw-live.questions h1 { animation: sw-focus 900ms var(--ease) 200ms backwards; }

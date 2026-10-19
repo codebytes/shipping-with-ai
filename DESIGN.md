@@ -442,11 +442,12 @@ The white box every tool already uses.
 - **Head bar:** Subtle Gray with a Soft Hairline bottom, 12px 20px padding, 21px text: the name at 650, a slug or file name in Monaspace Neon, and a chip or count at the far end.
 - **Internal Padding:** rows 20px from the sides, divided by Soft Hairlines; definition lists pair a Title term with a Row definition.
 - **Footers:** a Hold-tinted warning row with a Hold-line top ("Agent edits a test? Hold."), or a plain foot with a Soft Hairline top.
-- The panel family is the spec, the test run, the queues, the regret list, the instructions file (with a mono gutter of line numbers), the release board, the deploy timeline, the tool map and the checklist card.
+- The panel family is the spec, the test run, the queues, the regret list, the instructions file (with a mono gutter of line numbers), the context meter, the role cards, the change folder, the session log, the branch graph, the agent lanes, the review queue, the permissions list, the untrusted-text panel, the extension map, the DORA cards, the release board, the deploy timeline, the tool map and the checklist card.
 
 ### Chips
 - **Style:** a 32px pill, Label type, a 15px glyph before the word in `currentColor`. The neutral chip is Subtle Gray with a Hairline border and Secondary Ink.
-- **State:** pass (check), hold (pause), agent (bot), human (person, on the neutral chip). The theme also defines a back chip (undo) that this deck doesn't use. Chips drop to 28–30px inside dense heads and pull-request rows.
+- **State:** pass (check), hold (pause), agent (bot), human (person, on the neutral chip), deny (x on Back tint: Blocked) and ask (person on Hold tint: Ask first). The theme also defines a back chip (undo) that this deck doesn't use. Chips drop to 28–30px inside dense heads and pull-request rows.
+- **Who decides:** on the extension map, the same pill names who runs an extension: violet bot for the model, the neutral person for you, and solid Ink with a check for code (hooks), the one chip that is filled.
 
 ### Status discs (signature)
 - **Shape:** a 26px circle in a family's solid with a white glyph at 62%: pass check, hold pause, fail x, back undo. A queued disc is a hollow Strong Line ring, a draft disc is a dashed ring, and a person's approval is their 32px avatar with a 17px green check badge.
@@ -469,7 +470,7 @@ The talk in one picture. A 468px card at 18px radius with the Lift shadow, padde
 
 ### Board lanes and the change card (signature)
 - **Lanes:** Spec, Build and Review in Well Gray at 16px radius with a soft border. Lane names are Meta at 650, after a dot that fills Pass Green once the change has reached that lane. The next empty lane shows a dashed "Next" slot.
-- **Change card:** Panel White, 12px radius, Panel shadow, holding the ID and Agent chip, a Title, and three checks with 22px discs. It carries `view-transition-name: sw-hero`, so under the `handoff` transition it moves column to column across slides 6 to 8, with one more check completing on each slide.
+- **Change card:** Panel White, 12px radius, Panel shadow, holding the ID and Agent chip, a Title, and three checks with 22px discs. It carries `view-transition-name: sw-hero`, so under the `handoff` transition it moves column to column across slides 9 to 11, with one more check completing on each slide.
 
 ### Release board (signature, interactive)
 - **Structure:** one full-width panel. A Subtle Gray bar (title, state pill, controls), a column head (Change, six stages with ring subtitles, Outcome), three 72px rows, a foot and a console with a 4px progress bar along its bottom edge.
@@ -486,6 +487,13 @@ Three actor boxes (Worker and Reviewer with the violet bot, You with the avatar)
 - **Checked:** the box fills Pass Green's solid with a white check (a 280ms pop) and the response turns Pass ink. A 5px green meter grows with the count. At seven of seven the card border goes Pass line, and the head goes Pass tint with a check before "All 7 checked. Ready to ship."
 - **Focus:** a 2px Focus Blue outline 3px inside the row. Print shows a blank list to keep.
 
+### Flow pieces (expansion slides)
+- **Context meter:** a 44px rounded bar per session in Subtle Gray. Segments fill left to right: Well-toned slate for what loads every session, a violet tint for the task, a 4% Secondary Ink sliver for `progress.md`. A dashed red zone with Back tint hatching marks where quality drops, and a 3px Ink tick marks the natural break. Captions sit under their segments.
+- **Role relay:** four role cards (bot, name, job, and the file each hands off) joined by gray arrows. Each arrow carries your avatar with a green check, the approval gate. An amber path returns from the Reviewer to the Worker.
+- **Change lifecycle:** four steps on a green connector, each a 28px status disc over a 25px/650 name, its command in Code type, and a 20px note; the change folder below is a file list with the mono path in the head and an Archived chip that replaces In progress.
+- **Branch graph:** commits as 16px discs on a gray line, an Ink HEAD tag that walks forward onto the bad commits and back, and dropped commits as hollow rings at 55% opacity with a red strike.
+- **Agent lanes and review queue:** violet progress bars of different lengths ending in mono pull-request pills, beside a queue of status discs (approved green, waiting amber).
+
 ### Lists, links, code and charts
 - **Bullets:** 9px Strong Line dots with a 30px indent.
 - **Links:** Takeaway Blue with a 1.5px underline at 40% alpha, 4px offset.
@@ -495,7 +503,7 @@ Three actor boxes (Worker and Reviewer with the violet bot, You with the avatar)
 
 ### Transitions
 - **lift** (default): the next slide rises 22px and fades in over 620ms while the outgoing slide is gone by 60%.
-- **handoff** (slides 6 to 8): a 900ms cross-fade whose incoming slide waits until 45%, so the change card's view transition reads as the card moving. Print and reduced motion drop the view-transition name.
+- **handoff** (slides 9 to 11): a 900ms cross-fade whose incoming slide waits until 45%, so the change card's view transition reads as the card moving. Print and reduced motion drop the view-transition name.
 
 ## Do's and Don'ts
 
@@ -517,6 +525,7 @@ Three actor boxes (Worker and Reviewer with the violet bot, You with the avatar)
 - **Don't** nest a panel in a panel, or give anything but the cover's check run and the Questions photo the Lift shadow.
 - **Don't** set prose, headings or labels in Monaspace Neon.
 - **Don't** set argument text below 22px or labels below 18px; the board rows' 16px chips, their 17px IDs and the 17px loop token are exceptions, not precedents.
+- **Don't** crowd a slide: one diagram or panel pair, at most one supporting line, then the takeaway. Detail and sources go in the speaker notes.
 - **Don't** shape a button as a pill or a status chip as a rectangle.
 - **Don't** add looping or autoplaying motion; the board's stage spinner is the only infinite animation, and it runs only after the speaker presses Run.
 - **Don't** add colored or blurred glows or tinted shadows; shadows are Ink at low alpha, and the only colored halo is the zero-blur nudge on a control waiting for the speaker.
