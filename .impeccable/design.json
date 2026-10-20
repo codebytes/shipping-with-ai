@@ -675,7 +675,7 @@
       {
         "name": "transition-handoff",
         "value": "900ms cross-fade; incoming waits to 45%, outgoing gone by 40%; view-transition-name sw-hero",
-        "purpose": "Slides 9 to 11, so the AI-0142 change card moves column to column."
+        "purpose": "The Spec, Build and Review slides, so the AI-0142 change card moves column to column."
       },
       {
         "name": "reduced-motion-and-print",

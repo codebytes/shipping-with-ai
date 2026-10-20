@@ -222,7 +222,7 @@ agent reads, and every command's output.
   Claude Code, a new chat in VS Code. Compaction (/compact, or automatic when the window fills)
   summarizes instead; a fresh start from your own notes keeps what you chose to keep.
 - Keep the baseline small: short instructions, few MCP servers, and skills, which load only a
-  description until they're used.
+  name and description until they're used.
 
 The meter is illustrative; the segment sizes are not measured.
 Sources: https://code.claude.com/docs/en/best-practices
@@ -255,7 +255,7 @@ carry the work from one to the next:
 
 - Analyst: interviews you until nothing is ambiguous, then writes requirements.md.
 - Architect: reads requirements.md, designs the solution, and writes a spec and small tasks
-  (spec.md and tasks.md, or an OpenSpec change, on the next slide).
+  (spec.md and tasks.md, or an OpenSpec change, shown after the agents-and-skills examples).
 - Worker: one task at a time, tests first, on its own branch.
 - Reviewer: a fresh session reads the diff and the tests and writes comments.md. The worker
   addresses them, and the loop repeats until the build is clean and every test passes.
@@ -265,6 +265,163 @@ You approve every handoff: nothing moves to the next role until you've read the 
 Have the model draft each role's prompt for this project, then edit it. Role prompts can live in
 GitHub Copilot custom agents (.github/agents/), Claude Code subagents (.claude/agents/), or a plain
 Markdown file any agent can be pointed at.
+-->
+
+---
+
+<!-- _class: setup agent-profile -->
+
+## Give an agent a job and a boundary.
+
+<div class="columns">
+<div class="file" role="group" aria-label="Illustrative VS Code custom agent configuration for a read-only reviewer">
+<p class="file-head"><span class="file-icon" aria-hidden="true"></span><code>.github/agents/reviewer.agent.md</code><span class="chip agent">Reviewer</span></p>
+
+```markdown
+---
+name: Reviewer
+description: Review code before human sign-off.
+tools: [read, search]
+---
+Read the spec, diff, and test results.
+Return findings with file, line, and risk.
+Do not edit, approve, or merge.
+```
+
+<p class="setup-caption">Illustrative VS Code configuration</p>
+</div>
+<div class="setup-side">
+
+<p class="setup-title">Use it for a bounded task</p>
+
+- Select Reviewer for the diff.
+- Supply the spec and test results.
+- Keep human sign-off separate.
+
+</div>
+</div>
+
+<p class="takeaway">An agent defines the role. Tools bound what it can do.</p>
+
+<!--
+Turn a recurring role into a checked-in custom agent instead of repeating the same prompt.
+Give it a purpose, the inputs it needs, a useful output, and a stopping point. "Be a senior
+engineer" is not a task contract.
+
+This is an illustrative VS Code custom agent. Save it under .github/agents/, select Reviewer,
+and give it the agreed spec, the diff, and existing test results. Its read and search tools let
+it inspect evidence, not run tests, edit code, or merge. Ask it to identify missing evidence
+rather than claiming checks it could not perform. Review the findings yourself.
+
+The prose guides behavior; the configured tool list and host permissions limit actions.
+Tool names and agent configuration differ by client. A custom agent is not automatically a
+fresh context: switching roles in the same chat can retain history. Use a new session or a
+separate subagent when you want the independent review described in the role relay.
+
+Source: https://code.visualstudio.com/docs/agent-customization/custom-agents
+-->
+
+---
+
+<!-- _class: setup skill-package -->
+
+## Package the procedure as a skill.
+
+<div class="columns">
+<div class="file" role="group" aria-label="Illustrative Agent Skills file for reviewing release readiness">
+<p class="file-head"><span class="file-icon" aria-hidden="true"></span><code>release-readiness/SKILL.md</code></p>
+
+```markdown
+---
+name: release-readiness
+description: >
+  Review release readiness. Use before
+  a rollout or go/no-go decision.
+---
+1. Read the spec, diff, and check results.
+2. Read [rollback](references/rollback.md).
+3. List gaps; leave sign-off to a person.
+```
+
+<p class="setup-caption">Illustrative skill; add the referenced rollback runbook</p>
+</div>
+<div class="setup-side">
+<p class="setup-title">Optional companions</p>
+<ul class="skill-resources">
+<li><code>references/</code><span>Runbooks and detail</span></li>
+<li><code>scripts/</code><span>Repeatable checks</span></li>
+<li><code>assets/</code><span>Templates and examples</span></li>
+</ul>
+<p class="setup-link"><a href="https://agentskills.io">agentskills.io</a> - the open format</p>
+</div>
+</div>
+
+<p class="takeaway">The agent owns the role. The skill supplies the procedure.</p>
+
+<!--
+A skill packages a repeatable procedure, not another autonomous worker. Its folder contains
+SKILL.md with YAML name and description fields, followed by Markdown instructions. The name
+matches the folder. The description says both what the skill does and when to use it.
+
+This illustrative release-readiness skill turns the same review into a repeatable checklist.
+Create references/rollback.md alongside it with the team's rollback checks; the link is an
+example, not a runbook supplied by this deck. Copilot discovers repository skills under
+.github/skills/; Claude Code uses .claude/skills/. The core format is shared across clients
+that support Agent Skills, but discovery paths and tool support vary.
+
+Try it with "Review this change for release readiness" and check that the intended skill was
+selected. Name the skill explicitly if needed. Test both prompts that should trigger it and
+ones that should not, then refine the description.
+
+The Reviewer can use this skill to inspect evidence without gaining edit or shell access.
+Optional scripts run only if the agent has the tools and permission. Skills do not grant
+permissions or replace human approval. Review third-party instructions and scripts before use,
+just as you would any other dependency.
+
+Keep stable, always-needed rules in the instructions file. Put task-specific procedures in
+skills, and review and version them with the repository.
+
+Sources: https://agentskills.io
+https://agentskills.io/specification
+-->
+
+---
+
+<!-- _class: disclosure -->
+
+## Progressive disclosure keeps context lean.
+
+<ol class="relay" aria-label="Three stages of skill loading: discover metadata at startup, activate the selected skill, and use resources only as needed">
+<li><p class="role"><b>1. Discover</b></p><p class="job">Load names and descriptions of available skills.</p><p class="out"><code>name</code><code>description</code></p><p class="load-when">At startup</p></li>
+<li><p class="role"><b>2. Activate</b></p><p class="job">Read the full instructions for the selected skill.</p><p class="out"><code>SKILL.md</code></p><p class="load-when">When the task matches</p></li>
+<li><p class="role"><b>3. Execute</b></p><p class="job">Read files or run scripts only as the task needs them.</p><p class="out"><code>references/</code><code>scripts/</code></p><p class="load-when">As needed</p></li>
+</ol>
+
+<p class="disclosure-note">A match loads one skill, not the whole library.</p>
+
+<p class="takeaway">Keep the index small. Load the detail when it matters.</p>
+
+<!--
+Progressive disclosure is the loading model described by the Agent Skills specification:
+
+1. Discovery: the agent starts with the names and descriptions of available skills, so it can
+   decide what is relevant without loading every procedure.
+2. Activation: a matching task causes the full SKILL.md instructions for the selected skill
+   to enter context. A description is a routing hint, so write a specific trigger.
+3. Execution: the agent reads referenced files or runs bundled scripts only as needed.
+   Activating a skill does not eagerly load every reference, asset, or script. Running a
+   script is not the same as pasting its source into context; its output can still consume it.
+
+For the release-readiness example, the metadata helps select the skill, SKILL.md supplies the
+review steps, and references/rollback.md supplies the detailed rollback checks when needed.
+A task can use several skills, but each is selected individually, not loaded as one library.
+
+Keep SKILL.md focused and link directly to supporting files. Do not hide essential steps in
+an unreferenced document. Metadata is still a baseline cost, so a giant catalog is not free.
+This reduces irrelevant context; it does not guarantee correct selection or correct results.
+Exact discovery and invocation behavior depends on the host.
+
+Source: https://agentskills.io/specification#progressive-disclosure
 -->
 
 ---
@@ -346,16 +503,16 @@ exists. Vibe coding loses requirements between sessions; a spec keeps them in th
 
 Tool-neutral options: OpenSpec (explore, propose, apply, archive) and GitHub Spec Kit
 (constitution, specify, plan, tasks, implement). Both install into many agents, including
-GitHub Copilot and Claude Code; slides 18 and 19 show where each piece lives. A plain spec.md
-and tasks.md in the repo works too.
+GitHub Copilot and Claude Code; the "Same practices" and "Same guardrails" slides show where
+each piece lives. A plain spec.md and tasks.md in the repo works too.
 
 Try it as two personas: an analyst that interviews you until nothing is ambiguous
 (requirements.md), then an architect that writes the spec and breaks it into phases and tasks.
 Read-back: ask the agent to restate the plan, and correct it before code exists, while mistakes
 are still cheap.
 
-Slides 9 to 11 follow one change, AI-0142, across the board. Its card moves from column to
-column as you advance, and one more check completes on each slide.
+The Spec, Build, and Review board slides follow one change, AI-0142. Its card moves from
+column to column as you advance, and one more check completes on each slide.
 -->
 
 ---
@@ -691,7 +848,7 @@ https://arxiv.org/abs/2406.10279
 <div class="lever-map" role="table" aria-label="Who decides when each kind of extension runs, and when it uses the context window">
 <div role="row"><span role="columnheader">Extension</span><span role="columnheader">Who decides</span><span role="columnheader">In the context window</span></div>
 <div role="row"><b role="rowheader">Instructions</b><span role="cell"><span class="who model">The model reads it</span></span><span role="cell">Every session</span></div>
-<div role="row"><b role="rowheader">Skills</b><span role="cell"><span class="who model">The model picks it</span></span><span role="cell">A description, until it's used</span></div>
+<div role="row"><b role="rowheader">Skills</b><span role="cell"><span class="who model">The model picks it</span></span><span role="cell">Name + description; detail on demand</span></div>
 <div role="row"><b role="rowheader">MCP servers</b><span role="cell"><span class="who model">The model calls it</span></span><span role="cell">Tool list, every session</span></div>
 <div role="row"><b role="rowheader">Prompt files</b><span role="cell"><span class="who you">You run it</span></span><span role="cell">Only when you run it</span></div>
 <div role="row" class="enforce"><b role="rowheader">Hooks</b><span role="cell"><span class="who code">Code runs it</span></span><span role="cell">Runs outside the model</span></div>
@@ -704,8 +861,8 @@ Each extension point trades reliability against context.
 
 - Instructions (AGENTS.md, .github/copilot-instructions.md, CLAUDE.md) load into every session.
   The model reads them and usually follows them, but nothing enforces them.
-- Skills (SKILL.md folders) load only their name and description up front; the full
-  instructions, scripts, and references load when the model picks the skill.
+- Skills (SKILL.md folders) load only their name and description up front. Activation loads
+  the full SKILL.md; referenced files and scripts are read or run only as needed.
 - MCP servers give the model live tools, and their tool list sits in context every session.
   Claude Code defers full tool definitions until they're needed (tool search), but every server
   still adds to the list, so load few.
@@ -716,7 +873,8 @@ Each extension point trades reliability against context.
   stops it. Only what the hook reports back reaches the model.
 
 So if something must happen every time (formatting, secret scanning, blocking pushes to main),
-make it a hook, not a sentence in the instructions. Slides 18 and 19 show where each one lives.
+make it a hook, not a sentence in the instructions. The "Same practices" and "Same guardrails"
+slides show where each one lives.
 
 Sources: https://agentskills.io/specification
 https://code.claude.com/docs/en/hooks
@@ -884,6 +1042,7 @@ section { font-size: 25px; }
 - [Rubber Duck Debugging in the Age of AI](https://chris-ayers.com/posts/copilot-or-rubber-ducky/)
 - [Augmented Coding: Beyond the Vibes](https://tidyfirst.substack.com/p/augmented-coding-beyond-the-vibes)
 - [Context Engineering for Coding Agents](https://martinfowler.com/articles/exploring-gen-ai/context-engineering-coding-agents.html)
+- [Agent Skills: format and progressive disclosure](https://agentskills.io)
 
 </div>
 <div>
