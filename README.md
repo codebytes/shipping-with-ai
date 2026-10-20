@@ -16,6 +16,7 @@ GitHub Copilot, Claude Code, or any other coding agent.
 - [Rubber Duck Debugging in the Age of AI](https://chris-ayers.com/posts/copilot-or-rubber-ducky/)
 - [Augmented Coding: Beyond the Vibes](https://tidyfirst.substack.com/p/augmented-coding-beyond-the-vibes)
 - [Context Engineering for Coding Agents](https://martinfowler.com/articles/exploring-gen-ai/context-engineering-coding-agents.html)
+- [Agent Skills: format and progressive disclosure](https://agentskills.io)
 
 ## Contact
 

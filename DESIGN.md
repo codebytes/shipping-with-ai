@@ -470,7 +470,7 @@ The talk in one picture. A 468px card at 18px radius with the Lift shadow, padde
 
 ### Board lanes and the change card (signature)
 - **Lanes:** Spec, Build and Review in Well Gray at 16px radius with a soft border. Lane names are Meta at 650, after a dot that fills Pass Green once the change has reached that lane. The next empty lane shows a dashed "Next" slot.
-- **Change card:** Panel White, 12px radius, Panel shadow, holding the ID and Agent chip, a Title, and three checks with 22px discs. It carries `view-transition-name: sw-hero`, so under the `handoff` transition it moves column to column across slides 9 to 11, with one more check completing on each slide.
+- **Change card:** Panel White, 12px radius, Panel shadow, holding the ID and Agent chip, a Title, and three checks with 22px discs. It carries `view-transition-name: sw-hero`, so under the `handoff` transition it moves column to column across the Spec, Build and Review slides, with one more check completing on each slide.
 
 ### Release board (signature, interactive)
 - **Structure:** one full-width panel. A Subtle Gray bar (title, state pill, controls), a column head (Change, six stages with ring subtitles, Outcome), three 72px rows, a foot and a console with a 4px progress bar along its bottom edge.
@@ -490,6 +490,8 @@ Three actor boxes (Worker and Reviewer with the violet bot, You with the avatar)
 ### Flow pieces (expansion slides)
 - **Context meter:** a 44px rounded bar per session in Subtle Gray. Segments fill left to right: Well-toned slate for what loads every session, a violet tint for the task, a 4% Secondary Ink sliver for `progress.md`. A dashed red zone with Back tint hatching marks where quality drops, and a 3px Ink tick marks the natural break. Captions sit under their segments.
 - **Role relay:** four role cards (bot, name, job, and the file each hands off) joined by gray arrows. Each arrow carries your avatar with a green check, the approval gate. An amber path returns from the Reviewer to the Worker.
+- **Agent and skill examples:** a 656px file panel beside 24px supporting prose, using the existing file head and a complete Markdown example at 20px mono. The source is one white surface, not a nested code panel; an 18px caption labels it illustrative. Optional skill resources use literal folder names with 22px descriptions.
+- **Progressive disclosure:** three relay cards for discovery, activation and execution, joined by neutral arrows without approval gates. Each pairs 22px loading guidance with literal metadata or file names and its loading condition. Cards arrive in order; the complete static sequence is always readable.
 - **Change lifecycle:** four steps on a green connector, each a 28px status disc over a 25px/650 name, its command in Code type, and a 20px note; the change folder below is a file list with the mono path in the head and an Archived chip that replaces In progress.
 - **Branch graph:** commits as 16px discs on a gray line, an Ink HEAD tag that walks forward onto the bad commits and back, and dropped commits as hollow rings at 55% opacity with a red strike.
 - **Agent lanes and review queue:** violet progress bars of different lengths ending in mono pull-request pills, beside a queue of status discs (approved green, waiting amber).
@@ -503,7 +505,7 @@ Three actor boxes (Worker and Reviewer with the violet bot, You with the avatar)
 
 ### Transitions
 - **lift** (default): the next slide rises 22px and fades in over 620ms while the outgoing slide is gone by 60%.
-- **handoff** (slides 9 to 11): a 900ms cross-fade whose incoming slide waits until 45%, so the change card's view transition reads as the card moving. Print and reduced motion drop the view-transition name.
+- **handoff** (Spec, Build and Review slides): a 900ms cross-fade whose incoming slide waits until 45%, so the change card's view transition reads as the card moving. Print and reduced motion drop the view-transition name.
 
 ## Do's and Don'ts
 
