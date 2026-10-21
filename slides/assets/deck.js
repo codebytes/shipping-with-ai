@@ -118,7 +118,7 @@
       messages: {
         idle: "Evidence first. Three fictional changes are queued. Run the board, or Step one stage at a time.",
         start: "Tests are running on all three changes.",
-        tests: "Tests pass. AI-0157 passes only because the agent edited an assertion.",
+        tests: "Tests pass. AI-0157 passes only because the agent weakened an assertion.",
         gate: "Review needs a person. Read each diff, then approve.",
         review: "Approved: AI-0142 and PR-0161. Held: AI-0157, because a weakened test is not evidence.",
         ring0: "Ring 0: the team runs both changes first. Health holds.",
@@ -143,7 +143,7 @@
       messages: {
         idle: "Vibe shipping. The same three changes, with no review gate and no rings. Run the board.",
         start: "Tests are running on all three changes.",
-        tests: "Tests pass. AI-0157 passes because the agent edited an assertion.",
+        tests: "Tests pass. AI-0157 passes because the agent weakened an assertion.",
         review: "Review is a rubber stamp: LGTM on every change, and nobody reads the diffs.",
         ring0: "No ring 0. The team never sees these changes first.",
         ring1: "No 1% ring, so nothing limits the blast radius.",

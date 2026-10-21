@@ -18,13 +18,18 @@ Chris Ayers presents the deck live, then shares the published HTML and PDF.
 ## Product Purpose
 
 "Shipping with AI Without Shipping Regret" is a talk by Chris Ayers. Its
-argument: AI makes code cheap to write; regret comes from shipping change nobody
-can verify. So pair agent speed with release-engineering discipline: curated
-context, small steps, tests as the contract, human review, then progressive
-rollout with fast rollback.
+argument: AI makes change easier to produce, but safe delivery still needs intent,
+evidence, and recovery. Use AI for preparation, source-backed research, meeting
+follow-up, reviewed ticket updates, and worktree experiments before production
+implementation. Then work in small steps, verify the behavior, review the change,
+and release progressively with a tested recovery path.
 
 Success: people can name the evidence a change needs before it ships, and can
 spot where AI-assisted work skips that evidence.
+The main story asks whether a change can be explained, verified, and recovered
+from safely. Implementation examples belong in the main talk beside the practices
+they support. Concrete inputs, artifacts, checks, and decisions provide the depth;
+the talk should not become a high-level survey of AI concepts.
 
 ## Positioning
 
@@ -38,6 +43,7 @@ techniques Chris proved in codebytes/marp-demo.
 
 ## Operating Context
 
+- A 60-minute talk with practical implementation depth and time for audience questions.
 - Presented live from a browser with the arrow keys or a clicker. Interactive
   controls are used in the audience window; Marp's presenter view stays static.
 - Hosted on GitHub Pages as HTML plus a PDF, with both linked from the README.
@@ -57,6 +63,10 @@ techniques Chris proved in codebytes/marp-demo.
   and readable.
 - Simulations are illustrative. No real model, repository, CI system, or
   production traffic is connected.
+- Meeting follow-ups, ticket drafts, and experiments are illustrative too.
+  Microsoft 365 Copilot meeting context and GitHub Copilot's connected tools are
+  distinct capabilities with their own permissions and availability; do not
+  imply every Copilot installation can read meetings or write work items.
 - Contact icons load Font Awesome from a CDN. New runtime assets (scripts and
   fonts) ship locally beside the deck, following marp-demo (inferred practice,
   not separately confirmed).
@@ -98,6 +108,12 @@ techniques Chris proved in codebytes/marp-demo.
 4. The speaker leads: slides support a live talk, and detail belongs in speaker
    notes.
 5. Honest demos: simulations say what they are and never imply real telemetry.
+6. Evidence before implementation: research produces sourced claims, open
+   questions, and testable hypotheses. An experiment is not a release-ready feature.
+7. Proportionate process: use only the roles and ceremony warranted by the
+   uncertainty, blast radius, and reversibility of the change.
+8. Question quality: research and domain knowledge uncover missing questions and
+   unexamined assumptions. Agent-generated questions still need external evidence.
 
 ## Accessibility & Inclusion
 
