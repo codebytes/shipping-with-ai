@@ -25,6 +25,9 @@ to name the evidence a change needs before it ships, in whatever coding agent th
 - The main flow is preparation, meeting follow-up, reviewed ticket updates, research,
   worktree experiments, implementation, verification, and safe release. Use the recurring
   questions: explain the change, verify it, and recover safely.
+- Introduce the meeting/request and draft ticket before the setup detail. Planning artifacts
+  precede agreement; worker and parallel-delivery setup precede implementation; reviewer
+  configuration and evidence precede the green approval checkpoint.
 - User-directed: weave the implementations into the main flow at the point each practice is
   used. Do not move setup examples after the conclusion. This is a 60-minute practical talk,
   not a high-level AI overview.
