@@ -15,6 +15,8 @@ The examples are part of the main story, not a required toolchain for every chan
 
 [View HTML slides](https://chris-ayers.com/shipping-with-ai/) | [Download PDF](https://chris-ayers.com/shipping-with-ai/Slides.pdf)
 
+HTML exports keep Marp's on-screen controller enabled for navigation, fullscreen, and presenter view.
+
 ## Resources
 
 - [Slide source](slides/Slides.md)
