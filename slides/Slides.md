@@ -170,6 +170,130 @@ The keyboard-navigation change is the running example from preparation through r
 
 ---
 
+<!-- _class: focus -->
+
+## Your questions frame the solution.
+
+<div class="focus-body panel">
+<dl>
+<dt>Leading</dt><dd>"How should we move focus between search results?"</dd>
+<dt>Investigate</dt><dd>"What should ArrowDown change and leave unchanged?"</dd>
+</dl>
+<p class="setup-caption">Illustrative prompts for the keyboard-navigation change</p>
+</div>
+
+<p class="takeaway">Unasked questions leave assumptions unchallenged.</p>
+
+<!--
+The questions you ask steer the agent; the questions you do not know to ask can leave the
+most important constraints unstated. Research and domain knowledge improve the question,
+not just the answer. This is not a promise that better wording alone guarantees good results.
+
+The leading question already assumes that DOM focus should move. In this search example,
+that could satisfy the request while breaking the requirement that the user can keep typing.
+Questions we might have missed: should focus stay in the input, how is the active result
+announced to a screen reader, and what happens when there are no results?
+
+Ask the agent to surface assumptions, missing constraints, alternatives, and evidence that
+would disprove the plan. Then check those suggestions against code, primary documentation,
+stakeholders, and observed behavior. Asking the same agent "what did we miss?" is useful,
+but is not independent validation that nothing is missing.
+
+An agent can answer our incomplete question very well. Two worktree experiments can also
+optimize the same wrong problem if they inherit the same unexamined assumptions.
+-->
+
+---
+
+<!-- _class: focus -->
+
+## Use Copilot for the meeting follow-up.
+
+<div class="focus-body">
+
+- Microsoft 365 Copilot: use the Teams recap.
+- GitHub Copilot: connect approved Work IQ context.
+- Separate decisions, suggestions, and open questions.
+- Keep citations; verify owners and dates.
+
+</div>
+
+<p class="takeaway">Confirm decisions before they become requirements.</p>
+
+<!--
+Introduce the running case here: a meeting requested keyboard navigation for search, but
+important behavior is still undecided. The next slide is a proposed ticket update, not an
+approved implementation. Use prepared, reviewed input for this introduction; configure the
+access boundaries before actually running connected tools or applying changes.
+
+Use Microsoft 365 Copilot in Teams to query the available meeting chat and recap. For spoken
+meeting content after the meeting, a retained transcript must be available; chat-only access
+cannot reconstruct an untranscribed discussion. Availability also depends on licensing,
+organization policies, meeting settings, and access to the source.
+
+Example prompt: "From this meeting, draft the agreed requirements, proposed ideas, action
+items, and unresolved questions as separate sections. Cite the supporting transcript or chat.
+Include owners and dates only when explicitly stated. Do not create tickets yet."
+
+Check the cited passages, then confirm ambiguous requirements with the participants. An AI
+summary is not an approval, and an action item is not automatically an acceptance criterion.
+
+GitHub Copilot is a separate product. Give the coding session a reviewed recap or connect an
+approved tool such as Work IQ to retrieve accessible Microsoft 365 context. This is not an
+automatic handoff built into every Copilot experience. Work IQ is public preview and tenant
+access requires the appropriate administrative consent; respect source access and sensitivity
+restrictions, and do not copy restricted meeting content into a public repository or ticket.
+
+Sources: https://support.microsoft.com/en-us/teams/copilot/catch-up-on-meetings-with-microsoft-365-copilot-in-teams
+https://github.com/microsoft/work-iq
+-->
+
+---
+
+<!-- _class: notes -->
+
+## Draft ticket changes, then apply them.
+
+<div class="file" role="group" aria-label="Illustrative proposed update to a keyboard-navigation work item">
+<p class="file-head"><span class="file-icon" aria-hidden="true"></span><b>Proposed ticket update</b><span class="chip hold">Needs review</span></p>
+<dl>
+<dt>Scope</dt><dd>Keyboard navigation for search</dd>
+<dt>Accept</dt><dd>Down selects next; typing keeps working</dd>
+<dt>Open</dt><dd>Stop or wrap at the final result?</dd>
+<dt>Source</dt><dd>Meeting recap + current search spec</dd>
+</dl>
+<p class="setup-caption">Illustrative Azure DevOps update; needs configured tools and permission</p>
+</div>
+
+<p class="takeaway">Review the field changes before Copilot writes them.</p>
+
+<!--
+Turn the confirmed meeting follow-up into a proposed new ticket or a patch to an existing one.
+At this point it remains a draft. Research and experiments may change the proposal; close the
+open questions and agree the implementation plan before treating it as a commitment.
+With configured Azure DevOps or GitHub tools, a coding agent can do ticket upkeep as well as
+read tickets: draft descriptions and acceptance criteria, create child tasks, link related
+work, and attach the research or experiment results.
+
+Example prompt: "Read the current work item and the reviewed meeting follow-up. Propose changes
+to the description and acceptance criteria, suggest child tasks and relevant links, and keep
+unanswered questions explicit. Preserve owner, priority, and dates unless a confirmed decision
+changes them. Show the field-by-field changes; wait for approval before applying them."
+
+For Azure DevOps, the MCP server exposes work-item create/update, child-item, comment, and link
+operations. The exact tools depend on the configured server and the caller's permissions.
+Research can stay read-only; writing needs an enabled write tool and an approved change.
+After approval, reread the item for concurrent edits, apply only the approved fields, verify
+the saved values, and return the work-item link. Do not silently overwrite a teammate's edits,
+close unrelated tickets, or manufacture commitments that were never agreed.
+
+No meeting or ticket is connected to this deck. These are workflow examples, not live actions.
+Sources: https://learn.microsoft.com/en-us/azure/devops/mcp-server/remote-mcp-server?view=azure-devops
+https://github.com/microsoft/azure-devops-mcp
+-->
+
+---
+
 <!-- _class: notes -->
 
 ## Write the standing rules once.
@@ -353,88 +477,6 @@ https://arxiv.org/abs/2406.10279
 
 <!-- _class: focus -->
 
-## Use Copilot for the meeting follow-up.
-
-<div class="focus-body">
-
-- Microsoft 365 Copilot: use the Teams recap.
-- GitHub Copilot: connect approved Work IQ context.
-- Separate decisions, suggestions, and open questions.
-- Keep citations; verify owners and dates.
-
-</div>
-
-<p class="takeaway">Confirm decisions before they become requirements.</p>
-
-<!--
-Use Microsoft 365 Copilot in Teams to query the available meeting chat and recap. For spoken
-meeting content after the meeting, a retained transcript must be available; chat-only access
-cannot reconstruct an untranscribed discussion. Availability also depends on licensing,
-organization policies, meeting settings, and access to the source.
-
-Example prompt: "From this meeting, draft the agreed requirements, proposed ideas, action
-items, and unresolved questions as separate sections. Cite the supporting transcript or chat.
-Include owners and dates only when explicitly stated. Do not create tickets yet."
-
-Check the cited passages, then confirm ambiguous requirements with the participants. An AI
-summary is not an approval, and an action item is not automatically an acceptance criterion.
-
-GitHub Copilot is a separate product. Give the coding session a reviewed recap or connect an
-approved tool such as Work IQ to retrieve accessible Microsoft 365 context. This is not an
-automatic handoff built into every Copilot experience. Work IQ is public preview and tenant
-access requires the appropriate administrative consent; respect source access and sensitivity
-restrictions, and do not copy restricted meeting content into a public repository or ticket.
-
-Sources: https://support.microsoft.com/en-us/teams/copilot/catch-up-on-meetings-with-microsoft-365-copilot-in-teams
-https://github.com/microsoft/work-iq
--->
-
----
-
-<!-- _class: notes -->
-
-## Draft ticket changes, then apply them.
-
-<div class="file" role="group" aria-label="Illustrative proposed update to a keyboard-navigation work item">
-<p class="file-head"><span class="file-icon" aria-hidden="true"></span><b>Proposed ticket update</b><span class="chip hold">Needs review</span></p>
-<dl>
-<dt>Scope</dt><dd>Keyboard navigation for search</dd>
-<dt>Accept</dt><dd>Down selects next; typing keeps working</dd>
-<dt>Open</dt><dd>Stop or wrap at the final result?</dd>
-<dt>Source</dt><dd>Meeting recap + current search spec</dd>
-</dl>
-<p class="setup-caption">Illustrative Azure DevOps update; needs configured tools and permission</p>
-</div>
-
-<p class="takeaway">Review the field changes before Copilot writes them.</p>
-
-<!--
-Turn the confirmed meeting follow-up into a proposed new ticket or a patch to an existing one.
-With configured Azure DevOps or GitHub tools, a coding agent can do ticket upkeep as well as
-read tickets: draft descriptions and acceptance criteria, create child tasks, link related
-work, and attach the research or experiment results.
-
-Example prompt: "Read the current work item and the reviewed meeting follow-up. Propose changes
-to the description and acceptance criteria, suggest child tasks and relevant links, and keep
-unanswered questions explicit. Preserve owner, priority, and dates unless a confirmed decision
-changes them. Show the field-by-field changes; wait for approval before applying them."
-
-For Azure DevOps, the MCP server exposes work-item create/update, child-item, comment, and link
-operations. The exact tools depend on the configured server and the caller's permissions.
-Research can stay read-only; writing needs an enabled write tool and an approved change.
-After approval, reread the item for concurrent edits, apply only the approved fields, verify
-the saved values, and return the work-item link. Do not silently overwrite a teammate's edits,
-close unrelated tickets, or manufacture commitments that were never agreed.
-
-No meeting or ticket is connected to this deck. These are workflow examples, not live actions.
-Sources: https://learn.microsoft.com/en-us/azure/devops/mcp-server/remote-mcp-server?view=azure-devops
-https://github.com/microsoft/azure-devops-mcp
--->
-
----
-
-<!-- _class: focus -->
-
 ## Tools and prompts do different jobs.
 
 <div class="focus-body panel">
@@ -465,41 +507,6 @@ Each extension point also trades reliability against context.
 Sources: https://agentskills.io/specification
 https://code.claude.com/docs/en/mcp
 https://code.visualstudio.com/docs/copilot/customization/prompt-files
--->
-
----
-
-<!-- _class: focus -->
-
-## Your questions frame the solution.
-
-<div class="focus-body panel">
-<dl>
-<dt>Leading</dt><dd>"How should we move focus between search results?"</dd>
-<dt>Investigate</dt><dd>"What should ArrowDown change and leave unchanged?"</dd>
-</dl>
-<p class="setup-caption">Illustrative prompts for the keyboard-navigation change</p>
-</div>
-
-<p class="takeaway">Unasked questions leave assumptions unchallenged.</p>
-
-<!--
-The questions you ask steer the agent; the questions you do not know to ask can leave the
-most important constraints unstated. Research and domain knowledge improve the question,
-not just the answer. This is not a promise that better wording alone guarantees good results.
-
-The leading question already assumes that DOM focus should move. In this search example,
-that could satisfy the request while breaking the requirement that the user can keep typing.
-Questions we might have missed: should focus stay in the input, how is the active result
-announced to a screen reader, and what happens when there are no results?
-
-Ask the agent to surface assumptions, missing constraints, alternatives, and evidence that
-would disprove the plan. Then check those suggestions against code, primary documentation,
-stakeholders, and observed behavior. Asking the same agent "what did we miss?" is useful,
-but is not independent validation that nothing is missing.
-
-An agent can answer our incomplete question very well. Two worktree experiments can also
-optimize the same wrong problem if they inherit the same unexamined assumptions.
 -->
 
 ---
@@ -660,54 +667,6 @@ Source: https://git-scm.com/docs/git-worktree
 
 ---
 
-<!-- _class: route at-spec -->
-
-## Agree on the change before implementation.
-
-<div class="lanes">
-<div class="lane"><p class="lane-name">Spec</p><div class="change" data-morph="hero"><p class="change-head"><span class="id">AI-0142</span><span class="chip agent">Agent</span></p><p class="change-title">Keyboard nav for search</p><ol class="checks"><li class="fresh"><span class="st"></span>Spec</li><li><span class="st queued"></span>Tests</li><li><span class="st queued"></span>Review</li></ol></div></div>
-<div class="lane"><p class="lane-name">Build</p><span class="slot">Next</span></div>
-<div class="lane"><p class="lane-name">Review</p></div>
-</div>
-
-<div class="route-detail">
-<div class="panel spec">
-<p class="panel-head"><b>Spec</b><code>add-keyboard-nav</code></p>
-<dl>
-<dt>Given</dt><dd>Search results are showing</dd>
-<dt>When</dt><dd>I press the down arrow</dd>
-<dt>Then</dt><dd>Next result is active; input keeps focus</dd>
-</dl>
-</div>
-</div>
-
-<p class="illus route-label">Fictional change, illustrative only</p>
-
-<p class="takeaway">Decide in the spec, not in the diff.</p>
-
-<!--
-Agree on a written, reviewable implementation contract, using the confirmed requirements and
-the research or experiment results. Disposable spikes answered questions; this is the boundary
-for production work. Make the intended behavior, constraints, non-goals, and open decisions clear.
-Changing result ranking is out of scope for this keyboard-navigation change.
-
-Tool-neutral options: OpenSpec (explore, propose, apply, archive) and GitHub Spec Kit
-(constitution, specify, plan, tasks, implement). Both install into many agents, including
-GitHub Copilot and Claude Code; the "Same practices. Different file names." reference and its
-notes show where each piece lives. A plain spec.md and tasks.md in the repo works too.
-
-Try it as two personas: an analyst that interviews you until nothing is ambiguous
-(requirements.md), then an architect that writes the spec and breaks it into phases and tasks.
-Read-back: ask the agent to restate the plan, and correct it before implementation, while
-mistakes are still cheap. Resolve the final-result boundary behavior in the ticket rather
-than letting an implementation quietly decide it.
-
-The Spec, Build, and Review board slides follow one change, AI-0142. The examples between
-those stages show how to implement the practice, rather than starting a different workflow.
--->
-
----
-
 <!-- _class: roles -->
 
 ## Plan before you build.
@@ -728,7 +687,7 @@ prompt, and files carry the work from one to the next:
 
 - Analyst: records confirmed requirements and unresolved questions in requirements.md.
 - Architect: reads requirements.md, designs the solution, and writes a spec and small tasks
-  (spec.md and tasks.md, or an OpenSpec change, shown after the agents-and-skills examples).
+  (spec.md and tasks.md, or the OpenSpec change shown next).
 
 In this workflow, review the handoff before moving to the next role. For a smaller change,
 one short brief and a focused session may be enough.
@@ -766,8 +725,8 @@ openspec/changes/<name>/:
 - tasks.md: the implementation checklist
 - specs/: spec deltas, requirements with WHEN/THEN scenarios marked ADDED, MODIFIED, or REMOVED
 
-Review the folder before any code exists: a wrong requirement is cheaper to fix in the spec than
-in the diff.
+Review the folder before production implementation begins: the earlier spikes explored
+uncertainty, while this folder records the proposed plan we are about to agree.
 
 Source: https://github.com/Fission-AI/OpenSpec
 -->
@@ -788,6 +747,9 @@ Source: https://github.com/Fission-AI/OpenSpec
 <p class="takeaway">The spec outlives the session.</p>
 
 <!--
+This is the lifecycle overview, not a claim that the example is already finished. We have
+reached Propose; Apply and Archive follow the agreed plan and completed implementation.
+
 The loop: /opsx:explore to think it through, /opsx:propose to write the folder, /opsx:apply to
 work the tasks, and /opsx:archive to move the change into openspec/changes/archive/ and update the
 living specs in openspec/specs/. GitHub Copilot spells the commands /opsx-propose and so on.
@@ -798,6 +760,140 @@ tasks are complete, rather than leaving the only record of what changed in a cha
 
 Sources: https://github.com/Fission-AI/OpenSpec
 https://github.com/github/spec-kit
+-->
+
+---
+
+<!-- _class: route at-spec -->
+
+## Agree on the change before implementation.
+
+<div class="lanes">
+<div class="lane"><p class="lane-name">Spec</p><div class="change" data-morph="hero"><p class="change-head"><span class="id">AI-0142</span><span class="chip agent">Agent</span></p><p class="change-title">Keyboard nav for search</p><ol class="checks"><li class="fresh"><span class="st"></span>Spec</li><li><span class="st queued"></span>Tests</li><li><span class="st queued"></span>Review</li></ol></div></div>
+<div class="lane"><p class="lane-name">Build</p><span class="slot">Next</span></div>
+<div class="lane"><p class="lane-name">Review</p></div>
+</div>
+
+<div class="route-detail">
+<div class="panel spec">
+<p class="panel-head"><b>Spec</b><code>add-keyboard-nav</code></p>
+<dl>
+<dt>Given</dt><dd>Search results are showing</dd>
+<dt>When</dt><dd>I press the down arrow</dd>
+<dt>Then</dt><dd>Next result is active; input keeps focus</dd>
+</dl>
+</div>
+</div>
+
+<p class="illus route-label">Fictional change, illustrative only</p>
+
+<p class="takeaway">Decide in the spec, not in the diff.</p>
+
+<!--
+Agree on a written, reviewable implementation contract, using the confirmed requirements and
+the research or experiment results. Disposable spikes answered questions; this is the boundary
+for production work. Make the intended behavior, constraints, non-goals, and open decisions clear.
+Changing result ranking is out of scope for this keyboard-navigation change.
+
+Tool-neutral options: OpenSpec (explore, propose, apply, archive) and GitHub Spec Kit
+(constitution, specify, plan, tasks, implement). Both install into many agents, including
+GitHub Copilot and Claude Code; the "Same practices. Different file names." reference and its
+notes show where each piece lives. A plain spec.md and tasks.md in the repo works too.
+
+Use the requirements, plan, and experiment evidence prepared in the preceding examples.
+Read-back: ask the agent to restate the agreed behavior and constraints before implementation.
+Resolve the final-result boundary behavior in the ticket rather than letting the code quietly
+decide it. Apply only the reviewed ticket changes and carry the agreed spec into the worker.
+
+The Spec, Build, and Review board slides follow one change, AI-0142. The examples between
+those stages show how to implement the practice, rather than starting a different workflow.
+-->
+
+---
+
+<!-- _class: roles -->
+
+## Build, then get a fresh review.
+
+<ol class="relay" aria-label="The worker implements one task. A reviewer in a separate context returns findings for the worker to address.">
+<li><p class="role"><span class="bot" aria-hidden="true"></span><b>Worker</b></p><p class="job">One task, tests first</p><p class="out"><code class="branch">search-keynav</code><span class="illus">Illustrative</span></p></li>
+<li><span class="gate" aria-hidden="true"><i></i></span><p class="role"><span class="bot" aria-hidden="true"></span><b>Reviewer</b></p><p class="job">Checks the diff and the tests</p><p class="out"><code>comments.md</code></p></li>
+</ol>
+
+<p class="approve-line"><span class="gate-mark" aria-hidden="true"><i></i></span>You approve the handoff, not just the role change.</p>
+
+<p class="takeaway">The reviewer needs a fresh context.</p>
+
+<!--
+After you approve the architect's plan, the worker starts from the spec and tasks in a fresh
+session. It implements one task at a time, tests first, on its own branch.
+
+A separate reviewer reads the diff, code, and tests, then writes comments.md. The worker
+addresses the findings; repeat until the build is clean and every test passes. An agent review
+does not replace human approval.
+
+The branch name is illustrative. Each handoff is a deliberate checkpoint, not a reason to
+automatically launch four agents for every small change.
+-->
+
+---
+
+<!-- _class: focus -->
+
+## Parallel delivery is a different problem.
+
+<div class="focus-body">
+
+- One checkout per agent.
+- Split work across different files.
+- Keep shared code in one lane.
+
+</div>
+
+<p class="takeaway">Isolate checkouts. Coordinate shared changes.</p>
+
+<!--
+Experiments can deliberately change the same files in separate worktrees to compare alternatives.
+Parallel delivery is different: several changes must eventually coexist. Use the following
+rules for delivery work, rather than treating all experimental branches as changes to merge.
+
+- Give each agent its own git worktree or cloud session, so no two edit the same checkout.
+  Claude Code: claude --worktree <name>. Copilot CLI: /delegate hands a task to the cloud agent,
+  which works on its own copilot/ branch, and /fleet splits a task across parallel subagents.
+- Split work that touches different files: independent features, docs, tests for existing code.
+- Keep changes to the same files, shared interfaces, and migrations in one lane, in order.
+- Within one session, a subagent can search the codebase or read docs in its own context window
+  and return only a summary, so the main session stays small.
+
+Sources: https://code.claude.com/docs/en/common-workflows
+https://code.claude.com/docs/en/sub-agents
+-->
+
+---
+
+<!-- _class: parallel -->
+
+## Parallel agents still need your review.
+
+<div class="review-queue">
+<p class="panel-head"><span class="avatar" aria-hidden="true"><img src="./img/avatar.png" alt=""></span><b>Your review queue</b><span class="illus">Four agents, illustrative</span></p>
+<ul class="queue-items">
+<li class="done"><span class="st" aria-hidden="true"></span><span class="id">#418</span><span>Approved</span></li>
+<li class="done"><span class="st" aria-hidden="true"></span><span class="id">#419</span><span>Approved</span></li>
+<li class="waiting"><span class="st hold" aria-hidden="true"></span><span class="id">#420</span><span>Waiting</span></li>
+<li class="waiting"><span class="st hold" aria-hidden="true"></span><span class="id">#421</span><span>Waiting</span></li>
+</ul>
+</div>
+
+<p class="takeaway">Run only as many agents as you can review.</p>
+
+<!--
+Agents finish in parallel; you review one change at a time. Review becomes the bottleneck, so
+run only as many agents as you can review well.
+In this illustration, three worktree agents and one cloud agent each opened a pull request.
+Two are approved; two are still waiting. These are fictional pull requests, not measured data.
+Use this example to set concurrency before launching delivery workers, not as another approval
+of the running keyboard-navigation change.
 -->
 
 ---
@@ -951,94 +1047,6 @@ Source: https://code.claude.com/docs/en/best-practices
 
 ---
 
-<!-- _class: route at-review -->
-
-## Agents propose. People approve.
-
-<div class="lanes">
-<div class="lane"><p class="lane-name">Spec</p></div>
-<div class="lane"><p class="lane-name">Build</p></div>
-<div class="lane"><p class="lane-name">Review</p><div class="change" data-morph="hero"><p class="change-head"><span class="id">AI-0142</span><span class="chip agent">Agent</span></p><p class="change-title">Keyboard nav for search</p><ol class="checks"><li><span class="st"></span>Spec</li><li><span class="st"></span>Tests</li><li class="fresh"><span class="st who"><img src="./img/avatar.png" alt=""><i class="badge"></i></span>Review</li></ol></div></div>
-</div>
-
-<p class="approve-line"><span class="gate-mark" aria-hidden="true"><i></i></span>Read the diff, not just the green checks.</p>
-<p class="illus route-label">Fictional change, illustrative only</p>
-
-<p class="takeaway">A fresh context is another check, not proof.</p>
-
-<!--
-Whoever wrote a change shouldn't be the one who checks it. Give the agent the same split. The
-worker implements one task with tests on its own branch. A reviewer with a fresh context (a new
-session or a separate reviewer agent) reads the diff, the code and the tests, and writes
-findings to a comments.md file. The worker addresses them. Repeat until the relevant checks
-pass and the findings are resolved. Another agent may share the same mistaken assumptions;
-ground the review in requirements and observed evidence, not agreement between models.
-
-Then a person approves it, after answering the four questions on the next slide: the intent matches the
-diff, the tests prove behavior rather than just pass, the blast radius is known, and the rollback
-is ready.
-
-In tools with custom agents or subagents, a main session can orchestrate the crew: you as
-product owner, an orchestrator, a worker, and a reviewer, with nothing committed until you say
-so. GitHub Copilot custom agents and Claude Code subagents can both hold these role prompts.
-When a repository requires approvals, your approval of a pull request from the Copilot cloud
-agent (formerly the coding agent) does not count: someone else must approve.
--->
-
----
-
-<!-- _class: focus -->
-
-## Can you explain the diff?
-
-<div class="focus-body">
-
-- Does it match the intent?
-- Do the tests prove the behavior?
-- Who could it affect?
-- How do we recover safely?
-
-</div>
-
-<p class="takeaway">If you can't explain it, don't approve it.</p>
-
-<!--
-Read these as questions, not boxes to tick because a pipeline is green. The blast radius
-must be known and the rollback ready before approval.
-Explaining a change out loud, to a person, a rubber duck, or an AI, is how you find out whether
-you understand it.
-Source: https://chris-ayers.com/posts/copilot-or-rubber-ducky/
--->
-
----
-
-<!-- _class: roles -->
-
-## Build, then get a fresh review.
-
-<ol class="relay" aria-label="The worker implements one task. A reviewer in a separate context returns findings for the worker to address.">
-<li><p class="role"><span class="bot" aria-hidden="true"></span><b>Worker</b></p><p class="job">One task, tests first</p><p class="out"><code class="branch">search-keynav</code><span class="illus">Illustrative</span></p></li>
-<li><span class="gate" aria-hidden="true"><i></i></span><p class="role"><span class="bot" aria-hidden="true"></span><b>Reviewer</b></p><p class="job">Checks the diff and the tests</p><p class="out"><code>comments.md</code></p></li>
-</ol>
-
-<p class="approve-line"><span class="gate-mark" aria-hidden="true"><i></i></span>You approve the handoff, not just the role change.</p>
-
-<p class="takeaway">The reviewer needs a fresh context.</p>
-
-<!--
-After you approve the architect's plan, the worker starts from the spec and tasks in a fresh
-session. It implements one task at a time, tests first, on its own branch.
-
-A separate reviewer reads the diff, code, and tests, then writes comments.md. The worker
-addresses the findings; repeat until the build is clean and every test passes. An agent review
-does not replace human approval.
-
-The branch name is illustrative. Each handoff is a deliberate checkpoint, not a reason to
-automatically launch four agents for every small change.
--->
-
----
-
 <!-- _class: setup agent-profile -->
 
 ## Give the reviewer a boundary.
@@ -1172,64 +1180,6 @@ Source: https://agentskills.io/specification#progressive-disclosure
 
 ---
 
-<!-- _class: focus -->
-
-## Parallel delivery is a different problem.
-
-<div class="focus-body">
-
-- One checkout per agent.
-- Split work across different files.
-- Keep shared code in one lane.
-
-</div>
-
-<p class="takeaway">Isolate checkouts. Coordinate shared changes.</p>
-
-<!--
-Experiments can deliberately change the same files in separate worktrees to compare alternatives.
-Parallel delivery is different: several changes must eventually coexist. Use the following
-rules for delivery work, rather than treating all experimental branches as changes to merge.
-
-- Give each agent its own git worktree or cloud session, so no two edit the same checkout.
-  Claude Code: claude --worktree <name>. Copilot CLI: /delegate hands a task to the cloud agent,
-  which works on its own copilot/ branch, and /fleet splits a task across parallel subagents.
-- Split work that touches different files: independent features, docs, tests for existing code.
-- Keep changes to the same files, shared interfaces, and migrations in one lane, in order.
-- Within one session, a subagent can search the codebase or read docs in its own context window
-  and return only a summary, so the main session stays small.
-
-Sources: https://code.claude.com/docs/en/common-workflows
-https://code.claude.com/docs/en/sub-agents
--->
-
----
-
-<!-- _class: parallel -->
-
-## Parallel agents still need your review.
-
-<div class="review-queue">
-<p class="panel-head"><span class="avatar" aria-hidden="true"><img src="./img/avatar.png" alt=""></span><b>Your review queue</b><span class="illus">Four agents, illustrative</span></p>
-<ul class="queue-items">
-<li class="done"><span class="st" aria-hidden="true"></span><span class="id">#418</span><span>Approved</span></li>
-<li class="done"><span class="st" aria-hidden="true"></span><span class="id">#419</span><span>Approved</span></li>
-<li class="waiting"><span class="st hold" aria-hidden="true"></span><span class="id">#420</span><span>Waiting</span></li>
-<li class="waiting"><span class="st hold" aria-hidden="true"></span><span class="id">#421</span><span>Waiting</span></li>
-</ul>
-</div>
-
-<p class="takeaway">Run only as many agents as you can review.</p>
-
-<!--
-Agents finish in parallel; you review one change at a time. Review becomes the bottleneck, so
-run only as many agents as you can review well.
-In this illustration, three worktree agents and one cloud agent each opened a pull request.
-Two are approved; two are still waiting. These are fictional pull requests, not measured data.
--->
-
----
-
 <!-- _class: map -->
 
 ## Same practices. Different file names.
@@ -1272,6 +1222,67 @@ read each other's files: Copilot CLI and the cloud agent also accept CLAUDE.md, 
 Check current vendor docs before presenting:
 https://docs.github.com/en/copilot/reference/customization-cheat-sheet
 https://code.claude.com/docs/en/overview
+-->
+
+---
+
+<!-- _class: focus -->
+
+## Can you explain the diff?
+
+<div class="focus-body">
+
+- Does it match the intent?
+- Do the tests prove the behavior?
+- Who could it affect?
+- How do we recover safely?
+
+</div>
+
+<p class="takeaway">If you can't explain it, don't approve it.</p>
+
+<!--
+Read these as questions, not boxes to tick because a pipeline is green. The blast radius
+must be known and the rollback ready before approval.
+Explaining a change out loud, to a person, a rubber duck, or an AI, is how you find out whether
+you understand it.
+Source: https://chris-ayers.com/posts/copilot-or-rubber-ducky/
+-->
+
+---
+
+<!-- _class: route at-review -->
+
+## Agents propose. People approve.
+
+<div class="lanes">
+<div class="lane"><p class="lane-name">Spec</p></div>
+<div class="lane"><p class="lane-name">Build</p></div>
+<div class="lane"><p class="lane-name">Review</p><div class="change" data-morph="hero"><p class="change-head"><span class="id">AI-0142</span><span class="chip agent">Agent</span></p><p class="change-title">Keyboard nav for search</p><ol class="checks"><li><span class="st"></span>Spec</li><li><span class="st"></span>Tests</li><li class="fresh"><span class="st who"><img src="./img/avatar.png" alt=""><i class="badge"></i></span>Review</li></ol></div></div>
+</div>
+
+<p class="approve-line"><span class="gate-mark" aria-hidden="true"><i></i></span>Read the diff, not just the green checks.</p>
+<p class="illus route-label">Fictional change, illustrative only</p>
+
+<p class="takeaway">A fresh context is another check, not proof.</p>
+
+<!--
+Whoever wrote a change shouldn't be the one who checks it. Give the agent the same split. The
+worker implements one task with tests on its own branch. A reviewer with a fresh context (a new
+session or a separate reviewer agent) reads the diff, the code and the tests, and writes
+findings to a comments.md file. The worker addresses them. Repeat until the relevant checks
+pass and the findings are resolved. Another agent may share the same mistaken assumptions;
+ground the review in requirements and observed evidence, not agreement between models.
+
+Only now does a person approve it, using the four questions just considered: the intent matches
+the diff, the tests prove behavior rather than just pass, the blast radius is known, and the
+recovery plan is ready. Reviewer setup and evidence gathering precede this approval checkpoint.
+
+In tools with custom agents or subagents, a main session can orchestrate the crew: you as
+product owner, an orchestrator, a worker, and a reviewer, with nothing committed until you say
+so. GitHub Copilot custom agents and Claude Code subagents can both hold these role prompts.
+When a repository requires approvals, your approval of a pull request from the Copilot cloud
+agent (formerly the coding agent) does not count: someone else must approve.
 -->
 
 ---
@@ -1421,6 +1432,8 @@ Interactive in the HTML deck, in the audience window. Nothing autoplays.
    gate rolls it back. AI-0142 lands.
 4. Switch the scenario to Vibe shipping and run again: review is a rubber stamp, rings are
    skipped, and two changes become incidents at 100%.
+5. Switch back to Evidence first and complete its approved run. Leave the audience on the
+   landed, held, and contained-rollback outcomes, not on Vibe shipping.
 
 Step advances one stage but never skips the approval. 2x doubles the speed. Changes, timings,
 and percentages are fictional and illustrative. The PDF shows the Evidence first outcome, with a
