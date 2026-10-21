@@ -296,9 +296,9 @@ components:
 
 There is no governing metaphor, and the North Star says so on purpose. Every picture in the deck is a piece of release tooling the audience already trusts: a check run, a pull-request queue, a project board, an instructions file, a deployment timeline, a checklist. Each is redrawn crisp and large for a 1280×720 slide. The talk argues that a change needs evidence before it ships, so the illustrations are the evidence surfaces themselves. The deck refuses costume worlds and the dark neon AI deck.
 
-The material is a light product UI, enlarged for a room. A cool off-white canvas carries a faint blue wash from the top-right corner. White panels have hairline borders and soft, ink-tinted offset shadows. Mona Sans sets every word, and Monaspace Neon appears only where the audience reads a literal string. Color stays neutral until something has a state: four status hues with fixed meanings, each paired with a glyph, and one blue saved for the slide's takeaway, links and focus. Density is GitHub-scale (rows, chips, counts, IDs), but every size is lifted for the back of the room.
+The material is a light product UI, enlarged for a room. A cool off-white canvas carries a faint blue wash from the top-right corner. White panels have hairline borders and soft, ink-tinted offset shadows. Mona Sans sets every word, and Monaspace Neon appears only where the audience reads a literal string. Color stays neutral until something has a state: four status hues with fixed meanings, each paired with a glyph, and one blue saved for the slide's takeaway, links and focus. The tooling supplies the visual language, not its screen density: normal slides show one idea with room to breathe.
 
-Each slide has one authored moment: the cover's checks turning green, two queues filling at different rates, three checks failing, a file written line by line, one more check on each board slide, a review loop that ends in a merge box, an error line crossing the health gate, a table filling, a checklist cascade. The finished state is the markup. Motion only replays how the slide got there, once, on the live audience slide. It uses two easings: `cubic-bezier(0.16, 1, 0.3, 1)` for arrivals and an overshooting `cubic-bezier(0.34, 1.56, 0.64, 1)` for results that pop.
+Each illustrated slide has one authored moment: the cover's checks turning green, two queues filling at different rates, three checks failing, a file written line by line, a two-role handoff, one more check on each board slide, a rollback timeline, a table filling, a checklist cascade. Plain-language slides can stay still apart from the takeaway. The finished state is the markup. Motion only replays how the slide got there, once, on the live audience slide. It uses two easings: `cubic-bezier(0.16, 1, 0.3, 1)` for arrivals and an overshooting `cubic-bezier(0.34, 1.56, 0.64, 1)` for results that pop.
 
 **Key Characteristics:**
 - Cool off-white canvas, white hairline panels, soft offset shadows; panels never nest.
@@ -309,11 +309,17 @@ Each slide has one authored moment: the cover's checks turning green, two queues
 - Simulated material is labeled illustrative on the slide itself.
 
 ### Named Rules
-**The Complete Without Motion Rule.** The authored markup is the finished slide; motion only replays the path to it. deck.js adds `sw-live` to a slide only in the audience window, while that slide is active, the page is visible and not printing, and no reduced-motion preference is set. Every effect sits inside `prefers-reduced-motion: no-preference`, fills `backwards` from a visible default, and settles by 4.95s (the review slide is the longest). The one infinite animation is the release board's stage spinner while a speaker-started run is going.
+**The Complete Without Motion Rule.** The authored markup is the finished slide; motion only replays the path to it. deck.js adds `sw-live` to a slide only in the audience window, while that slide is active, the page is visible and not printing, and no reduced-motion preference is set. Every effect sits inside `prefers-reduced-motion: no-preference`, fills `backwards` from a visible default, and settles by 4.95s. The one infinite animation is the release board's stage spinner while a speaker-started run is going.
 
 **The Static Twin Rule.** Anything that only makes sense live has a static twin. `.sw-static` shows until its section is `data-enhanced="true"`, and `.sw-dynamic` only after. `.live-only` text stays hidden and appears only inside a finite `transient` animation. Print turns off all animation and transitions and hides dynamic twins and board controls. The release board's authored markup is its PDF snapshot, and the script restores it whenever the slide leaves the audience view.
 
 **The Illustrative Label Rule.** Every simulated change, count, rate or board says so on the slide in an 18px Secondary Ink line ("Fictional change, illustrative only", "Illustrative: seven drafted and two shipped is not measured data"), never only in the speaker notes.
+
+**The One Idea Rule.** A normal teaching slide has one focused illustration or two to four short points. Split a mechanism from its setup, a warning from its recovery, and a procedure from its reference material. Put supporting explanation, complete examples and sources in HTML speaker notes; do not fit more by shrinking type. The two intentional complexity exceptions are the interactive release board and the consolidated cross-tool configuration reference. The final checklist remains one readable list, without a second column of explanation. Bookend contact text stays as authored.
+
+**The Evidence-First Story Rule.** Follow the change from preparation and meeting follow-up into a reviewed ticket, source-backed research, and comparable worktree experiments before production implementation. Then verify the behavior, review the evidence, limit exposure, and recover safely. Examples distinguish facts, assumptions, and unrun checks. Explain the practice before its tooling; use a process proportionate to the risk.
+
+**The Integrated Implementation Rule.** Show implementation examples in the main talk where each practice is used: standing instructions and context during preparation, tools and hooks with connected workflows, role prompts and spec files with planning, and custom agents and skills with review. Keep the examples concrete and the individual slides simple. Complete the implementation material before the release section, then close with the next-PR checklist, references, Questions, the authored Thank You contact block, and the final image pair.
 
 ## Colors
 
@@ -327,7 +333,7 @@ GitHub's light product palette at slide scale: cool grays carry structure, four 
 The release states. Each family has four steps: an **ink** for letters (at least 6.5:1 on its own tint), a **solid** for discs, bars and strokes (white glyphs on it hold at least 4.8:1), a **tint** for chip and row fills, and a **line** for chip borders.
 - **Pass Green** (#116329 ink, #1a7f37 solid, #dafbe1 tint, #aceebb line): agreed, passed, approved, shipped, landed; completed rings, connectors, meters and progress.
 - **Merge Green** (#1f883d): the one filled action, drawn from the merge button: the release board's Approve and the review slide's "Merge pull request". Hover darkens it to Pass Green's solid. White 18px/600 on it is 4.5:1, so its label never drops below weight 600.
-- **Hold Amber** (#7d4e00 ink, #9a6700 solid, #fff8c5 tint, #eed888 line): in progress, waiting on a person, held, and suspect ("Pass*", a test edited until it passed).
+- **Hold Amber** (#7d4e00 ink, #9a6700 solid, #fff8c5 tint, #eed888 line): in progress, waiting on a person, held, and suspect ("Pass*", a test weakened to pass).
 - **Spinner Amber** (#bf8700): only the rotating arcs of work in progress and the progress bar while a run is underway.
 - **Back Red** (#a40e26 ink, #cf222e solid, #ffebe9 tint, #ffcecb line): failed checks, errors, incidents, the health gate and rollbacks.
 
@@ -365,7 +371,8 @@ The `invert` template class remaps every role to its GitHub dark-mode equivalent
 - **Display** (690, 74px, 1.03): the cover title, in a two-line left column. The theme's base h1 is 76px; the closing slides scale the same cut to 96px ("Questions?") and 64px ("Thank You!").
 - **Headline** (690, 48px, 1.1): one claim per content slide, at most 1080px wide with balanced wrapping. The bio name sits at 56px.
 - **Takeaway** (650, 30px, 1.25): the closing line of an argument slide, in Takeaway Blue.
-- **Body** (430, 26px, 1.45): the theme's base for un-classed slides; the byline name and the check run's title sit at this size in bold. This deck's composed slides set prose smaller: 25px for the bio and checklist notes, Body Side beside panels.
+- **Body** (430, 26px, 1.45): the theme's base for un-classed slides; the byline name and the check run's title sit at this size in bold. The bio and closing contact block retain their authored 25px text.
+- **Focused body** (430, 32px, 1.45): short points on `focus` slides, with 24px between items. Focused panel definitions and the standalone references use 28px; complete agent and skill examples use 22px mono.
 - **Body Side** (430, 24px, 1.4): prose beside a panel or under the board.
 - **Title** and **Row** (650 and 430, 22px, 1.3): term-and-definition pairs inside panels, row titles, change titles, timeline steps, table row heads.
 - **Panel Head** (21px, 1.25; the name inside it at 650): the head bar of every panel.
@@ -391,13 +398,15 @@ A fixed 1280×720 canvas, padded 50px at the top and 72px at the sides, with not
 - **Bookends** (cover, Questions): a two-column grid, text left and object right (the check run in a 468px column, the photo in 608px), 48px apart and vertically centered. The cover, Questions and Thank You slides drop the footer and page number.
 - **Bio**: the portrait as a left 40% background over Avatar Tint, the text centered vertically.
 - **Content**: headline at the top, the tooling object beneath, takeaway pinned at the bottom. The object takes one of four forms:
-  - Panel left, prose right: a 600–664px panel on the left margin, 132–134px from the top, with prose starting 40–50px to its right.
+  - One centered object: a panel up to 960px wide, in normal flow beneath the headline. Instructions, code examples, warnings, recovery, permissions, rollback and metrics each get their own slide.
   - Two queues side by side, 36px apart.
-  - Board slides: three lanes 18px apart, then a detail grid of prose and a 600px panel, 40px apart.
+  - Board slides: three lanes 18px apart, followed by one spec or test panel, or one human-review reminder. Concrete evidence and recovery lessons may separate the stages; do not reorder the story to preserve a morph.
   - One full-width panel: the regret list, the release board, the tool map.
-- **Thank You**: two columns 56px apart, references and contact, under 32px column heads.
+- **References and Thank You**: separate closing slides. The further-reading list follows the next-PR checklist; Questions and the unchanged Thank You contact block lead into the final image card.
+- **Final image card**: the supplied event poster on the left and feedback QR code on the right, in equal columns with 40px outer padding and gap. Use `object-fit: contain`, no footer or page number, and preserve the complete images and QR quiet zone.
 
 Rhythm: list items 12px apart (14–16px in side columns), panel rows divided by Soft Hairlines rather than gaps, list rows 47–49px tall, board rows 72px, panel content 20px from the panel's sides. Template classes from the theme: `lead` centers a slide, `columns` makes two columns 48px apart, `small` drops the body to 22px and h2 to 40px.
+The simplified deck uses `focus` for a single 960px reading column, not `small` to squeeze content. Its enlarged panel rows are 62–76px tall where the shorter content allows it.
 
 ### Named Rules
 **The 72px Margin Rule.** Everything that anchors to an edge anchors to the 72px margin: the footer, the page number, the takeaway, positioned panels and the release board's static comparison line.
@@ -479,8 +488,8 @@ The talk in one picture. A 468px card at 18px radius with the Lift shadow, padde
 - **States:** static (the authored snapshot, used for print, presenter and no-script), idle (Ready), running (amber state pill, amber progress, spinning stage), paused, awaiting (waits for Approve; Step never skips the gate) and complete (green state pill; the outcome takeaway arrives). Nothing autoplays. A 2× toggle doubles the speed.
 - **Static twin:** a "Static snapshot: Evidence first" label, and a one-line Vibe-shipping comparison in pass and back pills, stand in for the controls and the outcome takeaway.
 
-### Review loop
-Three actor boxes (Worker and Reviewer with the violet bot, You with the avatar) joined by SVG arrows in Strong Line, with the return path ("comments.md") in Hold amber. The AI-0142 token, an 8px violet-bordered mono label, travels the loop once (3.8s) into the merge box. There, "Waiting for your approval" gives way to "Approved", and the Merge pull request button turns from disabled to Merge Green.
+### Review sequence
+The Worker/Reviewer role pair introduces the independent review. AI-0142 then crosses the three board slides, ending with the person's checked avatar in Review. A separate plain-language slide asks about intent, test evidence, blast radius and rollback. The worker/reviewer feedback loop and tool-specific approval rules stay in the notes, rather than competing with the board.
 
 ### Checklist (signature, interactive)
 - **Rows:** challenge and response, 49px tall: a 23px/560 item and a 20px response in Secondary Ink, after a 24px rounded-square box (7px radius, 2px Strong Line border).
@@ -489,18 +498,18 @@ Three actor boxes (Worker and Reviewer with the violet bot, You with the avatar)
 
 ### Flow pieces (expansion slides)
 - **Context meter:** a 44px rounded bar per session in Subtle Gray. Segments fill left to right: Well-toned slate for what loads every session, a violet tint for the task, a 4% Secondary Ink sliver for `progress.md`. A dashed red zone with Back tint hatching marks where quality drops, and a 3px Ink tick marks the natural break. Captions sit under their segments.
-- **Role relay:** four role cards (bot, name, job, and the file each hands off) joined by gray arrows. Each arrow carries your avatar with a green check, the approval gate. An amber path returns from the Reviewer to the Worker.
-- **Agent and skill examples:** a 656px file panel beside 24px supporting prose, using the existing file head and a complete Markdown example at 20px mono. The source is one white surface, not a nested code panel; an 18px caption labels it illustrative. Optional skill resources use literal folder names with 22px descriptions.
-- **Progressive disclosure:** three relay cards for discovery, activation and execution, joined by neutral arrows without approval gates. Each pairs 22px loading guidance with literal metadata or file names and its loading condition. Cards arrive in order; the complete static sequence is always readable.
-- **Change lifecycle:** four steps on a green connector, each a 28px status disc over a 25px/650 name, its command in Code type, and a 20px note; the change folder below is a file list with the mono path in the head and an Archived chip that replaces In progress.
+- **Role relay:** two cards per slide: Analyst/Architect, then Worker/Reviewer. A gray arrow carries your avatar and green check for the approved handoff. Each card keeps only the role, one job and its output file; feedback-loop detail is in notes.
+- **Agent and skill examples:** a single 960px file panel using the existing file head and a complete Markdown example at 22px mono. The source is one white surface, not a nested code panel; an 18px caption labels it illustrative. Usage instructions and optional companions are in notes.
+- **Progressive disclosure:** three relay cards for discovery, activation and loading detail, joined by neutral arrows without approval gates. Each shows only the stage, the metadata or file loaded, and when it loads. Cards arrive in order; the complete static sequence is always readable.
+- **Change lifecycle:** four steps on a green connector, each a 28px status disc over a 30px/650 name and a 20px command. The change folder is a separate slide with four 62px file rows. The rollout introduction reuses the connector for Team, 1%, 10%, Everyone, labeled illustrative.
 - **Branch graph:** commits as 16px discs on a gray line, an Ink HEAD tag that walks forward onto the bad commits and back, and dropped commits as hollow rings at 55% opacity with a red strike.
-- **Agent lanes and review queue:** violet progress bars of different lengths ending in mono pull-request pills, beside a queue of status discs (approved green, waiting amber).
+- **Review queue:** one full-width queue of status discs (approved green, waiting amber), labeled as four illustrative agents. Pair it with the worktree isolation and shared-file rules for parallel delivery.
 
 ### Lists, links, code and charts
 - **Bullets:** 9px Strong Line dots with a 30px indent.
 - **Links:** Takeaway Blue with a 1.5px underline at 40% alpha, 4px offset.
 - **Inline code:** Code type on Code Fill with a Soft Hairline border at 6px radius; it never wraps.
-- **Deploy timeline:** 26px discs on a 2px connector, a 22px/640 step, an 18px note, and the outcome word right-aligned in its status ink.
+- **Deploy timeline:** one panel with four rows: a 26px disc on a 2px connector, a 24px step and exposure label, and a 22px outcome in its status ink. The rollback preparations are on a separate slide.
 - **Error chart:** a 3px Ink line against a dashed red health gate, with a red trip dot where it crosses.
 
 ### Transitions

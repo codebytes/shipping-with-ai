@@ -1,10 +1,15 @@
 # Shipping with AI Without Shipping Regret
 
-A talk by Chris Ayers on keeping the speed of coding agents without the regret. AI makes
-code cheap to write; regret comes from shipping change nobody can explain, verify, or undo.
-Pair agents with release-engineering discipline: standing instructions, specs, small steps,
-tests as the contract, human review, progressive rollout, and a rehearsed rollback, in
-GitHub Copilot, Claude Code, or any other coding agent.
+A practical 60-minute talk by Chris Ayers on keeping the speed of coding agents without the regret. AI makes
+code cheap to write; regret comes from shipping change nobody can explain, verify, or recover
+from safely. Use AI before implementation: prepare for discussions, turn meeting follow-ups into
+confirmed requirements and reviewed ticket updates, research with sources, and compare ideas in
+isolated worktrees. Then pair that evidence with small changes, behavioral checks, accountable
+review, progressive rollout, and a rehearsed recovery plan.
+
+The talk follows that change from preparation to production, weaving in implementations for
+instructions, agents, skills, OpenSpec, MCP, and hooks where they support the practice.
+The examples are part of the main story, not a required toolchain for every change.
 
 ## Slides
 
@@ -17,6 +22,10 @@ GitHub Copilot, Claude Code, or any other coding agent.
 - [Augmented Coding: Beyond the Vibes](https://tidyfirst.substack.com/p/augmented-coding-beyond-the-vibes)
 - [Context Engineering for Coding Agents](https://martinfowler.com/articles/exploring-gen-ai/context-engineering-coding-agents.html)
 - [Agent Skills: format and progressive disclosure](https://agentskills.io)
+- [Meeting follow-up with Microsoft 365 Copilot in Teams](https://support.microsoft.com/en-us/teams/copilot/catch-up-on-meetings-with-microsoft-365-copilot-in-teams)
+- [Work IQ: Microsoft 365 context for GitHub Copilot](https://github.com/microsoft/work-iq)
+- [Azure DevOps MCP: connected work-item tools](https://learn.microsoft.com/en-us/azure/devops/mcp-server/remote-mcp-server?view=azure-devops)
+- [Git worktrees for isolated experiments](https://git-scm.com/docs/git-worktree)
 
 ## Contact
 

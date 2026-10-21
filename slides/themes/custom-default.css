@@ -10,8 +10,8 @@
  *   shadows; Mona Sans throughout, Monaspace Neon only for IDs, code, and file names; status
  *   colors with fixed meanings: green pass, amber in progress or held, red errors and rollback,
  *   violet agent; one blue accent for takeaways and links.
- * STORY: Code got cheap; regret has three shapes; instructions, a spec, tests, and review move
- *   one change (AI-0142) across a board; a release board ships to rings; a rollback; a checklist.
+ * STORY: Prepare and research; turn meetings into reviewed requirements; compare experiments;
+ *   explain, verify, and safely release AI-0142. Show implementations where each practice is used.
  * FIRST VIEWPORT: The title at 74px on the left; on the right, AI-0142's check run turning
  *   green step by step: spec, tests, a human approval, rings filling to 100%, then Landed.
  * FORM: The category standard, chosen by the speaker over the dealt directions and set light;
@@ -349,7 +349,7 @@ section.bio :is(s, del), section.thanks :is(s, del) { color: var(--ink-2); }
 
 /* ---------- Two queues: drafts pour in, shipped changes arrive one at a time ---------- */
 
-section.cheap .queues { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+section.cheap .queues { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: start; margin-top: 40px; }
 section .queue-head { justify-content: space-between; }
 section .count { min-width: 36px; height: 30px; padding: 0 11px; border-radius: 999px; background: var(--well); color: var(--ink); font: 650 19px/30px var(--sans); text-align: center; counter-reset: n var(--n); }
 section .shipped .count { background: var(--pass-tint); color: var(--pass); }
@@ -361,26 +361,27 @@ section .prs .pr-title { overflow: hidden; font-weight: 560; white-space: nowrap
 section .prs .chip { height: 30px; }
 section .prs > li.awaiting { display: flex; color: var(--ink-2); font-size: 20px; font-style: italic; }
 section .prs > li.awaiting + li.awaiting { border-top-style: dashed; }
-section.cheap .illus { margin-top: 14px; }
+section.cheap .prs > li { grid-template-columns: 24px minmax(0, 1fr); height: 62px; font-size: 24px; }
+section.cheap .illus { margin-top: 22px; }
 
 /* ---------- Regret: three failing checks ---------- */
 
-section .regret { display: grid; grid-template-columns: 26px 232px 234px minmax(0, 1fr); align-items: center; column-gap: 24px; padding: 31px 28px; }
+section .regret { display: grid; grid-template-columns: 26px 330px minmax(0, 1fr); align-items: center; column-gap: 24px; padding: 35px 28px; }
 section .regret + .regret { border-top: 1px solid var(--line-soft); }
 section .regret .cue { display: inline-flex; width: fit-content; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; font-size: 19px; font-weight: 620; line-height: 1; }
 section .regret .cue b { padding: 8px 12px 8px 14px; background: var(--subtle); color: var(--ink); font-weight: 650; }
 section .regret .cue span { padding: 8px 14px 8px 12px; border-left: 1px solid var(--back-line); background: var(--back-tint); color: var(--back); }
-section .regret strong { font-size: 27px; font-weight: 650; letter-spacing: -0.01em; }
-section .regret .line { font-size: 23px; line-height: 1.35; color: var(--ink-2); }
+section .regret strong { font-size: 30px; font-weight: 650; letter-spacing: -0.01em; }
+section .regret .line { font-size: 26px; line-height: 1.35; color: var(--ink-2); }
 
 /* ---------- Instructions: the file every session reads ---------- */
 
-section.notes .file { position: absolute; left: 72px; top: 132px; width: 664px; overflow: hidden; }
+section.notes .file { max-width: 960px; margin: 40px auto 0; overflow: hidden; }
 section .file-icon { width: 20px; height: 20px; background: var(--ink-2); -webkit-mask: var(--i-file) center / contain no-repeat; mask: var(--i-file) center / contain no-repeat; }
 section .file-head code { color: var(--ink); font-weight: 600; font-size: 19px; }
 section .file-head .chip { margin-left: auto; }
-section .file dl { display: grid; grid-template-columns: 116px minmax(0, 1fr); column-gap: 16px; margin: 0; padding: 10px 24px 14px 72px; counter-reset: line; }
-section .file dt, section .file dd { margin: 0; padding: 8px 0; font-size: 22px; line-height: 1.3; }
+section .file dl { display: grid; grid-template-columns: 150px minmax(0, 1fr); column-gap: 24px; margin: 0; padding: 10px 24px 14px 72px; counter-reset: line; }
+section .file dt, section .file dd { margin: 0; padding: 10px 0; font-size: 26px; line-height: 1.3; }
 section .file dt { position: relative; counter-increment: line; color: var(--ink); font-weight: 650; }
 section .file dd code { padding: 0.04em 0.3em; font-size: 0.86em; }
 section .file dt::before { content: counter(line); position: absolute; left: -52px; width: 30px; text-align: right; font: 400 18px/1.6 var(--mono); color: var(--line-strong); }
@@ -422,6 +423,8 @@ section .runs .st { width: 22px; height: 22px; }
 section .runs b { color: var(--pass); font-size: 19px; font-weight: 640; }
 section .panel .warn { display: flex; align-items: center; gap: 12px; padding: 8px 20px; border-top: 1px solid var(--hold-line); border-radius: 0 0 var(--radius) var(--radius); background: var(--hold-tint); color: var(--hold); font-size: 21px; font-weight: 620; }
 section .panel .warn .st { width: 22px; height: 22px; }
+section .route-label { margin-top: 14px; }
+section.at-review .approve-line { margin-top: 54px; font-size: 28px; }
 
 /* Review: worker, fresh reviewer, then a person. */
 section .review-loop { position: relative; display: grid; grid-template-columns: 230px minmax(0, 1fr) 230px minmax(0, 1fr) 300px; align-items: center; margin-top: 24px; }
@@ -559,18 +562,18 @@ section .board-compare .id { color: inherit; font-size: 17px; }
 
 /* ---------- Rollback: a health gate, not a meeting ---------- */
 
-section.rollback .deploy { position: absolute; left: 72px; top: 134px; width: 646px; }
+section.rollback .deploy { max-width: 960px; margin: 32px auto 0; }
 section .deploy-head .chip { margin-left: auto; height: 28px; }
-section .deploy-body { display: grid; grid-template-columns: minmax(0, 1fr) 232px; gap: 20px; padding: 16px 20px 10px; }
-section .timeline > li { position: relative; display: grid; grid-template-columns: 26px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 14px; padding-bottom: 14px; }
-section .timeline > li > .st { grid-column: 1; grid-row: 1 / span 2; align-self: start; margin-top: 2px; }
-section .timeline > li > b { grid-column: 2; grid-row: 1; font-size: 22px; font-weight: 640; line-height: 1.3; }
-section .timeline > li > span { grid-column: 2; grid-row: 2; font-size: 18px; color: var(--ink-2); }
-section .timeline > li > em { position: absolute; right: 0; top: 3px; font-size: 18px; font-style: normal; font-weight: 640; color: var(--pass); }
+section .deploy-body { padding: 12px 24px; }
+section .timeline > li { position: relative; display: grid; grid-template-columns: 26px 190px minmax(0, 1fr) auto; align-items: center; column-gap: 20px; padding: 12px 0; }
+section .timeline > li > .st { grid-column: 1; grid-row: 1; }
+section .timeline > li > b { grid-column: 2; grid-row: 1; font-size: 24px; font-weight: 640; line-height: 1.3; }
+section .timeline > li > span:not(.st) { grid-column: 3; grid-row: 1; font-size: 24px; color: var(--ink-2); }
+section .timeline > li > em { grid-column: 4; grid-row: 1; font-size: 22px; font-style: normal; font-weight: 640; color: var(--pass); }
 section .timeline > li.bad > em { color: var(--back); }
 section .timeline > li.undo > em { color: var(--ink-2); }
 section .timeline > li.skipped > b { color: var(--ink-2); font-weight: 560; }
-section .timeline > li:not(:last-child)::before { content: ""; position: absolute; left: 12px; top: 32px; bottom: 2px; width: 2px; border-radius: 1px; background: var(--line); }
+section .timeline > li:not(:last-child)::before { content: ""; position: absolute; left: 12px; top: calc(50% + 16px); bottom: calc(-50% + 16px); width: 2px; border-radius: 1px; background: var(--line); }
 section .errors { display: block; width: 232px; height: auto; overflow: visible; }
 section .errors .axis { fill: var(--ink-2); font: 600 19px var(--sans); }
 section .errors .gate { stroke: var(--back-solid); stroke-width: 2; stroke-dasharray: 6 5; }
@@ -584,14 +587,14 @@ section .rb-side ul:not([class]) > li + li { margin-top: 16px; }
 
 /* ---------- Tool map: one practice per row ---------- */
 
-section .tool-map { display: grid; grid-template-columns: 172px 224px minmax(0, 1.18fr) minmax(0, 1fr); overflow: hidden; }
+section .tool-map { display: grid; grid-template-columns: 190px minmax(0, 1.15fr) minmax(0, 1fr); overflow: hidden; }
 section .tool-map [role="row"] { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; border-bottom: 1px solid var(--line-soft); }
 section .tool-map [role="row"]:first-child { border-bottom-color: var(--line); background: var(--subtle); }
 section .tool-map [role="row"]:last-child { border-bottom: 0; }
 section .tool-map [role="columnheader"] { padding: 13px 18px; color: var(--ink-2); font-size: 18px; font-weight: 650; }
-section .tool-map [role="rowheader"], section .tool-map [role="cell"] { display: flex; flex-wrap: wrap; align-content: flex-start; align-items: center; gap: 6px 8px; padding: 15px 18px; font-size: 21px; line-height: 1.3; }
+section .tool-map [role="rowheader"], section .tool-map [role="cell"] { display: flex; flex-wrap: wrap; align-content: flex-start; align-items: center; gap: 6px 8px; padding: 14px 20px; font-size: 23px; line-height: 1.3; }
 section .tool-map [role="rowheader"] { font-size: 22px; font-weight: 650; }
-section .tool-map code { font-size: 18px; padding: 3px 8px; }
+section .tool-map code { font-size: 20px; padding: 3px 8px; }
 section .tool-map small { flex-basis: 100%; font-size: 18px; line-height: 1.3; color: var(--ink-2); }
 section .tool-map small code { padding: 0; border: 0; background: none; color: inherit; font-size: 1em; white-space: normal; }
 section .tool-map em { color: var(--ink-2); }
@@ -599,7 +602,7 @@ section .map-note { margin-top: 18px; font-size: 19px; color: var(--ink-2); }
 
 /* ---------- Checklist: challenge and response ---------- */
 
-section.check .check-card { position: absolute; left: 72px; top: 132px; width: 600px; overflow: hidden; }
+section.check .check-card { max-width: 840px; margin: 28px auto 0; overflow: hidden; }
 section .cl-head { justify-content: space-between; }
 section .cl-count { display: inline-flex; align-items: center; gap: 7px; color: var(--ink-2); font-size: 18px; font-weight: 620; }
 section .checklist { margin: 0; padding: 0; }
@@ -608,7 +611,7 @@ section .checklist button, section .checklist > li:not(:has(button)) { display: 
 section .checklist button { cursor: pointer; }
 section .checklist button:disabled { cursor: default; }
 section .checklist button::before, section .checklist > li:not(:has(button))::before { content: ""; width: 24px; height: 24px; border: 2px solid var(--line-strong); border-radius: 7px; background: var(--surface) center / 16px no-repeat; }
-section .checklist b { color: var(--ink-2); font-size: 20px; font-weight: 560; }
+section .checklist b { color: var(--ink-2); font-size: 22px; font-weight: 560; }
 section .checklist button[aria-pressed="true"]::before { border-color: var(--pass-solid); background-color: var(--pass-solid); background-image: var(--i-white-check); }
 section .checklist button[aria-pressed="true"] b { color: var(--pass); }
 section .checklist button:hover:not(:disabled) { background: var(--subtle); }
@@ -628,7 +631,7 @@ section.questions { display: grid; grid-template-columns: minmax(0, 1fr) 608px; 
 section.questions h1 { font-size: 96px; letter-spacing: -0.04em; }
 section.questions .photo { height: 500px; overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); box-shadow: var(--shadow-lift); }
 section.questions .photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 54% 52%; }
-section.thanks { padding-top: 54px; }
+section.thanks { padding-top: 54px; font-size: 25px; }
 section.thanks h1 { margin-bottom: 26px; font-size: 64px; }
 section.thanks .columns { gap: 56px; }
 section.thanks h2 { margin-bottom: 14px; font-size: 32px; }
@@ -636,6 +639,12 @@ section.thanks ul:not([class]) > li + li { margin-top: 10px; }
 section.thanks p { line-height: 1.5; }
 section.thanks p + p { margin-top: 16px; }
 section.thanks p em { color: var(--ink-2); }
+
+/* ---------- Final event and feedback images ---------- */
+
+section.closing-media { padding: 40px; }
+section.closing-media .closing-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: minmax(0, 1fr); gap: 40px; height: 100%; }
+section.closing-media .closing-pair img { display: block; width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: contain; }
 
 /* ---------- Expansion: shared parts ---------- */
 
@@ -659,7 +668,7 @@ section .gate-mark i { right: -4px; bottom: -3px; }
 
 /* ---------- Context budget: one session fills, stops at a natural break, and the next starts small ---------- */
 
-section.budget .meter-card { overflow: hidden; }
+section.budget .meter-card { max-width: 1040px; margin: 48px auto 0; overflow: hidden; }
 section .meter-card .panel-head b { font-weight: 650; }
 section .meter-body { display: grid; grid-template-columns: 124px minmax(0, 1fr); column-gap: 20px; align-items: center; padding: 28px 30px 10px; }
 section .meter-name { color: var(--ink-2); font-size: 20px; font-weight: 620; }
@@ -703,13 +712,18 @@ section .relay-back { display: block; width: 339px; height: 46px; margin: 0 0 0 
 section .relay-back path { fill: none; stroke: var(--hold-solid); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
 section .relay-back path.head { fill: var(--hold-solid); stroke: none; stroke-dasharray: none; }
 section .approve-line { display: flex; align-items: center; gap: 16px; margin-top: 18px; font-size: 24px; font-weight: 600; }
+section.roles .relay { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 960px; margin: 48px auto 0; }
+section.roles .relay > li { padding: 26px 28px; }
+section.roles .relay .job { min-height: 0; font-size: 26px; }
+section.roles .relay .out code { font-size: 20px; }
+section.roles .approve-line { max-width: 960px; margin: 32px auto 0; }
 
 /* ---------- Agents and skills: a role, a procedure, and on-demand context ---------- */
 
 section.setup .columns { grid-template-columns: 656px minmax(0, 1fr); gap: 40px; align-items: start; }
-section.setup .file { overflow: hidden; }
-section.setup .file pre { padding: 16px 20px; border: 0; border-radius: 0; background: var(--surface); font-size: 20px; line-height: 1.45; }
-section.setup .setup-caption { padding: 10px 20px; border-top: 1px solid var(--line-soft); color: var(--ink-2); font-size: 18px; line-height: 1.3; }
+section.setup .file { max-width: 960px; margin: 14px auto 0; overflow: hidden; }
+section.setup .file pre { padding: 16px 28px; border: 0; border-radius: 0; background: var(--surface); font-size: 22px; line-height: 1.45; }
+section .setup-caption { padding: 10px 20px; border-top: 1px solid var(--line-soft); color: var(--ink-2); font-size: 18px; line-height: 1.3; }
 section.setup .setup-side { padding-top: 8px; font-size: 24px; line-height: 1.4; }
 section.setup .setup-title { font-weight: 650; }
 section.setup .setup-side ul { margin-top: 18px; }
@@ -717,7 +731,8 @@ section.setup .setup-side ul:not([class]) > li + li { margin-top: 16px; }
 section.setup .skill-resources > li { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 8px 0; font-size: 22px; }
 section.setup .skill-resources code { font-size: 20px; }
 section.setup .setup-link { margin-top: 24px; font-size: 22px; }
-section.disclosure .relay { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 48px; }
+section.disclosure .relay { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 48px; margin-top: 64px; }
+section.disclosure .relay .out code { font-size: 20px; }
 section.disclosure .relay .job { min-height: 3.9em; font-size: 22px; }
 section.disclosure .relay > li + li::before { content: ""; position: absolute; left: -36px; top: 36px; width: 24px; border-top: 2px solid var(--line-strong); }
 section.disclosure .relay > li + li::after { content: ""; position: absolute; left: -18px; top: 32px; width: 9px; height: 9px; border-top: 2px solid var(--line-strong); border-right: 2px solid var(--line-strong); transform: rotate(45deg); }
@@ -733,41 +748,46 @@ section .lifecycle > li:not(:last-child)::after { content: ""; position: absolut
 section .lifecycle b { font-size: 25px; font-weight: 650; line-height: 1.2; }
 section .lifecycle code { font-size: 18px; }
 section .lifecycle > li > span:not(.st) { color: var(--ink-2); font-size: 20px; line-height: 1.3; }
-section.changes .tree { margin-top: 34px; overflow: hidden; }
+section.changes .tree { max-width: 960px; margin: 40px auto 0; overflow: hidden; }
+section.changes .lifecycle { max-width: 1040px; margin: 76px auto 0; }
+section.changes .lifecycle b { font-size: 30px; }
+section.changes .lifecycle code { font-size: 20px; }
+section.rollout .rollout-caption { max-width: 1040px; margin: 42px auto 12px; font-size: 28px; }
+section.rollout > .illus { max-width: 1040px; margin-inline: auto; }
 section .tree .panel-head code { color: var(--ink); font-size: 19px; font-weight: 600; }
 section .tree-status { display: grid; justify-items: end; margin-left: auto; }
 section .tree-status > * { grid-area: 1 / 1; }
 section .tree-files { margin: 0; padding: 0; }
-section .tree-files > li { display: grid; grid-template-columns: 22px 300px minmax(0, 1fr) auto; align-items: center; column-gap: 14px; min-height: 50px; padding: 0 22px; font-size: 21px; }
+section .tree-files > li { display: grid; grid-template-columns: 22px 300px minmax(0, 1fr) auto; align-items: center; column-gap: 14px; min-height: 62px; padding: 0 22px; font-size: 24px; }
 section .tree-files > li + li { border-top: 1px solid var(--line-soft); }
 section .tree-files .file-icon { width: 20px; height: 20px; }
-section .tree-files code { padding: 0; border: 0; background: none; font-size: 20px; }
+section .tree-files code { padding: 0; border: 0; background: none; font-size: 22px; }
 section .tree-files > li > span:nth-child(3) { color: var(--ink-2); }
 section .tasks-done { padding: 4px 12px; border: 1px solid var(--pass-line); border-radius: 999px; background: var(--pass-tint); color: var(--pass); font-size: 18px; font-weight: 620; white-space: nowrap; counter-reset: n var(--n); }
 
 /* ---------- Reset: a run goes sideways, the branch goes back ---------- */
 
-section.reset .run-log { position: absolute; left: 72px; top: 132px; width: 620px; overflow: hidden; }
+section.reset .run-log { max-width: 960px; margin: 40px auto 0; overflow: hidden; }
 section .run-log .panel-head > span { color: var(--ink-2); font-size: 19px; }
 section .log { margin: 0; padding: 0; }
-section .log > li { display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; align-items: center; column-gap: 14px; min-height: 58px; padding: 0 20px; font-size: 22px; }
+section .log > li { display: grid; grid-template-columns: 24px minmax(0, 1fr); align-items: center; column-gap: 20px; min-height: 76px; padding: 0 24px; font-size: 28px; }
 section .log > li + li { border-top: 1px solid var(--line-soft); }
 section .log .st { width: 24px; height: 24px; }
 section .log .sign { padding: 4px 11px; border: 1px solid var(--hold-line); border-radius: 999px; background: var(--hold-tint); color: var(--hold); font-size: 18px; font-weight: 640; white-space: nowrap; }
-section.reset .git-graph { position: absolute; left: 732px; right: 72px; top: 132px; overflow: hidden; }
-section .commits { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 58px 16px 4px; }
-section .commits::before { content: ""; position: absolute; left: 71.5px; right: 71.5px; top: 65px; height: 2px; background: var(--line); }
-section .commits > li { position: relative; display: grid; justify-items: center; row-gap: 8px; font-size: 19px; }
+section.reset .git-graph { max-width: 960px; margin: 48px auto 0; overflow: hidden; }
+section .commits { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 58px 40px 20px; }
+section .commits::before { content: ""; position: absolute; left: calc(12.5% + 30px); right: calc(12.5% + 30px); top: 65px; height: 2px; background: var(--line); }
+section .commits > li { position: relative; display: grid; justify-items: center; row-gap: 8px; font-size: 26px; }
 section .commits i { width: 16px; height: 16px; border-radius: 50%; background: var(--pass-solid); box-shadow: 0 0 0 3px var(--surface); }
 section .commits span { color: var(--ink-2); }
 section .commits .dropped { opacity: 0.55; }
 section .commits .dropped i { background: var(--surface); box-shadow: 0 0 0 3px var(--surface), inset 0 0 0 2px var(--line-strong); }
 section .commits .dropped span { text-decoration: line-through; text-decoration-thickness: 2px; text-decoration-color: var(--back-solid); }
-section .head-tag { --step: 111px; position: absolute; top: -43px; left: 50%; padding: 3px 9px; border-radius: 6px; background: var(--ink); color: #fff; font: 600 18px/1.2 var(--mono); transform: translateX(-50%); }
+section .head-tag { --step: 219.5px; position: absolute; top: -43px; left: 50%; padding: 3px 9px; border-radius: 6px; background: var(--ink); color: #fff; font: 600 18px/1.2 var(--mono); transform: translateX(-50%); }
 section .head-tag::after { content: ""; position: absolute; left: 50%; bottom: -5px; margin-left: -5px; border: 5px solid transparent; border-bottom: 0; border-top-color: var(--ink); }
-section .reset-cmd { padding: 16px 20px 20px; text-align: center; }
+section .reset-cmd { padding: 16px 20px 20px; font-size: 26px; text-align: center; }
 section .reset-cmd code { font-size: 19px; }
-section.reset .reset-next { position: absolute; left: 72px; right: 72px; top: 452px; font-size: 24px; }
+section.reset .reset-next { max-width: 960px; margin: 28px auto 0; font-size: 28px; }
 section .reset-next code { font-size: 19px; }
 
 /* ---------- Parallel agents: work finishes in parallel, review happens one at a time ---------- */
@@ -782,10 +802,10 @@ section .par-lanes b { font-weight: 620; }
 section .par-lanes .bar { position: relative; height: 10px; border-radius: 5px; background: var(--line-soft); }
 section .par-lanes .bar i { position: absolute; inset: 0; border-radius: 5px; background: var(--agent); opacity: 0.55; transform-origin: left; }
 section .par-lanes .pr { justify-self: end; padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--subtle); font: 400 18px/1 var(--mono); }
-section.parallel .review-queue { position: absolute; left: 776px; right: 72px; top: 132px; overflow: hidden; }
+section.parallel .review-queue { max-width: 960px; margin: 48px auto 0; overflow: hidden; }
 section .review-queue .avatar { width: 32px; height: 32px; }
 section .queue-items { margin: 0; padding: 0; }
-section .queue-items > li { display: grid; grid-template-columns: 24px auto minmax(0, 1fr); align-items: center; column-gap: 14px; min-height: 58px; padding: 0 20px; font-size: 21px; }
+section .queue-items > li { display: grid; grid-template-columns: 24px auto minmax(0, 1fr); align-items: center; column-gap: 20px; min-height: 64px; padding: 0 24px; font-size: 26px; }
 section .queue-items > li + li { border-top: 1px solid var(--line-soft); }
 section .queue-items .st { width: 24px; height: 24px; }
 section .queue-items .id { font-size: 18px; }
@@ -795,17 +815,17 @@ section.parallel .par-rule { position: absolute; left: 72px; right: 72px; top: 4
 
 /* ---------- Security: least privilege, and untrusted text ---------- */
 
-section.guard .perms { position: absolute; left: 72px; top: 132px; width: 540px; overflow: hidden; }
-section .perms [role="row"] { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 58px; padding: 0 20px; font-size: 22px; }
+section.guard .perms { max-width: 960px; margin: 48px auto 0; overflow: hidden; }
+section .perms [role="row"] { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 68px; padding: 0 24px; font-size: 26px; }
 section .perms [role="row"] + [role="row"] { border-top: 1px solid var(--line-soft); }
 section .perms .perms-head { min-height: 52px; background: var(--subtle); font-size: 21px; }
 section .perms .perms-head b { font-weight: 650; }
 section .perms code { font-size: 19px; }
 section .perms .chip { height: 32px; }
-section.guard .untrusted { position: absolute; left: 652px; right: 72px; top: 132px; overflow: hidden; }
+section.guard .untrusted { max-width: 960px; margin: 48px auto 0; overflow: hidden; }
 section .untrusted .panel-head b { font-weight: 650; }
 section .untrusted .panel-head > span { margin-left: auto; color: var(--ink-2); font-size: 19px; }
-section .untrusted blockquote { margin: 0; padding: 18px 22px; border: 0; color: var(--ink); font-size: 23px; line-height: 1.45; }
+section .untrusted blockquote { margin: 0; padding: 28px; border: 0; color: var(--ink); font-size: 28px; line-height: 1.45; }
 section .untrusted mark { padding: 1px 3px; border-radius: 4px; background: linear-gradient(var(--back-tint), var(--back-tint)) 0 0 / 100% 100% no-repeat; color: var(--back); box-shadow: inset 0 -2px 0 var(--back-line); }
 section .tool-call { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 22px 16px; border-top: 1px solid var(--line-soft); font-size: 21px; }
 section .tool-call code { font-size: 19px; }
@@ -830,6 +850,7 @@ section .lever-map .enforce [role="cell"]:last-child { font-weight: 620; }
 /* ---------- Measure: DORA's delivery metrics ---------- */
 
 section.measure .dora { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+section.measure .dora-card { max-width: 960px; margin: 48px auto 0; }
 section .dora-card { overflow: hidden; }
 section .dora-card .panel-head { font-size: 22px; }
 section .dora-card .panel-head b { font-weight: 650; }
@@ -837,10 +858,19 @@ section .dora-card .panel-head span { margin-left: auto; color: var(--ink-2); fo
 section .dora-card.unstable .panel-head { border-bottom-color: var(--hold-line); background: var(--hold-tint); }
 section .dora-card.unstable .panel-head b, section .dora-card.unstable .panel-head span { color: var(--hold); }
 section .dora-card ul { margin: 0; padding: 4px 0 6px; }
-section .dora-card li { padding: 12px 22px; font-size: 23px; font-weight: 560; }
+section .dora-card li { padding: 16px 24px; font-size: 28px; font-weight: 560; }
 section .dora-card li + li { border-top: 1px solid var(--line-soft); }
 section .finding { max-width: 1000px; margin-top: 30px; font-size: 23px; line-height: 1.45; }
 section .finding .src { display: block; margin-top: 6px; color: var(--ink-2); font-size: 18px; }
+
+/* ---------- Focused beats: one argument, without a second panel ---------- */
+
+section.focus .focus-body { max-width: 960px; margin: 48px auto 0; }
+section.focus .focus-body > ul { font-size: 32px; line-height: 1.45; }
+section.focus .focus-body > ul > li + li { margin-top: 24px; }
+section.focus .panel dl { grid-template-columns: 180px minmax(0, 1fr); padding: 12px 28px; }
+section.focus .panel dt, section.focus .panel dd { padding: 26px 0; font-size: 28px; }
+section.resources .focus-body > ul { font-size: 28px; }
 
 /* ---------- Transitions ---------- */
 
@@ -1015,8 +1045,8 @@ section .finding .src { display: block; margin-top: 6px; color: var(--ink-2); fo
   section.sw-live.at-review .merge-checks .gate > .st:not(.live-only) { animation: sw-pop 420ms var(--ease-pop) 3950ms backwards; }
   section.sw-live.at-review .merge-checks .gate > .m-done { animation: sw-write 420ms var(--ease) 4000ms backwards; }
   section.sw-live.at-review .merge-btn { animation: sw-enable 360ms ease-out 4150ms backwards; }
-  section.sw-live.at-review .checks > li.fresh { --t: 4150ms; }
-  section.at-review { --td: 4250ms; }
+  section.sw-live.at-review .checks > li.fresh { --t: 1150ms; }
+  section.at-review { --td: 1700ms; }
 
   /* Release board */
   section.sw-live.lab .board { animation: sw-rise 700ms var(--ease) backwards; }
