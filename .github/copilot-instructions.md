@@ -8,7 +8,7 @@ This repository holds the slides for Chris Ayers' talk **Shipping with AI Withou
 
 - `slides/`: Marp deck, `slides/assets/deck.js` (loaded once on the first slide), images in `slides/img/`, themes in `slides/themes/`.
 - `DESIGN.md`: theme tokens, type floor, and named design rules. `PRODUCT.md`: the talk's audience and goals.
-- `.github/skills/` and `.github/agents/`: repo-local skills and agents for this deck.
+- `.github/skills/` and `.github/agents/`: repository-local skills and agents for this deck.
 
 ## Slides
 
@@ -37,7 +37,7 @@ This repository holds the slides for Chris Ayers' talk **Shipping with AI Withou
 
 ## Shared skills
 
-- This repo keeps its own skills in `.github/skills/`: use `marp-slide-review` to check for overflow before presenting or publishing, and `drawio-diagrams` for editable `.drawio.svg` figures.
+- This repository keeps its own skills in `.github/skills/`: use `marp-slide-review` to check for overflow before presenting or publishing, and `drawio-diagrams` for editable `.drawio.svg` figures.
 - For anything those don't cover, use the shared skills from [codebytes/skills](https://github.com/codebytes/skills) (`marp-authoring`, `marp-visuals`).
 
 ## Talk-specific rules
