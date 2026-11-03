@@ -17,6 +17,10 @@ The examples are part of the main story, not a required toolchain for every chan
 
 HTML exports keep Marp's on-screen controller enabled for navigation, fullscreen, and presenter view.
 
+## Recordings
+
+- [HelloStavanger 2026](https://www.youtube.com/watch?v=FPZ8hxcLlN8)
+
 ## Resources
 
 - [Slide source](slides/Slides.md)
